@@ -1,0 +1,81 @@
+// src/styles/_theme-toggle.scss
+
+@keyframes toggle-spin {
+  from { transform: rotate(0deg) scale(1.1); }
+  to   { transform: rotate(360deg) scale(1.1); }
+}
+
+@keyframes toggle-rock {
+  0%, 100% { transform: rotate(0deg) scale(1.1); }
+  25%      { transform: rotate(-12deg) scale(1.1); }
+  75%      { transform: rotate(8deg) scale(1.1); }
+}
+
+.theme-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  .theme-toggle-button {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+    transition:
+      color var(--transition-fast) ease,
+      border-color var(--transition-fast) ease,
+      background-color var(--transition-fast) ease;
+
+    &:hover {
+      color: var(--color-text);
+      border-color: var(--color-primary-400);
+      background-color: var(--color-background-soft);
+
+      .toggle-icon--sun.is-active {
+        animation: toggle-spin 4s linear infinite;
+      }
+
+      .toggle-icon--moon.is-active {
+        animation: toggle-rock 2s ease-in-out infinite;
+      }
+    }
+
+    &:active {
+      color: var(--color-primary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .toggle-icon-container {
+      position: relative;
+      width: 16px;
+      height: 16px;
+    }
+
+    .toggle-icon {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: rotate(-45deg) scale(0.6);
+      transition:
+        opacity var(--transition-normal) var(--transition-timing-default),
+        transform var(--transition-normal) var(--transition-timing-default);
+
+      &.is-active {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+    }
+  }
+}

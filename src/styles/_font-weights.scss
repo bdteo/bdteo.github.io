@@ -1,0 +1,11 @@
+// _font-weights.scss
+
+$font-weights: (
+        normal: 400,
+        bold: 700,
+        black: 900
+);
+
+@function fontWeight($weight) {
+  @return map-get($font-weights, $weight);
+}

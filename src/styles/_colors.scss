@@ -1,0 +1,19 @@
+// _colors.scss
+
+// Light mode colors
+$color-primary: #7412B2;
+$color-secondary: #34D1B2;
+$color-text: #2A2A2A;
+$color-text-light: lighten($color-text, 20%);
+$color-background: #FFFFFF;
+$color-accent: #AAAAAA;
+$color-hover: darken($color-primary, 10%);
+
+// Dark mode colors
+$dark-color-primary: #E2C6FB;
+$dark-color-secondary: #34D1B2;
+$dark-color-text: #D5D5D5;
+$dark-color-text-light: darken($dark-color-text, 20%);
+$dark-color-background: #0D0D0D;
+$dark-color-accent: #555555;
+$dark-color-hover: lighten($dark-color-primary, 10%);

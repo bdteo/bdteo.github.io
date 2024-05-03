@@ -1,0 +1,32 @@
+// src/styles/_buttons.scss
+
+.custom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: 3px;
+  text-decoration: none;
+
+  &.primary {
+    background-color: var(--color-button-primary);
+    color: var(--color-button-text);
+
+    &:hover {
+      background-color: var(--color-button-primary-hover);
+    }
+  }
+
+  &.secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-button-text);
+    }
+  }
+}

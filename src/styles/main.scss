@@ -1,0 +1,129 @@
+// src/styles/main.scss
+
+// Reset and normalization first
+@import 'normalize.css';
+
+// Design system
+@import 'variables';
+@import 'light-mode';
+@import 'dark-mode';
+
+// Bootstrap framework (only include what's needed)
+@import "bootstrap/scss/bootstrap-grid";
+@import "bootstrap/scss/bootstrap-utilities";
+
+// Typography (JetBrains Mono loaded via gatsby-browser.js)
+
+// Core styles
+@import "base";
+@import "variables";
+@import "typography";
+@import "layout";
+
+// Components
+@import "bio";
+@import "blog-card";
+@import "blog-post";
+@import "breadcrumb";
+@import "blog-post-nav";
+@import "buttons";
+@import "code-blocks";
+@import "theme-toggle";
+@import "homepage";
+
+// Animation classes
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-10px); }
+  to { transform: translateX(0); }
+}
+
+// Print styles
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+// Accessibility
+.skip-to-main-content {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 100;
+  padding: var(--spacing-4);
+  background: var(--color-primary);
+  color: white;
+  transition: top 0.3s;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// Global overrides for text-shadow issues
+:root {
+  // Target all inline code elements to remove text-shadow
+  code,
+  code.language-text,
+  *[class*="language-"],
+  .token,
+  .gatsby-highlight * {
+    text-shadow: none !important;
+  }
+
+  // Additional specificity for text shadow removal
+  p code,
+  li code,
+  td code,
+  h1 code,
+  h2 code,
+  h3 code,
+  h4 code,
+  h5 code,
+  h6 code {
+    text-shadow: none !important;
+  }
+}

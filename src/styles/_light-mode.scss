@@ -1,0 +1,93 @@
+// _light-mode.scss
+
+body.light-mode {
+  // Core colors
+  --color-primary: #6D28D9;        // Purple 700
+  --color-primary-rgb: 109, 40, 217; // Purple 700 in RGB
+  --color-primary-50: #F5F3FF;     // Purple 50
+  --color-primary-100: #EDE9FE;    // Purple 100
+  --color-primary-200: #DDD6FE;    // Purple 200
+  --color-primary-300: #C4B5FD;    // Purple 300
+  --color-primary-400: #A78BFA;    // Purple 400
+  --color-primary-500: #8B5CF6;    // Purple 500
+  --color-primary-600: #7C3AED;    // Purple 600
+  --color-primary-700: #6D28D9;    // Purple 700
+  --color-primary-800: #5B21B6;    // Purple 800
+  --color-primary-900: #4C1D95;    // Purple 900
+  
+  --color-secondary: #10B981;      // Emerald 500
+  --color-secondary-light: #34D399; // Emerald 400
+  --color-secondary-dark: #059669;  // Emerald 600
+  
+  // Text colors
+  // Apple-inspired semantic labels (primary/secondary/tertiary)
+  // - Primary label: #000000
+  // - Secondary label: rgba(60, 60, 67, 0.60)
+  // - Tertiary label: rgba(60, 60, 67, 0.30)
+  --color-text: #111111;
+  --color-text-light: #56565B;      // ~7.5:1 on #FFF (WCAG AAA)
+  --color-text-lighter: #636366;    // ~6.0:1 on #FFF (WCAG AA)
+  --color-text-dark: #000000;
+  --color-text-accent: #6D28D9;    // Primary color
+  
+  // Background colors
+  // Apple-inspired system backgrounds
+  // - systemBackground: #FFFFFF
+  // - secondarySystemBackground / grouped background feel: #F2F2F7
+  // - subtle separators/filled regions: #E5E5EA
+  --color-background: #FFFFFF;
+  --color-background-alt: #FFFFFF;
+  --color-background-soft: #FAFAFA;
+  --color-background-muted: #F5F5F5;
+  
+  // Element colors
+  // Apple-inspired separators
+  // - separator: rgba(60, 60, 67, 0.29)
+  // - opaqueSeparator: #C6C6C8
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-border-light: rgba(0, 0, 0, 0.06);
+  --color-border-dark: rgba(0, 0, 0, 0.20);
+  
+  --color-accent: #E5E5EA;
+  --color-accent-light: #F2F2F7;
+  --color-accent-dark: #C6C6C8;
+  
+  --color-hover: #5B21B6;          // Purple 800
+  --color-active: #4C1D95;         // Purple 900
+  
+  // UI component colors
+  // Apple-like card surface (secondary system background)
+  --color-card-bg: #FFFFFF;
+  --color-card-bg-rgb: 255, 255, 255;
+  --color-card-border: rgba(0, 0, 0, 0.15);
+  --color-card-shadow: transparent;
+  --color-card-title: var(--color-text-dark);
+  --color-figcaption-bg: rgba(242, 242, 247, 0.85);
+  --color-nav-bg: rgba(255, 255, 255, 0.72);
+  
+  // Button colors
+  --color-button-primary: #6D28D9;       // Primary button background
+  --color-button-primary-hover: #5B21B6; // Primary button hover
+  --color-button-primary-active: #4C1D95; // Primary button active
+  --color-button-text: #FFFFFF;          // Primary button text
+  
+  // Code block colors
+  --color-code-bg: #F8F8F8;
+  --color-code-text: #1C1C1E;
+  --color-code-border: rgba(60, 60, 67, 0.14);
+  --color-code-inline-bg: transparent;   // Completely transparent
+  
+  // Special element colors
+  --color-tag-bg: #EDE9FE;                // Purple 100
+  --color-tag-text: #6D28D9;              // Purple 700
+  --color-tooltip-bg: #374151;            // Gray 700
+  --color-tooltip-text: #FFFFFF;          // White
+  
+  // Syntax highlighting - More subdued colors (VSCode-inspired)
+  --color-comment: #008000;               // Green
+  --color-string: #A31515;                // Red
+  --color-keyword: #0550AE;               // Blue (slightly muted)
+  --color-function: #795E26;              // Brown
+  --color-variable: #1F377F;              // Dark Blue
+  --color-operator: #5A5A5A;              // Dark Gray
+}

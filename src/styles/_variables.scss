@@ -1,0 +1,158 @@
+// src/styles/_variables.scss
+
+// Import dependencies
+@import 'colors';
+@import 'font-sizes';
+@import 'font-weights';
+@import 'max-widths';
+@import 'spacings';
+
+// Define variables in :root for global access
+:root {
+  // Font families
+  --font-sans: 'MontserratVariable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono: 'JetBrains Mono', 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  // Font weights
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+  
+  // Font sizes - Using a modern type scale
+  --font-size-xs: 0.75rem;      // 12px
+  --font-size-sm: 0.875rem;     // 14px
+  --font-size-base: 1rem;       // 16px
+  --font-size-md: 1.125rem;     // 18px
+  --font-size-lg: 1.25rem;      // 20px
+  --font-size-xl: 1.5rem;       // 24px
+  --font-size-2xl: 1.875rem;    // 30px
+  --font-size-3xl: 2.25rem;     // 36px
+  --font-size-4xl: 3rem;        // 48px
+  --font-size-5xl: 3.75rem;     // 60px
+  
+  // Line heights
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  // Letter spacing
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+  
+  // Spacings - Using a consistent 4px grid
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0-5: 0.125rem;  // 2px
+  --spacing-1: 0.25rem;     // 4px
+  --spacing-1-5: 0.375rem;  // 6px
+  --spacing-2: 0.5rem;      // 8px
+  --spacing-2-5: 0.625rem;  // 10px
+  --spacing-3: 0.75rem;     // 12px
+  --spacing-3-5: 0.875rem;  // 14px
+  --spacing-4: 1rem;        // 16px
+  --spacing-5: 1.25rem;     // 20px
+  --spacing-6: 1.5rem;      // 24px
+  --spacing-7: 1.75rem;     // 28px
+  --spacing-8: 2rem;        // 32px
+  --spacing-9: 2.25rem;     // 36px
+  --spacing-10: 2.5rem;     // 40px
+  --spacing-11: 2.75rem;    // 44px
+  --spacing-12: 3rem;       // 48px
+  --spacing-14: 3.5rem;     // 56px
+  --spacing-16: 4rem;       // 64px
+  --spacing-20: 5rem;       // 80px
+  --spacing-24: 6rem;       // 96px
+  --spacing-28: 7rem;       // 112px
+  --spacing-32: 8rem;       // 128px
+  --spacing-36: 9rem;       // 144px
+  --spacing-40: 10rem;      // 160px
+  --spacing-44: 11rem;      // 176px
+  --spacing-48: 12rem;      // 192px
+  --spacing-52: 13rem;      // 208px
+  --spacing-56: 14rem;      // 224px
+  --spacing-60: 15rem;      // 240px
+  --spacing-64: 16rem;      // 256px
+  --spacing-72: 18rem;      // 288px
+  --spacing-80: 20rem;      // 320px
+  --spacing-96: 24rem;      // 384px
+  
+  // Border radius — editorial sharp
+  --border-radius-none: 0;
+  --border-radius-sm: 2px;
+  --border-radius-md: 3px;
+  --border-radius-lg: 4px;
+  --border-radius-xl: 4px;
+  --border-radius-2xl: 4px;
+  --border-radius-3xl: 4px;
+  --border-radius-full: 9999px;
+  
+  // Shadows — eliminated for editorial sharpness (borders define boundaries)
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
+  --shadow-inner: none;
+  --shadow-none: none;
+  
+  // Transitions — snappy, editorial
+  --transition-fast: 100ms;
+  --transition-normal: 180ms;
+  --transition-slow: 300ms;
+  --transition-timing-default: cubic-bezier(0.2, 0, 0, 1);
+
+  // Accent line
+  --accent-line-height: 2px;
+  --accent-line-gradient: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  --transition-timing-in: cubic-bezier(0.4, 0, 1, 1);
+  --transition-timing-out: cubic-bezier(0, 0, 0.2, 1);
+  
+  // Z-indices
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+  
+  // Max widths
+  --max-width-none: none;
+  --max-width-xs: 20rem;      // 320px
+  --max-width-sm: 24rem;      // 384px
+  --max-width-md: 28rem;      // 448px
+  --max-width-lg: 32rem;      // 512px
+  --max-width-xl: 36rem;      // 576px
+  --max-width-2xl: 42rem;     // 672px
+  --max-width-3xl: 48rem;     // 768px
+  --max-width-4xl: 56rem;     // 896px
+  --max-width-5xl: 64rem;     // 1024px
+  --max-width-6xl: 72rem;     // 1152px
+  --max-width-7xl: 80rem;     // 1280px
+  --max-width-full: 100%;
+  --max-width-wrapper: var(--max-width-6xl);
+  
+  // Container padding
+  --container-padding: var(--spacing-4);
+  
+  @media (min-width: 640px) {
+    --container-padding: var(--spacing-6);
+  }
+  
+  @media (min-width: 1024px) {
+    --container-padding: var(--spacing-8);
+  }  
+}

@@ -1,0 +1,121 @@
+// src/styles/_bio.scss
+
+// Bio footer wrapper on blog posts (between comments and post nav)
+.blog-post-bio {
+  margin-top: var(--spacing-10);
+  padding-top: var(--spacing-10);
+  border-top: 1px solid var(--color-border);
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+  border-radius: 4px;
+  padding: var(--spacing-4);
+  background: var(--color-background-soft);
+  text-align: center;
+  position: relative;
+  border: 1px solid var(--color-border);
+
+  @media (min-width: 768px) {
+    flex-direction: row-reverse;
+    text-align: left;
+    padding: var(--spacing-5) var(--spacing-6);
+  }
+
+  .bio-avatar {
+    flex-shrink: 0;
+    margin-bottom: var(--spacing-4);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    width: 120px !important;
+    height: 120px !important;
+    border: 1px solid var(--color-border);
+
+    @media (min-width: 768px) {
+      margin-left: var(--spacing-8);
+      margin-right: 0;
+      margin-bottom: 0;
+      width: 140px !important;
+      height: 140px !important;
+    }
+  }
+
+  .bio-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+
+    .bio-name {
+      font-family: var(--font-display);
+      font-size: var(--font-size-2xl);
+      margin: 0 0 var(--spacing-2) 0;
+      color: var(--color-text);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+
+      @media (min-width: 768px) {
+        font-size: var(--font-size-3xl);
+      }
+    }
+
+    .bio-intro {
+      font-size: var(--font-size-base);
+      color: var(--color-text);
+      line-height: 1.7;
+      margin-bottom: var(--spacing-3);
+      text-align: center;
+      font-weight: var(--font-weight-normal);
+
+      @media (min-width: 768px) {
+        text-align: left;
+        font-size: var(--font-size-lg);
+      }
+    }
+
+    .bio-summary {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-light);
+      line-height: 1.7;
+      margin-bottom: var(--spacing-3);
+      text-align: center;
+
+      @media (min-width: 768px) {
+        text-align: left;
+      }
+    }
+
+    .bio-social {
+      margin-top: var(--spacing-3);
+      display: flex;
+      gap: var(--spacing-3);
+      justify-content: center;
+
+      @media (min-width: 768px) {
+        justify-content: flex-start;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        background: transparent;
+        color: var(--color-text-light);
+        font-size: var(--font-size-base);
+        border: none;
+        transition: color 100ms ease;
+
+        &:hover {
+          color: var(--color-primary);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
