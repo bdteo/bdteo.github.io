@@ -9,7 +9,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Boris D. Teoharov's Blog`,
+    title: `Boris's Blog`,
     author: {
       name: `Boris D. Teoharov`,
       summary: `Senior Software Developer at ShareRig with expertise in web development, AI/ML, DevOps, and low-level programming. Passionate about exploring theoretical computer science, mathematics, and the creative applications of AI.`,
@@ -114,12 +114,25 @@ module.exports = {
         name: `Boris D. Teoharov's Blog`,
         short_name: `BDTBlog`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: `#1a1a1a`,
+        theme_color: `#1a1a1a`,
         display: `minimal-ui`,
-        icon: 'src/images/bd-icon@4x.png'
+        icon: 'src/images/bd-icon@4x.png',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: process.env.NODE_ENV !== 'production',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-dark-mode`,
+      options: {
+        classNameDark: 'dark-mode',
+        classNameLight: 'light-mode',
+        storageKey: 'darkMode',
+        minify: true,
       },
     },
   ],
