@@ -1,0 +1,17 @@
+// _components.scss
+
+.gatsby-resp-image-wrapper {
+  border-radius: var(--spacing-2);
+  overflow: hidden;
+  box-shadow: 0 6px 20px -10px rgba(0, 0, 0, 0.3);
+}
+
+figure {
+  figcaption {
+    font-size: var(--fontSize-sm);
+    color: var(--color-text-light);
+    margin-top: var(--spacing-3);
+    padding-left: var(--spacing-1);
+    text-align: left;
+  }
+}

@@ -32,21 +32,25 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <div className="super-global-wrapper" data-bs-theme={theme}>
-      <div className="row my-3 mx-3">
+      <header className="global-header row align-items-start"
+        data-is-root-path={isRootPath}
+      >
         <div className="col"></div>
-        <div className="col-auto">
-          <BThemeToggler themeControl={themeControl}/>
+        <div className="col-auto global-wrapper">
+          <div class="mb-2">{header}</div>
+          <main>{children}</main>
+          <footer>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.com">Gatsby</a>
+          </footer>
         </div>
-      </div>
-      <div className="global-wrapper" data-is-root-path={isRootPath}>
-        <header className="global-header">{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+        <div className="col text-end">
+          <div className="d-inline-block mx-3 my-4 py-2">
+            <BThemeToggler themeControl={themeControl} />
+          </div>
+        </div>
+      </header>
     </div>
   );
 }

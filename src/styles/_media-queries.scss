@@ -1,0 +1,18 @@
+// _media-queries.scss
+
+@mixin media-query($max-width) {
+  @media (max-width: $max-width) {
+    @content;
+  }
+}
+
+@include media-query(42rem) {
+  blockquote {
+    padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4);
+    margin-left: var(--spacing-0);
+  }
+
+  ul, ol {
+    list-style-position: inside;
+  }
+}

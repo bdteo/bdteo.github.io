@@ -20,7 +20,9 @@ export class BThemeToggler extends React.Component {
               checked={theme === "dark-mode"}
             />
             <label className="form-check-label" htmlFor="darkModeSwitch">
-              <small>Dark Mode</small>
+              <small>
+                <small>Dark Mode</small>
+              </small>
             </label>
           </div>
         )}
