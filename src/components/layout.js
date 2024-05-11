@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import { BThemeToggler } from "./BThemeToggler";
 
 const Layout = ({ location, title, children }) => {
+  // noinspection JSUnresolvedReference
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
   let header;
@@ -22,7 +23,7 @@ const Layout = ({ location, title, children }) => {
   }
 
   // Using React useState hook to manage theme state
-  const [theme, setTheme] = React.useState('dark');
+  const [theme, setTheme] = React.useState('dark-mode');
 
   const themeControl = {
     theme: theme, // use the state variable here

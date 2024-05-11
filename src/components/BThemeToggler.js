@@ -13,11 +13,11 @@ export class BThemeToggler extends React.Component {
               type="checkbox"
               id="darkModeSwitch"
               onChange={e => {
-                const newTheme = e.target.checked ? 'dark' : 'light';
-                toggleTheme(newTheme);
-                this.props.themeControl.setTheme(newTheme);
+                const newTheme = e.target.checked ? "dark-mode" : "light-mode"
+                toggleTheme(newTheme)
+                this.props.themeControl.setTheme(newTheme)
               }}
-              checked={theme === 'dark'}
+              checked={theme === "dark-mode"}
             />
             <label className="form-check-label" htmlFor="darkModeSwitch">
               <small>Dark Mode</small>

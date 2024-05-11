@@ -10,7 +10,6 @@ type DataProps = {
     buildTime: string
   }
 }
-
 const UsingTypescript: React.FC<PageProps<DataProps>> = ({
   data,
   path,
@@ -42,7 +41,13 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({
   </Layout>
 )
 
-export const Head: HeadFC<DataProps> = () => <Seo title="Using TypeScript" />
+export const Head: HeadFC<DataProps> = () => (
+  <Seo
+    title="Using TypeScript"
+    description="Description for SEO purposes"
+    children={<div>Child component</div>}
+  />
+)
 
 export default UsingTypescript
 

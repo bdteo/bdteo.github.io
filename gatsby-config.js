@@ -23,6 +23,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -133,6 +134,7 @@ module.exports = {
         classNameLight: 'light-mode',
         storageKey: 'darkMode',
         minify: true,
+        defaultClassName: 'dark-mode',
       },
     },
     {
