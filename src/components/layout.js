@@ -29,11 +29,11 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <div className="super-global-wrapper">
-      <header className="global-header row align-items-start"
+      <header className="global-header row align-items-start mx-0"
         data-is-root-path={isRootPath}
       >
-        <div className="col"></div>
-        <div className="col-auto global-wrapper">
+        <div className="col d-none d-lg-block"></div>
+        <div className="col-auto global-wrapper flex-shrink-1">
           <div className="mb-2">{header}</div>
           <main>{children}</main>
           <footer>
@@ -42,8 +42,8 @@ const Layout = ({ location, title, children }) => {
             <a href="https://www.gatsbyjs.com">Gatsby</a>
           </footer>
         </div>
-        <div className="col text-end">
-          <div className="d-inline-block mx-3 my-4 py-2">
+        <div className="col-12 col-lg text-end order-first order-lg-last">
+          <div className="d-inline-block mx-3 mt-3 mb-0 mb-lg-4 mt-lg-4 py-2">
             <BThemeToggler />
           </div>
         </div>
