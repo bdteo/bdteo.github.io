@@ -1,0 +1,41 @@
+// _dark-mode.scss
+
+// Define dark mode specific color variables
+$dark-primary: #9f29e9;
+$dark-rgbPrimary: red($dark-primary), green($dark-primary), blue($dark-primary);
+$dark-secondary: #34D1B2;
+$dark-body-color: #D5D5D5;
+$dark-body-bg: #0D0D0D;
+$dark-accent: #555;
+$dark-hover: #bc69f0;
+$dark-rgbHover: red($dark-hover), green($dark-hover), blue($dark-hover);
+
+body.dark-mode {
+  // CSS custom properties for dark mode theming
+  --bs-primary: #{$dark-primary};
+  --bs-secondary: #{$dark-secondary};
+  --bs-body-color: #{$dark-body-color};
+  --bs-body-bg: #{$dark-body-bg};
+  --bs-accent: #{$dark-accent};
+  --bs-hover: #{$dark-hover};
+  --bs-link-opacity: 1;
+  --bs-link-color-rgb: #{$dark-rgbPrimary};
+  --bs-link-hover-color-rgb: #{$dark-rgbHover};
+  --bs-text-color: #{$dark-body-color};
+  --bs-text-light-color: #{darken($dark-body-color, 20%)};
+  --bs-heading-color: #{lighten($dark-primary, 5%)};
+  --bs-heading-black: #000000;
+  --bs-accent-color: #{$dark-accent};
+  --bs-background-color: #{$dark-body-bg};
+
+  --color-primary: #{$dark-primary};
+  --color-secondary: #{$dark-secondary};
+  --color-text: #{$dark-body-color};
+  --color-background: #{$dark-body-bg};
+  --color-accent: #{$dark-accent};
+  --color-hover: #{$dark-hover};
+
+  h1 {
+    color: var(--color-primary);
+  }
+}

@@ -16,28 +16,25 @@ const Layout = ({ location, title, children }) => {
     );
   } else {
     header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
+     <div>
+       <Link className="header-link-home" to="/"
+         style={{ opacity: 0.9 }}
+       >
+         {title}
+       </Link>
+       <hr/>
+     </div>
     );
   }
 
-  // Using React useState hook to manage theme state
-  const [theme, setTheme] = React.useState('dark-mode');
-
-  const themeControl = {
-    theme: theme, // use the state variable here
-    setTheme: setTheme // use the state updating function here
-  };
-
   return (
-    <div className="super-global-wrapper" data-bs-theme={theme}>
+    <div className="super-global-wrapper">
       <header className="global-header row align-items-start"
         data-is-root-path={isRootPath}
       >
         <div className="col"></div>
         <div className="col-auto global-wrapper">
-          <div class="mb-2">{header}</div>
+          <div className="mb-2">{header}</div>
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
@@ -47,7 +44,7 @@ const Layout = ({ location, title, children }) => {
         </div>
         <div className="col text-end">
           <div className="d-inline-block mx-3 my-4 py-2">
-            <BThemeToggler themeControl={themeControl} />
+            <BThemeToggler />
           </div>
         </div>
       </header>

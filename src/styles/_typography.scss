@@ -11,23 +11,12 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: fontWeight(bold);
     color: color(heading);
     font-size: fontSize(7 - $i);
-
-    & > a {
-      text-decoration: none;
-      color: inherit;
-    }
   }
 }
 
 h1 {
   font-weight: var(--fontWeight-black);
   font-size: var(--fontSize-2xl);
-  color: var(--color-heading-black);
-
-  & > a {
-    color: inherit;
-    text-decoration: none;
-  }
 }
 
 p {
@@ -55,10 +44,5 @@ ul, ol {
 }
 
 a {
-  color: var(--color-primary);
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
+  text-decoration: none;
 }

@@ -1,0 +1,24 @@
+// _colors.scss
+
+$primary: #7412B2;
+$secondary: #6C757D;
+$success: #28A745;
+$info: #17A2B8;
+$warning: #FFC107;
+$danger: #DC3545;
+$light: #F8F9FA;
+$dark: #343A40;
+
+$colors: (
+        primary: var(--bs-primary, #005b99), // Default if var is not set
+        text: var(--bs-text-color, #2e353f),
+        text-light: var(--bs-text-light-color, #4f5969),
+        heading: var(--bs-heading-color, #1a202c),
+        heading-black: var(--bs-heading-black, black),
+        accent: var(--bs-accent-color, #d1dce5),
+        background: var(--bs-background-color, #FFFFFF)
+);
+
+@function color($color) {
+  @return map-get($colors, $color);
+}
