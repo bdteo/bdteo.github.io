@@ -187,5 +187,12 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-asset-path',
+      options: {
+        removeMapFiles: true,
+        addTimestamp: true,
+      },
+    },
   ],
 }
