@@ -17,11 +17,14 @@
     "bootstrap": "^5.3.3",
     "classnames": "^2.5.1",
     "gatsby": "^5.13.3",
+    "gatsby-plugin-asset-path": "^3.0.4",
     "gatsby-plugin-dark-mode": "^1.1.2",
     "gatsby-plugin-feed": "^5.13.1",
     "gatsby-plugin-google-gtag": "^5.13.1",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
+    "gatsby-plugin-netlify": "^5.1.1",
+    "gatsby-plugin-offline": "^6.13.2",
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-plugin-styled-components": "^6.13.1",
@@ -59,6 +62,6 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby build && gh-pages -d public -b gh-pages"
+    "deploy": "gatsby clean && gatsby build && gh-pages -d public"
   }
 }
