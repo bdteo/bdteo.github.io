@@ -4,8 +4,6 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  */
 
-const path = require('path')
-
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -159,26 +157,7 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: 'gatsby-plugin-offline',
-      options: {
-        workboxConfig: {
-          globPatterns: ['**/*'],
-        },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-netlify',
-      options: {
-        headers: {
-          '/*': [
-            'Cache-Control: public, max-age=0, must-revalidate',
-          ],
-          '/static/*': [
-            'Cache-Control: public, max-age=31536000, immutable',
-          ],
-        },
-      },
-    },
+    // Comment out the gatsby-plugin-offline for now
+    // `gatsby-plugin-offline`,
   ],
 }
