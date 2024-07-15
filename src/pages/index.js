@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -30,6 +31,8 @@ const BlogIndex = ({ data, location }) => {
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
+          const featuredImage = getImage(post.frontmatter.featuredImage)
+          const imagePosition = post.frontmatter.imagePosition || "center"
 
           return (
             <li key={post.fields.slug}>
@@ -38,6 +41,27 @@ const BlogIndex = ({ data, location }) => {
                 itemScope
                 itemType="http://schema.org/Article"
               >
+                {featuredImage && (
+                  <Link to={post.fields.slug}>
+                    <div style={{
+                      height: "300px",
+                      overflow: "hidden",
+                      position: "relative",
+                    }}>
+                      <GatsbyImage
+                        image={featuredImage}
+                        alt={title}
+                        style={{
+                          position: "absolute",
+                          top: imagePosition === "top" ? 0 : "50%",
+                          left: 0,
+                          transform: imagePosition === "top" ? "none" : "translateY(-50%)",
+                          width: "100%",
+                        }}
+                      />
+                    </div>
+                  </Link>
+                )}
                 <header>
                   <h2>
                     <Link to={post.fields.slug} itemProp="url">
@@ -65,11 +89,6 @@ const BlogIndex = ({ data, location }) => {
 
 export default BlogIndex
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
 export const Head = () => <Seo title="All posts" />
 
 export const pageQuery = graphql`
@@ -89,6 +108,12 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          imagePosition
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(width: 600, height: 300, layout: CONSTRAINED)
+            }
+          }
         }
       }
     }

@@ -36,3 +36,38 @@ a {
   bottom: 0;
   left: 0;
 }
+
+// Styles for featured images on the index page
+.post-list-item {
+  .gatsby-image-wrapper {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+// Styles for featured images in blog posts
+.blog-post {
+  .featured-image {
+    margin-bottom: 2rem;
+
+    .gatsby-image-wrapper {
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    figcaption {
+      text-align: left;
+      font-style: italic;
+      margin-top: 0.5rem;
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+    }
+  }
+}
+

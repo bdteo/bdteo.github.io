@@ -2,6 +2,8 @@
 title: "Stable Diffusion Cheat Sheet: Troubleshooting and Optimization"
 date: "2023-05-04T23:30:00.000Z"
 description: "A comprehensive guide to optimizing Stable Diffusion settings for high-quality, efficient image generation."
+featuredImage: "./images/featured.jpg"
+imageCaption: "A hyper-realistic AI-generated image showcasing the capabilities of Stable Diffusion"
 ---
 
 This cheat sheet provides a detailed overview of key parameters and techniques for troubleshooting and optimizing Stable Diffusion, a powerful image generation model. By understanding and adjusting settings such as clip skip, CFG, preprocessing resolution, input image cropping, and samplers, users can achieve the desired balance between generation speed, image quality, and prompt adherence.
