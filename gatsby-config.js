@@ -10,6 +10,8 @@ const path = require('path')
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+  pathPrefix: "/",
+  assetPrefix: "https://bdteo.github.io",
   siteMetadata: {
     title: `Boris's Blog`,
     author: {
