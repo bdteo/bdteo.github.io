@@ -160,13 +160,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-asset-path',
-      options: {
-        removeMapFiles: true,
-        addTimestamp: true,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-offline',
       options: {
         workboxConfig: {
@@ -185,13 +178,6 @@ module.exports = {
             'Cache-Control: public, max-age=31536000, immutable',
           ],
         },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-asset-path',
-      options: {
-        removeMapFiles: true,
-        addTimestamp: true,
       },
     },
   ],
