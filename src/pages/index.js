@@ -43,21 +43,15 @@ const BlogIndex = ({ data, location }) => {
               >
                 {featuredImage && (
                   <Link to={post.fields.slug}>
-                    <div style={{
-                      height: "300px",
-                      overflow: "hidden",
-                      position: "relative",
-                    }}>
+                    <div style={{ height: "300px", overflow: "hidden" }}
+                      className={'bt--image--wrapper'}
+                    >
                       <GatsbyImage
                         image={featuredImage}
                         alt={title}
-                        style={{
-                          position: "absolute",
-                          top: imagePosition === "top" ? 0 : "50%",
-                          left: 0,
-                          transform: imagePosition === "top" ? "none" : "translateY(-50%)",
-                          width: "100%",
-                        }}
+                        style={{ height: "100%" }}
+                        objectFit="cover"
+                        objectPosition={imagePosition}
                       />
                     </div>
                   </Link>
