@@ -1,13 +1,13 @@
 // _dark-mode.scss
 
 // Define dark mode specific color variables
-$dark-primary: #9f29e9;
+$dark-primary: #e2c6fb; // Light purple, balanced between previous versions
 $dark-rgbPrimary: red($dark-primary), green($dark-primary), blue($dark-primary);
 $dark-secondary: #34D1B2;
 $dark-body-color: #D5D5D5;
 $dark-body-bg: #0D0D0D;
 $dark-accent: #555;
-$dark-hover: #bc69f0;
+$dark-hover: #eddcfd; // Lighter purple for hover state
 $dark-rgbHover: red($dark-hover), green($dark-hover), blue($dark-hover);
 
 body.dark-mode {
@@ -23,7 +23,7 @@ body.dark-mode {
   --bs-link-hover-color-rgb: #{$dark-rgbHover};
   --bs-text-color: #{$dark-body-color};
   --bs-text-light-color: #{darken($dark-body-color, 20%)};
-  --bs-heading-color: #{lighten($dark-primary, 5%)};
+  --bs-heading-color: #{lighten($dark-primary, 5%)}; // Slightly lighter than primary
   --bs-heading-black: #000000;
   --bs-accent-color: #{$dark-accent};
   --bs-background-color: #{$dark-body-bg};
