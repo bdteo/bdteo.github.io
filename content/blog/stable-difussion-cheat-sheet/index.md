@@ -2,7 +2,7 @@
 title: "Stable Diffusion Cheat Sheet: Troubleshooting and Optimization"
 date: "2023-05-04T23:30:00.000Z"
 description: "A comprehensive guide to optimizing Stable Diffusion settings for high-quality, efficient image generation."
-featuredImage: "./images/featured.png"
+featuredImage: "./images/featured.jpg"
 imageCaption: "A hyper-realistic AI-generated image showcasing the capabilities of Stable Diffusion"
 ---
 

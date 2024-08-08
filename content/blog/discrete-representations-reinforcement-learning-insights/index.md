@@ -5,7 +5,7 @@ slug: "discrete-representations-reinforcement-learning-insights"
 author: "Your Name"
 description: "Explore Edan Meyer's fascinating research on discrete representations in reinforcement learning, and discover how this approach could revolutionize AI adaptability and efficiency."
 tags: ["Artificial Intelligence", "Reinforcement Learning", "Discrete Representations", "Edan Meyer", "AI Research"]
-featuredImage: "./images/featured.png"
+featuredImage: "./images/featured.jpg"
 imageCaption: "A visual representation of discrete states in reinforcement learning, inspired by Edan Meyer's research"
 ---
 
