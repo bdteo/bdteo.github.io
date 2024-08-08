@@ -2,7 +2,7 @@
 title: "Google's AI Ambitions: A Historical Analysis of Promises, Stock Performance, and Market Impact"
 date: "2024-05-11T12:00:00.000Z"
 description: "Explore Google's AI journey through the lens of corporate promises, stock market performance, and technological innovation, uncovering key milestones, successes, failures, and future outlook."
-featuredImage: "./images/featured.jpg"
+featuredImage: "./images/featured.png"
 imageCaption: "A hyper-realistic AI-generated image showcasing the capabilities of Stable Diffusion"
 ---
 

@@ -2,7 +2,7 @@
 title: "Pushing the Limits: Generating High-Quality, Photorealistic Images with Stable Diffusion"
 date: "2023-05-04T23:45:00.000Z"
 description: "Discover how to optimize Stable Diffusion settings and techniques to generate stunning, photorealistic images while considering GPU limitations and balancing quality with efficiency."
-featuredImage: "./images/featured.jpg"
+featuredImage: "./images/featured.png"
 imageCaption: "A hyper-realistic AI-generated image showcasing the capabilities of Stable Diffusion"
 ---
 

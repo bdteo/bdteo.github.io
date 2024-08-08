@@ -4,7 +4,7 @@ date: "2024-06-26T04:38:11.000Z"
 description: "In a realm where dreams shape reality, young sorceress Lyra’s magic flickered like a dying star. Guided by an ancient starseer, she undertakes three celestial rituals to reignite her inner light.
 
 The Lunar Reflection Ritual reconnects her with the universe, the Cosmic Codex transforms dark thoughts into wisdom, and the Constellation Quest helps her forge meaningful connections. Through daily dedication to these rituals, Lyra discovers that true magic lies in aligning her inner stars, transforming into a radiant beacon in a vast, loving cosmic dance."
-featuredImage: "./images/featured.jpg"
+featuredImage: "./images/featured.png"
 imageCaption: "A mystical sorceress surrounded by swirling stardust, her hands glowing with celestial energy."
 imagePosition: "top"
 ---
