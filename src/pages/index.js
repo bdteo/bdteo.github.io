@@ -35,7 +35,10 @@ const BlogIndex = ({ data, location }) => {
           const imagePosition = post.frontmatter.imagePosition || "center"
 
           return (
-            <li key={post.fields.slug}>
+            <li key={post.fields.slug}
+              data--bt--article--summary--wrapper
+              className={'bt--article--summary--wrapper'}
+            >
               <article
                 className="post-list-item"
                 itemScope
@@ -43,7 +46,7 @@ const BlogIndex = ({ data, location }) => {
               >
                 {featuredImage && (
                   <Link to={post.fields.slug}>
-                    <div style={{ height: "300px", overflow: "hidden" }}
+                    <div style={{ height: "420px", overflow: "hidden" }}
                       className={'bt--image--wrapper'}
                     >
                       <GatsbyImage
