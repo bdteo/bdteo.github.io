@@ -28,7 +28,10 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Bio />
       <hr />
-      <ol style={{ listStyle: `none` }}>
+      <ol style={{ listStyle: `none` }}
+        data--bt--article--summary--list
+        className={['bt--article--summary--list', 'm-0', 'p-0'].join(' ')}
+      >
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
           const featuredImage = getImage(post.frontmatter.featuredImage)
