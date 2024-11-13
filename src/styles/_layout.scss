@@ -1,17 +1,32 @@
-// _layout.scss
+// src/styles/_layout.scss
 
 .global-wrapper {
   margin: var(--spacing-6) auto;
   max-width: var(--max-width-wrapper);
   padding: 0 var(--spacing-5);
-
-  &[data-is-root-path='true'] .bio {
-    margin-bottom: var(--spacing-6);
-  }
 }
 
 .global-header {
-  margin-bottom: var(--spacing-12);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--color-background);
+  padding: var(--spacing-4) 0;
+  border-bottom: 1px solid var(--color-accent);
+
+  .header-inner {
+    max-width: var(--max-width-wrapper);
+    margin: 0 auto;
+    padding: 0 var(--spacing-5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.main-content {
+  margin-top: calc(var(--spacing-12) + var(--spacing-4));
 }
 
 .main-heading {

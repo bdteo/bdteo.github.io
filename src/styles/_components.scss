@@ -1,4 +1,53 @@
-// _components.scss
+// src/styles/_components.scss
+
+// Bio component styling
+.bio {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-12);
+
+  .bio-image {
+    flex-shrink: 0;
+    margin-right: var(--spacing-6);
+
+    .bio-avatar {
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .bio-content {
+    flex: 1;
+
+    .bio-name {
+      font-size: var(--font-size-2xl);
+      margin: 0;
+      color: var(--color-primary);
+    }
+
+    .bio-summary {
+      margin-top: var(--spacing-2);
+      font-size: var(--font-size-md);
+      color: var(--color-text-light);
+    }
+
+    .bio-social {
+      margin-top: var(--spacing-4);
+
+      a {
+        margin-right: var(--spacing-4);
+        font-size: var(--font-size-xl);
+        color: var(--color-text-light);
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+}
 
 // Code block styling
 code,
@@ -46,3 +95,55 @@ code {
 }
 
 /* Additional token styles as needed */
+
+// Styles for articles
+.bt--article--summary--wrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  .post-list-item {
+    .bt--image--wrapper {
+      margin-bottom: var(--spacing-4);
+
+      .gatsby-image-wrapper {
+        border-radius: var(--spacing-2);
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+}
+
+// Styles for featured images in blog posts
+.blog-post .featured-image {
+  margin-bottom: var(--spacing-8);
+
+  .gatsby-image-wrapper {
+    border-radius: var(--spacing-2);
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  figcaption {
+    margin-top: var(--spacing-2);
+    font-style: italic;
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+  }
+}
+
+// Form switch styling
+.form-switch {
+  cursor: pointer;
+
+  .form-check-input,
+  .form-check-label {
+    cursor: pointer;
+  }
+}
+
+/* Add any additional component styles below */

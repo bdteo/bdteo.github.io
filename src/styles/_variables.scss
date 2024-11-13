@@ -1,4 +1,4 @@
-// _variables.scss
+// src/styles/_variables.scss
 
 // Import dependencies
 @import 'colors';
@@ -68,8 +68,10 @@
   --max-width-2xl: 42rem;
   --max-width-3xl: 48rem;
   --max-width-4xl: 56rem;
+  --max-width-5xl: 64rem;
+  --max-width-6xl: 72rem;
   --max-width-full: 100%;
-  --max-width-wrapper: var(--max-width-3xl);
+  --max-width-wrapper: var(--max-width-5xl);
 
   // Colors are defined in light-mode and dark-mode files
 }
