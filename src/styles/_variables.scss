@@ -1,5 +1,13 @@
 // src/styles/_variables.scss
 
+// Import dependencies
+@import 'colors';
+@import 'font-sizes';
+@import 'font-weights';
+@import 'max-widths';
+@import 'spacings';
+
+// Define variables only in :root to prevent unnecessary inheritance
 :root {
   // Font families
   --font-family-sans: 'MontserratVariable', system-ui, -apple-system,
@@ -65,14 +73,33 @@
   --max-width-full: 100%;
   --max-width-wrapper: var(--max-width-5xl); // Updated from 4xl to 5xl
 
-  // Colors for inline code backgrounds
-  // These will be defined in light and dark mode files
+  // Colors for light mode
+  --color-primary: #7412B2;
+  --color-secondary: #34D1B2;
+  --color-text: #2A2A2A;
+  --color-text-light: lighten(#2A2A2A, 20%);
+  --color-background: #FFFFFF;
+  --color-accent: #AAAAAA;
+  --color-hover: darken(#7412B2, 10%);
 
-  --color-code-inline-bg: #f5f5f5; // Light mode inline code background
+  // Colors for code in light mode
+  --color-code-bg: #f5f5f5;          // Light mode code block background
+  --color-code-text: #2A2A2A;        // Light mode code text color
+  --color-code-inline-bg: #f5f5f5;   // Light mode inline code background
 }
 
+// Dark mode variables
 body.dark-mode {
-  /* Existing variables */
+  --color-primary: #E2C6FB;
+  --color-secondary: #34D1B2;
+  --color-text: #D5D5D5;
+  --color-text-light: darken(#D5D5D5, 20%);
+  --color-background: #0D0D0D;
+  --color-accent: #555555;
+  --color-hover: lighten(#E2C6FB, 10%);
 
-  --color-code-inline-bg: #2D2D2D; // Dark mode inline code background
+  // Colors for code in dark mode
+  --color-code-bg: #1E1E1E;          // Dark mode code block background
+  --color-code-text: #D4D4D4;        // Dark mode code text color
+  --color-code-inline-bg: #2D2D2D;   // Dark mode inline code background
 }

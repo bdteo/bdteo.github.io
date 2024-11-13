@@ -72,7 +72,6 @@ const Bio = () => {
               <FontAwesomeIcon icon={faEnvelope} />
             </a>
           )}
-          {/* Add more social links as needed */}
         </div>
       </div>
     </div>

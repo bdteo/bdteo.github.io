@@ -12,25 +12,56 @@
 @import 'components';
 @import 'layout';
 
-// Import PrismJS default styling
-@import "~prismjs/themes/prism.css";
+// Remove default PrismJS theme import
+// @import "~prismjs/themes/prism.css";
 
-// Override PrismJS styles to fix code block backgrounds in both modes
-body.light-mode,
-body.dark-mode {
-  pre[class*="language-"] {
-    background-color: var(--color-code-bg) !important;
-  }
-  code[class*="language-"] {
-    background-color: var(--color-code-bg) !important;
-  }
-  code {
-    background-color: var(--color-code-inline-bg);
+// Other styles
+
+.form-switch {
+  cursor: pointer;
+
+  .form-check-input,
+  .form-check-label {
+    cursor: pointer;
   }
 }
 
-// Remove background and shadows from PrismJS tokens
-.token {
-  background: none !important;
-  text-shadow: none !important;
+// Styles for articles
+.bt--article--summary--wrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  .post-list-item {
+    .bt--image--wrapper {
+      margin-bottom: var(--spacing-4);
+
+      .gatsby-image-wrapper {
+        border-radius: var(--spacing-2);
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+}
+
+// Styles for featured images in blog posts
+.blog-post .featured-image {
+  margin-bottom: var(--spacing-8);
+
+  .gatsby-image-wrapper {
+    border-radius: var(--spacing-2);
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  figcaption {
+    margin-top: var(--spacing-2);
+    font-style: italic;
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+  }
 }
