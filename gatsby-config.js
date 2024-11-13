@@ -1,12 +1,11 @@
+// File: gatsby-config.js
+
 /**
  * Configure your Gatsby site with this file.
  *
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  */
 
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
 module.exports = {
   pathPrefix: "/",
   assetPrefix: "https://bdteo.github.io",
@@ -79,32 +78,32 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
-            },
-            query: `{
-              allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
-                nodes {
-                  excerpt
-                  html
-                  fields {
-                    slug
-                  }
-                  frontmatter {
-                    title
-                    date
+            serialize: ({ query: { site, allMarkdownRemark } }) =>
+              allMarkdownRemark.nodes.map(node => ({
+                ...node.frontmatter,
+                description: node.excerpt,
+                date: node.frontmatter.date,
+                url: site.siteMetadata.siteUrl + node.fields.slug,
+                guid: site.siteMetadata.siteUrl + node.fields.slug,
+                custom_elements: [{ "content:encoded": node.html }],
+              })),
+            query: `
+              {
+                allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+                  nodes {
+                    excerpt
+                    html
+                    fields {
+                      slug
+                    }
+                    frontmatter {
+                      title
+                      date
+                    }
                   }
                 }
               }
-            }`,
+            `,
             output: "/rss.xml",
             title: "Boris D. Teoharov's Blog RSS Feed",
           },
@@ -143,7 +142,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
-          'G-7MSGWE21G5', // Google Analytics / GA
+          'G-7MSGWE21G5',
         ],
         gtagConfig: {
           optimize_id: "OPT_CONTAINER_ID",
@@ -157,7 +156,20 @@ module.exports = {
         },
       },
     },
-    // Comment out the gatsby-plugin-offline for now
-    // `gatsby-plugin-offline`,
+    // Re-enable gatsby-plugin-offline to manage the service worker
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        workboxConfig: {
+          globPatterns: ['**/*'],
+          // Use a unique cache name to force updates
+          cacheId: 'gatsby-blog-v1',
+          skipWaiting: true,
+          clientsClaim: true,
+        },
+      },
+    },
+    // Remove the plugin below if you decide to use gatsby-plugin-offline
+    // `gatsby-plugin-remove-serviceworker`,
   ],
 }
