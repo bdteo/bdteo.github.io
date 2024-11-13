@@ -32,7 +32,7 @@ done
 
 title=$(prompt "Enter the title" "Untitled")
 date=$(date +"%Y-%m-%d")
-author=$(prompt "Enter the author" "Your Name")
+author=$(prompt "Enter the author" "Boris Teoharov")
 description=$(prompt "Enter the description" "")
 tags=$(prompt "Enter tags (comma-separated)" "")
 featuredImage=$(prompt "Enter path to featured image" "./images/featured.jpg")

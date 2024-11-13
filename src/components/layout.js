@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import { BThemeToggler } from "./BThemeToggler";
+import Logo from "../images/bd-icon@4x.png"; // Import your logo
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
@@ -10,9 +11,12 @@ const Layout = ({ location, title, children }) => {
 
   const header = (
     <div className="header-inner">
-      <h1 className="site-title">
-        <Link to="/">{title}</Link>
-      </h1>
+      <div className="site-logo">
+        <Link to="/" className="header-logo">
+          <img src={Logo} alt={title} />
+        </Link>
+      </div>
+      <div className="header-spacer" />
       <div className="theme-toggler">
         <BThemeToggler />
       </div>
