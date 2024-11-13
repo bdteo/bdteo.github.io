@@ -1,84 +1,112 @@
 // main.scss
+
 @import 'variables';
+@import 'light-mode';
+@import 'dark-mode';
 
 @import "bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap');
 
 @import 'base';
 @import 'typography';
 @import 'components';
 @import 'layout';
-@import 'media-queries';
 
+// Import PrismJS default styling
+@import "prismjs/themes/prism.css";
+
+// Custom code block styles
+.gatsby-highlight {
+  margin-bottom: var(--spacing-8);
+  background-color: var(--color-code-bg);
+  border-radius: var(--spacing-2);
+  overflow: auto;
+
+  pre[class*="language-"],
+  code[class*="language-"] {
+    background-color: var(--color-code-bg) !important;
+    color: var(--color-code-text) !important;
+    text-shadow: none;
+  }
+
+  pre[class*="language-"] {
+    border: 1px solid var(--color-code-border);
+    border-radius: var(--spacing-2);
+    padding: var(--spacing-4);
+    overflow: auto;
+  }
+
+  code[class*="language-"] {
+    padding: 0.2em 0.4em;
+    border-radius: var(--spacing-1);
+  }
+
+  // Override code token backgrounds
+  .token {
+    background: none !important;
+  }
+}
+
+// Ensure code blocks switch properly between light and dark modes
+body.light-mode,
+body.dark-mode {
+  .gatsby-highlight {
+    pre[class*="language-"],
+    code[class*="language-"],
+    .token {
+      background: none !important;
+      color: var(--color-code-text) !important;
+      text-shadow: none;
+    }
+  }
+}
+
+// Other styles
 .form-switch {
   cursor: pointer;
 
-  .form-check-input, .form-check-label {
+  .form-check-input,
+  .form-check-label {
     cursor: pointer;
   }
 }
 
-.xsmall {
-  font-size: fontSize('xs');
-}
-
-.gatsby-highlight {
-  margin-bottom: var(--spacing-8);
-}
-
-a {
-  text-decoration: none;
-}
-
-.inset-0 {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-// Styles for featured images on the index page
+// Styles for articles
 .bt--article--summary--wrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
   .post-list-item {
     .bt--image--wrapper {
-      margin-bottom: 11px;
-    }
+      margin-bottom: var(--spacing-4);
 
-    .gatsby-image-wrapper {
-      border-radius: 1rem;
-      width: 100%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      .gatsby-image-wrapper {
+        border-radius: var(--spacing-2);
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
 
-      &:hover {
-        transform: scale(1.02);
+        &:hover {
+          transform: scale(1.02);
+        }
       }
     }
   }
-
-  border-bottom: 1px solid rgba($secondary, 0.25);
 }
-
 
 // Styles for featured images in blog posts
-.blog-post {
-  .featured-image {
-    margin-bottom: 2rem;
+.blog-post .featured-image {
+  margin-bottom: var(--spacing-8);
 
-    border-radius: 8px;
+  .gatsby-image-wrapper {
+    border-radius: var(--spacing-2);
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
-    .gatsby-image-wrapper {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      width: 100%;
-    }
-
-    figcaption {
-      text-align: left;
-      font-style: italic;
-      margin-top: 0.5rem;
-      color: var(--color-text-light);
-      font-size: 0.9rem;
-    }
+  figcaption {
+    margin-top: var(--spacing-2);
+    font-style: italic;
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
   }
 }
-

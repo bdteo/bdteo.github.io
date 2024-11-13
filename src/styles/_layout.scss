@@ -1,11 +1,11 @@
 // _layout.scss
 
 .global-wrapper {
-  margin: var(--spacing-6) var(--spacing-0);
-  max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-0) var(--spacing-5) var(--spacing-10) var(--spacing-5);
+  margin: var(--spacing-6) auto;
+  max-width: var(--max-width-wrapper);
+  padding: 0 var(--spacing-5);
 
-  &[data-is-root-path="true"] .bio {
+  &[data-is-root-path='true'] .bio {
     margin-bottom: var(--spacing-6);
   }
 }
@@ -15,70 +15,32 @@
 }
 
 .main-heading {
-  font-size: var(--fontSize-4xl);
+  font-size: var(--font-size-4xl);
   margin: 0;
+}
+
+.header-link-home {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
 }
 
 .post-list-item {
   margin-bottom: var(--spacing-8);
-  margin-top: var(--spacing-8);
 
-  & p {
-    margin-bottom: var(--spacing-0);
-  }
-
-  & h2 {
-    font-size: var(--fontSize-xl);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-2);
-    margin-top: var(--spacing-0);
-  }
-
-  & header {
+  p {
     margin-bottom: var(--spacing-4);
   }
-}
 
-.header-link-home {
-  font-weight: var(--fontWeight-bold);
-  font-family: var(--font-heading);
-  text-decoration: none;
-  font-size: var(--fontSize-lg);
-}
-
-.bio {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: var(--spacing-8);
-
-  .bio-avatar {
-    margin-right: var(--spacing-6);
-    margin-bottom: var(--spacing-0);
-    min-width: auto;
-    border-radius: 100%;
-    box-shadow: 3px 3px 8px -1px rgba(0, 0, 0, 0.3);
-    flex-shrink: 0;
+  h2 {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-2);
+    margin-top: 0;
   }
 
-  & p {
-    margin-bottom: var(--spacing-0);
-    font-size: var(--fontSize-xs);
-    flex-shrink: 1;
+  header {
+    margin-bottom: var(--spacing-4);
   }
-}
-
-.blog-post {
-  & header h1 {
-    margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
-  }
-
-  & header p {
-    font-size: var(--fontSize-md);
-    font-family: var(--font-heading);
-  }
-}
-
-.blog-post-nav ul {
-  margin: var(--spacing-0);
 }

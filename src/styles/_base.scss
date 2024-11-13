@@ -1,29 +1,43 @@
 // _base.scss
 
+// Reset and base styles
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 html {
-  line-height: var(--lineHeight-normal);
-  font-size: var(--fontSize-root);
+  line-height: var(--line-height-normal);
+  font-size: 16px;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: var(--font-body);
-  font-size: var(--fontSize-md);
+  font-size: var(--font-size-md);
   color: var(--color-text);
   background-color: var(--color-background);
 }
 
-footer {
-  padding: var(--spacing-6) var(--spacing-0);
+// Remove global application of variables to all elements
+// Move only necessary variables to root or specific elements
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-hover);
+  }
 }
 
 hr {
   background: var(--color-accent);
   height: 1px;
   border: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

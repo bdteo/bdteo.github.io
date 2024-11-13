@@ -2,7 +2,7 @@
 title: "Discrete Representations in RL: Edan Meyer's Groundbreaking Research"
 date: "2024-07-15"
 slug: "discrete-representations-reinforcement-learning-insights"
-author: "Your Name"
+author: "Boris D. Teoharov"
 description: "Explore Edan Meyer's fascinating research on discrete representations in reinforcement learning, and discover how this approach could revolutionize AI adaptability and efficiency."
 tags: ["Artificial Intelligence", "Reinforcement Learning", "Discrete Representations", "Edan Meyer", "AI Research"]
 featuredImage: "./images/featured.jpg"

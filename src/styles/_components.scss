@@ -1,17 +1,48 @@
 // _components.scss
 
-.gatsby-resp-image-wrapper {
-  border-radius: var(--spacing-2);
-  overflow: hidden;
-  box-shadow: 0 6px 20px -10px rgba(0, 0, 0, 0.3);
+// Code block styling
+code,
+pre {
+  font-family: var(--font-family-mono);
 }
 
-figure {
-  figcaption {
-    font-size: var(--fontSize-sm);
-    color: var(--color-text-light);
-    margin-top: var(--spacing-3);
-    padding-left: var(--spacing-1);
-    text-align: left;
-  }
+// Scoped code styling to prevent global inheritance
+.gatsby-highlight {
+  font-size: var(--font-size-sm);
+  background-color: var(--color-code-bg);
+  color: var(--color-code-text);
+  border: 1px solid var(--color-code-border);
+  border-radius: var(--spacing-2);
+  padding: var(--spacing-4);
+  overflow: auto;
 }
+
+.gatsby-highlight code {
+  background-color: transparent;
+}
+
+.gatsby-highlight pre[class*="language-"] {
+  background-color: transparent;
+}
+
+code {
+  font-size: var(--font-size-sm);
+  background-color: var(--color-code-inline-bg);
+  padding: 0.2em 0.4em;
+  border-radius: var(--spacing-1);
+}
+
+// Syntax highlighting overrides for PrismJS
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6a9955; // Comments
+}
+
+.token.punctuation {
+  color: var(--color-code-text);
+}
+
+/* Additional token styles as needed */

@@ -1,41 +1,16 @@
 // _light-mode.scss
 
-// Define light mode specific color variables
-$light-primary: #7412B2;
-$light-rgbPrimary: red($light-primary), green($light-primary), blue($light-primary);
-$light-secondary: #34D1B2;
-$light-body-color: #2A2A2A;
-$light-body-bg: #FFFFFF;
-$light-accent: #aaa;
-$light-hover: #58008f;
-$light-rgbHover: red($light-hover), green($light-hover), blue($light-hover);
-
 body.light-mode {
-  // CSS custom properties for light mode theming
-  --bs-primary: #{$light-primary};
-  --bs-secondary: #{$light-secondary};
-  --bs-body-color: #{$light-body-color};
-  --bs-body-bg: #{$light-body-bg};
-  --bs-accent: #{$light-accent};
-  --bs-hover: #{$light-hover};
-  --bs-link-opacity: 1;
-  --bs-link-color-rgb: #{$light-rgbPrimary};
-  --bs-link-hover-color-rgb: #{$light-rgbHover};
-  --bs-text-color: #{$light-body-color};
-  --bs-text-light-color: #{lighten($light-body-color, 20%)};
-  --bs-heading-color: #{darken($light-primary, 5%)};
-  --bs-heading-black: #000000;
-  --bs-accent-color: #{$light-accent};
-  --bs-background-color: #{$light-body-bg};
+  --color-primary: #7412B2;
+  --color-secondary: #34D1B2;
+  --color-text: #2A2A2A;
+  --color-text-light: lighten(#2A2A2A, 20%);
+  --color-background: #FFFFFF;
+  --color-accent: #AAAAAA;
+  --color-hover: darken(#7412B2, 10%);
 
-  --color-primary: #{$light-primary};
-  --color-secondary: #{$light-secondary};
-  --color-text: #{$light-body-color};
-  --color-background: #{$light-body-bg};
-  --color-accent: #{$light-accent};
-  --color-hover: #{$light-hover};
-
-  h1 {
-    color: var(--color-primary);
-  }
+  // Code block colors
+  --color-code-bg: #f5f5f5;
+  --color-code-text: #2A2A2A;
+  --color-code-border: #E1E1E8;
 }

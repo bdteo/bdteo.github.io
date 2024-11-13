@@ -1,24 +1,19 @@
 // _colors.scss
 
-$primary: #7412B2;
-$secondary: #6C757D;
-$success: #28A745;
-$info: #17A2B8;
-$warning: #FFC107;
-$danger: #DC3545;
-$light: #F8F9FA;
-$dark: #343A40;
+// Light mode colors
+$color-primary: #7412B2;
+$color-secondary: #34D1B2;
+$color-text: #2A2A2A;
+$color-text-light: lighten($color-text, 20%);
+$color-background: #FFFFFF;
+$color-accent: #AAAAAA;
+$color-hover: darken($color-primary, 10%);
 
-$colors: (
-        primary: var(--bs-primary, #005b99), // Default if var is not set
-        text: var(--bs-text-color, #2e353f),
-        text-light: var(--bs-text-light-color, #4f5969),
-        heading: var(--bs-heading-color, #1a202c),
-        heading-black: var(--bs-heading-black, black),
-        accent: var(--bs-accent-color, #d1dce5),
-        background: var(--bs-background-color, #FFFFFF)
-);
-
-@function color($color) {
-  @return map-get($colors, $color);
-}
+// Dark mode colors
+$dark-color-primary: #E2C6FB;
+$dark-color-secondary: #34D1B2;
+$dark-color-text: #D5D5D5;
+$dark-color-text-light: darken($dark-color-text, 20%);
+$dark-color-background: #0D0D0D;
+$dark-color-accent: #555555;
+$dark-color-hover: lighten($dark-color-primary, 10%);
