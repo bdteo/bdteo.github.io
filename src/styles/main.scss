@@ -13,100 +13,24 @@
 @import 'layout';
 
 // Import PrismJS default styling
-@import "prismjs/themes/prism.css";
+@import "~prismjs/themes/prism.css";
 
-// Custom code block styles
-.gatsby-highlight {
-  margin-bottom: var(--spacing-8);
-  background-color: var(--color-code-bg);
-  border-radius: var(--spacing-2);
-  overflow: auto;
-
-  pre[class*="language-"],
-  code[class*="language-"] {
-    background-color: var(--color-code-bg) !important;
-    color: var(--color-code-text) !important;
-    text-shadow: none;
-  }
-
-  pre[class*="language-"] {
-    border: 1px solid var(--color-code-border);
-    border-radius: var(--spacing-2);
-    padding: var(--spacing-4);
-    overflow: auto;
-  }
-
-  code[class*="language-"] {
-    padding: 0.2em 0.4em;
-    border-radius: var(--spacing-1);
-  }
-
-  // Override code token backgrounds
-  .token {
-    background: none !important;
-  }
-}
-
-// Ensure code blocks switch properly between light and dark modes
+// Override PrismJS styles to fix code block backgrounds in both modes
 body.light-mode,
 body.dark-mode {
-  .gatsby-highlight {
-    pre[class*="language-"],
-    code[class*="language-"],
-    .token {
-      background: none !important;
-      color: var(--color-code-text) !important;
-      text-shadow: none;
-    }
+  pre[class*="language-"] {
+    background-color: var(--color-code-bg) !important;
+  }
+  code[class*="language-"] {
+    background-color: var(--color-code-bg) !important;
+  }
+  code {
+    background-color: var(--color-code-inline-bg);
   }
 }
 
-// Other styles
-.form-switch {
-  cursor: pointer;
-
-  .form-check-input,
-  .form-check-label {
-    cursor: pointer;
-  }
-}
-
-// Styles for articles
-.bt--article--summary--wrapper {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-  .post-list-item {
-    .bt--image--wrapper {
-      margin-bottom: var(--spacing-4);
-
-      .gatsby-image-wrapper {
-        border-radius: var(--spacing-2);
-        width: 100%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: scale(1.02);
-        }
-      }
-    }
-  }
-}
-
-// Styles for featured images in blog posts
-.blog-post .featured-image {
-  margin-bottom: var(--spacing-8);
-
-  .gatsby-image-wrapper {
-    border-radius: var(--spacing-2);
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  figcaption {
-    margin-top: var(--spacing-2);
-    font-style: italic;
-    color: var(--color-text-light);
-    font-size: var(--font-size-sm);
-  }
+// Remove background and shadows from PrismJS tokens
+.token {
+  background: none !important;
+  text-shadow: none !important;
 }

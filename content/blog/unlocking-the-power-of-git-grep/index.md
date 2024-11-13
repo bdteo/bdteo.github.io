@@ -1,5 +1,5 @@
 ---
-title: "The Hidden Path: Unlocking the Power of git grep"
+title: "The Hidden Path: Unlocking the Power of ..."
 date: "2024-11-13"
 slug: "unlocking-the-power-of-git-grep"
 author: "Boris D. Teoharov"

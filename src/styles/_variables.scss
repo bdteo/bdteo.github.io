@@ -1,13 +1,5 @@
 // src/styles/_variables.scss
 
-// Import dependencies
-@import 'colors';
-@import 'font-sizes';
-@import 'font-weights';
-@import 'max-widths';
-@import 'spacings';
-
-// Define variables only in :root to prevent unnecessary inheritance
 :root {
   // Font families
   --font-family-sans: 'MontserratVariable', system-ui, -apple-system,
@@ -68,10 +60,19 @@
   --max-width-2xl: 42rem;
   --max-width-3xl: 48rem;
   --max-width-4xl: 56rem;
-  --max-width-5xl: 64rem;
+  --max-width-5xl: 64rem; // Added for wider content
   --max-width-6xl: 72rem;
   --max-width-full: 100%;
-  --max-width-wrapper: var(--max-width-4xl);
+  --max-width-wrapper: var(--max-width-5xl); // Updated from 4xl to 5xl
 
-  // Colors are defined in light-mode and dark-mode files
+  // Colors for inline code backgrounds
+  // These will be defined in light and dark mode files
+
+  --color-code-inline-bg: #f5f5f5; // Light mode inline code background
+}
+
+body.dark-mode {
+  /* Existing variables */
+
+  --color-code-inline-bg: #2D2D2D; // Dark mode inline code background
 }

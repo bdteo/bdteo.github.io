@@ -1,4 +1,4 @@
-// _light-mode.scss
+// src/styles/_light-mode.scss
 
 body.light-mode {
   --color-primary: #7412B2;
@@ -13,4 +13,5 @@ body.light-mode {
   --color-code-bg: #f5f5f5;
   --color-code-text: #2A2A2A;
   --color-code-border: #E1E1E8;
+  --color-code-inline-bg: #f5f5f5; // Added for inline code
 }
