@@ -1,4 +1,210 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Boris D. Teoharov's Blog RSS Feed]]></title><description><![CDATA[A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.]]></description><link>https://bdteo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 13 Nov 2024 05:15:11 GMT</lastBuildDate><item><title><![CDATA[The Hidden Path: Unlocking the Power of ...]]></title><description><![CDATA[In a vast kingdom filled with countless scrolls and manuscripts, there lived a scholar named Alaric. His library was immense—a labyrinth of…]]></description><link>https://bdteo.github.io/unlocking-the-power-of-git-grep/</link><guid isPermaLink="false">https://bdteo.github.io/unlocking-the-power-of-git-grep/</guid><pubDate>Wed, 13 Nov 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In a vast kingdom filled with countless scrolls and manuscripts, there lived a scholar named Alaric. His library was immense—a labyrinth of knowledge where ancient texts mingled with contemporary writings, and secrets hid between the lines. Alaric often found himself searching for a single elusive phrase amidst this sea of information, a task that grew more daunting with each passing day.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Boris D. Teoharov's Blog RSS Feed]]></title><description><![CDATA[A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.]]></description><link>https://bdteo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 20 Nov 2024 01:47:31 GMT</lastBuildDate><item><title><![CDATA[Docker Compose Evolution: Major Changes Since October 2023]]></title><description><![CDATA[Docker Compose Evolution: Major Changes Since October 2023 Since October 2023, Docker Compose has undergone significant evolution with…]]></description><link>https://bdteo.github.io/docker-compose-major-changes-since-october-2023/</link><guid isPermaLink="false">https://bdteo.github.io/docker-compose-major-changes-since-october-2023/</guid><pubDate>Wed, 20 Nov 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Docker Compose Evolution: Major Changes Since October 2023&lt;/h1&gt;
+&lt;p&gt;Since October 2023, Docker Compose has undergone significant evolution with important structural changes, new features, and improvements in developer experience. This comprehensive guide covers the major updates and changes that developers should be aware of.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Breaking Changes and Deprecations&lt;/h2&gt;
+&lt;h3&gt;Version Field Deprecation&lt;/h3&gt;
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;version&lt;/code&gt; field in &lt;code class=&quot;language-text&quot;&gt;docker-compose.yaml&lt;/code&gt; is now completely deprecated. Modern Docker Compose files should no longer include version specifications:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# OLD (Deprecated)&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3.8&quot;&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; nginx
+
+&lt;span class=&quot;token comment&quot;&gt;# NEW (Recommended)&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; nginx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Docker Compose Command Changes&lt;/h3&gt;
+&lt;p&gt;The standalone &lt;code class=&quot;language-text&quot;&gt;docker-compose&lt;/code&gt; (with hyphen) command is now considered legacy and is in maintenance mode:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# OLD (Deprecated)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; up &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# NEW (Recommended)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose up &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Key Points:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;docker compose&lt;/code&gt; is now integrated directly into the Docker CLI.&lt;/li&gt;
+&lt;li&gt;The Python-based &lt;code class=&quot;language-text&quot;&gt;docker-compose&lt;/code&gt; tool is only receiving maintenance updates.&lt;/li&gt;
+&lt;li&gt;New features are exclusively added to &lt;code class=&quot;language-text&quot;&gt;docker compose&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Modern Docker Desktop installations default to &lt;code class=&quot;language-text&quot;&gt;docker compose&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Additional Deprecations&lt;/h3&gt;
+&lt;p&gt;Several legacy fields are now discouraged:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;links&lt;/code&gt;&lt;/strong&gt;: Use Docker networks instead.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;container_name&lt;/code&gt;&lt;/strong&gt;: Allow Docker to manage container names dynamically.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Legacy volume mount syntax&lt;/strong&gt;: Use the new long-form syntax.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Direct use of host ports without ranges&lt;/strong&gt;: Use port ranges when possible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Major YAML Structure Updates&lt;/h2&gt;
+&lt;h3&gt;Enhanced Service Definitions&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;#file: noinspection ComposeMissingKeys&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;myapp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; buildno=1
+      &lt;span class=&quot;token key atrule&quot;&gt;ssh&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; default=/path/to/key
+      &lt;span class=&quot;token key atrule&quot;&gt;network&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; host
+      &lt;span class=&quot;token key atrule&quot;&gt;platforms&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;linux/amd64&quot;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;linux/arm64&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;token key atrule&quot;&gt;healthcheck&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;start_period&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 30s
+      &lt;span class=&quot;token key atrule&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 10s
+      &lt;span class=&quot;token key atrule&quot;&gt;retries&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;start_interval&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 5s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Improved Dependencies and Conditions&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;depends_on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;condition&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;service_healthy&quot;&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Modern Volume Mount Syntax&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; bind
+        &lt;span class=&quot;token key atrule&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ./app
+        &lt;span class=&quot;token key atrule&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; /app
+        &lt;span class=&quot;token key atrule&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;create_host_path&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; volume
+        &lt;span class=&quot;token key atrule&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; data
+        &lt;span class=&quot;token key atrule&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; /data
+        &lt;span class=&quot;token key atrule&quot;&gt;volume&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;nocopy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2&gt;New Features and CLI Enhancements&lt;/h2&gt;
+&lt;h3&gt;New Commands&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;docker compose attach&lt;/code&gt;&lt;/strong&gt;: Attach to service containers for debugging.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;docker compose stats&lt;/code&gt;&lt;/strong&gt;: Live resource usage monitoring.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;docker compose watch&lt;/code&gt;&lt;/strong&gt;: Automatic service updates during development.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;docker compose logs --index&lt;/code&gt;&lt;/strong&gt;: Select logs from specific replicas.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;docker compose exec --privileged&lt;/code&gt;&lt;/strong&gt;: Run commands inside a container with elevated privileges.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;docker compose cp&lt;/code&gt;&lt;/strong&gt;: Copy files between the host and a service&apos;s container.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Enhanced Build and Deploy Options&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Build with dependencies&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose build --with-dependencies
+
+&lt;span class=&quot;token comment&quot;&gt;# Convert compose files&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose convert --no-path-resolution
+
+&lt;span class=&quot;token comment&quot;&gt;# Enhanced profile management&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose &lt;span class=&quot;token parameter variable&quot;&gt;--profile&lt;/span&gt; prod &lt;span class=&quot;token parameter variable&quot;&gt;--profile&lt;/span&gt; dev up
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose --profile-inherit&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;false up
+
+&lt;span class=&quot;token comment&quot;&gt;# Improved service operations&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose up &lt;span class=&quot;token parameter variable&quot;&gt;--wait&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose up --quiet-pull
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose down --remove-orphans&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2&gt;Docker Compose Watch&lt;/h2&gt;
+&lt;h3&gt;File Watch Configuration&lt;/h3&gt;
+&lt;p&gt;The new &lt;code class=&quot;language-text&quot;&gt;x-develop&lt;/code&gt; section in the Docker Compose file allows for more sophisticated control over file watching and service updates:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; .
+    &lt;span class=&quot;token key atrule&quot;&gt;x-develop&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ./src
+          &lt;span class=&quot;token key atrule&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; sync
+          &lt;span class=&quot;token key atrule&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; /app/src
+        &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ./package.json
+          &lt;span class=&quot;token key atrule&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; rebuild&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Watch Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Automatic service updates&lt;/strong&gt; during development.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configurable watch paths&lt;/strong&gt; and actions (e.g., sync, rebuild).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Synchronized file updates&lt;/strong&gt; without rebuilds.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Selective rebuild triggers&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Support for &lt;strong&gt;multiple watch configurations&lt;/strong&gt; per service.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Security and Resource Management&lt;/h2&gt;
+&lt;h3&gt;Security Improvements&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;security_opt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; no&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;new&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;privileges&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;cap_drop&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; ALL
+    &lt;span class=&quot;token key atrule&quot;&gt;cap_add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; NET_ADMIN&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Security Updates&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Critical patches&lt;/strong&gt; for remote code execution (RCE) vulnerabilities in Docker extensions.&lt;/li&gt;
+&lt;li&gt;Enhanced &lt;strong&gt;validation of extension descriptions&lt;/strong&gt; and publisher URLs.&lt;/li&gt;
+&lt;li&gt;Improved &lt;strong&gt;container isolation defaults&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Regular &lt;strong&gt;security maintenance releases&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Resource Management&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Introduction of &lt;strong&gt;Resource Saver mode&lt;/strong&gt; in Docker Desktop to reduce memory footprint when idle.&lt;/li&gt;
+&lt;li&gt;Improved handling of &lt;strong&gt;container lifecycle&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Better &lt;strong&gt;network conflict detection&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Enhanced &lt;strong&gt;build cache management&lt;/strong&gt; with layer optimization.&lt;/li&gt;
+&lt;li&gt;More efficient handling of &lt;strong&gt;build cache layers&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Optimized &lt;strong&gt;cache invalidation strategies&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Docker Desktop Integration&lt;/h2&gt;
+&lt;h3&gt;Compose Watch GA Release&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Docker Desktop 4.24&lt;/strong&gt; introduced the Compose Watch GA release.&lt;/li&gt;
+&lt;li&gt;Allows developers to &lt;strong&gt;automatically update and preview running services&lt;/strong&gt; as they edit code without manually triggering builds.&lt;/li&gt;
+&lt;li&gt;Significantly enhances the &lt;strong&gt;&quot;inner loop&quot; of development&lt;/strong&gt; by reducing manual steps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Resource Optimization&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Resource Saver mode&lt;/strong&gt; for reduced memory footprint.&lt;/li&gt;
+&lt;li&gt;Better handling of &lt;strong&gt;idle resources&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Improved &lt;strong&gt;performance&lt;/strong&gt; during development.&lt;/li&gt;
+&lt;li&gt;Optimized &lt;strong&gt;build cache handling&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Migration Tips&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Remove&lt;/strong&gt; the &lt;code class=&quot;language-text&quot;&gt;version&lt;/code&gt; field from all compose files.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Update CI/CD pipelines&lt;/strong&gt; to use &lt;code class=&quot;language-text&quot;&gt;docker compose&lt;/code&gt; instead of &lt;code class=&quot;language-text&quot;&gt;docker-compose&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Review and update documentation&lt;/strong&gt; and scripts accordingly.&lt;/li&gt;
+&lt;li&gt;Verify the &lt;strong&gt;Go-based implementation&lt;/strong&gt; with &lt;code class=&quot;language-text&quot;&gt;docker compose version&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test services&lt;/strong&gt; with new dependency handling.&lt;/li&gt;
+&lt;li&gt;Review &lt;strong&gt;security configurations&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Replace &lt;strong&gt;deprecated fields&lt;/strong&gt; with modern alternatives.&lt;/li&gt;
+&lt;li&gt;Update &lt;strong&gt;file watch configurations&lt;/strong&gt; to use &lt;code class=&quot;language-text&quot;&gt;x-develop&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;Best Practices&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Use &lt;strong&gt;Docker networks&lt;/strong&gt; instead of legacy linking (&lt;code class=&quot;language-text&quot;&gt;links&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Implement proper &lt;strong&gt;healthchecks&lt;/strong&gt; for service dependencies.&lt;/li&gt;
+&lt;li&gt;Utilize &lt;strong&gt;build cache optimization&lt;/strong&gt; features.&lt;/li&gt;
+&lt;li&gt;Configure appropriate &lt;strong&gt;resource limits&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Implement proper &lt;strong&gt;security measures&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Use modern &lt;strong&gt;volume mount syntax&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Leverage &lt;strong&gt;file watch&lt;/strong&gt; for development efficiency.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;Looking Forward&lt;/h2&gt;
+&lt;p&gt;Docker Compose follows a rolling release model, and new features are continuously being added. Stay updated with the latest advancements by regularly consulting the official Docker documentation and release notes.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Related Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/release-notes/&quot;&gt;Docker Compose Release Notes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.docker.com/desktop/&quot;&gt;Docker Desktop Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/compose-file/&quot;&gt;Compose Specification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.docker.com/blog/&quot;&gt;Docker Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.docker.com/security/&quot;&gt;Docker Security Updates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/compose-file/#x-develop&quot;&gt;Docker Compose Watch Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[The Hidden Path: Unlocking the Power of ...]]></title><description><![CDATA[In a vast kingdom filled with countless scrolls and manuscripts, there lived a scholar named Alaric. His library was immense—a labyrinth of…]]></description><link>https://bdteo.github.io/unlocking-the-power-of-git-grep/</link><guid isPermaLink="false">https://bdteo.github.io/unlocking-the-power-of-git-grep/</guid><pubDate>Wed, 13 Nov 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In a vast kingdom filled with countless scrolls and manuscripts, there lived a scholar named Alaric. His library was immense—a labyrinth of knowledge where ancient texts mingled with contemporary writings, and secrets hid between the lines. Alaric often found himself searching for a single elusive phrase amidst this sea of information, a task that grew more daunting with each passing day.&lt;/p&gt;
 &lt;p&gt;One morning, as the sun cast golden rays upon the dusty tomes, Alaric set out to locate a particular concept mentioned in his archives, known only as &quot;The Whispering Sigil.&quot; He pored over volumes, using his usual methods to sift through pages—methods that now seemed sluggish and imprecise. The deeper he delved, the more entangled he became in irrelevant passages, duplicates, and misleading references. Frustration mounted as hours turned into days with little progress.&lt;/p&gt;
 &lt;p&gt;Then, an old sage visited Alaric and noticed his plight. With a knowing smile, the sage said, &quot;Perhaps you&apos;re searching the hard way. There&apos;s a hidden path known only to those who organize their knowledge wisely.&quot; Intrigued, Alaric listened as the sage explained a method that focused his search, cutting through the clutter and leading directly to the texts he sought.&lt;/p&gt;
 &lt;p&gt;Armed with this new approach, Alaric tried again. This time, the irrelevant clutter faded away. The path to &quot;The Whispering Sigil&quot; became clear, and he found what he was looking for with astonishing speed. It was as if he had unlocked a secret gateway in his labyrinth, granting him swift access to the exact knowledge he needed.&lt;/p&gt;
