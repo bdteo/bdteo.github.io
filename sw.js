@@ -247,7 +247,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "1f58380cf77ac3d94f171a095bd9421d"
+    "revision": "2cd9b073153322cc2b7a1aeef25aabdc"
   },
   {
     "url": "installing-php-8-3-6-with-imap-on-macos-using-phpenv/index.html",
@@ -295,7 +295,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/index/page-data.json",
-    "revision": "0d67c489f5d483d50704c5d8afc4b611"
+    "revision": "efff3697b257e3ee792098f6b81c6881"
   },
   {
     "url": "page-data/installing-php-8-3-6-with-imap-on-macos-using-phpenv/page-data.json",
@@ -339,11 +339,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "835acfc1daf305dade14b949f8214ce6"
+    "revision": "8eb7bf9b677f0a9a481718a06f10769b"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
-    "revision": "a799f33ac41c47d0f05ff8020d6d089b"
+    "revision": "61ae26ee4aaa979259d20e89fbea1b91"
   },
   {
     "url": "pushing-the-stable-diffussion-limits/index.html",
@@ -355,7 +355,7 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "3156f0fc3aa4b81e29f0b28c897a83aa"
+    "revision": "f553e65bf9cfffff6680997fa1b60a97"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
@@ -432,6 +432,54 @@ self.__precacheManifest = [
     "url": "static/2fb36df54ab973fa2cb65e0e16381c11/dd79f/profile-pic.webp"
   },
   {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/1574e/featured.webp"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/16947/featured.jpg"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/2fa07/featured.webp"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/36f66/featured.jpg"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/460bb/featured.jpg"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/53961/featured.webp"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/55d8f/featured.webp"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/59596/featured.webp"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/84519/featured.jpg"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/8dc98/featured.jpg"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/9285b/featured.webp"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/a9630/featured.jpg"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/aa504/featured.jpg"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/b979a/featured.webp"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/ca6b2/featured.jpg"
+  },
+  {
+    "url": "static/37cd6485e3c91973140c6bd0485036dc/f9756/featured.webp"
+  },
+  {
     "url": "static/3d7b20a023738c7080543f0f9a0334fe/09f70/featured.jpg"
   },
   {
@@ -478,36 +526,6 @@ self.__precacheManifest = [
   },
   {
     "url": "static/3d7b20a023738c7080543f0f9a0334fe/f9756/featured.webp"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/2fa07/featured.webp"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/4f03f/featured.webp"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/59866/featured.png"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/62ea7/featured.png"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/67ded/featured.webp"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/9285b/featured.webp"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/b5658/featured.png"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/b979a/featured.webp"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/e20c6/featured.png"
-  },
-  {
-    "url": "static/53ac37ca2846e08b8da30a4b3cb4b8f1/f054e/featured.png"
   },
   {
     "url": "static/68fb593061ca71f29ec75358c0765893/2fa07/featured.webp"
@@ -981,7 +999,7 @@ self.__precacheManifest = [
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "c8db638ba5f5c0400b317cdc92b1784c"
+    "revision": "a25ee659f5a0469ae13f3b48d9abbac6"
   },
   {
     "url": "webpack-runtime-f72cac28c540abb968ef.js"
@@ -996,7 +1014,7 @@ self.__precacheManifest = [
   },
   {
     "url": "worst-hypocrite-rubber-duck-tale/index.html",
-    "revision": "e6ca446a99042f75e061fdcd2cb92b14"
+    "revision": "416cb93c488def5b1487dcc587345619"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
