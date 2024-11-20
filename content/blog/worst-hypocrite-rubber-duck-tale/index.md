@@ -2,7 +2,7 @@
 title: "The Worst Hypocrite of Them All: A Rubber Duck's Tale"
 date: "2024-07-17T12:00:00.000Z"
 description: "A whimsical tale of two rubber ducks navigating the complexities of self-doubt, perfectionism, and the importance of self-love, told through quirky quacks and heartfelt reflections."
-featuredImage: "./images/featured.png"
+featuredImage: "./images/featured.jpg"
 imageCaption: "Two yellow rubber ducks floating in a reflective pool, surrounded by swirling, starry patterns."
 imagePosition: "center"
 ---
