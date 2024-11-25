@@ -181,7 +181,7 @@ self.__precacheManifest = [
   },
   {
     "url": "docker-compose-major-changes-since-october-2023/index.html",
-    "revision": "657c8f6e1e3e8ffd08d48f0a4893d662"
+    "revision": "65235abfbd254942f0f77da21e6e1b97"
   },
   {
     "url": "favicon-32x32.png",
@@ -247,7 +247,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "2cd9b073153322cc2b7a1aeef25aabdc"
+    "revision": "e394421a78cde515083ecc89595a1edd"
   },
   {
     "url": "installing-php-8-3-6-with-imap-on-macos-using-phpenv/index.html",
@@ -287,7 +287,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/docker-compose-major-changes-since-october-2023/page-data.json",
-    "revision": "4abdce7b854ea2a09306ac38bb5b39fa"
+    "revision": "d88a4323c14f801746176ce579281ff4"
   },
   {
     "url": "page-data/google-ai-ambitions-historical-analysis-promises-stock-market-impact/page-data.json",
@@ -295,7 +295,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/index/page-data.json",
-    "revision": "efff3697b257e3ee792098f6b81c6881"
+    "revision": "e1ef980dc91f2dc0fbe189a60e4e835f"
   },
   {
     "url": "page-data/installing-php-8-3-6-with-imap-on-macos-using-phpenv/page-data.json",
@@ -334,12 +334,16 @@ self.__precacheManifest = [
     "revision": "b2af4496542e848ffed1904786796b3a"
   },
   {
+    "url": "page-data/understanding-class-namespace-changes-shopware-6-5-developers-guide/page-data.json",
+    "revision": "e908149e2c0107ce5a396be0059dcd20"
+  },
+  {
     "url": "page-data/unlocking-the-power-of-git-grep/page-data.json",
     "revision": "8e77179a2c81ade44c759e97d8dc1015"
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "8eb7bf9b677f0a9a481718a06f10769b"
+    "revision": "6cbaf8d466b640f46a1da03a2def2a61"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
@@ -355,7 +359,7 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "f553e65bf9cfffff6680997fa1b60a97"
+    "revision": "4358dca3c7a8ad6af5608b9e91694407"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
@@ -708,6 +712,54 @@ self.__precacheManifest = [
     "url": "static/ab6f0e497ea3ee100966d0f875eab63b/f058b/google_stock_milestones.png"
   },
   {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/09f70/featured.jpg"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/0e818/featured.webp"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/16947/featured.jpg"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/2de93/featured.webp"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/2fa07/featured.webp"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/36f66/featured.jpg"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/37d92/featured.jpg"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/45939/featured.webp"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/460bb/featured.jpg"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/59596/featured.webp"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/84519/featured.jpg"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/8dc98/featured.jpg"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/9285b/featured.webp"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/ace28/featured.jpg"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/b979a/featured.webp"
+  },
+  {
+    "url": "static/b221e1e70a22bbcdc8f3cb3dc8461360/f9756/featured.webp"
+  },
+  {
     "url": "static/b64408ad1c6d3aa6fe4f9ab50516674d/2fa07/featured.webp"
   },
   {
@@ -994,12 +1046,16 @@ self.__precacheManifest = [
     "revision": "3383f96289c9714a8e96d2e4cbd6a5de"
   },
   {
+    "url": "understanding-class-namespace-changes-shopware-6-5-developers-guide/index.html",
+    "revision": "316c9e99d89738ad09493e67f733136e"
+  },
+  {
     "url": "unlocking-the-power-of-git-grep/index.html",
     "revision": "6295bf08efa9fe3f09f2b5058a863f73"
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "a25ee659f5a0469ae13f3b48d9abbac6"
+    "revision": "a2ac5a24bf68bb551980bcf01d8a9fe1"
   },
   {
     "url": "webpack-runtime-f72cac28c540abb968ef.js"
