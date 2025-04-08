@@ -94,11 +94,11 @@ self.__precacheManifest = [
   },
   {
     "url": "404.html",
-    "revision": "1b2c0f973115f6e2a04ccbda8e90dc38"
+    "revision": "98865fb46b58f460db50c8f1c4e6ac65"
   },
   {
     "url": "404/index.html",
-    "revision": "5d87c3776b27db60ec39b7d695165937"
+    "revision": "16b1a7f99e84d999526483427d838d94"
   },
   {
     "url": "452-acf513f4b16bcb0a4e07.js"
@@ -109,7 +109,7 @@ self.__precacheManifest = [
   },
   {
     "url": "about/index.html",
-    "revision": "e9b871f0d49bb48fa1d6e641a040d689"
+    "revision": "862e38d4586800ade1153c8468284dd5"
   },
   {
     "url": "app-7ef6bd2eac106bfc9a1b.js"
@@ -121,6 +121,10 @@ self.__precacheManifest = [
   {
     "url": "app-7ef6bd2eac106bfc9a1b.js.map",
     "revision": "148182cb4169c2ba66d43d7ac76b34c6"
+  },
+  {
+    "url": "bluez-pairing-python-agent-workaround-authentication-failed/index.html",
+    "revision": "d9d7b78a072ed58d164a1766486bfb44"
   },
   {
     "url": "c16184b3-12f5227575531e302f0f.js"
@@ -177,11 +181,11 @@ self.__precacheManifest = [
   },
   {
     "url": "discrete-representations-reinforcement-learning-insights/index.html",
-    "revision": "6cdad0ee5ee470f10a1f64b2b6c00adf"
+    "revision": "caf06e94324811a2d3254ad3dd069966"
   },
   {
     "url": "docker-compose-major-changes-since-october-2023/index.html",
-    "revision": "b3baa3a8cf3b7a2d34227ec725489127"
+    "revision": "8a8eea627bf7934f26bcabaef64fd745"
   },
   {
     "url": "favicon-32x32.png",
@@ -204,7 +208,7 @@ self.__precacheManifest = [
   },
   {
     "url": "google-ai-ambitions-historical-analysis-promises-stock-market-impact/index.html",
-    "revision": "4adfcad461efc6d0069877b592e609c7"
+    "revision": "fdf89118dd7a005c5c0df032681a8712"
   },
   {
     "url": "icons/icon-144x144.png",
@@ -247,15 +251,15 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "652f56a510181cf963407ed67ccfe9a9"
+    "revision": "37b10ce52e0d1c9c86d49a6429c03cd4"
   },
   {
     "url": "installing-php-8-3-6-with-imap-on-macos-using-phpenv/index.html",
-    "revision": "864ef3ed53ba5ef9ec41b1985154d712"
+    "revision": "acf2b5f1d93a968f610b2f0266137a35"
   },
   {
     "url": "laravel-sail-vs-laradock-choosing-right-docker-solution/index.html",
-    "revision": "13e78f34f8a971bbead7bb161c07dd93"
+    "revision": "8f1921af925fb098b4deb283ca3daad6"
   },
   {
     "url": "manifest.webmanifest",
@@ -282,6 +286,10 @@ self.__precacheManifest = [
     "revision": "bef39f08c1d6056d58ba1a299be22d68"
   },
   {
+    "url": "page-data/bluez-pairing-python-agent-workaround-authentication-failed/page-data.json",
+    "revision": "845d058a9fb0e840e34b2e400a26bd84"
+  },
+  {
     "url": "page-data/discrete-representations-reinforcement-learning-insights/page-data.json",
     "revision": "a018c9081f5c94ecc478b17ead18e4e2"
   },
@@ -295,7 +303,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/index/page-data.json",
-    "revision": "9cc5603048a26424576c8552f026cc34"
+    "revision": "0bfcfc21e9f2d9600efde3c043bdbe9b"
   },
   {
     "url": "page-data/installing-php-8-3-6-with-imap-on-macos-using-phpenv/page-data.json",
@@ -335,7 +343,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/understanding-class-namespace-changes-shopware-6-5-developers-guide/page-data.json",
-    "revision": "dcd0bbcc527f64ecf9f6098908e0084f"
+    "revision": "b077eaf81d895ca1f8921faf62c33803"
   },
   {
     "url": "page-data/unlocking-the-power-of-git-grep/page-data.json",
@@ -343,7 +351,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "704897ee589f153edab6d1f927aa7048"
+    "revision": "0262b8a6f602a4aee27a533c0f25e2ec"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
@@ -351,7 +359,7 @@ self.__precacheManifest = [
   },
   {
     "url": "pushing-the-stable-diffussion-limits/index.html",
-    "revision": "45cb894981cceda82731874310f1fe7d"
+    "revision": "4fe8e063ab37ce5b98a8d8ba705ad75f"
   },
   {
     "url": "robots.txt",
@@ -359,15 +367,15 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "552976a2f5919ac53dccb81668520b78"
+    "revision": "e39b791c87b1d59470f06febfa454743"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
-    "revision": "e60371eb5cb5171bdb08482f6d76af39"
+    "revision": "afe986dd46e6d3d27bcdfddfe0a70072"
   },
   {
     "url": "stable-difussion-cheat-sheet/index.html",
-    "revision": "756ab76b1e60c706d5c3c4cc2441b901"
+    "revision": "b708ca7dd211dac951753f89db8c76b6"
   },
   {
     "url": "static/268bdf61f13fa4bae18593537451433a/0f5ce/featured.jpg"
@@ -530,6 +538,54 @@ self.__precacheManifest = [
   },
   {
     "url": "static/3d7b20a023738c7080543f0f9a0334fe/f9756/featured.webp"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/16947/featured.jpg"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/29ba9/featured.jpg"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/2fa07/featured.webp"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/36f66/featured.jpg"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/460bb/featured.jpg"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/4a276/featured.webp"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/57584/featured.webp"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/7284f/featured.jpg"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/7db9c/featured.webp"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/83638/featured.jpg"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/8dc98/featured.jpg"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/9285b/featured.webp"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/984df/featured.webp"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/b979a/featured.webp"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/c8896/featured.jpg"
+  },
+  {
+    "url": "static/56a37a7145ca6dc6c4bdab99200fced4/f9756/featured.webp"
   },
   {
     "url": "static/68fb593061ca71f29ec75358c0765893/2fa07/featured.webp"
@@ -1043,19 +1099,19 @@ self.__precacheManifest = [
   },
   {
     "url": "the-sorceress-and-the-forgotten-stardust/index.html",
-    "revision": "3383f96289c9714a8e96d2e4cbd6a5de"
+    "revision": "a815fd9925613925c233d5be1053fca3"
   },
   {
     "url": "understanding-class-namespace-changes-shopware-6-5-developers-guide/index.html",
-    "revision": "cc9a227b82db854e2435e101bd523d33"
+    "revision": "963dcf667c7fb3f77d4f10d59787a720"
   },
   {
     "url": "unlocking-the-power-of-git-grep/index.html",
-    "revision": "6295bf08efa9fe3f09f2b5058a863f73"
+    "revision": "11caa8980928b3496b3f1a23f546d1e1"
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "8c886fad57d68b1cd0e4174ab6cadbe1"
+    "revision": "292349c22438af8de0e510a25d58b2ec"
   },
   {
     "url": "webpack-runtime-f72cac28c540abb968ef.js"
@@ -1070,7 +1126,7 @@ self.__precacheManifest = [
   },
   {
     "url": "worst-hypocrite-rubber-duck-tale/index.html",
-    "revision": "416cb93c488def5b1487dcc587345619"
+    "revision": "5b8e391e60adf2fe38cd7be8b7580a4a"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
