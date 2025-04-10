@@ -124,7 +124,7 @@ self.__precacheManifest = [
   },
   {
     "url": "bluez-pairing-python-agent-workaround-authentication-failed/index.html",
-    "revision": "d44e414090f860dd67bb9791691b7ded"
+    "revision": "4349b9e78d5d82d11513eab74ae9e236"
   },
   {
     "url": "c16184b3-12f5227575531e302f0f.js"
@@ -211,6 +211,10 @@ self.__precacheManifest = [
     "revision": "2dbf7d2c023ab622f4954dd5472ec967"
   },
   {
+    "url": "huawei-watch-d2-proprietary-protocol-vendor-lockin/index.html",
+    "revision": "9f2f915de57e55e8b125a8fa6ad9b4a1"
+  },
+  {
     "url": "icons/icon-144x144.png",
     "revision": "045b6e58a22a45dfad053073ec4f289d"
   },
@@ -251,7 +255,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "460463cfa7b20dd7d135caca89559f63"
+    "revision": "ec62d1b1c821599a42f261d063d221a0"
   },
   {
     "url": "installing-php-8-3-6-with-imap-on-macos-using-phpenv/index.html",
@@ -287,7 +291,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/bluez-pairing-python-agent-workaround-authentication-failed/page-data.json",
-    "revision": "845d058a9fb0e840e34b2e400a26bd84"
+    "revision": "18d8ebd8b990bdc721edbe0e9a4a86d8"
   },
   {
     "url": "page-data/discrete-representations-reinforcement-learning-insights/page-data.json",
@@ -302,8 +306,12 @@ self.__precacheManifest = [
     "revision": "b53696faf9009deb0f40012908654e86"
   },
   {
+    "url": "page-data/huawei-watch-d2-proprietary-protocol-vendor-lockin/page-data.json",
+    "revision": "dffa30141bb26bc2ba42b939fa295f15"
+  },
+  {
     "url": "page-data/index/page-data.json",
-    "revision": "0bfcfc21e9f2d9600efde3c043bdbe9b"
+    "revision": "ce953971b9b622a3ce154e467d427faa"
   },
   {
     "url": "page-data/installing-php-8-3-6-with-imap-on-macos-using-phpenv/page-data.json",
@@ -351,7 +359,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "64894534e53d60ca9a1d659a9f2faa7e"
+    "revision": "eb0778e25bcb7e76012eac3855e47f09"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
@@ -367,7 +375,7 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "0d73a457352f947facb2c8dfd482b032"
+    "revision": "96acbee61189b751ea5530c687cdfaa2"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
@@ -750,6 +758,54 @@ self.__precacheManifest = [
     "url": "static/8a20181260d78bc5afa16ab9c3cd36b2/f9756/featured.webp"
   },
   {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/16947/featured.jpg"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/29ba9/featured.jpg"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/2fa07/featured.webp"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/36f66/featured.jpg"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/460bb/featured.jpg"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/4a276/featured.webp"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/57584/featured.webp"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/7284f/featured.jpg"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/7db9c/featured.webp"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/83638/featured.jpg"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/8dc98/featured.jpg"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/9285b/featured.webp"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/984df/featured.webp"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/b979a/featured.webp"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/c8896/featured.jpg"
+  },
+  {
+    "url": "static/a273d3d9bb3291a37734d59b57d590c2/f9756/featured.webp"
+  },
+  {
     "url": "static/ab6f0e497ea3ee100966d0f875eab63b/40601/google_stock_milestones.png"
   },
   {
@@ -1111,7 +1167,7 @@ self.__precacheManifest = [
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "0c62f563b9541d89f94ba2dc08e5f3c3"
+    "revision": "9212dc21ce36e0429da9e654f9fa3c9c"
   },
   {
     "url": "webpack-runtime-12bc4d4ad68540844d33.js"
