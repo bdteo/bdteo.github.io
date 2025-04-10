@@ -4,7 +4,8 @@ date: "2025-04-11"
 slug: "huawei-watch-d2-proprietary-protocol-vendor-lockin"
 author: "Boris Teoharov"
 description: "Exploring the complex, non-standard Bluetooth LE pairing protocol of the Huawei Watch D2, the reverse-engineering required by D2Explorer, and how it exemplifies vendor lock-in strategies."
-featuredImage: ""Huawei", "WatchD2", "BluetoothLE", "BLE", "Pairing", "Authentication", "ReverseEngineering", "VendorLockIn", "ProprietaryProtocol", "D2Explorer", "SimpleBLE", "Crypto""
+featuredImage: "./images/featured.jpg"
+tags: ["Huawei", "WatchD2", "BluetoothLE", "BLE", "Pairing", "Authentication", "ReverseEngineering", "VendorLockIn", "ProprietaryProtocol", "D2Explorer", "SimpleBLE", "Crypto"]
 imageCaption: "Untangling the complex threads of a proprietary Bluetooth LE pairing protocol."
 ---
 
