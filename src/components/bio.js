@@ -37,41 +37,12 @@ const Bio = () => {
 
   return (
     <div className="bio">
-      <div className="bio-image">
-        <StaticImage
-          className="bio-avatar"
-          layout="fixed"
-          formats={["auto", "webp", "avif"]}
-          src="../images/profile-pic.png"
-          width={150}
-          height={150}
-          quality={95}
-          alt="Profile picture"
-        />
-      </div>
+      <StaticImage className="bio-avatar" src="../images/profile-pic.png" width={150} height={150} quality={95} alt="" />
       <div className="bio-content">
-        {author?.name && (
-          <>
-            <h2 className="bio-name">{author.name}</h2>
-            <p className="bio-summary">{author.summary}</p>
-          </>
-        )}
+        {author?.name && <><h2 className="bio-name">{author.name}</h2><p className="bio-summary">{author.summary}</p></>}
         <div className="bio-social">
-          {social?.github && (
-            <a
-              href={`https://github.com/${social.github}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <FontAwesomeIcon icon={faGithub} />
-            </a>
-          )}
-          {social?.email && (
-            <a href={`mailto:${social.email}`} aria-label="Email">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </a>
-          )}
+          {social?.github && <a href={`https://github.com/${social.github}`} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={faGithub} /></a>}
+          {social?.email && <a href={`mailto:${social.email}`} aria-label="Email"><FontAwesomeIcon icon={faEnvelope} /></a>}
         </div>
       </div>
     </div>

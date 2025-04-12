@@ -3,41 +3,170 @@
 // Reset and base styles
 *, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  line-height: var(--line-height-normal);
+  scroll-behavior: smooth;
   font-size: 16px;
-  font-family: var(--font-body);
+  -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  font-size: var(--font-size-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
   color: var(--color-text);
   background-color: var(--color-background);
+  transition: color var(--transition-normal), background-color var(--transition-normal);
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-// Remove global application of variables to all elements
-// Move only necessary variables to root or specific elements
+// Remove default styles from buttons
+button {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  padding: 0;
+  cursor: pointer;
+  line-height: inherit;
+  color: inherit;
+  text-transform: none;
+  -webkit-appearance: button;
+  outline: none;
+}
 
+// Links
 a {
-  text-decoration: none;
   color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 
-  &:hover {
+  &:hover, &:focus {
     color: var(--color-hover);
+    text-decoration: none;
   }
 }
 
-hr {
-  background: var(--color-accent);
-  height: 1px;
-  border: 0;
-}
-
-img {
+// Images and media
+img, 
+video,
+canvas,
+svg {
+  display: block;
   max-width: 100%;
   height: auto;
+}
+
+// Form elements
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// Lists
+ul, ol {
+  list-style: none;
+}
+
+// Hide elements that should be visually hidden
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Make elements responsive by default
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  max-width: var(--max-width-wrapper);
+}
+
+// Focus visible styles for accessibility
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// Utility classes for layout
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.flex-1 { flex: 1 1 0%; }
+.flex-auto { flex: 1 1 auto; }
+.flex-initial { flex: 0 1 auto; }
+.flex-none { flex: none; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+// Grid utilities
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+// Responsive display utilities
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+// Support for full-bleed content
+.full-bleed {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+// Hide scrollbars for webkit browsers
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary);
 }

@@ -1,17 +1,76 @@
 // _light-mode.scss
 
 body.light-mode {
-  --color-primary: #7412B2;
-  --color-secondary: #34D1B2;
-  --color-text: #2A2A2A;
-  --color-text-light: lighten(#2A2A2A, 20%);
-  --color-background: #FFFFFF;
-  --color-accent: #AAAAAA;
-  --color-hover: darken(#7412B2, 10%);
-
+  // Core colors
+  --color-primary: #6D28D9;        // Purple 700
+  --color-primary-50: #F5F3FF;     // Purple 50
+  --color-primary-100: #EDE9FE;    // Purple 100
+  --color-primary-200: #DDD6FE;    // Purple 200
+  --color-primary-300: #C4B5FD;    // Purple 300
+  --color-primary-400: #A78BFA;    // Purple 400
+  --color-primary-500: #8B5CF6;    // Purple 500
+  --color-primary-600: #7C3AED;    // Purple 600
+  --color-primary-700: #6D28D9;    // Purple 700
+  --color-primary-800: #5B21B6;    // Purple 800
+  --color-primary-900: #4C1D95;    // Purple 900
+  
+  --color-secondary: #10B981;      // Emerald 500
+  --color-secondary-light: #34D399; // Emerald 400
+  --color-secondary-dark: #059669;  // Emerald 600
+  
+  // Text colors
+  --color-text: #111827;           // Gray 900
+  --color-text-light: #4B5563;     // Gray 600
+  --color-text-lighter: #9CA3AF;   // Gray 400
+  --color-text-dark: #000000;      // Black
+  --color-text-accent: #6D28D9;    // Primary color
+  
+  // Background colors
+  --color-background: #FFFFFF;             // White
+  --color-background-alt: #F9FAFB;         // Gray 50
+  --color-background-soft: #F3F4F6;        // Gray 100
+  --color-background-muted: #E5E7EB;       // Gray 200
+  
+  // Element colors
+  --color-border: #E5E7EB;         // Gray 200
+  --color-border-light: #F3F4F6;   // Gray 100
+  --color-border-dark: #D1D5DB;    // Gray 300
+  
+  --color-accent: #E5E7EB;         // Gray 200
+  --color-accent-light: #F3F4F6;   // Gray 100
+  --color-accent-dark: #D1D5DB;    // Gray 300
+  
+  --color-hover: #5B21B6;          // Purple 800
+  --color-active: #4C1D95;         // Purple 900
+  
+  // UI component colors
+  --color-card-bg: #FFFFFF;
+  --color-card-border: #E5E7EB;
+  --color-card-shadow: rgba(0, 0, 0, 0.05);
+  --color-nav-bg: rgba(255, 255, 255, 0.9);
+  
+  // Button colors
+  --color-button-primary: #6D28D9;       // Primary button background
+  --color-button-primary-hover: #5B21B6; // Primary button hover
+  --color-button-primary-active: #4C1D95; // Primary button active
+  --color-button-text: #FFFFFF;          // Primary button text
+  
   // Code block colors
-  --color-code-bg: #f5f5f5;
-  --color-code-text: #2A2A2A;
-  --color-code-border: #E1E1E8;
-  --color-code-inline-bg: #f5f5f5;
+  --color-code-bg: #F3F4F6;               // Gray 100
+  --color-code-text: #1F2937;             // Gray 800
+  --color-code-border: #E5E7EB;           // Gray 200
+  --color-code-inline-bg: #EEF2FF;        // Indigo 50
+  
+  // Special element colors
+  --color-tag-bg: #EDE9FE;                // Purple 100
+  --color-tag-text: #6D28D9;              // Purple 700
+  --color-tooltip-bg: #374151;            // Gray 700
+  --color-tooltip-text: #FFFFFF;          // White
+  
+  // Syntax highlighting - VSCode light theme
+  --color-comment: #008000;               // Green
+  --color-string: #A31515;                // Red
+  --color-keyword: #0000FF;               // Blue
+  --color-function: #795E26;              // Brown
+  --color-variable: #1F377F;              // Dark Blue
 }

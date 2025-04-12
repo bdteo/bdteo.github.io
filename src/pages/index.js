@@ -14,7 +14,7 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle}>
         <Bio />
-        <hr />
+        <hr className="my-8" />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -27,62 +27,34 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
-      <hr />
-      <ol style={{ listStyle: `none` }}
-        data--bt--article--summary--list
-        className={['bt--article--summary--list', 'm-0', 'p-0'].join(' ')}
-      >
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
-          const featuredImage = getImage(post.frontmatter.featuredImage)
-          const imagePosition = post.frontmatter.imagePosition || "center"
-
-          return (
-            <li key={post.fields.slug}
-              data--bt--article--summary--wrapper
-              className={'bt--article--summary--wrapper'}
-            >
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
+      
+      <div className="section">
+        <h2 className="section-title">Latest Articles</h2>
+        <div className="grid-container auto-grid">
+          {posts.map(post => {
+            const title = post.frontmatter.title || post.fields.slug
+            const featuredImage = getImage(post.frontmatter.featuredImage)
+            const slug = post.fields.slug
+            return (
+              <article key={slug} className="blog-card" itemScope itemType="http://schema.org/Article">
                 {featuredImage && (
-                  <Link to={post.fields.slug}>
-                    <div style={{ height: "420px", overflow: "hidden" }}
-                      className={'bt--image--wrapper'}
-                    >
-                      <GatsbyImage
-                        image={featuredImage}
-                        alt={title}
-                        style={{ height: "100%" }}
-                        objectFit="cover"
-                        objectPosition={imagePosition}
-                      />
-                    </div>
+                  <Link to={slug} className="blog-card-image">
+                    <GatsbyImage image={featuredImage} alt="" />
                   </Link>
                 )}
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
+                <div className="blog-card-content">
+                  <h3 className="blog-card-title"><Link to={slug} itemProp="url"><span itemProp="headline">{title}</span></Link></h3>
+                  <span className="blog-card-date">{post.frontmatter.date}</span>
+                  <p className="blog-card-excerpt" dangerouslySetInnerHTML={{__html: post.frontmatter.description || post.excerpt}} itemProp="description" />
+                  <div className="blog-card-footer">
+                    <Link to={slug} className="custom-button primary">Read More</Link>
+                  </div>
+                </div>
               </article>
-            </li>
-          )
-        })}
-      </ol>
+            )
+          })}
+        </div>
+      </div>
     </Layout>
   )
 }

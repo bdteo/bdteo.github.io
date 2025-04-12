@@ -1,67 +1,153 @@
 // src/styles/main.scss
 
+// Reset and normalization first
+@import 'normalize.css';
+
+// Design system
 @import 'variables';
 @import 'light-mode';
 @import 'dark-mode';
 
-@import "bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap');
+// Bootstrap framework (only include what's needed)
+@import "bootstrap/scss/bootstrap-grid";
+@import "bootstrap/scss/bootstrap-utilities";
 
+// Typography
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300..700&display=swap');
+
+// Core styles
 @import 'base';
 @import 'typography';
 @import 'components';
 @import 'layout';
 
-// Remove default PrismJS theme import
-// @import "~prismjs/themes/prism.css";
+// Theme toggle styling
+.theme-toggle-wrapper {
+  display: flex;
+  align-items: center;
+}
 
-// Other styles
-
-.form-switch {
+.theme-toggle-button {
+  background: none;
+  border: none;
   cursor: pointer;
+  padding: 0;
+  height: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  outline: none;
 
-  .form-check-input,
-  .form-check-label {
-    cursor: pointer;
+  &:focus .toggle-track {
+    box-shadow: 0 0 0 2px var(--color-primary);
   }
 }
 
-// Styles for articles
-.bt--article--summary--wrapper {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+.toggle-track {
+  background-color: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 24px;
+  width: 50px;
+  padding: 0 4px;
+  position: relative;
+  transition: all 0.2s ease;
+}
 
-  .post-list-item {
-    .bt--image--wrapper {
-      margin-bottom: var(--spacing-4);
-
-      .gatsby-image-wrapper {
-        border-radius: var(--spacing-2);
-        width: 100%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: scale(1.02);
-        }
-      }
-    }
+.toggle-icon {
+  position: absolute;
+  transition: opacity 0.25s ease;
+  
+  &.sun {
+    left: 6px;
+    color: #FF9500; // Sun color
+  }
+  
+  &.moon {
+    right: 6px;
+    color: #6366F1; // Moon color
   }
 }
 
-// Styles for featured images in blog posts
-.blog-post .featured-image {
-  margin-bottom: var(--spacing-8);
+.toggle-thumb {
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  transition: transform 0.25s ease;
+}
 
-  .gatsby-image-wrapper {
-    border-radius: var(--spacing-2);
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+// Animation classes
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
   }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  figcaption {
-    margin-top: var(--spacing-2);
-    font-style: italic;
-    color: var(--color-text-light);
-    font-size: var(--font-size-sm);
+@keyframes slideIn {
+  from { transform: translateX(-10px); }
+  to { transform: translateX(0); }
+}
+
+// Print styles
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  a {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+  
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+// Accessibility
+.skip-to-main-content {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 100;
+  padding: var(--spacing-4);
+  background: var(--color-primary);
+  color: white;
+  transition: top 0.3s;
+  
+  &:focus {
+    top: 0;
   }
 }

@@ -1,18 +1,138 @@
 // _spacings.scss
 
 $spacings: (
-        0: 0,
-        1: 0.25rem,
-        2: 0.5rem,
-        3: 0.75rem,
-        4: 1rem,
-        5: 1.25rem,
-        6: 1.5rem,
-        8: 2rem,
-        10: 2.5rem,
-        12: 3rem,
-        16: 4rem,
-        20: 5rem,
-        24: 6rem,
-        32: 8rem
+  0: 0,
+  px: 1px,
+  0-5: 0.125rem,  // 2px
+  1: 0.25rem,     // 4px
+  1-5: 0.375rem,  // 6px
+  2: 0.5rem,      // 8px
+  2-5: 0.625rem,  // 10px
+  3: 0.75rem,     // 12px
+  3-5: 0.875rem,  // 14px
+  4: 1rem,        // 16px
+  5: 1.25rem,     // 20px
+  6: 1.5rem,      // 24px
+  7: 1.75rem,     // 28px
+  8: 2rem,        // 32px
+  9: 2.25rem,     // 36px
+  10: 2.5rem,     // 40px
+  11: 2.75rem,    // 44px
+  12: 3rem,       // 48px
+  14: 3.5rem,     // 56px
+  16: 4rem,       // 64px
+  20: 5rem,       // 80px
+  24: 6rem,       // 96px
+  28: 7rem,       // 112px
+  32: 8rem,       // 128px
+  36: 9rem,       // 144px
+  40: 10rem,      // 160px
+  44: 11rem,      // 176px
+  48: 12rem,      // 192px
+  52: 13rem,      // 208px
+  56: 14rem,      // 224px
+  60: 15rem,      // 240px
+  64: 16rem,      // 256px
+  72: 18rem,      // 288px
+  80: 20rem,      // 320px
+  96: 24rem       // 384px
 );
+
+// Spacing utility classes
+@each $name, $size in $spacings {
+  // Margins
+  .m-#{$name} { margin: $size; }
+  .mx-#{$name} { margin-left: $size; margin-right: $size; }
+  .my-#{$name} { margin-top: $size; margin-bottom: $size; }
+  .mt-#{$name} { margin-top: $size; }
+  .mr-#{$name} { margin-right: $size; }
+  .mb-#{$name} { margin-bottom: $size; }
+  .ml-#{$name} { margin-left: $size; }
+  
+  // Paddings
+  .p-#{$name} { padding: $size; }
+  .px-#{$name} { padding-left: $size; padding-right: $size; }
+  .py-#{$name} { padding-top: $size; padding-bottom: $size; }
+  .pt-#{$name} { padding-top: $size; }
+  .pr-#{$name} { padding-right: $size; }
+  .pb-#{$name} { padding-bottom: $size; }
+  .pl-#{$name} { padding-left: $size; }
+  
+  // Gaps
+  .gap-#{$name} { gap: $size; }
+  .gap-x-#{$name} { column-gap: $size; }
+  .gap-y-#{$name} { row-gap: $size; }
+}
+
+// Responsive margin and padding classes
+@media (min-width: 640px) {
+  @each $name, $size in $spacings {
+    .sm\:m-#{$name} { margin: $size; }
+    .sm\:mx-#{$name} { margin-left: $size; margin-right: $size; }
+    .sm\:my-#{$name} { margin-top: $size; margin-bottom: $size; }
+    .sm\:mt-#{$name} { margin-top: $size; }
+    .sm\:mr-#{$name} { margin-right: $size; }
+    .sm\:mb-#{$name} { margin-bottom: $size; }
+    .sm\:ml-#{$name} { margin-left: $size; }
+    
+    .sm\:p-#{$name} { padding: $size; }
+    .sm\:px-#{$name} { padding-left: $size; padding-right: $size; }
+    .sm\:py-#{$name} { padding-top: $size; padding-bottom: $size; }
+    .sm\:pt-#{$name} { padding-top: $size; }
+    .sm\:pr-#{$name} { padding-right: $size; }
+    .sm\:pb-#{$name} { padding-bottom: $size; }
+    .sm\:pl-#{$name} { padding-left: $size; }
+    
+    .sm\:gap-#{$name} { gap: $size; }
+    .sm\:gap-x-#{$name} { column-gap: $size; }
+    .sm\:gap-y-#{$name} { row-gap: $size; }
+  }
+}
+
+@media (min-width: 768px) {
+  @each $name, $size in $spacings {
+    .md\:m-#{$name} { margin: $size; }
+    .md\:mx-#{$name} { margin-left: $size; margin-right: $size; }
+    .md\:my-#{$name} { margin-top: $size; margin-bottom: $size; }
+    .md\:mt-#{$name} { margin-top: $size; }
+    .md\:mr-#{$name} { margin-right: $size; }
+    .md\:mb-#{$name} { margin-bottom: $size; }
+    .md\:ml-#{$name} { margin-left: $size; }
+    
+    .md\:p-#{$name} { padding: $size; }
+    .md\:px-#{$name} { padding-left: $size; padding-right: $size; }
+    .md\:py-#{$name} { padding-top: $size; padding-bottom: $size; }
+    .md\:pt-#{$name} { padding-top: $size; }
+    .md\:pr-#{$name} { padding-right: $size; }
+    .md\:pb-#{$name} { padding-bottom: $size; }
+    .md\:pl-#{$name} { padding-left: $size; }
+    
+    .md\:gap-#{$name} { gap: $size; }
+    .md\:gap-x-#{$name} { column-gap: $size; }
+    .md\:gap-y-#{$name} { row-gap: $size; }
+  }
+}
+
+@media (min-width: 1024px) {
+  @each $name, $size in $spacings {
+    .lg\:m-#{$name} { margin: $size; }
+    .lg\:mx-#{$name} { margin-left: $size; margin-right: $size; }
+    .lg\:my-#{$name} { margin-top: $size; margin-bottom: $size; }
+    .lg\:mt-#{$name} { margin-top: $size; }
+    .lg\:mr-#{$name} { margin-right: $size; }
+    .lg\:mb-#{$name} { margin-bottom: $size; }
+    .lg\:ml-#{$name} { margin-left: $size; }
+    
+    .lg\:p-#{$name} { padding: $size; }
+    .lg\:px-#{$name} { padding-left: $size; padding-right: $size; }
+    .lg\:py-#{$name} { padding-top: $size; padding-bottom: $size; }
+    .lg\:pt-#{$name} { padding-top: $size; }
+    .lg\:pr-#{$name} { padding-right: $size; }
+    .lg\:pb-#{$name} { padding-bottom: $size; }
+    .lg\:pl-#{$name} { padding-left: $size; }
+    
+    .lg\:gap-#{$name} { gap: $size; }
+    .lg\:gap-x-#{$name} { column-gap: $size; }
+    .lg\:gap-y-#{$name} { row-gap: $size; }
+  }
+}
