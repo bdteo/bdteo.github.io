@@ -28,7 +28,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "_gatsby/slices/_gatsby-scripts-1.html",
-    "revision": "fc748a395fb717b9133cb8e284ad6313"
+    "revision": "6e31f64bffefcc14f88452a664e7cf50"
   },
   {
     "url": "~partytown/debug/partytown-atomics.js"
@@ -75,17 +75,6 @@ self.__precacheManifest = [
     "revision": "7da93e15c21c244bc496ee5aff090a8e"
   },
   {
-    "url": "1943edf48358ec375759a10206b57d36c98a5e6d-fe1d0c364742b8ea6b4d.js"
-  },
-  {
-    "url": "1943edf48358ec375759a10206b57d36c98a5e6d-fe1d0c364742b8ea6b4d.js.LICENSE.txt",
-    "revision": "f7b599e3f88bf94d2af5d3f60873a311"
-  },
-  {
-    "url": "1943edf48358ec375759a10206b57d36c98a5e6d-fe1d0c364742b8ea6b4d.js.map",
-    "revision": "75154d676c45cc6a495dc041fb5245fa"
-  },
-  {
     "url": "2cca2479-40dc006f007d75b889eb.js"
   },
   {
@@ -94,11 +83,11 @@ self.__precacheManifest = [
   },
   {
     "url": "404.html",
-    "revision": "06d6fa03a8035752c0677730fca9529e"
+    "revision": "2542e3f94e72ca0055fc2444dad209e7"
   },
   {
     "url": "404/index.html",
-    "revision": "8eded1c75fe5e3695fca7a1801dbf856"
+    "revision": "21c06e123b1da0634587566263536508"
   },
   {
     "url": "452-acf513f4b16bcb0a4e07.js"
@@ -109,40 +98,44 @@ self.__precacheManifest = [
   },
   {
     "url": "about/index.html",
-    "revision": "3726522675c5433b33799d7045b93502"
+    "revision": "1ed5a0d8a1c9b7da0eee47e32ab8c6e2"
   },
   {
-    "url": "app-7ef6bd2eac106bfc9a1b.js"
+    "url": "app-a17b1d057e9754393f56.js"
   },
   {
-    "url": "app-7ef6bd2eac106bfc9a1b.js.LICENSE.txt",
+    "url": "app-a17b1d057e9754393f56.js.LICENSE.txt",
     "revision": "8fb505a0d15bd340a3f1f1c822e27e4a"
   },
   {
-    "url": "app-7ef6bd2eac106bfc9a1b.js.map",
-    "revision": "148182cb4169c2ba66d43d7ac76b34c6"
+    "url": "app-a17b1d057e9754393f56.js.map",
+    "revision": "3e7b23c1f750af86265e96909c6f9aee"
   },
   {
     "url": "bluez-pairing-python-agent-workaround-authentication-failed/index.html",
-    "revision": "4349b9e78d5d82d11513eab74ae9e236"
+    "revision": "3b4eac9051af1367ede637dcf72b159a"
   },
   {
-    "url": "c16184b3-12f5227575531e302f0f.js"
+    "url": "c16184b3-862802bed38f584d2bfb.js"
   },
   {
-    "url": "c16184b3-12f5227575531e302f0f.js.map",
-    "revision": "968d3f303f57f4f66c9f26921b437fa3"
+    "url": "c16184b3-862802bed38f584d2bfb.js.map",
+    "revision": "4c2125f893b9eed21c8489d6d3acb04c"
   },
   {
-    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-5d96247f5e76a3d0c50c.js"
+    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-f942af1180d0ef7a4aa4.js"
   },
   {
-    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-5d96247f5e76a3d0c50c.js.map",
-    "revision": "d3db62b985f3fc66541d8070d5c285d4"
+    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-f942af1180d0ef7a4aa4.js.map",
+    "revision": "03798a8b53de5f0e692ff808ef23275d"
   },
   {
     "url": "chunk-map.json",
-    "revision": "44b5f1f0985ba8f545096b3387ecea5e"
+    "revision": "418abb41a34951f2b30a0b0a84be3409"
+  },
+  {
+    "url": "claude-code-transformed-my-blog-design-in-minutes/index.html",
+    "revision": "954c4e7831a1d0f0cead1fc3ea4f011c"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-2059730493c4287dab27.js"
@@ -152,40 +145,40 @@ self.__precacheManifest = [
     "revision": "dbdee58dc14ca9afd1e085c9ad16c3df"
   },
   {
-    "url": "component---src-pages-404-js-90d20c52b1ddefff1aa7.js"
+    "url": "component---src-pages-404-js-f96ada7906ec5866e8e2.js"
   },
   {
-    "url": "component---src-pages-404-js-90d20c52b1ddefff1aa7.js.map",
-    "revision": "375bfad33210add7e85fe8a9a146a515"
+    "url": "component---src-pages-404-js-f96ada7906ec5866e8e2.js.map",
+    "revision": "17dbfc361366f1e2108e3048ad3511e1"
   },
   {
-    "url": "component---src-pages-index-js-656c9fefebc74f7876df.js"
+    "url": "component---src-pages-index-js-e472d4a28d855db7e924.js"
   },
   {
-    "url": "component---src-pages-index-js-656c9fefebc74f7876df.js.map",
-    "revision": "af769875ca438341cba0bc1125bd6fef"
+    "url": "component---src-pages-index-js-e472d4a28d855db7e924.js.map",
+    "revision": "0a001bd9da2fa594c13b905df814ce69"
   },
   {
-    "url": "component---src-pages-using-typescript-tsx-99e253d7264793a2c4dd.js"
+    "url": "component---src-pages-using-typescript-tsx-592340a2f045507ac203.js"
   },
   {
-    "url": "component---src-pages-using-typescript-tsx-99e253d7264793a2c4dd.js.map",
-    "revision": "d98738c2c92f5f42816053c51be32c4a"
+    "url": "component---src-pages-using-typescript-tsx-592340a2f045507ac203.js.map",
+    "revision": "75a790affb455f87cc0183fea8f521df"
   },
   {
-    "url": "component---src-templates-blog-post-js-18e500b9a7d9b75eda86.js"
+    "url": "component---src-templates-blog-post-js-e3d718079108cfd26cad.js"
   },
   {
-    "url": "component---src-templates-blog-post-js-18e500b9a7d9b75eda86.js.map",
-    "revision": "a656ef6c62cc449df9874318a579ad78"
+    "url": "component---src-templates-blog-post-js-e3d718079108cfd26cad.js.map",
+    "revision": "c783d9e63d621fa35ab24cef3be475a6"
   },
   {
     "url": "discrete-representations-reinforcement-learning-insights/index.html",
-    "revision": "b1ea7217fb72a54969f6792919d35a49"
+    "revision": "4bf14271a2838f1077f24049ae8bb80a"
   },
   {
     "url": "docker-compose-major-changes-since-october-2023/index.html",
-    "revision": "a78383267cd4a91eae4a3683a8d905ef"
+    "revision": "1cfaa51cded0b50e993bea375d1f2c23"
   },
   {
     "url": "favicon-32x32.png",
@@ -208,11 +201,11 @@ self.__precacheManifest = [
   },
   {
     "url": "google-ai-ambitions-historical-analysis-promises-stock-market-impact/index.html",
-    "revision": "2dbf7d2c023ab622f4954dd5472ec967"
+    "revision": "63355267f1e38429ace85e874f4873e5"
   },
   {
     "url": "huawei-watch-d2-proprietary-protocol-vendor-lockin/index.html",
-    "revision": "9f2f915de57e55e8b125a8fa6ad9b4a1"
+    "revision": "a091b4c3a80180d3c04f4a638c2233d8"
   },
   {
     "url": "icons/icon-144x144.png",
@@ -255,15 +248,15 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "ec62d1b1c821599a42f261d063d221a0"
+    "revision": "c1bf932a2646daf02c53b1a9b7243417"
   },
   {
     "url": "installing-php-8-3-6-with-imap-on-macos-using-phpenv/index.html",
-    "revision": "824906656f7a6ac9ed74c0c6ddd4cbd4"
+    "revision": "88643ee9b6b97aae298b83b61ef9ca6c"
   },
   {
     "url": "laravel-sail-vs-laradock-choosing-right-docker-solution/index.html",
-    "revision": "1cb8e24a07ab5f47df21dbec414ce5ef"
+    "revision": "28cc354ecacfe6154c0824bd3bca4124"
   },
   {
     "url": "manifest.webmanifest",
@@ -271,7 +264,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "e90a4688b002e4a5213bfea2f9a2f5c5"
+    "revision": "f352cc04fc1b2f20b5472b43817c39fe"
   },
   {
     "url": "page-data/404.html/page-data.json",
@@ -287,11 +280,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "1b87cab7ec7fe426aa8a10cc5c29e2ea"
+    "revision": "e9128d2b9ab9de215e4a130ac7c6b54c"
   },
   {
     "url": "page-data/bluez-pairing-python-agent-workaround-authentication-failed/page-data.json",
     "revision": "18d8ebd8b990bdc721edbe0e9a4a86d8"
+  },
+  {
+    "url": "page-data/claude-code-transformed-my-blog-design-in-minutes/page-data.json",
+    "revision": "30ef7248d67d637c809f6aa9da345eb6"
   },
   {
     "url": "page-data/discrete-representations-reinforcement-learning-insights/page-data.json",
@@ -307,11 +304,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/huawei-watch-d2-proprietary-protocol-vendor-lockin/page-data.json",
-    "revision": "dffa30141bb26bc2ba42b939fa295f15"
+    "revision": "8872e178cd59d6495089b0d175f8a036"
   },
   {
     "url": "page-data/index/page-data.json",
-    "revision": "ce953971b9b622a3ce154e467d427faa"
+    "revision": "a7c38e6e629b64d1ce5ab22e4690449d"
   },
   {
     "url": "page-data/installing-php-8-3-6-with-imap-on-macos-using-phpenv/page-data.json",
@@ -359,7 +356,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "eb0778e25bcb7e76012eac3855e47f09"
+    "revision": "08992903249c97dffe407bb3c5279aec"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
@@ -367,7 +364,7 @@ self.__precacheManifest = [
   },
   {
     "url": "pushing-the-stable-diffussion-limits/index.html",
-    "revision": "ca067fa0c1570fdbc96b4cf312656378"
+    "revision": "aafe0bba8d02f7be43818806ad1d76e8"
   },
   {
     "url": "robots.txt",
@@ -375,15 +372,15 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "96acbee61189b751ea5530c687cdfaa2"
+    "revision": "68875e99ebc734d2d532a815c830faa5"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
-    "revision": "67bf771a2167ef218dc058320e4c0762"
+    "revision": "bb0e262ae0a8fd709c866639ef49fa67"
   },
   {
     "url": "stable-difussion-cheat-sheet/index.html",
-    "revision": "d7aa328a611f371e88289bdbe4b240b6"
+    "revision": "75843e68cfb6a1bc376ae9d29de77c5e"
   },
   {
     "url": "static/268bdf61f13fa4bae18593537451433a/0f5ce/featured.jpg"
@@ -437,16 +434,22 @@ self.__precacheManifest = [
     "url": "static/2fb36df54ab973fa2cb65e0e16381c11/01986/profile-pic.png"
   },
   {
-    "url": "static/2fb36df54ab973fa2cb65e0e16381c11/288e4/profile-pic.avif"
+    "url": "static/2fb36df54ab973fa2cb65e0e16381c11/0a429/profile-pic.webp"
+  },
+  {
+    "url": "static/2fb36df54ab973fa2cb65e0e16381c11/1096c/profile-pic.png"
   },
   {
     "url": "static/2fb36df54ab973fa2cb65e0e16381c11/7ddcc/profile-pic.webp"
   },
   {
-    "url": "static/2fb36df54ab973fa2cb65e0e16381c11/95309/profile-pic.avif"
+    "url": "static/2fb36df54ab973fa2cb65e0e16381c11/a18cc/profile-pic.webp"
   },
   {
     "url": "static/2fb36df54ab973fa2cb65e0e16381c11/c0d5f/profile-pic.png"
+  },
+  {
+    "url": "static/2fb36df54ab973fa2cb65e0e16381c11/c16ee/profile-pic.png"
   },
   {
     "url": "static/2fb36df54ab973fa2cb65e0e16381c11/dd79f/profile-pic.webp"
@@ -806,6 +809,54 @@ self.__precacheManifest = [
     "url": "static/a273d3d9bb3291a37734d59b57d590c2/f9756/featured.webp"
   },
   {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/16947/featured.jpg"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/29ba9/featured.jpg"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/2fa07/featured.webp"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/36f66/featured.jpg"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/460bb/featured.jpg"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/4a276/featured.webp"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/57584/featured.webp"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/7284f/featured.jpg"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/7db9c/featured.webp"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/83638/featured.jpg"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/8dc98/featured.jpg"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/9285b/featured.webp"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/984df/featured.webp"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/b979a/featured.webp"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/c8896/featured.jpg"
+  },
+  {
+    "url": "static/a8ccc4ccaff8c3c18cd064980ca93442/f9756/featured.webp"
+  },
+  {
     "url": "static/ab6f0e497ea3ee100966d0f875eab63b/40601/google_stock_milestones.png"
   },
   {
@@ -1151,38 +1202,38 @@ self.__precacheManifest = [
     "url": "static/montserrat-latin-wght-normal-5028c63f6a70ab0cf7cba9015ae04154.woff2"
   },
   {
-    "url": "styles.7a0062ca9706aa730ccb.css"
+    "url": "styles.7a777e0e0d225f63efe6.css"
   },
   {
     "url": "the-sorceress-and-the-forgotten-stardust/index.html",
-    "revision": "3aaea4b8af074a7790b3f024fcb9e69a"
+    "revision": "cf321c8e3095e5618ae9e26aa8245dfc"
   },
   {
     "url": "understanding-class-namespace-changes-shopware-6-5-developers-guide/index.html",
-    "revision": "836bca701d36358a3f0d228af7193435"
+    "revision": "7a1a2914181b318625e3e98d12aa331c"
   },
   {
     "url": "unlocking-the-power-of-git-grep/index.html",
-    "revision": "e1b3ca839aa746868ee483f31c13d15f"
+    "revision": "26d1c30eb60dd4670665543c2fdd41c3"
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "9212dc21ce36e0429da9e654f9fa3c9c"
+    "revision": "b4d329605258b53f4229a4b07026bb47"
   },
   {
-    "url": "webpack-runtime-12bc4d4ad68540844d33.js"
+    "url": "webpack-runtime-4057dfcb72b6dc9dd22d.js"
   },
   {
-    "url": "webpack-runtime-12bc4d4ad68540844d33.js.map",
-    "revision": "ed33339553ac13ec489c397dfba628e3"
+    "url": "webpack-runtime-4057dfcb72b6dc9dd22d.js.map",
+    "revision": "4eb982ffecb448d0d558eb002e06e8ef"
   },
   {
     "url": "webpack.stats.json",
-    "revision": "48ed7b67f0f0e433382383894d09438f"
+    "revision": "2587ae808a82e3ea60d578f9e91ff722"
   },
   {
     "url": "worst-hypocrite-rubber-duck-tale/index.html",
-    "revision": "6ce819af45560af0f8e9a2a1678ac8b8"
+    "revision": "6a3c6b8482069e94d516481433468f36"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -1292,7 +1343,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`https://bdteo.github.io/app-7ef6bd2eac106bfc9a1b.js`))) {
+  if (!resources || !(await caches.match(`https://bdteo.github.io/app-a17b1d057e9754393f56.js`))) {
     return await fetch(event.request)
   }
 
