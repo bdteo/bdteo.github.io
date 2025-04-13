@@ -148,20 +148,73 @@
 
 // Code block styling
 .gatsby-highlight {
-  margin-bottom: var(--spacing-8);
+  margin: var(--spacing-6) 0 var(--spacing-8);
   padding: 0;
   background-color: var(--color-code-bg);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 4px var(--color-card-shadow);
+  box-shadow: 0 8px 20px -6px var(--color-card-shadow);
+  position: relative;
+  
+  // Add a fancy top bar to code blocks
+  &::before {
+    content: "";
+    height: 4px;
+    display: block;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+  
+  // Add a fake macOS-style window controls
+  &::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    width: 52px;
+    height: 12px;
+    border-radius: 6px;
+    background-image: radial-gradient(circle, #FF5F56 6px, transparent 0), 
+                      radial-gradient(circle, #FFBD2E 6px, transparent 0), 
+                      radial-gradient(circle, #27C93F 6px, transparent 0);
+    background-position: 0 0, 18px 0, 36px 0;
+    background-repeat: no-repeat;
+    background-size: 12px 12px, 12px 12px, 12px 12px;
+    z-index: 3;
+  }
 
   pre[class*="language-"] {
     background-color: transparent;
     border: none;
-    padding: var(--spacing-5);
+    padding: 40px var(--spacing-5) var(--spacing-5);
     overflow: auto;
     margin: 0;
     font-family: 'Roboto Mono', monospace !important;
+    position: relative;
+    z-index: 1;
+    
+    // Add line numbers
+    counter-reset: line;
+    
+    .token-line {
+      line-height: 1.5;
+      
+      &::before {
+        counter-increment: line;
+        content: counter(line);
+        display: inline-block;
+        width: 24px;
+        margin-right: var(--spacing-4);
+        color: var(--color-text-lighter);
+        text-align: right;
+        font-size: 0.8em;
+        opacity: 0.5;
+      }
+    }
   }
 
   code[class*="language-"] {
@@ -170,6 +223,8 @@
     font-size: var(--font-size-sm);
     font-family: 'Roboto Mono', monospace !important;
     tab-size: 2;
+    white-space: pre-wrap;
+    word-break: break-word;
   }
 
   .token {
@@ -177,15 +232,23 @@
     text-shadow: none !important;
   }
   
-  // Add a fancy top bar to code blocks
-  position: relative;
-  
-  &::before {
-    content: "";
-    height: 12px;
-    display: block;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-    border-radius: 8px 8px 0 0;
+  // Scrollbar styling for code blocks
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(127, 127, 127, 0.3);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(127, 127, 127, 0.5);
   }
 }
 
@@ -196,8 +259,11 @@ code {
   background-color: var(--color-code-inline-bg) !important;
   color: var(--color-code-text) !important;
   padding: 0.2em 0.4em !important;
-  border-radius: 4px !important;
+  border-radius: 6px !important;
   font-weight: 500 !important;
+  letter-spacing: -0.025em !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  white-space: nowrap !important;
 }
 
 // Ensure inline code inside headings has correct styles
@@ -272,18 +338,31 @@ h6 code {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 15px -3px var(--color-card-shadow);
+    display: flex;
+    flex-direction: column;
     
     .gatsby-image-wrapper {
       width: 100%;
       max-height: 500px;
+      display: block;
     }
     
     figcaption {
-      margin-top: var(--spacing-2);
+      margin: 0;
+      padding: var(--spacing-3) var(--spacing-4);
       font-style: italic;
       color: var(--color-text-light);
       font-size: var(--font-size-sm);
       text-align: center;
+      line-height: 1.5;
+      background-color: rgba(var(--color-card-bg-rgb), 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+      border-top: 1px solid rgba(var(--color-card-bg-rgb), 0.2);
+      position: relative;
+      z-index: 1;
     }
   }
   
@@ -338,6 +417,66 @@ h6 code {
     background-color: var(--color-accent);
     height: 1px;
     margin: var(--spacing-10) 0;
+  }
+  
+  // Article images and figures
+  figure {
+    margin: var(--spacing-6) 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px -3px var(--color-card-shadow);
+    
+    .gatsby-resp-image-wrapper {
+      // Don't override Gatsby's responsive image styles
+      // Just ensure the max-width is 100% for proper containment
+      max-width: 100% !important;
+    }
+    
+    // Regular images
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    
+    figcaption {
+      margin: 0;
+      padding: var(--spacing-3) var(--spacing-4);
+      font-style: italic;
+      color: var(--color-text-light);
+      font-size: var(--font-size-sm);
+      text-align: center;
+      line-height: 1.5;
+      background-color: rgba(var(--color-card-bg-rgb), 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+      border-top: 1px solid rgba(var(--color-card-bg-rgb), 0.2);
+    }
+  }
+  
+  // For standalone images
+  img:not(.gatsby-resp-image-image):not(.gatsby-image-wrapper img):not(figure img) {
+    margin: var(--spacing-6) 0;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 5px 15px -3px var(--color-card-shadow);
+    max-width: 100%;
+    height: auto;
+  }
+  
+  // Enhance Gatsby image containers outside figures
+  .gatsby-resp-image-wrapper:not(figure .gatsby-resp-image-wrapper) {
+    margin: var(--spacing-6) auto !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 5px 15px -3px var(--color-card-shadow) !important;
+  }
+  
+  // Only hide the background image
+  .gatsby-resp-image-background-image {
+    opacity: 0 !important;
   }
 }
 
