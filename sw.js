@@ -364,7 +364,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "6ced5eb08d3710405ab6cb0306a2e0c0"
+    "revision": "49b435d639087edea922d04b879278e4"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
@@ -380,7 +380,7 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "eaf015700fbc3217b8504dddbfafdee1"
+    "revision": "72d219561e82b6af5f3305cf4febd167"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
@@ -1226,7 +1226,7 @@ self.__precacheManifest = [
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "de332b653d58d380b68c300a0dc68c5d"
+    "revision": "0a178f37b54bd8da2d066eb6d5c9bf75"
   },
   {
     "url": "webpack-runtime-f5ee07138aec35b952df.js"
