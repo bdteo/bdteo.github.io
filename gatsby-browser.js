@@ -7,6 +7,8 @@ import "./src/styles/main.scss"
 
 // Highlighting for code blocks
 import "prismjs/themes/prism.css"
+// Override Prism styles to remove text-shadow
+import "./src/styles/prism-override.css"
 
 // FontAwesome configuration
 import "@fortawesome/fontawesome-svg-core/styles.css"

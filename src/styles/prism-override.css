@@ -1,0 +1,50 @@
+/**
+ * Override for Prism.js default styles
+ * This file specifically targets and removes text-shadow from all code elements
+ */
+
+code[class*="language-"],
+pre[class*="language-"],
+.token,
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata,
+.token.punctuation,
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable,
+.token.atrule,
+.token.attr-value,
+.token.keyword,
+.token.function,
+.token.regex,
+.token.important {
+  text-shadow: none !important;
+  -webkit-text-shadow: none !important;
+  -moz-text-shadow: none !important;
+}
+
+/* Inline code elements with language-text class */
+code.language-text {
+  text-shadow: none !important;
+  -webkit-text-shadow: none !important;
+  -moz-text-shadow: none !important;
+  background: transparent !important;
+  color: inherit !important;
+}

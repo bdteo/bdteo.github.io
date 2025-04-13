@@ -353,6 +353,8 @@
   pre[class*="language-"],
   .token {
     text-shadow: none !important;
+    -webkit-text-shadow: none !important;
+    -moz-text-shadow: none !important;
     background: none !important;
     
     &.comment,
@@ -447,7 +449,7 @@
 }
 
 // Inline code styling
-code {
+code, code.language-text {
   font-family: 'Roboto Mono', monospace !important;
   font-size: 0.85em !important;
   background-color: var(--color-code-inline-bg) !important;
@@ -458,6 +460,7 @@ code {
   letter-spacing: -0.025em !important;
   box-shadow: none !important;
   white-space: nowrap !important;
+  text-shadow: none !important;
 }
 
 // Ensure inline code inside headings has correct styles

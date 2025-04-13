@@ -151,3 +151,28 @@
     top: 0;
   }
 }
+
+// Global overrides for text-shadow issues
+:root {
+  // Target all inline code elements to remove text-shadow
+  code,
+  code.language-text,
+  *[class*="language-"],
+  .token,
+  .gatsby-highlight * {
+    text-shadow: none !important;
+  }
+  
+  // Additional specificity for text shadow removal
+  p code,
+  li code,
+  td code,
+  h1 code,
+  h2 code,
+  h3 code,
+  h4 code,
+  h5 code,
+  h6 code {
+    text-shadow: none !important;
+  }
+}
