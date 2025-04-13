@@ -202,12 +202,6 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-verify-bing`,
-      options: {
-        xmlFileName: 'BingSiteAuth.xml',
-        content: 'DE9AA37DB58BF3C5CD561AE0B187709C',
-      },
-    },
+    // Bing verification is now handled directly in the SEO component with a meta tag
   ],
 }

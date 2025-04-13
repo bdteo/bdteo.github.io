@@ -42,6 +42,7 @@ const Seo = ({ description, title, children }) => {
       />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
+      <meta name="msvalidate.01" content="DE9AA37DB58BF3C5CD561AE0B187709C" />
       {children}
     </>
   )
