@@ -202,5 +202,12 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-verify-bing`,
+      options: {
+        xmlFileName: 'BingSiteAuth.xml',
+        content: 'DE9AA37DB58BF3C5CD561AE0B187709C',
+      },
+    },
   ],
 }

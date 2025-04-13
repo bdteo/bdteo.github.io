@@ -5919,6 +5919,14 @@ gatsby-plugin-utils@^4.13.1:
     joi "^17.9.2"
     mime "^3.0.0"
 
+gatsby-plugin-verify-bing@^1.1.35:
+  version "1.1.35"
+  resolved "https://registry.npmjs.org/gatsby-plugin-verify-bing/-/gatsby-plugin-verify-bing-1.1.35.tgz#ff60ebffd921ecbb74f76da503349870992390be"
+  integrity sha512-WSS8uDvp0tVtkmYTHfWlm9OBjfOifJVl3Btka3JXLE5ZouSvHUuwz/j0b8hjEXjguuqo/s6I4v+gh3FSiIXXfw==
+  dependencies:
+    react "^17.0.0"
+    xmlbuilder "^15.1.1"
+
 gatsby-react-router-scroll@^6.13.1:
   version "6.13.1"
   resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-6.13.1.tgz#b20d492a1fc0ac4f31a0435452b06e22e8cb6c41"
@@ -9482,6 +9490,14 @@ react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825:
     loose-envify "^1.1.0"
     neo-async "^2.6.1"
 
+react@^17.0.0:
+  version "17.0.2"
+  resolved "https://registry.npmjs.org/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
+  integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
 react@^18.1.0:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
@@ -11678,6 +11694,11 @@ xml@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
   integrity sha512-huCv9IH9Tcf95zuYCsQraZtWnJvBtLVE0QHMOs8bWyZAFZNDcYjsPq1nEx8jKA9y+Beo9v+7OBPRisQTjinQMw==
+
+xmlbuilder@^15.1.1:
+  version "15.1.1"
+  resolved "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-15.1.1.tgz#9dcdce49eea66d8d10b42cae94a79c3c8d0c2ec5"
+  integrity sha512-yMqGBqtXyeN1e3TGYvgNgDVZ3j84W4cwkOXQswghol6APgZWaff9lnbvN7MHYJOiXsvGPXtjTYJEiC9J2wv9Eg==
 
 xmlhttprequest-ssl@~2.0.0:
   version "2.0.0"
