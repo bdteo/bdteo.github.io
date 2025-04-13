@@ -7,7 +7,7 @@
  */
 
 module.exports = {
-  pathPrefix: "/",
+  pathPrefix: "",
   assetPrefix: "https://bdteo.github.io",
   siteMetadata: {
     title: `Boris's Blog`,
@@ -16,7 +16,7 @@ module.exports = {
       summary: `Senior Software Developer at ShareRig with expertise in web development, AI/ML, DevOps, and low-level programming. Passionate about exploring theoretical computer science, mathematics, and the creative applications of AI.`,
     },
     description: `A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.`,
-    siteUrl: `https://bdteo.github.io/`,
+    siteUrl: `https://bdteo.github.io`,
     social: {
       github: `bdteo`,
       email: `boristeoharov@gmail.com`,
@@ -171,5 +171,36 @@ module.exports = {
     },
     // Remove the plugin below if you decide to use gatsby-plugin-offline
     // `gatsby-plugin-remove-serviceworker`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+          }
+        `,
+        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+          return allPages.map(page => {
+            return { ...page };
+          });
+        },
+        serialize: ({ path }) => {
+          return {
+            url: path,
+            changefreq: `daily`,
+            priority: 0.7,
+          };
+        },
+      },
+    },
   ],
 }
