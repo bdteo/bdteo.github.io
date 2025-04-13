@@ -3,6 +3,7 @@
 body.dark-mode {
   // Core colors
   --color-primary: #A78BFA;        // Purple 400
+  --color-primary-rgb: 167, 139, 250; // Purple 400 in RGB
   --color-primary-50: #2E1065;     // Purple 950
   --color-primary-100: #4C1D95;    // Purple 900
   --color-primary-200: #5B21B6;    // Purple 800
@@ -60,7 +61,7 @@ body.dark-mode {
   --color-code-bg: #1E1E1E;                 // VS Code dark theme background
   --color-code-text: #D4D4D4;               // VS Code text color
   --color-code-border: #4B5563;             // Gray 600
-  --color-code-inline-bg: #2E1065;          // Purple 950
+  --color-code-inline-bg: transparent;  // Completely transparent
   
   // Special element colors
   --color-tag-bg: #4C1D95;                  // Purple 900
@@ -68,10 +69,11 @@ body.dark-mode {
   --color-tooltip-bg: #F9FAFB;              // Gray 50
   --color-tooltip-text: #111827;            // Gray 900
   
-  // Syntax highlighting - VS Code dark theme
+  // Syntax highlighting - More readable VS Code dark theme inspired
   --color-comment: #6A9955;                 // Green
   --color-string: #CE9178;                  // Orange/Brown
   --color-keyword: #569CD6;                 // Blue
   --color-function: #4EC9B0;                // Teal
   --color-variable: #9CDCFE;                // Light Blue
+  --color-operator: #D4D4D4;                // Light Gray
 }

@@ -3,6 +3,7 @@
 body.light-mode {
   // Core colors
   --color-primary: #6D28D9;        // Purple 700
+  --color-primary-rgb: 109, 40, 217; // Purple 700 in RGB
   --color-primary-50: #F5F3FF;     // Purple 50
   --color-primary-100: #EDE9FE;    // Purple 100
   --color-primary-200: #DDD6FE;    // Purple 200
@@ -60,7 +61,7 @@ body.light-mode {
   --color-code-bg: #F3F4F6;               // Gray 100
   --color-code-text: #1F2937;             // Gray 800
   --color-code-border: #E5E7EB;           // Gray 200
-  --color-code-inline-bg: #EEF2FF;        // Indigo 50
+  --color-code-inline-bg: transparent;   // Completely transparent
   
   // Special element colors
   --color-tag-bg: #EDE9FE;                // Purple 100
@@ -68,10 +69,11 @@ body.light-mode {
   --color-tooltip-bg: #374151;            // Gray 700
   --color-tooltip-text: #FFFFFF;          // White
   
-  // Syntax highlighting - VSCode light theme
+  // Syntax highlighting - More subdued colors (VSCode-inspired)
   --color-comment: #008000;               // Green
   --color-string: #A31515;                // Red
-  --color-keyword: #0000FF;               // Blue
+  --color-keyword: #0550AE;               // Blue (slightly muted)
   --color-function: #795E26;              // Brown
   --color-variable: #1F377F;              // Dark Blue
+  --color-operator: #5A5A5A;              // Dark Gray
 }

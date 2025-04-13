@@ -155,6 +155,127 @@
   overflow: hidden;
   box-shadow: 0 8px 20px -6px var(--color-card-shadow);
   position: relative;
+  max-width: 100%;
+  width: 100%;
+  
+  // Global override to remove text-shadow from all code elements
+  * {
+    text-shadow: none !important;
+  }
+  
+  // Modern copy button for code blocks
+  .copy-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 32px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    color: var(--color-text-light);
+    font-size: 0;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    opacity: 0.7;
+    
+    // The actual button icon
+    svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      transition: all 0.15s ease;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+    }
+    
+    // Tooltip text that appears on hover
+    &::after {
+      content: "Copy";
+      position: absolute;
+      top: 0;
+      right: 28px;
+      background-color: var(--color-card-bg);
+      color: var(--color-text);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateX(5px);
+      pointer-events: none;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--color-border);
+    }
+    
+    // States
+    &:hover {
+      opacity: 1;
+      
+      svg {
+        stroke: var(--color-primary);
+        transform: scale(1.1);
+      }
+      
+      &::after {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      opacity: 1;
+    }
+    
+    // Copied state
+    &.copied {
+      opacity: 1;
+      
+      svg {
+        stroke: var(--color-primary);
+        transform: scale(1);
+      }
+      
+      &::after {
+        content: "Copied!";
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    // Animation for copied state
+    @keyframes checkmark {
+      0% {
+        stroke-dashoffset: 24;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+    
+    &.copied svg polyline {
+      stroke-dasharray: 24;
+      animation: checkmark 0.3s ease-in-out forwards;
+    }
+  }
+  
+  // Global fix for code wrapping
+  * {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    word-wrap: break-word !important;
+  }
   
   // Add a fancy top bar to code blocks
   &::before {
@@ -168,52 +289,41 @@
     right: 0;
     z-index: 2;
   }
-  
-  // Add a fake macOS-style window controls
-  &::after {
-    content: "";
-    position: absolute;
-    top: 12px;
-    left: 16px;
-    width: 52px;
-    height: 12px;
-    border-radius: 6px;
-    background-image: radial-gradient(circle, #FF5F56 6px, transparent 0), 
-                      radial-gradient(circle, #FFBD2E 6px, transparent 0), 
-                      radial-gradient(circle, #27C93F 6px, transparent 0);
-    background-position: 0 0, 18px 0, 36px 0;
-    background-repeat: no-repeat;
-    background-size: 12px 12px, 12px 12px, 12px 12px;
-    z-index: 3;
-  }
 
   pre[class*="language-"] {
     background-color: transparent;
     border: none;
-    padding: 40px var(--spacing-5) var(--spacing-5);
+    padding: var(--spacing-5);
     overflow: auto;
     margin: 0;
     font-family: 'Roboto Mono', monospace !important;
     position: relative;
     z-index: 1;
+    max-width: 100% !important;
     
-    // Add line numbers
-    counter-reset: line;
+    // Code line styling
+    line-height: 1.5;
     
-    .token-line {
-      line-height: 1.5;
-      
-      &::before {
-        counter-increment: line;
-        content: counter(line);
-        display: inline-block;
-        width: 24px;
-        margin-right: var(--spacing-4);
-        color: var(--color-text-lighter);
-        text-align: right;
-        font-size: 0.8em;
-        opacity: 0.5;
-      }
+    // We won't add line numbers via CSS since Gatsby might already have its own
+    // This could cause conflicts with existing line number plugins
+    .line-number-style {
+      display: inline-block;
+      width: 2em;
+      user-select: none;
+      opacity: 0.5;
+      text-align: center;
+      position: relative;
+    }
+    
+    // Highlight for specific lines when needed
+    .gatsby-highlight-code-line {
+      background-color: rgba(255, 255, 255, 0.07);
+      display: block;
+      margin-right: -1em;
+      margin-left: -1em;
+      padding-right: 1em;
+      padding-left: 0.75em;
+      border-left: 0.25em solid var(--color-primary);
     }
   }
 
@@ -223,13 +333,97 @@
     font-size: var(--font-size-sm);
     font-family: 'Roboto Mono', monospace !important;
     tab-size: 2;
-    white-space: pre-wrap;
-    word-break: break-word;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    width: 100% !important;
+  }
+  
+  // Fix for specific elements that might prevent wrapping
+  .token-line,
+  span[class*="token"] {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
   }
 
+  // Syntax highlighting tokens
+  // Remove all text-shadow from code tokens
+  code[class*="language-"],
+  pre[class*="language-"],
   .token {
-    background: none !important;
     text-shadow: none !important;
+    background: none !important;
+    
+    &.comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: var(--color-comment) !important;
+      font-style: italic !important;
+    }
+    
+    &.punctuation {
+      color: var(--color-operator) !important;
+      font-weight: normal !important;
+    }
+    
+    &.property,
+    &.tag,
+    &.boolean,
+    &.number,
+    &.constant,
+    &.symbol {
+      color: var(--color-function) !important;
+      font-weight: normal !important;
+    }
+    
+    &.selector,
+    &.attr-name,
+    &.string,
+    &.char,
+    &.builtin {
+      color: var(--color-string) !important;
+      font-weight: normal !important;
+    }
+    
+    &.operator,
+    &.entity,
+    &.url {
+      color: var(--color-operator) !important;
+      font-weight: normal !important;
+    }
+    
+    &.variable {
+      color: var(--color-variable) !important;
+      font-weight: normal !important;
+    }
+    
+    &.atrule,
+    &.attr-value,
+    &.keyword {
+      color: var(--color-keyword) !important;
+      font-weight: bold !important;
+    }
+    
+    &.function,
+    &.class-name {
+      color: var(--color-function) !important;
+    }
+    
+    &.regex,
+    &.important {
+      color: #f50 !important;
+    }
+    
+    &.important,
+    &.bold {
+      font-weight: bold !important;
+    }
+    
+    &.italic {
+      font-style: italic !important;
+    }
   }
   
   // Scrollbar styling for code blocks
@@ -257,12 +451,12 @@ code {
   font-family: 'Roboto Mono', monospace !important;
   font-size: 0.85em !important;
   background-color: var(--color-code-inline-bg) !important;
-  color: var(--color-code-text) !important;
+  color: var(--color-primary) !important;
   padding: 0.2em 0.4em !important;
-  border-radius: 6px !important;
+  border-radius: 4px !important;
   font-weight: 500 !important;
   letter-spacing: -0.025em !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: none !important;
   white-space: nowrap !important;
 }
 
