@@ -28,7 +28,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "_gatsby/slices/_gatsby-scripts-1.html",
-    "revision": "6c2f9b939b5c99bbf596c00bee7fba60"
+    "revision": "c8ec17520ddb369f70d3fb690673f5cf"
   },
   {
     "url": "~partytown/debug/partytown-atomics.js"
@@ -87,11 +87,11 @@ self.__precacheManifest = [
   },
   {
     "url": "404.html",
-    "revision": "80ccbb87b87d9d91670cf892e6f97e27"
+    "revision": "c7396aa1d38d5cf3d6e51a1ec36f00cc"
   },
   {
     "url": "404/index.html",
-    "revision": "ae94163de2684f90603c311c3b67502e"
+    "revision": "474aa718f3b7defe94242d2a16d28a6c"
   },
   {
     "url": "452-acf513f4b16bcb0a4e07.js"
@@ -102,7 +102,7 @@ self.__precacheManifest = [
   },
   {
     "url": "about/index.html",
-    "revision": "8aaafa1b6ed0670f5cadf78b152a1a14"
+    "revision": "be7f226015a39bd234de27314116dcb8"
   },
   {
     "url": "app-1e04ad124a3dd29ec3d9.js"
@@ -113,11 +113,11 @@ self.__precacheManifest = [
   },
   {
     "url": "app-1e04ad124a3dd29ec3d9.js.map",
-    "revision": "a0378f0bdf8d2ebccaeab692e48254e2"
+    "revision": "dd53d50aa50cef641ec0f562ec383eb1"
   },
   {
     "url": "bluez-pairing-python-agent-workaround-authentication-failed/index.html",
-    "revision": "dd5f05c783bfb44ece456c33f6782331"
+    "revision": "93736545f756f41bdf9f16f897e0b2a1"
   },
   {
     "url": "c16184b3-b645e587e93f02336fdc.js"
@@ -143,7 +143,7 @@ self.__precacheManifest = [
   },
   {
     "url": "claude-code-transformed-my-blog-design-in-minutes/index.html",
-    "revision": "f579c65b75636b96e75c94169590bfca"
+    "revision": "a922b9ef7c35e4fc794d7e1fdfb79786"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-2059730493c4287dab27.js"
@@ -157,14 +157,14 @@ self.__precacheManifest = [
   },
   {
     "url": "component---src-pages-404-js-3b47fec77d21c84735b8.js.map",
-    "revision": "0f3b50cef957401a1ad5de5901a6f49a"
+    "revision": "7876bd671b37452197682300b776608e"
   },
   {
     "url": "component---src-pages-index-js-e472d4a28d855db7e924.js"
   },
   {
     "url": "component---src-pages-index-js-e472d4a28d855db7e924.js.map",
-    "revision": "e10a2ff7f8462224b2c413cf515651e1"
+    "revision": "0f7f47fd00ea2b6dc0299bc6b529dc01"
   },
   {
     "url": "component---src-pages-using-typescript-tsx-9bb1db0d9c8396ecf6ac.js"
@@ -178,15 +178,15 @@ self.__precacheManifest = [
   },
   {
     "url": "component---src-templates-blog-post-js-e3d718079108cfd26cad.js.map",
-    "revision": "432a11ce27b112b7686b2c2707d36d14"
+    "revision": "e0599fdcf342729a0fb52678e408172f"
   },
   {
     "url": "discrete-representations-reinforcement-learning-insights/index.html",
-    "revision": "5fb9a4d36e0c4be67a94f3050f480824"
+    "revision": "156c659059e258e839b7ba84f6b1213a"
   },
   {
     "url": "docker-compose-major-changes-since-october-2023/index.html",
-    "revision": "36c9cfb26b41b465cd2471800b21604c"
+    "revision": "15a66579e8b55e1a1ab7de48991317f8"
   },
   {
     "url": "favicon-32x32.png",
@@ -209,11 +209,11 @@ self.__precacheManifest = [
   },
   {
     "url": "google-ai-ambitions-historical-analysis-promises-stock-market-impact/index.html",
-    "revision": "c234666d47b5c1b3c8185904ee125d09"
+    "revision": "32438747f4a45bab7647ec3bdbeec2a8"
   },
   {
     "url": "huawei-watch-d2-proprietary-protocol-vendor-lockin/index.html",
-    "revision": "a0145e1e8577b817605dbca25a30629c"
+    "revision": "f5b8f7095c57e442255dc3ee86f6b856"
   },
   {
     "url": "icons/icon-144x144.png",
@@ -256,19 +256,19 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "0a607d941f6c87ef2ffaae5158ade111"
+    "revision": "9cdea3ca0d88d7069b3f5aad80e1c370"
   },
   {
     "url": "installing-php-8-3-6-with-imap-on-macos-using-phpenv/index.html",
-    "revision": "fa3effc6d4299d68ffd50da7962e1122"
+    "revision": "8f912399c71d5be66955e1bc9b5d3529"
   },
   {
     "url": "laravel-sail-vs-laradock-choosing-right-docker-solution/index.html",
-    "revision": "794594de6f915f9ae813b2a0ee5b7d33"
+    "revision": "76d3e299184966a15a807787297982b2"
   },
   {
     "url": "m1-mac-android-emulator-bluetooth-passthrough-bumble/index.html",
-    "revision": "7f1d4c3f679f25d08d73c41044a7fe37"
+    "revision": "c70860f9808457cd6550b16e49129578"
   },
   {
     "url": "manifest.webmanifest",
@@ -276,7 +276,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "46487f1cec7c1956c454a58c1941db81"
+    "revision": "284a923d2bb29c7f57fa837136442f22"
   },
   {
     "url": "page-data/404.html/page-data.json",
@@ -292,7 +292,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "28a4f74493a6cb2c8917cc96c55cf04b"
+    "revision": "b541dcf1d16bc97fc3f12b6fdabf82f0"
   },
   {
     "url": "page-data/bluez-pairing-python-agent-workaround-authentication-failed/page-data.json",
@@ -372,7 +372,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "6e4c86b572be22f6c3bc832816fd5de0"
+    "revision": "581ed71534c94a82a732c3a1535a2d7c"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
@@ -380,7 +380,7 @@ self.__precacheManifest = [
   },
   {
     "url": "pushing-the-stable-diffussion-limits/index.html",
-    "revision": "383efef9aacc7740815215842e3c9f28"
+    "revision": "180c2ba4e9400d3f1de2435d499cfa2b"
   },
   {
     "url": "robots.txt",
@@ -388,15 +388,15 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "4318d5b1feea35b4fbfd1f0ba8bfb1b3"
+    "revision": "10c1b6be450d5ab87641f473d1e870d9"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
-    "revision": "525966e5f376ed2d38ede3ba3bead82c"
+    "revision": "400aee5560d6d5b8dd11264e9234cc40"
   },
   {
     "url": "stable-difussion-cheat-sheet/index.html",
-    "revision": "1864969cc081e16d27d187133cc595a2"
+    "revision": "bdc766295aa4c5e7ad08b8307a988725"
   },
   {
     "url": "static/168463a17f9c2441d153dcee3bdf8990/16947/featured.jpg"
@@ -1284,38 +1284,38 @@ self.__precacheManifest = [
     "url": "static/montserrat-latin-wght-normal-5028c63f6a70ab0cf7cba9015ae04154.woff2"
   },
   {
-    "url": "styles.09eeaf2f6bb65014d5c9.css"
+    "url": "styles.0be40c6415ebe66fa335.css"
   },
   {
     "url": "the-sorceress-and-the-forgotten-stardust/index.html",
-    "revision": "ad5dff695e4ddc54d0c41f486a339ee9"
+    "revision": "8a2d78d819d49394bebac98d1676ab61"
   },
   {
     "url": "understanding-class-namespace-changes-shopware-6-5-developers-guide/index.html",
-    "revision": "63be51f1915af69dee47b8c1025b231e"
+    "revision": "f4b8fd3ab719372987a742a0c44f2111"
   },
   {
     "url": "unlocking-the-power-of-git-grep/index.html",
-    "revision": "92efa0fc03a89b57c55dc08922b2df75"
+    "revision": "848e0ef5aae09ee354100458aea48d57"
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "9f105ea8762e6b1bd98fa548687f3c4e"
+    "revision": "67fdc374de174dad42b64ea117d7c1d0"
   },
   {
-    "url": "webpack-runtime-48965f7aa3db5f2b15eb.js"
+    "url": "webpack-runtime-c4f9d755837f677c73f0.js"
   },
   {
-    "url": "webpack-runtime-48965f7aa3db5f2b15eb.js.map",
-    "revision": "125c05c25d22f61bb80bd914422be4e2"
+    "url": "webpack-runtime-c4f9d755837f677c73f0.js.map",
+    "revision": "acd3e6dbe8d812e371167159094d1ae1"
   },
   {
     "url": "webpack.stats.json",
-    "revision": "2066734b3455ef708440c3bf64e14983"
+    "revision": "18bf95e3b1cdec5a90acad700b30ce7f"
   },
   {
     "url": "worst-hypocrite-rubber-duck-tale/index.html",
-    "revision": "a2f404a4984f880ea0d96b7609ff4e2a"
+    "revision": "5b2c421c50baeda8e2f4adc3a4d410fa"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
