@@ -7,7 +7,6 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
-import { Helmet } from "react-helmet"
 
 const Seo = ({ 
   description, 
@@ -81,7 +80,7 @@ const Seo = ({
       
       {/* Twitter */}
       <meta name="twitter:card" content={metaImage ? "summary_large_image" : "summary"} />
-      <meta name="twitter:creator" content={social?.twitter || ""} />
+      <meta name="twitter:creator" content={social?.github || ""} />
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
       {metaImage && <meta name="twitter:image" content={metaImage} />}
@@ -132,7 +131,7 @@ const Seo = ({
       
       {/* Additional tags provided by the component user */}
       {children}
-    </Helmet>
+    </>
   )
 }
 
