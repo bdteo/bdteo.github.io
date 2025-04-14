@@ -25,6 +25,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -186,19 +187,66 @@ module.exports = {
                 path
               }
             }
+            allMarkdownRemark {
+              nodes {
+                fields {
+                  slug
+                }
+                frontmatter {
+                  date
+                }
+              }
+            }
           }
         `,
-        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+        resolvePages: ({ allSitePage: { nodes: allPages }, allMarkdownRemark: { nodes: allPosts } }) => {
+          // Create a map of post slugs to their dates
+          const postsByPath = allPosts.reduce((acc, post) => {
+            if (post.fields && post.fields.slug) {
+              acc[post.fields.slug] = {
+                date: post.frontmatter.date,
+              };
+            }
+            return acc;
+          }, {});
+          
+          // Add date info to pages
           return allPages.map(page => {
-            return { ...page };
+            // Find matching post data if it exists
+            const postData = Object.keys(postsByPath).find(slug => 
+              page.path.endsWith(slug)
+            );
+            
+            // For blog posts, use their date and higher priority
+            if (postData) {
+              return { 
+                ...page, 
+                lastmod: postsByPath[postData].date,
+                priority: 0.9,
+                changefreq: 'monthly'
+              };
+            }
+            
+            // For other pages, use defaults
+            return { 
+              ...page,
+              priority: page.path === '/' ? 1.0 : 0.7,
+              changefreq: page.path === '/' ? 'daily' : 'weekly'
+            };
           });
         },
-        serialize: ({ path }) => {
-          return {
+        serialize: ({ path, lastmod, changefreq, priority }) => {
+          const sitemapItem = {
             url: path,
-            changefreq: `daily`,
-            priority: 0.7,
+            changefreq: changefreq || 'weekly',
+            priority: priority || 0.7,
           };
+          
+          if (lastmod) {
+            sitemapItem.lastmod = lastmod;
+          }
+          
+          return sitemapItem;
         },
       },
     },

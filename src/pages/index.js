@@ -61,7 +61,41 @@ const BlogIndex = ({ data, location }) => {
 
 export default BlogIndex
 
-export const Head = () => <Seo title="All posts" />
+export const Head = () => {
+  return (
+    <Seo 
+      title="All posts" 
+      keywords={[
+        "software development", 
+        "programming", 
+        "web development", 
+        "artificial intelligence", 
+        "machine learning",
+        "theoretical computer science",
+        "blog"
+      ]}
+    >
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Boris D. Teoharov's Blog",
+          "url": "https://bdteo.github.io",
+          "description": "A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.",
+          "author": {
+            "@type": "Person",
+            "name": "Boris D. Teoharov"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://bdteo.github.io/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        })}
+      </script>
+    </Seo>
+  )
+}
 
 export const pageQuery = graphql`
   {

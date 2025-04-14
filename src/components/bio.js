@@ -36,13 +36,48 @@ const Bio = () => {
   const social = data.site.siteMetadata?.social;
 
   return (
-    <div className="bio">
-      <StaticImage className="bio-avatar" src="../images/profile-pic.png" width={150} height={150} quality={95} alt="" />
+    <div className="bio" itemScope itemType="http://schema.org/Person">
+      <StaticImage 
+        className="bio-avatar" 
+        src="../images/profile-pic.png" 
+        width={150} 
+        height={150} 
+        quality={95} 
+        alt={author?.name || "Profile picture"} 
+        itemProp="image"
+      />
       <div className="bio-content">
-        {author?.name && <><h2 className="bio-name">{author.name}</h2><p className="bio-summary">{author.summary}</p></>}
+        {author?.name && (
+          <>
+            <h2 className="bio-name" itemProp="name">{author.name}</h2>
+            <p className="bio-summary" itemProp="description">{author.summary}</p>
+            {/* Hidden schema.org properties */}
+            <meta itemProp="jobTitle" content="Senior Software Developer" />
+            <meta itemProp="worksFor" content="ShareRig" />
+            <meta itemProp="url" content="https://bdteo.github.io" />
+          </>
+        )}
         <div className="bio-social">
-          {social?.github && <a href={`https://github.com/${social.github}`} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={faGithub} /></a>}
-          {social?.email && <a href={`mailto:${social.email}`} aria-label="Email"><FontAwesomeIcon icon={faEnvelope} /></a>}
+          {social?.github && (
+            <a 
+              href={`https://github.com/${social.github}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="GitHub"
+              itemProp="sameAs"
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+          )}
+          {social?.email && (
+            <a 
+              href={`mailto:${social.email}`} 
+              aria-label="Email"
+              itemProp="email"
+            >
+              <FontAwesomeIcon icon={faEnvelope} />
+            </a>
+          )}
         </div>
       </div>
     </div>
