@@ -28,7 +28,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "_gatsby/slices/_gatsby-scripts-1.html",
-    "revision": "c8ec17520ddb369f70d3fb690673f5cf"
+    "revision": "4fedb3974c17b41927b7cbd84c631ba2"
   },
   {
     "url": "~partytown/debug/partytown-atomics.js"
@@ -87,11 +87,11 @@ self.__precacheManifest = [
   },
   {
     "url": "404.html",
-    "revision": "c7396aa1d38d5cf3d6e51a1ec36f00cc"
+    "revision": "9634c0f913911d042b3faffb8026e1d9"
   },
   {
     "url": "404/index.html",
-    "revision": "474aa718f3b7defe94242d2a16d28a6c"
+    "revision": "e6dc39795a2b21e73119213feea5e6fd"
   },
   {
     "url": "452-acf513f4b16bcb0a4e07.js"
@@ -102,7 +102,7 @@ self.__precacheManifest = [
   },
   {
     "url": "about/index.html",
-    "revision": "be7f226015a39bd234de27314116dcb8"
+    "revision": "85116b2d8bedfcf03b10531b6e189ec3"
   },
   {
     "url": "app-1e04ad124a3dd29ec3d9.js"
@@ -117,7 +117,7 @@ self.__precacheManifest = [
   },
   {
     "url": "bluez-pairing-python-agent-workaround-authentication-failed/index.html",
-    "revision": "93736545f756f41bdf9f16f897e0b2a1"
+    "revision": "bf78e7060ed509f6fdff58a840abf3e7"
   },
   {
     "url": "c16184b3-b645e587e93f02336fdc.js"
@@ -143,7 +143,7 @@ self.__precacheManifest = [
   },
   {
     "url": "claude-code-transformed-my-blog-design-in-minutes/index.html",
-    "revision": "a922b9ef7c35e4fc794d7e1fdfb79786"
+    "revision": "f685ea14537da00e6bc070c5ee7002e5"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-2059730493c4287dab27.js"
@@ -182,11 +182,11 @@ self.__precacheManifest = [
   },
   {
     "url": "discrete-representations-reinforcement-learning-insights/index.html",
-    "revision": "156c659059e258e839b7ba84f6b1213a"
+    "revision": "eed944ca888da7ba291aa1470af61f37"
   },
   {
     "url": "docker-compose-major-changes-since-october-2023/index.html",
-    "revision": "15a66579e8b55e1a1ab7de48991317f8"
+    "revision": "5e076701cdf90c4ea42edd0fe0a66244"
   },
   {
     "url": "favicon-32x32.png",
@@ -209,11 +209,11 @@ self.__precacheManifest = [
   },
   {
     "url": "google-ai-ambitions-historical-analysis-promises-stock-market-impact/index.html",
-    "revision": "32438747f4a45bab7647ec3bdbeec2a8"
+    "revision": "baee4196b1c1631e765c405c9b4d020c"
   },
   {
     "url": "huawei-watch-d2-proprietary-protocol-vendor-lockin/index.html",
-    "revision": "f5b8f7095c57e442255dc3ee86f6b856"
+    "revision": "c24bb186e54be5e0f118ae31e9be6880"
   },
   {
     "url": "icons/icon-144x144.png",
@@ -256,19 +256,19 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "9cdea3ca0d88d7069b3f5aad80e1c370"
+    "revision": "e3cb69c55a1483668eadea8508e7c7fe"
   },
   {
     "url": "installing-php-8-3-6-with-imap-on-macos-using-phpenv/index.html",
-    "revision": "8f912399c71d5be66955e1bc9b5d3529"
+    "revision": "608dc904ecfaf1e5c6a4fdb42488dc85"
   },
   {
     "url": "laravel-sail-vs-laradock-choosing-right-docker-solution/index.html",
-    "revision": "76d3e299184966a15a807787297982b2"
+    "revision": "e45921f7088df275ad0c27286a65ffb8"
   },
   {
     "url": "m1-mac-android-emulator-bluetooth-passthrough-bumble/index.html",
-    "revision": "c70860f9808457cd6550b16e49129578"
+    "revision": "35411b960c5a8595b50012cda7c67681"
   },
   {
     "url": "manifest.webmanifest",
@@ -276,7 +276,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "284a923d2bb29c7f57fa837136442f22"
+    "revision": "2851c387fd015e675ba3e18cb0a62c6c"
   },
   {
     "url": "page-data/404.html/page-data.json",
@@ -292,7 +292,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "b541dcf1d16bc97fc3f12b6fdabf82f0"
+    "revision": "0141b45ceb2bb0bfa4bdc2a17b1a1b9f"
   },
   {
     "url": "page-data/bluez-pairing-python-agent-workaround-authentication-failed/page-data.json",
@@ -372,7 +372,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "581ed71534c94a82a732c3a1535a2d7c"
+    "revision": "6eba863a66269b6558eb523475869115"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
@@ -380,7 +380,7 @@ self.__precacheManifest = [
   },
   {
     "url": "pushing-the-stable-diffussion-limits/index.html",
-    "revision": "180c2ba4e9400d3f1de2435d499cfa2b"
+    "revision": "bc58b65bd3210ea8de2de6d7aaef6161"
   },
   {
     "url": "robots.txt",
@@ -388,15 +388,15 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "10c1b6be450d5ab87641f473d1e870d9"
+    "revision": "92b5ef453bf1ce94c8f4448754c21a34"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
-    "revision": "400aee5560d6d5b8dd11264e9234cc40"
+    "revision": "e0367e8dd991498cc08b4280a295f5c2"
   },
   {
     "url": "stable-difussion-cheat-sheet/index.html",
-    "revision": "bdc766295aa4c5e7ad08b8307a988725"
+    "revision": "5db5c7c52a703dca658c49812b3b3d54"
   },
   {
     "url": "static/168463a17f9c2441d153dcee3bdf8990/16947/featured.jpg"
@@ -1284,38 +1284,38 @@ self.__precacheManifest = [
     "url": "static/montserrat-latin-wght-normal-5028c63f6a70ab0cf7cba9015ae04154.woff2"
   },
   {
-    "url": "styles.0be40c6415ebe66fa335.css"
+    "url": "styles.b905c3a74402109d7e58.css"
   },
   {
     "url": "the-sorceress-and-the-forgotten-stardust/index.html",
-    "revision": "8a2d78d819d49394bebac98d1676ab61"
+    "revision": "ca87107e28f02efa9a33b3d6e5273cfb"
   },
   {
     "url": "understanding-class-namespace-changes-shopware-6-5-developers-guide/index.html",
-    "revision": "f4b8fd3ab719372987a742a0c44f2111"
+    "revision": "3b740728f6ad2df1cfab73746268f6f2"
   },
   {
     "url": "unlocking-the-power-of-git-grep/index.html",
-    "revision": "848e0ef5aae09ee354100458aea48d57"
+    "revision": "09503419f1d4f23276ea46254889ec51"
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "67fdc374de174dad42b64ea117d7c1d0"
+    "revision": "bd6372d6312993cee472d9df64ccfc40"
   },
   {
-    "url": "webpack-runtime-c4f9d755837f677c73f0.js"
+    "url": "webpack-runtime-ea3b12004d18917032a1.js"
   },
   {
-    "url": "webpack-runtime-c4f9d755837f677c73f0.js.map",
-    "revision": "acd3e6dbe8d812e371167159094d1ae1"
+    "url": "webpack-runtime-ea3b12004d18917032a1.js.map",
+    "revision": "33f65bed738d712e2c55ea764b0f1efc"
   },
   {
     "url": "webpack.stats.json",
-    "revision": "18bf95e3b1cdec5a90acad700b30ce7f"
+    "revision": "58376c188428a94e41e538d54899067f"
   },
   {
     "url": "worst-hypocrite-rubber-duck-tale/index.html",
-    "revision": "5b2c421c50baeda8e2f4adc3a4d410fa"
+    "revision": "b47e68aebe87338b8e125a3091d39352"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
