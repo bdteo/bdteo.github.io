@@ -28,7 +28,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "_gatsby/slices/_gatsby-scripts-1.html",
-    "revision": "42f55ee317695b2e05c6981641e15f89"
+    "revision": "63e54997592249c5d8670eaefd0df095"
   },
   {
     "url": "~partytown/debug/partytown-atomics.js"
@@ -75,13 +75,6 @@ self.__precacheManifest = [
     "revision": "8d88bf4033c585ad8240de2d52541bd6"
   },
   {
-    "url": "1943edf48358ec375759a10206b57d36c98a5e6d-4bc46cd4619ccce7ab9b.js"
-  },
-  {
-    "url": "1943edf48358ec375759a10206b57d36c98a5e6d-4bc46cd4619ccce7ab9b.js.map",
-    "revision": "fcbe61a5748485d1de75ee6acfd8ee17"
-  },
-  {
     "url": "2cca2479-9e48fa65067cbe590036.js"
   },
   {
@@ -94,11 +87,11 @@ self.__precacheManifest = [
   },
   {
     "url": "404.html",
-    "revision": "be56a1df8e0a5206fec96478d5b4b42a"
+    "revision": "5ae50bb1233f00b5c4a7d539a18a2cbf"
   },
   {
     "url": "404/index.html",
-    "revision": "041b72edeaaceb8c76a9c69c2457bf8f"
+    "revision": "ab5a7e4bce151b3172c7497f18b46a2f"
   },
   {
     "url": "452-acf513f4b16bcb0a4e07.js"
@@ -109,22 +102,22 @@ self.__precacheManifest = [
   },
   {
     "url": "about/index.html",
-    "revision": "b333efe7c32bae3baa71dbc2a86ae803"
+    "revision": "f6773c8d04250ae85a516792a9ae3932"
   },
   {
-    "url": "app-2fa4c9b50f1f19e91984.js"
+    "url": "app-1e04ad124a3dd29ec3d9.js"
   },
   {
-    "url": "app-2fa4c9b50f1f19e91984.js.LICENSE.txt",
+    "url": "app-1e04ad124a3dd29ec3d9.js.LICENSE.txt",
     "revision": "217285521ecff3d6462c9f8ca0625666"
   },
   {
-    "url": "app-2fa4c9b50f1f19e91984.js.map",
-    "revision": "0f6dcaf9fb1024bf7f10d404d9ca99fa"
+    "url": "app-1e04ad124a3dd29ec3d9.js.map",
+    "revision": "dd53d50aa50cef641ec0f562ec383eb1"
   },
   {
     "url": "bluez-pairing-python-agent-workaround-authentication-failed/index.html",
-    "revision": "75fae97dde5f011ae1f42ba6b40a2283"
+    "revision": "70399da79a308a7449c8f113548ed255"
   },
   {
     "url": "c16184b3-b645e587e93f02336fdc.js"
@@ -138,19 +131,19 @@ self.__precacheManifest = [
     "revision": "a00d3672f6d41d69e2401a3c6f32479c"
   },
   {
-    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-412c30df55fbe7fc74bb.js"
+    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-cd147c8621fac85b25b6.js"
   },
   {
-    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-412c30df55fbe7fc74bb.js.map",
-    "revision": "f2e31cb8e025541533ec3c698d454376"
+    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-cd147c8621fac85b25b6.js.map",
+    "revision": "78a7b8f3643d7ebff4e5cb681fb1ddc1"
   },
   {
     "url": "chunk-map.json",
-    "revision": "b66a59df64a2fa94019973a3a1669c60"
+    "revision": "b2004538e76200d420490adc95111e70"
   },
   {
     "url": "claude-code-transformed-my-blog-design-in-minutes/index.html",
-    "revision": "37c02fd3fec9e9e83fec048ac2b95b18"
+    "revision": "134825d3d6eed95def253e58da55cf2d"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-2059730493c4287dab27.js"
@@ -160,40 +153,40 @@ self.__precacheManifest = [
     "revision": "dbdee58dc14ca9afd1e085c9ad16c3df"
   },
   {
-    "url": "component---src-pages-404-js-585d58ed261e84efc975.js"
+    "url": "component---src-pages-404-js-140b7ccd304b47764f27.js"
   },
   {
-    "url": "component---src-pages-404-js-585d58ed261e84efc975.js.map",
-    "revision": "64fe243b28fa49471b2716efa4f61487"
+    "url": "component---src-pages-404-js-140b7ccd304b47764f27.js.map",
+    "revision": "af9154a9f21e1dfae00167ff18d7b18b"
   },
   {
-    "url": "component---src-pages-index-js-34223943920145036148.js"
+    "url": "component---src-pages-index-js-88acc8e53204fd722cfd.js"
   },
   {
-    "url": "component---src-pages-index-js-34223943920145036148.js.map",
-    "revision": "a89c958f99e27babc47d38515191d6c6"
+    "url": "component---src-pages-index-js-88acc8e53204fd722cfd.js.map",
+    "revision": "5c966c376907f81fc05f8f0d4d0e8bfd"
   },
   {
-    "url": "component---src-pages-using-typescript-tsx-eb892d7bbcecf86c290c.js"
+    "url": "component---src-pages-using-typescript-tsx-cc039277bbba21fcbfac.js"
   },
   {
-    "url": "component---src-pages-using-typescript-tsx-eb892d7bbcecf86c290c.js.map",
-    "revision": "2fbf64441b5619e5add98c187bc1f75d"
+    "url": "component---src-pages-using-typescript-tsx-cc039277bbba21fcbfac.js.map",
+    "revision": "7e86226b267bfb24cce69ecbd0bb1825"
   },
   {
-    "url": "component---src-templates-blog-post-js-e17edb78643a1178d66c.js"
+    "url": "component---src-templates-blog-post-js-9e30eee75d56eb4a284a.js"
   },
   {
-    "url": "component---src-templates-blog-post-js-e17edb78643a1178d66c.js.map",
-    "revision": "55598f3a69ff755a8605366b0da09074"
+    "url": "component---src-templates-blog-post-js-9e30eee75d56eb4a284a.js.map",
+    "revision": "ae9cae9e849a5582aac7a16d28638e17"
   },
   {
     "url": "discrete-representations-reinforcement-learning-insights/index.html",
-    "revision": "3be851de71aac80553d881470a144069"
+    "revision": "77a53cea598063642a535279c4aed83d"
   },
   {
     "url": "docker-compose-major-changes-since-october-2023/index.html",
-    "revision": "341740fd2d9748074ba7b0b5dba8782d"
+    "revision": "e59044ab1105f50dff31d78738ff88c8"
   },
   {
     "url": "favicon-32x32.png",
@@ -216,11 +209,11 @@ self.__precacheManifest = [
   },
   {
     "url": "google-ai-ambitions-historical-analysis-promises-stock-market-impact/index.html",
-    "revision": "6b27a18083e412dcfeb3ea0c3d1d34f4"
+    "revision": "9c8d567c000b0cdf243c0f950e7036f4"
   },
   {
     "url": "huawei-watch-d2-proprietary-protocol-vendor-lockin/index.html",
-    "revision": "27d1535aacad0411d2fe8e2ae5e4cfe4"
+    "revision": "74e57ce1e4bcd6c8a88c8a09178ad6e4"
   },
   {
     "url": "icons/icon-144x144.png",
@@ -263,19 +256,19 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "d43f8f7e5044aec42b9089cc31ece3a7"
+    "revision": "9e916618b5cec0accea8219cf0ae1da3"
   },
   {
     "url": "installing-php-8-3-6-with-imap-on-macos-using-phpenv/index.html",
-    "revision": "22d294614d1ca81fe24456a7a3440c84"
+    "revision": "46c6143eb24090c8635f6922ae21846c"
   },
   {
     "url": "laravel-sail-vs-laradock-choosing-right-docker-solution/index.html",
-    "revision": "361ab546da4f68e7c0f8d186f9607499"
+    "revision": "a54fd64956a1aa20e0781aaeecf1c9f4"
   },
   {
     "url": "m1-mac-android-emulator-bluetooth-passthrough-bumble/index.html",
-    "revision": "07491755e449aa8992e1f838c2d322c1"
+    "revision": "d58dc476e93364ffbd4b4984030f85d0"
   },
   {
     "url": "manifest.webmanifest",
@@ -283,7 +276,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "35c874e2a019c6edb8faabc43d8b6c73"
+    "revision": "8701d7738fbaa7325184a19f65dfeb89"
   },
   {
     "url": "page-data/404.html/page-data.json",
@@ -299,7 +292,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "4458f373954013b65a1989a67adb439f"
+    "revision": "c6f63ba76a7785a90cc8ac4edd5d77d8"
   },
   {
     "url": "page-data/bluez-pairing-python-agent-workaround-authentication-failed/page-data.json",
@@ -379,7 +372,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "5a8c763620d97048ee04cf70f1c6e8aa"
+    "revision": "84011f9325330f19046d43c96663ae3f"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
@@ -387,7 +380,7 @@ self.__precacheManifest = [
   },
   {
     "url": "pushing-the-stable-diffussion-limits/index.html",
-    "revision": "b5dd4f91c0084ce0faeb1a2dcdbe49cb"
+    "revision": "c2aaf7ac7feda53f2aa552061736bcca"
   },
   {
     "url": "robots.txt",
@@ -395,15 +388,15 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "00bca7e00b55a37426d6b81f7c8f3dbf"
+    "revision": "a803144b4cffd0e84942493ac35aba45"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
-    "revision": "8a837e5c5c5c7183a9678d02c492dd28"
+    "revision": "712f07a60e77e9164da5cb1181048d69"
   },
   {
     "url": "stable-difussion-cheat-sheet/index.html",
-    "revision": "a5576740dc04089547a67853f75954e5"
+    "revision": "bf7766f2c8b2d9fad8abbfbd3ef81e21"
   },
   {
     "url": "static/168463a17f9c2441d153dcee3bdf8990/16947/featured.jpg"
@@ -1295,34 +1288,34 @@ self.__precacheManifest = [
   },
   {
     "url": "the-sorceress-and-the-forgotten-stardust/index.html",
-    "revision": "a43da141b6773cb966bafa97299ef3ba"
+    "revision": "d0a88e749bce70189ae49b757095ed7b"
   },
   {
     "url": "understanding-class-namespace-changes-shopware-6-5-developers-guide/index.html",
-    "revision": "e05d56ee73d7bf70b40b5f8caeb2de59"
+    "revision": "09a09ff5d98566f0c02eed24543b4106"
   },
   {
     "url": "unlocking-the-power-of-git-grep/index.html",
-    "revision": "6014d769a23ed30cd6d861e62e228567"
+    "revision": "6a59591fe33cc9f42fef16569d171ab9"
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "8449a955ce8a6162b2e249e2ab8da618"
+    "revision": "bd48caa33c492c98dc041035cec9b1d3"
   },
   {
-    "url": "webpack-runtime-3139becc3adc5c32613a.js"
+    "url": "webpack-runtime-047c7ed38b89dc0286d9.js"
   },
   {
-    "url": "webpack-runtime-3139becc3adc5c32613a.js.map",
-    "revision": "a8465942bde27218a737dbf662c05878"
+    "url": "webpack-runtime-047c7ed38b89dc0286d9.js.map",
+    "revision": "a379aa3d44ae515b727ab5d835233f28"
   },
   {
     "url": "webpack.stats.json",
-    "revision": "5df1de077e14bdd4a4728192530ecfb6"
+    "revision": "31a697abd0d6b750e15ea21ea6a28b6f"
   },
   {
     "url": "worst-hypocrite-rubber-duck-tale/index.html",
-    "revision": "75bd493dc243540f4b71833ee35060bf"
+    "revision": "276a8466d5fd972f591da20827c0b7dd"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -1432,7 +1425,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`https://bdteo.github.io/app-2fa4c9b50f1f19e91984.js`))) {
+  if (!resources || !(await caches.match(`https://bdteo.github.io/app-1e04ad124a3dd29ec3d9.js`))) {
     return await fetch(event.request)
   }
 
