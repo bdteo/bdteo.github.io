@@ -57,48 +57,43 @@ const Seo = ({
   const metaKeywords = keywords.length > 0 ? keywords.join(", ") : "programming, software development, web development, AI, machine learning"
   
   return (
-    <Helmet
-      htmlAttributes={{
-        lang: 'en'
-      }}
-      title={metaTitle}
-      titleTemplate={title ? `%s | ${defaultTitle}` : defaultTitle}
-      meta={[
-        // Primary Meta Tags
-        { name: 'title', content: metaTitle },
-        { name: 'description', content: metaDescription },
-        { name: 'author', content: author.name },
-        ...(metaKeywords ? [{ name: 'keywords', content: metaKeywords }] : []),
-        
-        // Open Graph / Facebook
-        { property: 'og:type', content: article ? 'article' : 'website' },
-        { property: 'og:url', content: url },
-        { property: 'og:title', content: metaTitle },
-        { property: 'og:description', content: metaDescription },
-        { property: 'og:site_name', content: defaultTitle },
-        ...(metaImage ? [{ property: 'og:image', content: metaImage }] : []),
-        ...(article && datePublished ? [{ property: 'article:published_time', content: datePublished }] : []),
-        ...(article && dateModified ? [{ property: 'article:modified_time', content: dateModified }] : []),
-        
-        // Twitter
-        { name: 'twitter:card', content: metaImage ? 'summary_large_image' : 'summary' },
-        { name: 'twitter:creator', content: social?.twitter || '' },
-        { name: 'twitter:title', content: metaTitle },
-        { name: 'twitter:description', content: metaDescription },
-        ...(metaImage ? [{ name: 'twitter:image', content: metaImage }] : []),
-        
-        // Bing Verification
-        { name: 'msvalidate.01', content: 'DE9AA37DB58BF3C5CD561AE0B187709C' },
-        
-        // Robots directives
-        { name: 'robots', content: 'index, follow' },
-        { name: 'googlebot', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
-        { name: 'bingbot', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
-      ]}
-      link={[
-        { rel: 'canonical', href: url }
-      ]}
-    >
+    <>
+      <title>{metaTitle}</title>
+      <meta name="title" content={metaTitle} />
+      <meta name="description" content={metaDescription} />
+      {metaKeywords && <meta name="keywords" content={metaKeywords} />}
+      <meta name="author" content={author.name} />
+      <link rel="canonical" href={url} />
+      
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content={article ? "article" : "website"} />
+      <meta property="og:url" content={url} />
+      <meta property="og:title" content={metaTitle} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:site_name" content={defaultTitle} />
+      {metaImage && <meta property="og:image" content={metaImage} />}
+      {article && datePublished && (
+        <meta property="article:published_time" content={datePublished} />
+      )}
+      {article && dateModified && (
+        <meta property="article:modified_time" content={dateModified} />
+      )}
+      
+      {/* Twitter */}
+      <meta name="twitter:card" content={metaImage ? "summary_large_image" : "summary"} />
+      <meta name="twitter:creator" content={social?.twitter || ""} />
+      <meta name="twitter:title" content={metaTitle} />
+      <meta name="twitter:description" content={metaDescription} />
+      {metaImage && <meta name="twitter:image" content={metaImage} />}
+      
+      {/* Bing Verification */}
+      <meta name="msvalidate.01" content="DE9AA37DB58BF3C5CD561AE0B187709C" />
+      
+      {/* Additional SEO tags */}
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <html lang="en" />
       {/* Structured Data for Articles */}
       {article && (
         <script type="application/ld+json">
