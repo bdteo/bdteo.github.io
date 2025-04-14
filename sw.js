@@ -28,7 +28,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "_gatsby/slices/_gatsby-scripts-1.html",
-    "revision": "4fedb3974c17b41927b7cbd84c631ba2"
+    "revision": "42f55ee317695b2e05c6981641e15f89"
   },
   {
     "url": "~partytown/debug/partytown-atomics.js"
@@ -75,6 +75,13 @@ self.__precacheManifest = [
     "revision": "8d88bf4033c585ad8240de2d52541bd6"
   },
   {
+    "url": "1943edf48358ec375759a10206b57d36c98a5e6d-4bc46cd4619ccce7ab9b.js"
+  },
+  {
+    "url": "1943edf48358ec375759a10206b57d36c98a5e6d-4bc46cd4619ccce7ab9b.js.map",
+    "revision": "fcbe61a5748485d1de75ee6acfd8ee17"
+  },
+  {
     "url": "2cca2479-9e48fa65067cbe590036.js"
   },
   {
@@ -87,11 +94,11 @@ self.__precacheManifest = [
   },
   {
     "url": "404.html",
-    "revision": "9634c0f913911d042b3faffb8026e1d9"
+    "revision": "be56a1df8e0a5206fec96478d5b4b42a"
   },
   {
     "url": "404/index.html",
-    "revision": "e6dc39795a2b21e73119213feea5e6fd"
+    "revision": "041b72edeaaceb8c76a9c69c2457bf8f"
   },
   {
     "url": "452-acf513f4b16bcb0a4e07.js"
@@ -102,22 +109,22 @@ self.__precacheManifest = [
   },
   {
     "url": "about/index.html",
-    "revision": "85116b2d8bedfcf03b10531b6e189ec3"
+    "revision": "b333efe7c32bae3baa71dbc2a86ae803"
   },
   {
-    "url": "app-1e04ad124a3dd29ec3d9.js"
+    "url": "app-2fa4c9b50f1f19e91984.js"
   },
   {
-    "url": "app-1e04ad124a3dd29ec3d9.js.LICENSE.txt",
+    "url": "app-2fa4c9b50f1f19e91984.js.LICENSE.txt",
     "revision": "217285521ecff3d6462c9f8ca0625666"
   },
   {
-    "url": "app-1e04ad124a3dd29ec3d9.js.map",
-    "revision": "dd53d50aa50cef641ec0f562ec383eb1"
+    "url": "app-2fa4c9b50f1f19e91984.js.map",
+    "revision": "0f6dcaf9fb1024bf7f10d404d9ca99fa"
   },
   {
     "url": "bluez-pairing-python-agent-workaround-authentication-failed/index.html",
-    "revision": "bf78e7060ed509f6fdff58a840abf3e7"
+    "revision": "75fae97dde5f011ae1f42ba6b40a2283"
   },
   {
     "url": "c16184b3-b645e587e93f02336fdc.js"
@@ -131,19 +138,19 @@ self.__precacheManifest = [
     "revision": "a00d3672f6d41d69e2401a3c6f32479c"
   },
   {
-    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-5fcc763ed1e26f711732.js"
+    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-412c30df55fbe7fc74bb.js"
   },
   {
-    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-5fcc763ed1e26f711732.js.map",
-    "revision": "352ba74d24f007c484e26b06a0a4a474"
+    "url": "cd7d5f864fc9e15ed8adef086269b0aeff617554-412c30df55fbe7fc74bb.js.map",
+    "revision": "f2e31cb8e025541533ec3c698d454376"
   },
   {
     "url": "chunk-map.json",
-    "revision": "76a8db19c3f10a0a97d1fc586b319fd5"
+    "revision": "b66a59df64a2fa94019973a3a1669c60"
   },
   {
     "url": "claude-code-transformed-my-blog-design-in-minutes/index.html",
-    "revision": "f685ea14537da00e6bc070c5ee7002e5"
+    "revision": "37c02fd3fec9e9e83fec048ac2b95b18"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-2059730493c4287dab27.js"
@@ -153,40 +160,40 @@ self.__precacheManifest = [
     "revision": "dbdee58dc14ca9afd1e085c9ad16c3df"
   },
   {
-    "url": "component---src-pages-404-js-3b47fec77d21c84735b8.js"
+    "url": "component---src-pages-404-js-585d58ed261e84efc975.js"
   },
   {
-    "url": "component---src-pages-404-js-3b47fec77d21c84735b8.js.map",
-    "revision": "7876bd671b37452197682300b776608e"
+    "url": "component---src-pages-404-js-585d58ed261e84efc975.js.map",
+    "revision": "64fe243b28fa49471b2716efa4f61487"
   },
   {
-    "url": "component---src-pages-index-js-e472d4a28d855db7e924.js"
+    "url": "component---src-pages-index-js-34223943920145036148.js"
   },
   {
-    "url": "component---src-pages-index-js-e472d4a28d855db7e924.js.map",
-    "revision": "0f7f47fd00ea2b6dc0299bc6b529dc01"
+    "url": "component---src-pages-index-js-34223943920145036148.js.map",
+    "revision": "a89c958f99e27babc47d38515191d6c6"
   },
   {
-    "url": "component---src-pages-using-typescript-tsx-9bb1db0d9c8396ecf6ac.js"
+    "url": "component---src-pages-using-typescript-tsx-eb892d7bbcecf86c290c.js"
   },
   {
-    "url": "component---src-pages-using-typescript-tsx-9bb1db0d9c8396ecf6ac.js.map",
-    "revision": "396e120dcb8592a6768fe3b71466f92a"
+    "url": "component---src-pages-using-typescript-tsx-eb892d7bbcecf86c290c.js.map",
+    "revision": "2fbf64441b5619e5add98c187bc1f75d"
   },
   {
-    "url": "component---src-templates-blog-post-js-e3d718079108cfd26cad.js"
+    "url": "component---src-templates-blog-post-js-e17edb78643a1178d66c.js"
   },
   {
-    "url": "component---src-templates-blog-post-js-e3d718079108cfd26cad.js.map",
-    "revision": "e0599fdcf342729a0fb52678e408172f"
+    "url": "component---src-templates-blog-post-js-e17edb78643a1178d66c.js.map",
+    "revision": "55598f3a69ff755a8605366b0da09074"
   },
   {
     "url": "discrete-representations-reinforcement-learning-insights/index.html",
-    "revision": "eed944ca888da7ba291aa1470af61f37"
+    "revision": "3be851de71aac80553d881470a144069"
   },
   {
     "url": "docker-compose-major-changes-since-october-2023/index.html",
-    "revision": "5e076701cdf90c4ea42edd0fe0a66244"
+    "revision": "341740fd2d9748074ba7b0b5dba8782d"
   },
   {
     "url": "favicon-32x32.png",
@@ -209,11 +216,11 @@ self.__precacheManifest = [
   },
   {
     "url": "google-ai-ambitions-historical-analysis-promises-stock-market-impact/index.html",
-    "revision": "baee4196b1c1631e765c405c9b4d020c"
+    "revision": "6b27a18083e412dcfeb3ea0c3d1d34f4"
   },
   {
     "url": "huawei-watch-d2-proprietary-protocol-vendor-lockin/index.html",
-    "revision": "c24bb186e54be5e0f118ae31e9be6880"
+    "revision": "27d1535aacad0411d2fe8e2ae5e4cfe4"
   },
   {
     "url": "icons/icon-144x144.png",
@@ -256,19 +263,19 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "e3cb69c55a1483668eadea8508e7c7fe"
+    "revision": "d43f8f7e5044aec42b9089cc31ece3a7"
   },
   {
     "url": "installing-php-8-3-6-with-imap-on-macos-using-phpenv/index.html",
-    "revision": "608dc904ecfaf1e5c6a4fdb42488dc85"
+    "revision": "22d294614d1ca81fe24456a7a3440c84"
   },
   {
     "url": "laravel-sail-vs-laradock-choosing-right-docker-solution/index.html",
-    "revision": "e45921f7088df275ad0c27286a65ffb8"
+    "revision": "361ab546da4f68e7c0f8d186f9607499"
   },
   {
     "url": "m1-mac-android-emulator-bluetooth-passthrough-bumble/index.html",
-    "revision": "35411b960c5a8595b50012cda7c67681"
+    "revision": "07491755e449aa8992e1f838c2d322c1"
   },
   {
     "url": "manifest.webmanifest",
@@ -276,63 +283,63 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "2851c387fd015e675ba3e18cb0a62c6c"
+    "revision": "35c874e2a019c6edb8faabc43d8b6c73"
   },
   {
     "url": "page-data/404.html/page-data.json",
-    "revision": "34222a5fe0aadce36e7a542b19f7f905"
+    "revision": "e4017e17e0c406e5f082c622d99c0c00"
   },
   {
     "url": "page-data/404/page-data.json",
-    "revision": "62cccc5dd05e1630ef416db81de497fd"
+    "revision": "79c2cf93de815e1bcec08d7b5cbef530"
   },
   {
     "url": "page-data/about/page-data.json",
-    "revision": "47a11c53f150107f381080bcb46a3c57"
+    "revision": "b5d4e9b68b0b486c72be7c852f2fcc87"
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "0141b45ceb2bb0bfa4bdc2a17b1a1b9f"
+    "revision": "4458f373954013b65a1989a67adb439f"
   },
   {
     "url": "page-data/bluez-pairing-python-agent-workaround-authentication-failed/page-data.json",
-    "revision": "18d8ebd8b990bdc721edbe0e9a4a86d8"
+    "revision": "e8aaa167a83a77adbd5c25895e049c0c"
   },
   {
     "url": "page-data/claude-code-transformed-my-blog-design-in-minutes/page-data.json",
-    "revision": "893508f982d19a19548eada90f88bd8d"
+    "revision": "d1b065ac92748f1e22b5e751b6f808c0"
   },
   {
     "url": "page-data/discrete-representations-reinforcement-learning-insights/page-data.json",
-    "revision": "a018c9081f5c94ecc478b17ead18e4e2"
+    "revision": "15e1bd22412f1d4675a5fb4eedded5c8"
   },
   {
     "url": "page-data/docker-compose-major-changes-since-october-2023/page-data.json",
-    "revision": "632e7f4a16fef6ef0e4f5a083faebf41"
+    "revision": "ee1ef6ce31b4634a43418df82507a237"
   },
   {
     "url": "page-data/google-ai-ambitions-historical-analysis-promises-stock-market-impact/page-data.json",
-    "revision": "b53696faf9009deb0f40012908654e86"
+    "revision": "2d725ef133e6137491e2c10feba79e54"
   },
   {
     "url": "page-data/huawei-watch-d2-proprietary-protocol-vendor-lockin/page-data.json",
-    "revision": "8872e178cd59d6495089b0d175f8a036"
+    "revision": "b087122edb1d8f6f0557e28538e777b9"
   },
   {
     "url": "page-data/index/page-data.json",
-    "revision": "70a00743b5d9cbf4a49d92141bd432e7"
+    "revision": "b879147ea2484dc88bd6ec62d4a16aa8"
   },
   {
     "url": "page-data/installing-php-8-3-6-with-imap-on-macos-using-phpenv/page-data.json",
-    "revision": "3418bc7c4401edde65be9675ea6bf00d"
+    "revision": "d803d06f95cab9b50544e37f17c57772"
   },
   {
     "url": "page-data/laravel-sail-vs-laradock-choosing-right-docker-solution/page-data.json",
-    "revision": "4882674627b69991254e34b6764bc1aa"
+    "revision": "77a6d42e253aa262be75218bffa48b0f"
   },
   {
     "url": "page-data/m1-mac-android-emulator-bluetooth-passthrough-bumble/page-data.json",
-    "revision": "7ffca96962d319f4df98edabc233c08d"
+    "revision": "361aaba1fe30a5deb30ba8216b48532c"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
@@ -340,47 +347,47 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/pushing-the-stable-diffussion-limits/page-data.json",
-    "revision": "ec4ea259ae8199e843e6e1260dac7989"
+    "revision": "a54949cfe3f796403f4411a91639bb32"
   },
   {
     "url": "page-data/shadow-weaver-redemption-journey/page-data.json",
-    "revision": "fd8d0f1a07cec4577c23e856b98cf506"
-  },
-  {
-    "url": "page-data/sq/d/2841359383.json",
-    "revision": "0eed29d34e0df40e5c1e84697018af10"
+    "revision": "1129a9cd3d053e170b74800116154b2e"
   },
   {
     "url": "page-data/sq/d/2923011943.json",
     "revision": "901eb800ab5d7123f3a8277d846bf103"
   },
   {
+    "url": "page-data/sq/d/3464938722.json",
+    "revision": "9ab0fa07788b16e30a8c1d4788dbccc5"
+  },
+  {
     "url": "page-data/stable-difussion-cheat-sheet/page-data.json",
-    "revision": "a2f740cb204d178c9d7a8394760ece4c"
+    "revision": "c7af0584e6ca64bccb790d2fa45ac972"
   },
   {
     "url": "page-data/the-sorceress-and-the-forgotten-stardust/page-data.json",
-    "revision": "b2af4496542e848ffed1904786796b3a"
+    "revision": "2b096681e595c15e3450903e2f46db61"
   },
   {
     "url": "page-data/understanding-class-namespace-changes-shopware-6-5-developers-guide/page-data.json",
-    "revision": "b077eaf81d895ca1f8921faf62c33803"
+    "revision": "fee0b1b23f9955e9f97154c299a5dfe1"
   },
   {
     "url": "page-data/unlocking-the-power-of-git-grep/page-data.json",
-    "revision": "8e77179a2c81ade44c759e97d8dc1015"
+    "revision": "ad93742e25b863511bde170dc5bb6064"
   },
   {
     "url": "page-data/using-typescript/page-data.json",
-    "revision": "6eba863a66269b6558eb523475869115"
+    "revision": "5a8c763620d97048ee04cf70f1c6e8aa"
   },
   {
     "url": "page-data/worst-hypocrite-rubber-duck-tale/page-data.json",
-    "revision": "61ae26ee4aaa979259d20e89fbea1b91"
+    "revision": "08f61fa4493c4b2522b198f6c7d3527c"
   },
   {
     "url": "pushing-the-stable-diffussion-limits/index.html",
-    "revision": "bc58b65bd3210ea8de2de6d7aaef6161"
+    "revision": "b5dd4f91c0084ce0faeb1a2dcdbe49cb"
   },
   {
     "url": "robots.txt",
@@ -388,15 +395,15 @@ self.__precacheManifest = [
   },
   {
     "url": "rss.xml",
-    "revision": "92b5ef453bf1ce94c8f4448754c21a34"
+    "revision": "00bca7e00b55a37426d6b81f7c8f3dbf"
   },
   {
     "url": "shadow-weaver-redemption-journey/index.html",
-    "revision": "e0367e8dd991498cc08b4280a295f5c2"
+    "revision": "8a837e5c5c5c7183a9678d02c492dd28"
   },
   {
     "url": "stable-difussion-cheat-sheet/index.html",
-    "revision": "5db5c7c52a703dca658c49812b3b3d54"
+    "revision": "a5576740dc04089547a67853f75954e5"
   },
   {
     "url": "static/168463a17f9c2441d153dcee3bdf8990/16947/featured.jpg"
@@ -1288,34 +1295,34 @@ self.__precacheManifest = [
   },
   {
     "url": "the-sorceress-and-the-forgotten-stardust/index.html",
-    "revision": "ca87107e28f02efa9a33b3d6e5273cfb"
+    "revision": "a43da141b6773cb966bafa97299ef3ba"
   },
   {
     "url": "understanding-class-namespace-changes-shopware-6-5-developers-guide/index.html",
-    "revision": "3b740728f6ad2df1cfab73746268f6f2"
+    "revision": "e05d56ee73d7bf70b40b5f8caeb2de59"
   },
   {
     "url": "unlocking-the-power-of-git-grep/index.html",
-    "revision": "09503419f1d4f23276ea46254889ec51"
+    "revision": "6014d769a23ed30cd6d861e62e228567"
   },
   {
     "url": "using-typescript/index.html",
-    "revision": "bd6372d6312993cee472d9df64ccfc40"
+    "revision": "8449a955ce8a6162b2e249e2ab8da618"
   },
   {
-    "url": "webpack-runtime-ea3b12004d18917032a1.js"
+    "url": "webpack-runtime-3139becc3adc5c32613a.js"
   },
   {
-    "url": "webpack-runtime-ea3b12004d18917032a1.js.map",
-    "revision": "33f65bed738d712e2c55ea764b0f1efc"
+    "url": "webpack-runtime-3139becc3adc5c32613a.js.map",
+    "revision": "a8465942bde27218a737dbf662c05878"
   },
   {
     "url": "webpack.stats.json",
-    "revision": "58376c188428a94e41e538d54899067f"
+    "revision": "5df1de077e14bdd4a4728192530ecfb6"
   },
   {
     "url": "worst-hypocrite-rubber-duck-tale/index.html",
-    "revision": "b47e68aebe87338b8e125a3091d39352"
+    "revision": "75bd493dc243540f4b71833ee35060bf"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -1425,7 +1432,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`https://bdteo.github.io/app-1e04ad124a3dd29ec3d9.js`))) {
+  if (!resources || !(await caches.match(`https://bdteo.github.io/app-2fa4c9b50f1f19e91984.js`))) {
     return await fetch(event.request)
   }
 
