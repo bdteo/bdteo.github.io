@@ -8,7 +8,7 @@
 
 module.exports = {
   pathPrefix: "",
-  assetPrefix: "https://bdteo.github.io",
+  assetPrefix: "https://bdteo.com",
   siteMetadata: {
     title: `Boris's Blog`,
     author: {
@@ -16,7 +16,7 @@ module.exports = {
       summary: `Senior Software Developer at ShareRig with expertise in web development, AI/ML, DevOps, and low-level programming. Passionate about exploring theoretical computer science, mathematics, and the creative applications of AI.`,
     },
     description: `A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.`,
-    siteUrl: `https://bdteo.github.io`,
+    siteUrl: `https://bdteo.com`,
     social: {
       github: `bdteo`,
       email: `boristeoharov@gmail.com`,

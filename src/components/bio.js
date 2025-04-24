@@ -54,7 +54,7 @@ const Bio = () => {
             {/* Hidden schema.org properties */}
             <meta itemProp="jobTitle" content="Senior Software Developer" />
             <meta itemProp="worksFor" content="ShareRig" />
-            <meta itemProp="url" content="https://bdteo.github.io" />
+            <meta itemProp="url" content="https://bdteo.com" />
           </>
         )}
         <div className="bio-social">

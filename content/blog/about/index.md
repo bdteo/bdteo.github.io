@@ -41,5 +41,5 @@ A blog exploring the intersections of software development, theoretical computer
 
 ## Get in Touch
 
-- GitHub: [bdteo.github.io](https://bdteo.github.io)
+- GitHub: [bdteo.com](https://bdteo.com)
 

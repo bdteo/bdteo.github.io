@@ -80,7 +80,7 @@ export const Head = () => {
           "@context": "https://schema.org",
           "@type": "WebSite",
           "name": "Boris D. Teoharov's Blog",
-          "url": "https://bdteo.github.io",
+          "url": "https://bdteo.com",
           "description": "A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.",
           "author": {
             "@type": "Person",
@@ -88,7 +88,7 @@ export const Head = () => {
           },
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://bdteo.github.io/?s={search_term_string}",
+            "target": "https://bdteo.com/?s={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         })}
