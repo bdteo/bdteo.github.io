@@ -1,7 +1,7 @@
 ---
-title: "Pushing the Limits: Generating High-Quality, Photorealistic Images with Stable Diffusion"
+title: "Stable Diffusion Photorealism: Settings & GPU Limits Guide"
 date: "2023-05-04T23:45:00.000Z"
-description: "Discover how to optimize Stable Diffusion settings and techniques to generate stunning, photorealistic images while considering GPU limitations and balancing quality with efficiency."
+description: "Learn to optimize Stable Diffusion samplers, CFG, resolution & prompts for stunning photorealistic images. Balance quality, GPU limits & efficiency."
 featuredImage: "./images/featured.jpg"
 imageCaption: "A hyper-realistic AI-generated image showcasing the capabilities of Stable Diffusion"
 ---

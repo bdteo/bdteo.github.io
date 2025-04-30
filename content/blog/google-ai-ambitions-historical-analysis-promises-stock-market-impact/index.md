@@ -1,7 +1,7 @@
 ---
-title: "Google's AI Ambitions: A Historical Analysis of Promises, Stock Performance, and Market Impact"
+title: "Google AI History: Promises, Stock Performance & Impact"
 date: "2024-05-11T12:00:00.000Z"
-description: "Explore Google's AI journey through the lens of corporate promises, stock market performance, and technological innovation, uncovering key milestones, successes, failures, and future outlook."
+description: "Explore Google's AI history, analyzing promises (TensorFlow, Gemini) vs. stock performance & market impact. Covers milestones, successes, failures & outlook."
 featuredImage: "./images/featured.jpg"
 imageCaption: "A hyper-realistic AI-generated image showcasing the capabilities of Stable Diffusion"
 ---

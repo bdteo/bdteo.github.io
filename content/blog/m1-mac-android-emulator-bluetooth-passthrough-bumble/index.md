@@ -1,9 +1,9 @@
 ---
-title: "M1 Mac + Android Emulator Bluetooth Nightmare? Bumble & API 32 Saved My Sanity!"
+title: "Fix Android Emulator Bluetooth on M1 Mac using Bumble & API 32"
 date: "2025-04-14" # Adjust date as needed
 slug: "m1-mac-android-emulator-bluetooth-passthrough-bumble"
 author: "Boris Teoharov" # Or your preferred author name
-description: "Struggling to get Bluetooth working between your M1 Mac and the Android Emulator? Tried everything? This developer's journey reveals the specific Bumble setup and emulator flags that finally worked!"
+description: "Fix Bluetooth passthrough for Android Emulator on M1 Macs. Guide details the successful Bumble setup using Netsim, explicit endpoints, and API 32 AVDs."
 tags: ["Android Emulator", "Bluetooth", "BLE", "HCI", "Bumble", "macOS", "M1", "Apple Silicon", "Docker", "QEMU", "Netsim", "Passthrough", "Troubleshooting", "API 32"]
 featuredImage: "./images/featured.jpg" # Replace with a relevant image path
 imageCaption: "Visualizing the complex bridge needed to connect M1 Mac Bluetooth to the Android Emulator."

@@ -1,9 +1,9 @@
 ---
-title: "Discrete Representations in RL: Edan Meyer's Groundbreaking Research"
+title: "Discrete Representations in RL: Edan Meyer's Research Insights"
 date: "2024-07-15"
 slug: "discrete-representations-reinforcement-learning-insights"
 author: "Boris D. Teoharov"
-description: "Explore Edan Meyer's fascinating research on discrete representations in reinforcement learning, and discover how this approach could revolutionize AI adaptability and efficiency."
+description: "Explore Edan Meyer's research on discrete representations in RL. Learn why they improve world models, boost AI adaptability, and increase efficiency."
 tags: ["Artificial Intelligence", "Reinforcement Learning", "Discrete Representations", "Edan Meyer", "AI Research"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A visual representation of discrete states in reinforcement learning, inspired by Edan Meyer's research"

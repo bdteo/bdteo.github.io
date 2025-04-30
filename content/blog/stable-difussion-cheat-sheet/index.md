@@ -1,7 +1,7 @@
 ---
-title: "Stable Diffusion Cheat Sheet: Troubleshooting and Optimization"
+title: "Stable Diffusion Cheat Sheet: Troubleshooting & Optimization"
 date: "2023-05-04T23:30:00.000Z"
-description: "A comprehensive guide to optimizing Stable Diffusion settings for high-quality, efficient image generation."
+description: "Optimize Stable Diffusion: Cheat sheet covers clip skip, CFG, resolution, samplers & more for troubleshooting & generating high-quality AI images efficiently."
 featuredImage: "./images/featured.jpg"
 imageCaption: "A hyper-realistic AI-generated image showcasing the capabilities of Stable Diffusion"
 ---

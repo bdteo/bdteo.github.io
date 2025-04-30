@@ -1,10 +1,10 @@
 ---
 
-title: "Understanding Class and Namespace Changes in Shopware 6.5 and 6.6: A Developer's Guide"
+title: "Dev Guide: Shopware 6.5/6.6 Class & Namespace Updates"
 date: "2024-11-30"
 slug: "understanding-class-namespace-changes-shopware-6-5-6-6-developers-guide"
 author: "Boris Teoharov"
-description: "Discover the essential class and namespace changes in Shopware 6.5 and 6.6 with this comprehensive developer's guide. Learn how to adapt your codebase to the latest updates, understand the impact on your projects, and ensure a smooth transition. Stay ahead with actionable insights and best practices for leveraging new features in Shopware 6.5 and 6.6."
+description: "Adapt to Shopware 6.5/6.6: Key class/namespace changes, Symfony 6, Stock API, Bootstrap 5, CSRF fixes & Offcanvas Cart data-off-canvas-cart update."
 tags:
   - "Shopware6.5"
   - "Shopware6.6"

@@ -1,7 +1,7 @@
 ---
-title: About Boris D. Teoharov
+title: "About Boris D. Teoharov | Senior Software Developer"
 date: "2023-05-04T22:12:03.284Z"
-description: "About my blog and me."
+description: "Learn about Boris D. Teoharov, Senior Software Developer at ShareRig. Expertise in PHP, AI/ML, DevOps, low-level programming, and theoretical computer science."
 ---
 
 A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.

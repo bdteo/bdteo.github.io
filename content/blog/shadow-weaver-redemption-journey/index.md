@@ -1,7 +1,7 @@
 ---
-title: "The Tale of the Shadow Weaver: A Journey of Redemption and Forgiveness"
+title: "The Shadow Weaver's Tale: A Journey of Redemption & Forgiveness"
 date: "2024-09-14T12:30:00.000Z"
-description: "In the twilight realm of Luminara, Aiden, a talented weaver, embarks on a perilous journey to find the Light of Forgiveness. Through facing his inner demons and overcoming magical challenges, he learns the true meaning of redemption and the power of self-forgiveness."
+description: "A fantasy tale of Aiden, the Shadow Weaver, on a journey through magical challenges to find redemption and learn the power of self-forgiveness and healing."
 featuredImage: "./images/featured.jpg"
 imageCaption: "A tapestry depicting a lone figure traversing misty mountains, with threads of light and shadow intertwined."
 ---

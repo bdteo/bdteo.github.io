@@ -1,9 +1,9 @@
 ---
-title: "The Hidden Path: Unlocking the Power of ..."
+title: "Unlock the Power of 'git grep' for Efficient Code Searching"
 date: "2024-11-13"
 slug: "unlocking-the-power-of-git-grep"
 author: "Boris D. Teoharov"
-description: "Discover how the 'git grep' command can revolutionize your code searching capabilities, making navigation through large codebases efficient and precise."
+description: "Learn why 'git grep' beats standard grep for code search in Git repos. Search tracked files, ignore .gitignore, use regex & search branches efficiently."
 tags: ["git", "git grep", "code search", "developer tools", "software development", "command line tools"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "An abstract image of a developer navigating a labyrinth of code, symbolizing the hidden paths unlocked by using git grep."

@@ -1,7 +1,7 @@
 ---
-title: "Laravel Sail vs Laradock: Choosing the Right Docker Solution for Your PHP Projects 🐳"
+title: "Laravel Sail vs Laradock: Comparison for PHP Docker Devs"
 date: "2024-08-08T12:00:00.000Z"
-description: "Explore the key differences between Laravel Sail and Laradock, two popular Docker-based solutions for PHP development. Learn which tool best suits your project needs and development workflow."
+description: "Compare Laravel Sail & Laradock for PHP development. Understand differences in scope, complexity, customization & when to choose each Docker solution."
 featuredImage: "./images/featured.png"
 imageCaption: "A visual comparison of Laravel Sail and Laradock containerization solutions"
 ---

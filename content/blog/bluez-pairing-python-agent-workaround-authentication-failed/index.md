@@ -1,9 +1,9 @@
 ---
-title: "BlueZ Pairing Woes: Why We Switched to an External Python Agent (and Added Polling)"
+title: "BlueZ Pairing Fix: External Python Agent & D-Bus Polling"
 date: "2025-04-08"
 slug: "bluez-pairing-python-agent-workaround-authentication-failed"
 author: "Boris Teoharov"
-description: "A developer's deep dive into troubleshooting BlueZ pairing issues on Linux, specifically the 'AuthenticationFailed' error with internal C++ agents, and the workarounds involving an external Python agent and D-Bus property polling."
+description: "Solve BlueZ pairing 'AuthenticationFailed' errors. Details why internal C++ agents fail & how an external Python agent + D-Bus polling provides a workaround."
 tags:
   - "BlueZ"
   - "DBus"

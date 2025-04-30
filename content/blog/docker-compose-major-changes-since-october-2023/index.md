@@ -1,7 +1,7 @@
 ---
-title: "Docker Compose Evolution: Major Changes Since October 2023"
+title: "Docker Compose Evolution: Major Changes Since Oct 2023"
 date: "2024-11-20T00:00:00.000Z"
-description: "Explore the significant updates and new features in Docker Compose since October 2023, including breaking changes, new commands, and best practices for modern development."
+description: "Key Docker Compose updates since Oct 2023: New CLI ('docker compose'), 'version' deprecated, Compose Watch, new commands ('attach', 'stats') & YAML changes."
 featuredImage: "./images/featured.jpg"
 imageCaption: "An overview of Docker Compose's evolution and new features"
 ---

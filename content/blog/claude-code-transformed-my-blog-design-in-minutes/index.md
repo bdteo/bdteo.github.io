@@ -1,7 +1,7 @@
 ---
-title: "I Let Claude Code Redesign My Gatsby Blog and the Results Are Mind-Blowing"
+title: "AI Blog Redesign: How Claude Code Transformed My Gatsby Site"
 date: "2025-04-12"
-description: "How Anthropic's AI coding assistant transformed my mediocre blog styling into a professional design system in minutes, without me writing a single line of code."
+description: "See how Claude Code AI redesigned a Gatsby blog. Transformed basic styles into a pro design system (CSS, components, dark mode) in minutes for ~5."
 tags: ["Claude Code", "AI", "Web Development", "Gatsby", "CSS", "Design"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Abstract visualization of AI-powered web design: flowing digital strands weaving a beautiful blog interface from basic HTML elements."

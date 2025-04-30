@@ -1,9 +1,9 @@
 ---
-title: "Installing PHP 8.3.6 with IMAP on macOS: A Real Developer's Journey"
+title: "PHP 8.3.6 + IMAP on macOS using phpenv: Install Guide"
 date: "2024-09-01"
 slug: "installing-php-8-3-6-with-imap-on-macos-using-phpenv"
 author: "Boris Teoharov"
-description: "Follow a developer's real-world experience installing PHP 8.3.6 with IMAP support on macOS using phpenv. Learn how to overcome common challenges and set up a robust PHP development environment."
+description: "Install PHP 8.3.6 with IMAP on macOS using phpenv. Guide covers brew deps, PHP_BUILD_CONFIGURE_OPTS, PATH fixes, and troubleshooting common build errors."
 tags: ["PHP", "macOS", "IMAP", "phpenv", "Development Environment"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A developer's workspace showcasing PHP development on macOS"
