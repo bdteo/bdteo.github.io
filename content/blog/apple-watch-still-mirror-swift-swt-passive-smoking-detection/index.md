@@ -15,7 +15,7 @@ The idea of truly understanding our habits, especially those we perform almost u
 
 The core challenge is immense: how do you distinguish the subtle physiological signature of a smoking/vaping event from the myriad of other daily activities and bodily responses? Stress, a brisk walk, a startling noise, or even a cup of coffee can all cause transient changes in heart rate (HR) and heart rate variability (HRV). The signal we're looking for is often a whisper in a symphony of physiological noise.
 
-My previous explorations in this area, documented in a [Business Requirements Document for Still Mirror](/still-mirror-brd-passive-monitoring-apple-watch/) and a detailed pseudo-code for a [Multi-Vector Physiological Signature (MVPS) algorithm](/still-mirror-neurocardio-signature-algorithm-apple-watch/), laid the groundwork. But to truly isolate these fleeting events, I needed a more sophisticated signal processing technique.
+But to truly isolate these fleeting events, I needed a more sophisticated signal processing technique.
 
 <figure>
   <img src="./images/apple-watch-swift-xcode.jpg" alt="Developer workstation with Xcode showing Swift code for an Apple Watch app, HealthKit data charts in the background.">
