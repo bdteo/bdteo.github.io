@@ -1,0 +1,181 @@
+/* static/css/giscus/dark-theme.css */
+
+/* Import Giscus's base dark_dimmed theme */
+@import url("https://giscus.app/themes/dark_dimmed.css"); /* Or dark.css if you prefer that base */
+
+/* --- General Giscus Container --- */
+.gsc-main {
+  /* Example: margin-top: 0 !important; */
+}
+
+/* --- Reactions Block --- */
+.gsc-reactions {
+  display: flex !important;
+  align-items: flex-start !important;
+  flex-wrap: wrap;
+  gap: 8px !important;
+  margin-top: 8px !important;
+  margin-bottom: 16px !important;
+  padding: 0 !important;
+}
+
+.gsc-reactions-count {
+  margin: 0 !important;
+  font-size: 0.875em !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  /* color: #768390 !important; */ /* Giscus dark_dimmed text */
+}
+.gsc-reactions-count a {
+  text-decoration: none !important;
+  /* color: inherit !important; */
+}
+.gsc-reactions-count a:hover {
+  text-decoration: underline !important;
+}
+
+/* This is the Giscus div: <div class="flex flex-auto items-center justify-center gap-2 text-sm mt-2"> */
+.gsc-reactions > div.flex.flex-auto.items-center.justify-center.gap-2.text-sm.mt-2 {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  gap: 6px !important;
+  justify-content: flex-start !important; /* CRITICAL: Align buttons to the start */
+  flex-grow: 0 !important;
+  flex-shrink: 1 !important;
+}
+
+.gsc-reactions .gsc-social-reaction-summary-item {
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+  font-size: 0.875em !important;
+  line-height: 1.4 !important;
+  /* border: 1px solid #373e47 !important; */ /* Giscus dark_dimmed border */
+  /* background-color: #22272e !important; */ /* Giscus dark_dimmed bg */
+}
+.gsc-reactions .gsc-social-reaction-summary-item.has-reacted {
+  /* border-color: #316dca !important; */ /* Giscus dark_dimmed active border */
+  /* background-color: #143157 !important; */ /* Giscus dark_dimmed active bg */
+}
+
+.gsc-reactions .gsc-direct-reaction-button-emoji {
+  font-size: 1em !important;
+  margin-right: 2px !important;
+}
+
+.gsc-reactions .gsc-social-reaction-summary-item-count {
+  font-size: 0.85em !important;
+}
+
+.gsc-reactions-menu summary.gsc-reactions-button {
+  padding: 4px !important;
+  border-radius: 6px !important;
+  /* border: 1px solid #373e47 !important; */
+}
+.gsc-reactions-menu summary.gsc-reactions-button:hover {
+  /* background-color: #2d333b !important; */ /* Subtle hover */
+}
+.gsc-reactions-menu summary.gsc-reactions-button svg {
+  width: 14px !important;
+  height: 14px !important;
+  /* color: #768390 !important; */
+}
+
+/* --- Comment Count Header --- */
+.gsc-comments > .gsc-header {
+  margin-bottom: 12px !important;
+  padding-bottom: 8px !important;
+  /* border-bottom: 1px solid #373e47 !important; */
+}
+.gsc-comments-count {
+  margin: 0 !important;
+  font-size: 1em !important;
+  font-weight: 600 !important;
+}
+.gsc-comments-count a {
+  text-decoration: none !important;
+  /* color: #adbac7 !important; */
+}
+.gsc-comments-count a:hover {
+  text-decoration: underline !important;
+}
+.gsc-header em.color-text-secondary { /* "powered by giscus" */
+  font-size: 0.8em !important;
+  /* color: #768390 !important; */
+}
+
+/* --- Comment Input Box --- */
+.gsc-comment-box {
+  border-radius: 8px !important;
+  /* border: 1px solid #373e47 !important; */
+  /* background-color: #1c2128 !important; */ /* Giscus dark_dimmed main bg */
+  margin-top: 0 !important;
+}
+.gsc-comment-box-tabs {
+  /* background-color: #22272e !important; */ /* Giscus dark_dimmed slightly lighter bg */
+  padding: 4px 8px 0 8px !important;
+  border-bottom: 1px solid #373e47 !important;
+}
+.gsc-comment-box-tabs .gsc-tab {
+  padding: 6px 12px !important;
+  font-size: 0.9em !important;
+  border-radius: 6px 6px 0 0 !important;
+  /* border-color: transparent !important; */
+}
+.gsc-comment-box-tabs .gsc-tab.gsc-tab-active {
+  /* background-color: #1c2128 !important; */ /* Match main input area bg */
+  /* border-color: #373e47 !important; */
+  /* border-bottom-color: #1c2128 !important; */ /* Make it look connected */
+  /* color: #adbac7 !important; */
+  font-weight: 600 !important;
+}
+
+.gsc-comment-box-textarea {
+  min-height: 100px !important;
+  padding: 10px !important;
+  font-size: 0.95em !important;
+  /* background-color: #1c2128 !important; */
+  /* color: #adbac7 !important; */
+  /* border: none !important; */
+  border-radius: 0 !important;
+}
+.gsc-comment-box-textarea::placeholder {
+  /* color: #535d69 !important; */
+}
+
+.gsc-comment-box-bottom {
+  padding: 8px 10px !important;
+  /* background-color: #22272e !important; */
+  border-top: 1px solid #373e47 !important;
+  border-radius: 0 0 7px 7px !important;
+}
+
+.gsc-comment-box-buttons .btn.btn-primary {
+  /* background-color: #2d7a43 !important; */ /* GitHub dark green */
+  /* color: #f0f6fc !important; */
+  /* border-color: rgba(194,207,219,0.1) !important; */
+  font-weight: 500 !important;
+  font-size: 0.9em !important;
+  padding: 6px 14px !important;
+  border-radius: 6px !important;
+}
+.gsc-comment-box-buttons .btn.btn-primary:hover {
+  /* background-color: #31884a !important; */
+}
+.gsc-comment-box-buttons .btn.btn-primary:disabled {
+  /* background-color: #265934 !important; */
+  /* color: rgba(173,186,199,0.5) !important; */
+}
+
+/* Sign out link */
+.gsc-comment-box-bottom button.link-secondary {
+  font-size: 0.8em !important;
+  /* color: #768390 !important; */
+}
+.gsc-comment-box-bottom button.link-secondary:hover {
+  /* color: #58a6ff !important; */
+}
+
+/* Markdown hint */
+.gsc-comment-box-markdown-hint svg {
+  /* color: #768390 !important; */
+}

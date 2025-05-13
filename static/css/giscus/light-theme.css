@@ -1,0 +1,183 @@
+/* static/css/giscus/light-theme.css */
+
+/* Import Giscus's base light theme so you're just overriding */
+@import url("https://giscus.app/themes/light.css");
+
+/* --- General Giscus Container --- */
+.gsc-main {
+  /* You can adjust overall padding/margin for the Giscus block if needed */
+  /* Example: margin-top: 0 !important; */
+}
+
+/* --- Reactions Block --- */
+.gsc-reactions {
+  display: flex !important;
+  align-items: flex-start !important;
+  flex-wrap: wrap; /* Allow wrapping if many reactions */
+  gap: 8px !important; /* Space between "X reactions" text and the first button */
+  margin-top: 8px !important;
+  margin-bottom: 16px !important;
+  padding: 0 !important;
+}
+
+.gsc-reactions-count {
+  margin: 0 !important;
+  font-size: 0.875em !important; /* 14px if base is 16px */
+  font-weight: 500 !important; /* Medium weight */
+  line-height: 1.5 !important; /* Ensure it aligns well with buttons */
+  /* color: #57606a !important; */ /* Giscus default light text for this */
+}
+.gsc-reactions-count a {
+  text-decoration: none !important;
+  /* color: inherit !important; */ /* Inherit color from parent */
+}
+.gsc-reactions-count a:hover {
+  text-decoration: underline !important;
+}
+
+/* This is the Giscus div: <div class="flex flex-auto items-center justify-center gap-2 text-sm mt-2"> */
+/* We need to be very specific to override utility classes */
+.gsc-reactions > div.flex.flex-auto.items-center.justify-center.gap-2.text-sm.mt-2 {
+  margin-top: 0 !important;
+  padding: 0 !important; /* Remove any padding it might have */
+  gap: 6px !important; /* Smaller gap between reaction buttons */
+  justify-content: flex-start !important; /* CRITICAL: Align buttons to the start */
+  flex-grow: 0 !important; /* Don't let it grow to fill space if reactions block is flex */
+  flex-shrink: 1 !important; /* Allow it to shrink if needed */
+}
+
+.gsc-reactions .gsc-social-reaction-summary-item {
+  padding: 3px 8px !important; /* Slightly more balanced padding */
+  border-radius: 6px !important;
+  font-size: 0.875em !important;
+  line-height: 1.4 !important;
+  /* border: 1px solid #d0d7de !important; */ /* Giscus default light border */
+  /* background-color: #f6f8fa !important; */ /* Giscus default light bg */
+}
+.gsc-reactions .gsc-social-reaction-summary-item.has-reacted {
+  /* border-color: #0969da !important; */ /* Giscus default light active border */
+  /* background-color: #ddf4ff !important; */ /* Giscus default light active bg */
+}
+
+.gsc-reactions .gsc-direct-reaction-button-emoji {
+  font-size: 1em !important; /* Keep emoji standard size */
+  margin-right: 2px !important; /* Tiny space before count */
+}
+
+.gsc-reactions .gsc-social-reaction-summary-item-count {
+  font-size: 0.85em !important; /* Slightly smaller count */
+}
+
+.gsc-reactions-menu summary.gsc-reactions-button {
+  padding: 4px !important; /* Slightly more clickable area */
+  border-radius: 6px !important;
+  /* border: 1px solid #d0d7de !important; */
+}
+.gsc-reactions-menu summary.gsc-reactions-button:hover {
+  /* background-color: #f3f4f6 !important; */ /* Subtle hover */
+}
+.gsc-reactions-menu summary.gsc-reactions-button svg {
+  width: 14px !important;
+  height: 14px !important;
+  /* color: #57606a !important; */
+}
+
+/* --- Comment Count Header --- */
+.gsc-comments > .gsc-header {
+  margin-bottom: 12px !important;
+  padding-bottom: 8px !important;
+  /* border-bottom: 1px solid #d0d7de !important; */ /* Giscus default light border */
+}
+.gsc-comments-count {
+  margin: 0 !important;
+  font-size: 1em !important; /* Match your h3/h4 style more closely */
+  font-weight: 600 !important;
+}
+.gsc-comments-count a {
+  text-decoration: none !important;
+  /* color: #24292f !important; */
+}
+.gsc-comments-count a:hover {
+  text-decoration: underline !important;
+}
+.gsc-header em.color-text-secondary { /* "powered by giscus" */
+  font-size: 0.8em !important;
+  /* color: #57606a !important; */
+}
+
+/* --- Comment Input Box --- */
+.gsc-comment-box {
+  border-radius: 8px !important;
+  /* border: 1px solid #d0d7de !important; */
+  /* background-color: #ffffff !important; */
+  margin-top: 0 !important; /* Remove Giscus's default margin if any */
+}
+.gsc-comment-box-tabs {
+  /* background-color: #f6f8fa !important; */
+  padding: 4px 8px 0 8px !important; /* Adjust padding */
+  border-bottom: 1px solid #d0d7de !important; /* Giscus default light border */
+}
+.gsc-comment-box-tabs .gsc-tab {
+  padding: 6px 12px !important; /* Adjust tab padding */
+  font-size: 0.9em !important;
+  border-radius: 6px 6px 0 0 !important;
+  /* border-color: transparent !important; */
+}
+.gsc-comment-box-tabs .gsc-tab.gsc-tab-active {
+  /* background-color: #ffffff !important; */
+  /* border-color: #d0d7de !important; */
+  /* border-bottom-color: #ffffff !important; */ /* Make it look connected */
+  /* color: #24292f !important; */
+  font-weight: 600 !important;
+}
+
+.gsc-comment-box-textarea {
+  min-height: 100px !important;
+  padding: 10px !important;
+  font-size: 0.95em !important; /* Slightly larger for readability */
+  /* background-color: #ffffff !important; */
+  /* color: #24292f !important; */
+  /* border: none !important; */ /* Remove border if tabs provide top border */
+  border-radius: 0 !important; /* Remove radius if tabs are present */
+}
+.gsc-comment-box-textarea::placeholder {
+  /* color: #6e7781 !important; */
+}
+
+.gsc-comment-box-bottom {
+  padding: 8px 10px !important;
+  /* background-color: #f6f8fa !important; */
+  border-top: 1px solid #d0d7de !important; /* Giscus default light border */
+  border-radius: 0 0 7px 7px !important; /* Match outer radius, minus 1px for border */
+}
+
+.gsc-comment-box-buttons .btn.btn-primary { /* Giscus primary button */
+  /* background-color: #2c974b !important; */ /* GitHub green */
+  /* color: white !important; */
+  /* border-color: rgba(27,31,36,0.15) !important; */
+  font-weight: 500 !important;
+  font-size: 0.9em !important;
+  padding: 6px 14px !important;
+  border-radius: 6px !important;
+}
+.gsc-comment-box-buttons .btn.btn-primary:hover {
+  /* background-color: #288944 !important; */
+}
+.gsc-comment-box-buttons .btn.btn-primary:disabled {
+  /* background-color: #94d3a2 !important; */
+  /* color: rgba(255,255,255,0.75) !important; */
+}
+
+/* Sign out link */
+.gsc-comment-box-bottom button.link-secondary {
+  font-size: 0.8em !important;
+  /* color: #57606a !important; */
+}
+.gsc-comment-box-bottom button.link-secondary:hover {
+  /* color: #0969da !important; */
+}
+
+/* Markdown hint */
+.gsc-comment-box-markdown-hint svg {
+  /* color: #57606a !important; */
+}
