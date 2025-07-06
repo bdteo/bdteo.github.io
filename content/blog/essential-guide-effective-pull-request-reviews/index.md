@@ -58,7 +58,7 @@ Use this mental checklist:
 6.  **Tests**: Coverage for core, edge, and error cases.
 7.  **Compliance**: Proper docs, CI, licensing, formatting.
 
-This ensures we catch more issues early—especially maintainability problems.  <a href="https://google.github.io/eng-practices/review/reviewer/standard.html?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">google.github.io</a> <a href="https://developers.google.com/blockly/guides/contribute/get-started/pr_review_process?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">developers.google.com</a> [google.github.io](https://google.github.io/eng-practices/review/?utm_source=chatgpt.com)
+This ensures we catch more issues early—especially maintainability problems.  <a href="https://google.github.io/eng-practices/review/reviewer/standard.html?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">google.github.io</a> <a href="https://developers.google.com/blockly/guides/contribute/get-started/pr_review_process?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">developers.google.com</a> <a href="https://google.github.io/eng-practices/review/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">google.github.io</a>
 
 ---
 
