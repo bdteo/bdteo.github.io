@@ -11,7 +11,7 @@
   background-color: var(--color-card-bg);
   box-shadow: 0 10px 15px -3px var(--color-card-shadow);
   text-align: center;
-  
+
   @media (min-width: 768px) {
     flex-direction: row;
     text-align: left;
@@ -26,7 +26,7 @@
     width: 150px !important;
     height: 150px !important;
     border: 2px solid var(--color-background);
-    
+
     @media (min-width: 768px) {
       margin-right: var(--spacing-6);
       margin-bottom: 0;
@@ -56,7 +56,7 @@
       display: flex;
       gap: var(--spacing-4);
       justify-content: center;
-      
+
       @media (min-width: 768px) {
         justify-content: flex-start;
       }
@@ -91,48 +91,48 @@
   background-color: var(--color-card-bg);
   box-shadow: 0 3px 5px var(--color-card-shadow);
   height: 100%;
-  
+
   &:hover {
     box-shadow: 0 8px 15px var(--color-card-shadow);
   }
-  
+
   .blog-card-image {
     height: 200px;
     overflow: hidden;
-    
+
     .gatsby-image-wrapper {
       height: 100%;
     }
   }
-  
+
   .blog-card-content {
     padding: var(--spacing-3);
     flex: 1;
     display: flex;
     flex-direction: column;
   }
-  
+
   .blog-card-title {
     font-size: var(--font-size-lg);
     font-weight: 700;
     margin: 0 0 var(--spacing-2) 0;
-    
+
     a {
       color: var(--color-text);
       text-decoration: none;
-      
+
       &:hover {
         color: var(--color-primary);
       }
     }
   }
-  
+
   .blog-card-date {
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
     margin-bottom: var(--spacing-2);
   }
-  
+
   .blog-card-excerpt {
     font-size: var(--font-size-sm);
     color: var(--color-text-light);
@@ -140,7 +140,7 @@
     line-height: 1.4;
     flex: 1;
   }
-  
+
   .blog-card-footer {
     margin-top: auto;
   }
@@ -157,12 +157,12 @@
   position: relative;
   max-width: 100%;
   width: 100%;
-  
+
   // Global override to remove text-shadow from all code elements
   * {
     text-shadow: none !important;
   }
-  
+
   // Modern copy button for code blocks
   .copy-button {
     position: absolute;
@@ -185,7 +185,7 @@
     justify-content: center;
     outline: none;
     opacity: 0.7;
-    
+
     // The actual button icon
     svg {
       width: 18px;
@@ -196,7 +196,7 @@
       transition: all 0.15s ease;
       filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
     }
-    
+
     // Tooltip text that appears on hover
     &::after {
       content: "Copy";
@@ -216,44 +216,44 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       border: 1px solid var(--color-border);
     }
-    
+
     // States
     &:hover {
       opacity: 1;
-      
+
       svg {
         stroke: var(--color-primary);
         transform: scale(1.1);
       }
-      
+
       &::after {
         opacity: 1;
         transform: translateX(0);
       }
     }
-    
+
     &:focus-visible {
       outline: 2px solid var(--color-primary);
       outline-offset: 2px;
       opacity: 1;
     }
-    
+
     // Copied state
     &.copied {
       opacity: 1;
-      
+
       svg {
         stroke: var(--color-primary);
         transform: scale(1);
       }
-      
+
       &::after {
         content: "Copied!";
         opacity: 1;
         transform: translateX(0);
       }
     }
-    
+
     // Animation for copied state
     @keyframes checkmark {
       0% {
@@ -263,20 +263,20 @@
         stroke-dashoffset: 0;
       }
     }
-    
+
     &.copied svg polyline {
       stroke-dasharray: 24;
       animation: checkmark 0.3s ease-in-out forwards;
     }
   }
-  
+
   // Global fix for code wrapping
   * {
     white-space: pre-wrap !important;
     word-break: break-word !important;
     word-wrap: break-word !important;
   }
-  
+
   // Add a fancy top bar to code blocks
   &::before {
     content: "";
@@ -300,10 +300,10 @@
     position: relative;
     z-index: 1;
     max-width: 100% !important;
-    
+
     // Code line styling
     line-height: 1.5;
-    
+
     // We won't add line numbers via CSS since Gatsby might already have its own
     // This could cause conflicts with existing line number plugins
     .line-number-style {
@@ -314,7 +314,7 @@
       text-align: center;
       position: relative;
     }
-    
+
     // Highlight for specific lines when needed
     .gatsby-highlight-code-line {
       background-color: rgba(255, 255, 255, 0.07);
@@ -338,7 +338,7 @@
     overflow-wrap: break-word !important;
     width: 100% !important;
   }
-  
+
   // Fix for specific elements that might prevent wrapping
   .token-line,
   span[class*="token"] {
@@ -356,7 +356,7 @@
     -webkit-text-shadow: none !important;
     -moz-text-shadow: none !important;
     background: none !important;
-    
+
     &.comment,
     &.prolog,
     &.doctype,
@@ -364,12 +364,12 @@
       color: var(--color-comment) !important;
       font-style: italic !important;
     }
-    
+
     &.punctuation {
       color: var(--color-operator) !important;
       font-weight: normal !important;
     }
-    
+
     &.property,
     &.tag,
     &.boolean,
@@ -379,7 +379,7 @@
       color: var(--color-function) !important;
       font-weight: normal !important;
     }
-    
+
     &.selector,
     &.attr-name,
     &.string,
@@ -388,46 +388,46 @@
       color: var(--color-string) !important;
       font-weight: normal !important;
     }
-    
+
     &.operator,
     &.entity,
     &.url {
       color: var(--color-operator) !important;
       font-weight: normal !important;
     }
-    
+
     &.variable {
       color: var(--color-variable) !important;
       font-weight: normal !important;
     }
-    
+
     &.atrule,
     &.attr-value,
     &.keyword {
       color: var(--color-keyword) !important;
       font-weight: bold !important;
     }
-    
+
     &.function,
     &.class-name {
       color: var(--color-function) !important;
     }
-    
+
     &.regex,
     &.important {
       color: #f50 !important;
     }
-    
+
     &.important,
     &.bold {
       font-weight: bold !important;
     }
-    
+
     &.italic {
       font-style: italic !important;
     }
   }
-  
+
   // Scrollbar styling for code blocks
   &::-webkit-scrollbar {
     width: 8px;
@@ -483,21 +483,21 @@ h6 code {
   font-weight: 600;
   border-radius: 6px;
   text-decoration: none;
-  
+
   &.primary {
     background-color: var(--color-button-primary);
     color: var(--color-button-text);
-    
+
     &:hover {
       background-color: var(--color-button-primary-hover);
     }
   }
-  
+
   &.secondary {
     background-color: transparent;
     color: var(--color-primary);
     border: 1px solid var(--color-primary);
-    
+
     &:hover {
       background-color: var(--color-primary);
       color: var(--color-button-text);
@@ -511,10 +511,10 @@ h6 code {
     max-width: 800px;
     margin: 0 auto;
   }
-  
+
   header {
     margin-bottom: var(--spacing-10);
-    
+
     h1 {
       font-size: var(--font-size-3xl);
       line-height: 1.2;
@@ -523,13 +523,13 @@ h6 code {
       margin-bottom: var(--spacing-4);
       color: var(--color-text);
     }
-    
+
     p {
       font-size: var(--font-size-md);
       color: var(--color-text-light);
     }
   }
-  
+
   .featured-image {
     margin-bottom: var(--spacing-10);
     border-radius: 12px;
@@ -537,13 +537,26 @@ h6 code {
     box-shadow: 0 10px 15px -3px var(--color-card-shadow);
     display: flex;
     flex-direction: column;
-    
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 25%;
+      background: linear-gradient(to top, var(--color-figcaption-bg) 0%, var(--color-figcaption-bg) 10%, transparent 60%, transparent 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
     .gatsby-image-wrapper {
       width: 100%;
       max-height: 500px;
       display: block;
     }
-    
+
     figcaption {
       margin: 0;
       padding: var(--spacing-3) var(--spacing-4);
@@ -552,17 +565,15 @@ h6 code {
       font-size: var(--font-size-sm);
       text-align: center;
       line-height: 1.5;
-      background-color: rgba(var(--color-card-bg-rgb), 0.7);
+      background-color: var(--color-figcaption-bg);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-radius: 0 0 12px 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
-      border-top: 1px solid rgba(var(--color-card-bg-rgb), 0.2);
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
   }
-  
+
   // Content typography and spacing
   h2 {
     font-size: var(--font-size-2xl);
@@ -572,7 +583,7 @@ h6 code {
     letter-spacing: -0.025em;
     line-height: 1.3;
   }
-  
+
   h3 {
     font-size: var(--font-size-xl);
     margin-top: var(--spacing-8);
@@ -580,23 +591,23 @@ h6 code {
     font-weight: 700;
     letter-spacing: -0.025em;
   }
-  
+
   p {
     margin-bottom: var(--spacing-6);
     line-height: 1.8;
     font-size: var(--font-size-md);
   }
-  
+
   ul, ol {
     margin-bottom: var(--spacing-8);
     padding-left: var(--spacing-6);
-    
+
     li {
       margin-bottom: var(--spacing-2);
       line-height: 1.7;
     }
   }
-  
+
   blockquote {
     border-left: 4px solid var(--color-primary);
     padding-left: var(--spacing-6);
@@ -604,38 +615,38 @@ h6 code {
     margin-right: 0;
     margin-bottom: var(--spacing-8);
     font-style: italic;
-    
+
     p {
       color: var(--color-text-light);
     }
   }
-  
+
   hr {
     background-color: var(--color-accent);
     height: 1px;
     margin: var(--spacing-10) 0;
   }
-  
+
   // Article images and figures
   figure {
     margin: var(--spacing-6) 0;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 5px 15px -3px var(--color-card-shadow);
-    
+
     .gatsby-resp-image-wrapper {
       // Don't override Gatsby's responsive image styles
       // Just ensure the max-width is 100% for proper containment
       max-width: 100% !important;
     }
-    
+
     // Regular images
     img {
       display: block;
       max-width: 100%;
       height: auto;
     }
-    
+
     figcaption {
       margin: 0;
       padding: var(--spacing-3) var(--spacing-4);
@@ -644,15 +655,15 @@ h6 code {
       font-size: var(--font-size-sm);
       text-align: center;
       line-height: 1.5;
-      background-color: rgba(var(--color-card-bg-rgb), 0.7);
+      background-color: var(--color-figcaption-bg);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-radius: 0 0 12px 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
-      border-top: 1px solid rgba(var(--color-card-bg-rgb), 0.2);
+      box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.1);
+      border-top: 1px solid var(--color-border);
     }
   }
-  
+
   // For standalone images
   img:not(.gatsby-resp-image-image):not(.gatsby-image-wrapper img):not(figure img) {
     margin: var(--spacing-6) 0;
@@ -662,7 +673,7 @@ h6 code {
     max-width: 100%;
     height: auto;
   }
-  
+
   // Enhance Gatsby image containers outside figures
   .gatsby-resp-image-wrapper:not(figure .gatsby-resp-image-wrapper) {
     margin: var(--spacing-6) auto !important;
@@ -670,7 +681,7 @@ h6 code {
     overflow: hidden !important;
     box-shadow: 0 5px 15px -3px var(--color-card-shadow) !important;
   }
-  
+
   // Only hide the background image
   .gatsby-resp-image-background-image {
     opacity: 0 !important;
@@ -682,7 +693,7 @@ h6 code {
   display: flex;
   align-items: center;
   height: 100%;
-  
+
   .theme-toggle-button {
     background: none;
     border: none;
@@ -691,13 +702,13 @@ h6 code {
     height: 26px;
     display: flex;
     align-items: center;
-    
+
     &:focus {
       outline: none;
     }
-    
+
     .toggle-track {
-      width: 44px; 
+      width: 44px;
       height: 22px;
       padding: 2px;
       border-radius: 34px;
@@ -706,7 +717,7 @@ h6 code {
       position: relative;
       display: flex;
       align-items: center;
-      
+
       .toggle-icon {
         color: var(--color-primary);
         position: absolute;
@@ -719,16 +730,16 @@ h6 code {
         height: 16px;
         top: 50%;
         transform: translateY(-50%);
-        
+
         &.sun {
           right: 4px;
         }
-        
+
         &.moon {
           left: 4px;
         }
       }
-      
+
       .toggle-thumb {
         width: 16px;
         height: 16px;
@@ -747,18 +758,18 @@ h6 code {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  
+
   ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     list-style: none;
     padding: 0;
-    
+
     li {
       flex: 0 0 calc(50% - var(--spacing-6)); /* Balanced space between nav items */
       max-width: calc(50% - var(--spacing-6));
-      
+
       a {
         display: flex; /* Changed to flex for better alignment */
         align-items: center; /* Vertical alignment of content */
@@ -773,27 +784,27 @@ h6 code {
         font-weight: 600;
         font-size: var(--font-size-sm); /* Smaller font for better proportion */
         min-height: 3.5rem; /* Consistent height */
-        
+
         span {
           display: block; /* Proper text wrapping */
           overflow: hidden; /* Prevent overflow */
           text-overflow: ellipsis; /* Add ellipsis for long titles */
           line-height: 1.4; /* Improved readability */
         }
-        
+
         &:hover {
           color: var(--color-primary);
           box-shadow: 0 4px 8px var(--color-card-shadow);
           transform: translateY(-2px);
         }
-        
+
         // Style for previous post link
         &[rel="prev"] {
           padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) var(--spacing-10); /* Balanced padding with space for arrow */
           position: relative;
           text-align: left;
           justify-content: flex-start; /* Align content to the left */
-          
+
           &::before {
             content: "";
             position: absolute;
@@ -809,20 +820,20 @@ h6 code {
             transition: all 0.2s ease;
             opacity: 0.8; /* Subtle appearance */
           }
-          
+
           &:hover::before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(116, 18, 178, 1)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 19l-7-7m0 0l7-7m-7 7h18'/%3E%3C/svg%3E");
             opacity: 1;
           }
         }
-        
+
         // Style for next post link
         &[rel="next"] {
           text-align: right;
           padding: var(--spacing-4) var(--spacing-10) var(--spacing-4) var(--spacing-4); /* Balanced padding with space for arrow */
           position: relative;
           justify-content: flex-end; /* Align content to the right */
-          
+
           &::after {
             content: "";
             position: absolute;
@@ -838,7 +849,7 @@ h6 code {
             transition: all 0.2s ease;
             opacity: 0.8; /* Subtle appearance */
           }
-          
+
           &:hover::after {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(116, 18, 178, 1)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14 5l7 7m0 0l-7 7m7-7H3'/%3E%3C/svg%3E");
             opacity: 1;
