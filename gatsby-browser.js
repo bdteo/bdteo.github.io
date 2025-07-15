@@ -1,4 +1,5 @@
-// File: gatsby-browser.js
+import React from 'react';
+import { ThemeProvider } from './src/context/ThemeContext';
 
 // Import custom typefaces and styles
 import "@fontsource-variable/montserrat"
@@ -29,3 +30,7 @@ export const onServiceWorkerUpdateReady = () => {
 export const onRouteUpdate = () => {
   addCopyButtons()
 }
+
+export const wrapRootElement = ({ element }) => {
+  return <ThemeProvider>{element}</ThemeProvider>;
+};

@@ -56,7 +56,14 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              aliases: {
+                'c++': 'cpp',
+              },
+            },
+          },
         ],
       },
     },
@@ -127,16 +134,6 @@ module.exports = {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         displayName: process.env.NODE_ENV !== 'production',
-      },
-    },
-    {
-      resolve: `gatsby-plugin-dark-mode`,
-      options: {
-        classNameDark: 'dark-mode',
-        classNameLight: 'light-mode',
-        storageKey: 'darkMode',
-        minify: true,
-        defaultClassName: 'dark-mode',
       },
     },
     {
