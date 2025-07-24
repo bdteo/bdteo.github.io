@@ -96,40 +96,43 @@ const Seo = ({
       <html lang="en" />
       {/* Structured Data for Articles */}
       {article && (
-        <script type="application/ld+json">
-          {JSON.stringify(
-            schema || {
-              "@context": "https://schema.org",
-              "@type": "BlogPosting",
-              headline: title,
-              description: metaDescription,
-              author: {
-                "@type": "Person",
-                name: author.name,
-              },
-              datePublished: datePublished,
-              dateModified: dateModified || datePublished,
-              publisher: {
-                "@type": "Organization",
-                name: defaultTitle,
-                logo: {
-                  "@type": "ImageObject",
-                  url: `${siteUrl}/images/logo.png`,
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              schema || {
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                headline: title,
+                description: metaDescription,
+                author: {
+                  "@type": "Person",
+                  name: author.name,
                 },
-              },
-              mainEntityOfPage: {
-                "@type": "WebPage",
-                "@id": url,
-              },
-              ...(metaImage && {
-                image: {
-                  "@type": "ImageObject",
-                  url: metaImage,
+                datePublished: datePublished,
+                dateModified: dateModified || datePublished,
+                publisher: {
+                  "@type": "Organization",
+                  name: defaultTitle,
+                  logo: {
+                    "@type": "ImageObject",
+                    url: `${siteUrl}/images/logo.png`,
+                  },
                 },
-              }),
-            }
-          )}
-        </script>
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": url,
+                },
+                ...(metaImage && {
+                  image: {
+                    "@type": "ImageObject",
+                    url: metaImage,
+                  },
+                }),
+              }
+            )
+          }}
+        />
       )}
 
       {/* Additional tags provided by the component user */}
