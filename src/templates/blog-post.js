@@ -78,7 +78,7 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
   const featuredImagePath = post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData?.images?.fallback?.src
   
   // Extract frontmatter fields
-  const { title, description, date, tags } = post.frontmatter
+  const { title, description, date, tags, jsonld } = post.frontmatter
   
   // Format dates in ISO format for structured data
   const datePublished = new Date(date).toISOString()
@@ -92,6 +92,7 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
       keywords={tags || []}
       datePublished={datePublished}
       dateModified={datePublished} // Use the same date if no modified date available
+      schema={jsonld}
     />
   )
 }
@@ -119,6 +120,7 @@ export const pageQuery = graphql`
         description
         imageCaption
         tags
+        jsonld
         featuredImage {
           childImageSharp {
             gatsbyImageData(width: 800, layout: FULL_WIDTH)

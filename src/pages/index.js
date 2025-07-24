@@ -36,21 +36,22 @@ const BlogIndex = ({ data, location }) => {
             const featuredImage = getImage(post.frontmatter.featuredImage)
             const slug = post.fields.slug
             return (
-              <article key={slug} className="blog-card" itemScope itemType="http://schema.org/Article">
-                {featuredImage && (
-                  <Link to={slug} className="blog-card-image">
-                    <GatsbyImage image={featuredImage} alt="" />
-                  </Link>
-                )}
-                <div className="blog-card-content">
-                  <h3 className="blog-card-title"><Link to={slug} itemProp="url"><span itemProp="headline">{title}</span></Link></h3>
-                  <span className="blog-card-date">{post.frontmatter.date}</span>
-                  <p className="blog-card-excerpt" dangerouslySetInnerHTML={{__html: post.frontmatter.description || post.excerpt}} itemProp="description" />
-                  <div className="blog-card-footer">
-                    <Link to={slug} className="custom-button primary">Read More</Link>
+              <Link to={slug} key={slug} className="blog-card-link">
+                <article className="blog-card" itemScope itemType="http://schema.org/Article">
+                  <div className="blog-card-header">
+                    {featuredImage && (
+                      <div className="blog-card-image">
+                        <GatsbyImage image={featuredImage} alt={title} />
+                      </div>
+                    )}
+                    <span className="blog-card-date">{post.frontmatter.date}</span>
+                    <div className="blog-card-overlay">
+                      <h3 className="blog-card-title" itemProp="headline">{title}</h3>
+                      <p className="blog-card-excerpt" dangerouslySetInnerHTML={{ __html: post.frontmatter.description }} itemProp="description" />
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </Link>
             )
           })}
         </div>
@@ -106,7 +107,6 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       nodes {
-        excerpt
         fields {
           slug
         }
@@ -117,7 +117,7 @@ export const pageQuery = graphql`
           imagePosition
           featuredImage {
             childImageSharp {
-              gatsbyImageData(width: 600, height: 300, layout: CONSTRAINED)
+              gatsbyImageData(width: 600, height: 400, layout: CONSTRAINED)
             }
           }
         }

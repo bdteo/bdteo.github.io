@@ -1,5 +1,5 @@
 ---
-title: "What Is “Good” Code Coverage? My Real-World Guide to Stopping Bugs Without Wasting Engineering Time"
+title: "What Is “Good” Code Coverage? A Real-World Guide"
 date: "2025-07-15"
 description: "Debunking the 100 % myth: I break down proven coverage targets for TypeScript and PHP, show the ROI of testing, and share tooling tricks I use daily."
 tags: ["code-coverage", "testing", "typescript", "php", "best-practices", "quality-assurance"]

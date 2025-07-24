@@ -1,5 +1,5 @@
 ---
-title: "PHP 8.5: Bam Bam Boom – A Free‑Spirited Tour of the Incoming Goodness"
+title: "PHP 8.5: A Tour of the Incoming Features"
 date: "2025-07-20"
 slug: "php-8-5-new-features-pipe-operator-guide"
 author: "Boris Teoharov"

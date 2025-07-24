@@ -16,6 +16,7 @@ const Seo = ({
   keywords = [],
   datePublished,
   dateModified,
+  schema,
   children
 }) => {
   const { pathname } = useLocation()
@@ -96,36 +97,38 @@ const Seo = ({
       {/* Structured Data for Articles */}
       {article && (
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": title,
-            "description": metaDescription,
-            "author": {
-              "@type": "Person",
-              "name": author.name
-            },
-            "datePublished": datePublished,
-            "dateModified": dateModified || datePublished,
-            "publisher": {
-              "@type": "Organization",
-              "name": defaultTitle,
-              "logo": {
-                "@type": "ImageObject",
-                "url": `${siteUrl}/images/logo.png`
-              }
-            },
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": url
-            },
-            ...(metaImage && {
-              "image": {
-                "@type": "ImageObject",
-                "url": metaImage
-              }
-            })
-          })}
+          {JSON.stringify(
+            schema || {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: title,
+              description: metaDescription,
+              author: {
+                "@type": "Person",
+                name: author.name,
+              },
+              datePublished: datePublished,
+              dateModified: dateModified || datePublished,
+              publisher: {
+                "@type": "Organization",
+                name: defaultTitle,
+                logo: {
+                  "@type": "ImageObject",
+                  url: `${siteUrl}/images/logo.png`,
+                },
+              },
+              mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": url,
+              },
+              ...(metaImage && {
+                image: {
+                  "@type": "ImageObject",
+                  url: metaImage,
+                },
+              }),
+            }
+          )}
         </script>
       )}
 

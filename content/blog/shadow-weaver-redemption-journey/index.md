@@ -1,5 +1,5 @@
 ---
-title: "The Shadow Weaver's Tale: A Journey of Redemption & Forgiveness"
+title: "The Shadow Weaver's Redemption"
 date: "2024-09-14T12:30:00.000Z"
 description: "A fantasy tale of Aiden, the Shadow Weaver, on a journey through magical challenges to find redemption and learn the power of self-forgiveness and healing."
 featuredImage: "./images/featured.jpg"
