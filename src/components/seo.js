@@ -99,7 +99,7 @@ const Seo = ({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
+            __html: typeof schema === 'string' ? schema : JSON.stringify(
               schema || {
                 "@context": "https://schema.org",
                 "@type": "BlogPosting",
