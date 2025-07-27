@@ -30,34 +30,27 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      {/* Featured Articles */}
+      {/* Recent Posts */}
       <div className="section">
-        <div className="section-header">
-          <h2 className="section-title">Recent Posts</h2>
-        </div>
-        <div className="featured-grid">
-          {featuredPosts.map((post, index) => {
+        <h2 className="section-title">Recent Posts</h2>
+        <div className="grid-container auto-grid">
+          {featuredPosts.map(post => {
             const title = post.frontmatter.title || post.fields.slug
             const featuredImage = getImage(post.frontmatter.featuredImage)
             const slug = post.fields.slug
             return (
-              <Link to={slug} key={slug} className={`featured-card ${index === 0 ? 'featured-card-large' : ''}`}>
-                <article className="featured-article" itemScope itemType="http://schema.org/Article">
-                  {featuredImage && (
-                    <div className="featured-image">
-                      <GatsbyImage image={featuredImage} alt={title} />
-                      <div className="featured-overlay"></div>
-                    </div>
-                  )}
-                  <div className="featured-content">
-                    <span className="featured-date">{post.frontmatter.date}</span>
-                    <h3 className="featured-title" itemProp="headline">{title}</h3>
-                    <p className="featured-excerpt" dangerouslySetInnerHTML={{ __html: post.frontmatter.description }} itemProp="description" />
-                    <div className="featured-read-more">
-                      <span>Read Article</span>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06Z"/>
-                      </svg>
+              <Link to={slug} key={slug} className="blog-card-link">
+                <article className="blog-card" itemScope itemType="http://schema.org/Article">
+                  <div className="blog-card-header">
+                    {featuredImage && (
+                      <div className="blog-card-image">
+                        <GatsbyImage image={featuredImage} alt={title} />
+                      </div>
+                    )}
+                    <span className="blog-card-date">{post.frontmatter.date}</span>
+                    <div className="blog-card-overlay">
+                      <h3 className="blog-card-title" itemProp="headline">{title}</h3>
+                      <p className="blog-card-excerpt" dangerouslySetInnerHTML={{ __html: post.frontmatter.description }} itemProp="description" />
                     </div>
                   </div>
                 </article>
@@ -67,30 +60,32 @@ const BlogIndex = ({ data, location }) => {
         </div>
       </div>
 
-      {/* Recent Articles */}
+      {/* More Posts */}
       {recentPosts.length > 0 && (
         <div className="section">
           <div className="section-header">
             <h2 className="section-title">More Posts</h2>
             <Link to="/archive" className="section-link">View All</Link>
           </div>
-          <div className="recent-grid">
+          <div className="grid-container auto-grid">
             {recentPosts.map(post => {
               const title = post.frontmatter.title || post.fields.slug
               const featuredImage = getImage(post.frontmatter.featuredImage)
               const slug = post.fields.slug
               return (
-                <Link to={slug} key={slug} className="recent-card">
-                  <article className="recent-article" itemScope itemType="http://schema.org/Article">
-                    {featuredImage && (
-                      <div className="recent-image">
-                        <GatsbyImage image={featuredImage} alt={title} />
+                <Link to={slug} key={slug} className="blog-card-link">
+                  <article className="blog-card" itemScope itemType="http://schema.org/Article">
+                    <div className="blog-card-header">
+                      {featuredImage && (
+                        <div className="blog-card-image">
+                          <GatsbyImage image={featuredImage} alt={title} />
+                        </div>
+                      )}
+                      <span className="blog-card-date">{post.frontmatter.date}</span>
+                      <div className="blog-card-overlay">
+                        <h3 className="blog-card-title" itemProp="headline">{title}</h3>
+                        <p className="blog-card-excerpt" dangerouslySetInnerHTML={{ __html: post.frontmatter.description }} itemProp="description" />
                       </div>
-                    )}
-                    <div className="recent-content">
-                      <span className="recent-date">{post.frontmatter.date}</span>
-                      <h3 className="recent-title" itemProp="headline">{title}</h3>
-                      <p className="recent-excerpt" dangerouslySetInnerHTML={{ __html: post.frontmatter.description }} itemProp="description" />
                     </div>
                   </article>
                 </Link>
