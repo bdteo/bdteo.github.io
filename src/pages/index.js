@@ -102,13 +102,6 @@ const BlogIndex = ({ data, location }) => {
 
       {/* About Section */}
       <div className="section">
-        <div className="section-header">
-          <h2 className="section-title">Hey, I'm Boris</h2>
-          <p className="section-subtitle">
-            I write about software development, AI experiments, and the occasional deep dive into 
-            computer science topics that catch my interest.
-          </p>
-        </div>
         <Bio />
       </div>
     </Layout>
