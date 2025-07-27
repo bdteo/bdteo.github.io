@@ -9,6 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding-top: 64px; // Account for fixed header height
 }
 
 // Main container
@@ -23,8 +24,10 @@ body {
 
 // Header
 .global-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   z-index: var(--z-50);
   background-color: var(--color-nav-bg);
@@ -32,7 +35,16 @@ body {
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 2px solid rgba(170, 170, 170, 0.5); /* Lighter version of the accent color */
   box-shadow: 0 1px 3px var(--color-card-shadow);
-  transition: all var(--transition-normal) ease;
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.header-hidden {
+    transform: translateY(-100%);
+  }
+  
+  &.header-visible {
+    transform: translateY(0);
+  }
   
   .header-content {
     display: flex;
@@ -292,7 +304,7 @@ body {
   
   .sidebar {
     position: sticky;
-    top: 80px;
+    top: calc(64px + var(--spacing-4)); // Header height + some spacing
     height: fit-content;
   }
   

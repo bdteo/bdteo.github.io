@@ -154,21 +154,8 @@ module.exports = {
         },
       },
     },
-    // Re-enable gatsby-plugin-offline to manage the service worker
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        workboxConfig: {
-          globPatterns: ['**/*'],
-          // Use a unique cache name to force updates
-          cacheId: 'gatsby-blog-v1',
-          skipWaiting: true,
-          clientsClaim: true,
-        },
-      },
-    },
-    // Remove the plugin below if you decide to use gatsby-plugin-offline
-    // `gatsby-plugin-remove-serviceworker`,
+    // Remove service worker to prevent caching issues with new content
+    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {

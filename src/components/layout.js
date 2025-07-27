@@ -4,10 +4,12 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { BThemeToggler } from "./BThemeToggler";
 import Logo from "../images/bd-icon@4x.png"; // Import your logo
+import useScrollDirection from "../hooks/useScrollDirection";
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
+  const { scrollDirection, isAtTop } = useScrollDirection();
 
   return (
     <>
@@ -15,7 +17,7 @@ const Layout = ({ location, title, children }) => {
         Skip to main content
       </a>
       
-      <header className="global-header no-print">
+      <header className={`global-header no-print ${scrollDirection === 'down' && !isAtTop ? 'header-hidden' : 'header-visible'}`}>
         <div className="container">
           <div className="header-content">
             <div className="header-left">
