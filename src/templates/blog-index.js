@@ -118,7 +118,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <div className="section">
-        <h2 className="section-title">All Posts - Page {currentPage}</h2>
+        <h2 className="section-title">All Posts</h2>
         <div className="grid-container auto-grid">
           {posts.map(post => {
             const title = post.frontmatter.title || post.fields.slug
@@ -152,6 +152,11 @@ const BlogIndex = ({ data, location, pageContext }) => {
           hasPreviousPage={hasPreviousPage}
         />
       </div>
+
+      {/* About Section */}
+      <div className="section">
+        <Bio />
+      </div>
     </Layout>
   )
 }
@@ -160,7 +165,7 @@ export default BlogIndex
 
 export const Head = ({ pageContext }) => {
   const { currentPage } = pageContext
-  const title = currentPage === 1 ? "All posts" : `All posts - Page ${currentPage}`
+  const title = "All posts"
   
   return (
     <Seo 

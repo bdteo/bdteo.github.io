@@ -59,7 +59,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   // Create paginated index pages
-  const postsPerPage = 6
+  const postsPerPage = 25
   const numPages = Math.ceil(posts.length / postsPerPage)
   const indexTemplate = path.resolve(`./src/templates/blog-index.js`)
 

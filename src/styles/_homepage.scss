@@ -12,7 +12,7 @@
 
 .pagination-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: var(--spacing-2);
   flex-wrap: wrap;
@@ -21,15 +21,14 @@
 .pagination-button {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-3) var(--spacing-4);
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   background: var(--color-card-bg);
   color: var(--color-text);
   text-decoration: none;
   border: 1px solid rgba(var(--color-primary-rgb), 0.2);
   border-radius: 8px;
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-sm);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -50,8 +49,8 @@
   }
   
   svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     transition: transform 0.3s ease;
   }
   
@@ -67,15 +66,8 @@
 .pagination-numbers {
   display: flex;
   align-items: center;
-  gap: var(--spacing-1);
-  margin: 0 var(--spacing-4);
-  
-  @media (max-width: 640px) {
-    margin: var(--spacing-2) 0;
-    order: -1;
-    width: 100%;
-    justify-content: center;
-  }
+  gap: var(--spacing-2);
+  margin: 0;
 }
 
 .pagination-number {
