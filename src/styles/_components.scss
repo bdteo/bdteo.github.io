@@ -80,19 +80,16 @@
   .bio-content {
     flex: 1;
 
-    .bio-name {
-      font-size: var(--font-size-2xl);
-      margin: 0;
-      color: var(--color-primary);
-      font-weight: 700;
-      letter-spacing: -0.025em;
-    }
-
     .bio-summary {
-      margin-top: var(--spacing-2);
-      font-size: var(--font-size-md);
+      margin-top: 0;
+      font-size: var(--font-size-lg);
       color: var(--color-text-light);
       line-height: 1.6;
+      text-align: center;
+      
+      @media (min-width: 768px) {
+        text-align: left;
+      }
     }
 
     .bio-social {

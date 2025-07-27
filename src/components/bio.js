@@ -49,9 +49,9 @@ const Bio = () => {
       <div className="bio-content">
         {author?.name && (
           <>
-            <h2 className="bio-name" itemProp="name">{author.name}</h2>
             <p className="bio-summary" itemProp="description">{author.summary}</p>
             {/* Hidden schema.org properties */}
+            <meta itemProp="name" content={author.name} />
             <meta itemProp="jobTitle" content="Senior Software Developer" />
             <meta itemProp="worksFor" content="ShareRig" />
             <meta itemProp="url" content="https://bdteo.com" />
