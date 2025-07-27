@@ -4,4 +4,127 @@
 
 
 
-// Homepage uses original blog cards with simple section titles
+// Pagination Styles
+.pagination {
+  margin-top: var(--spacing-12);
+  margin-bottom: var(--spacing-8);
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+}
+
+.pagination-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  text-decoration: none;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  border-radius: 8px;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  &:hover:not(.pagination-disabled) {
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border-color: rgba(var(--color-primary-rgb), 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.15);
+    color: var(--color-primary);
+  }
+  
+  &.pagination-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: var(--color-text-light);
+    border-color: var(--color-border);
+  }
+  
+  svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+  }
+  
+  &.pagination-prev:hover:not(.pagination-disabled) svg {
+    transform: translateX(-2px);
+  }
+  
+  &.pagination-next:hover:not(.pagination-disabled) svg {
+    transform: translateX(2px);
+  }
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  margin: 0 var(--spacing-4);
+  
+  @media (max-width: 640px) {
+    margin: var(--spacing-2) 0;
+    order: -1;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.pagination-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  text-decoration: none;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  border-radius: 8px;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  &:hover {
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border-color: rgba(var(--color-primary-rgb), 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.15);
+    color: var(--color-primary);
+  }
+  
+  &.pagination-current {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+    cursor: default;
+    
+    &:hover {
+      transform: none;
+      box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+    }
+  }
+}
+
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-text-light);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  cursor: default;
+}
