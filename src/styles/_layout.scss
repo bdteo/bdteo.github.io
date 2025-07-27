@@ -424,7 +424,13 @@ body {
     margin-bottom: var(--spacing-20);
   }
   
+  // Minimal top spacing when section follows bio
+  &:first-of-type {
+    margin-top: 0;
+  }
+  
   .section-title {
+    margin-top: 0 !important; // Override h2 default margin
     margin-bottom: var(--spacing-6);
     
     @media (min-width: 768px) {
