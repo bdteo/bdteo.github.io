@@ -63,10 +63,7 @@ const BlogIndex = ({ data, location }) => {
       {/* More Posts */}
       {recentPosts.length > 0 && (
         <div className="section">
-          <div className="section-header">
-            <h2 className="section-title">More Posts</h2>
-            <Link to="/archive" className="section-link">View All</Link>
-          </div>
+          <h2 className="section-title">More Posts</h2>
           <div className="grid-container auto-grid">
             {recentPosts.map(post => {
               const title = post.frontmatter.title || post.fields.slug
