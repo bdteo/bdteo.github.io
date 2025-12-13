@@ -1,3 +1,6 @@
+SHELL := /usr/bin/env bash
+.SHELLFLAGS := -euo pipefail -c
+
 .PHONY: deploy deploy-build clean
 
 # Zero-downtime deploy for the VPS:
@@ -18,8 +21,7 @@ NVM_DIR := $(HOME)/.nvm
 NODE_VERSION := 22
 
 deploy:
-	@set -euo pipefail; \
-	echo "==> Fetching latest main"; \
+	@echo "==> Fetching latest main"; \
 	cd "$(APP_DIR)"; \
 	git fetch --all --prune; \
 	echo "==> Ensuring public is a symlink"; \
