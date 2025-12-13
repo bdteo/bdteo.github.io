@@ -2,14 +2,14 @@
 title: "About Boris D. Teoharov | Senior Software Developer"
 date: "2023-05-04T22:12:03.284Z"
 featuredImage: "./images/boris-teoharov.jpg"
-description: "Learn about Boris D. Teoharov, Senior Software Developer at GetHookd AI LLC. Expertise in PHP, AI/ML, DevOps, low-level programming, and theoretical computer science."
+description: "Learn about Boris D. Teoharov, Senior Software Developer at GetHookd AI. Expertise in PHP, AI/ML, DevOps, low-level programming, and theoretical computer science."
 ---
 
 A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.
 
 ## Professional Profile
 
-- **Job Title**: Senior Software Developer at GetHookd AI LLC ([gethookd.ai](https://www.gethookd.ai/))
+- **Job Title**: Senior Software Developer at GetHookd AI ([gethookd.ai](https://www.gethookd.ai/))
 - **Skills and Technologies**:
     - Programming Languages: PHP 8.0, JavaScript (ES11), TypeScript, Python, Java, C (low-level), Assembler
     - Web Development Frameworks: Laravel 9.0+, Symfony, Vite, pnpm

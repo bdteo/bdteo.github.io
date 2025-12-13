@@ -57,7 +57,7 @@ const Bio = () => {
             <p className="bio-summary" itemProp="description">{author.summary}</p>
             {/* Hidden schema.org properties */}
             <meta itemProp="jobTitle" content="Senior Software Developer" />
-            <meta itemProp="worksFor" content="GetHookd AI LLC" />
+            <meta itemProp="worksFor" content="GetHookd AI" />
             <meta itemProp="url" content="https://bdteo.com" />
           </>
         )}

@@ -13,7 +13,7 @@ module.exports = {
     title: `Boris's Blog`,
     author: {
       name: `Boris D. Teoharov`,
-      summary: `Senior Software Developer at GetHookd AI LLC with expertise in web development, AI/ML, DevOps, and low-level programming. Passionate about exploring theoretical computer science, mathematics, and the creative applications of AI.`,
+      summary: `Senior Software Developer at GetHookd AI with expertise in web development, AI/ML, DevOps, and low-level programming. Passionate about exploring theoretical computer science, mathematics, and the creative applications of AI.`,
     },
     description: `A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.`,
     siteUrl: `https://bdteo.com`,
