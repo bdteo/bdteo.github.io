@@ -13,9 +13,11 @@ SHELL := /usr/bin/env bash
 # - pnpm available via corepack (package.json pins pnpm)
 
 APP_DIR := $(CURDIR)
-RELEASES_DIR := $(APP_DIR)/.releases
+# Store releases OUTSIDE the git working tree so accidental `git clean -fd`
+# can't delete the currently-served build (which would cause 403s during deploy).
+RELEASES_DIR := $(HOME)/site/bdteo.com-releases
 TIMESTAMP := $(shell date +%Y%m%d%H%M%S)
-WORKTREE_DIR := $(APP_DIR)/.worktree-$(TIMESTAMP)
+WORKTREE_DIR := $(RELEASES_DIR)/.worktree-$(TIMESTAMP)
 RELEASE_DIR := $(RELEASES_DIR)/$(TIMESTAMP)
 NVM_DIR := $(HOME)/.nvm
 NODE_VERSION := 22
@@ -26,14 +28,22 @@ deploy:
 	git fetch --all --prune; \
 	echo "==> Ensuring public is a symlink"; \
 	mkdir -p "$(RELEASES_DIR)"; \
-	if [ -L "$(APP_DIR)/public" ]; then \
+	if [ -L "$(APP_DIR)/public" ] && [ ! -e "$(APP_DIR)/public" ]; then \
+	  echo "!! public symlink is broken. Creating a temporary empty release to restore availability."; \
+	  mkdir -p "$(RELEASES_DIR)/rescue-$(TIMESTAMP)/public"; \
+	  ln -s "$(RELEASES_DIR)/rescue-$(TIMESTAMP)/public" "$(APP_DIR)/public.tmp"; \
+	  mv -Tf "$(APP_DIR)/public.tmp" "$(APP_DIR)/public"; \
+	elif [ -L "$(APP_DIR)/public" ]; then \
 	  :; \
 	elif [ -d "$(APP_DIR)/public" ]; then \
-	  mv "$(APP_DIR)/public" "$(RELEASES_DIR)/initial-$(TIMESTAMP)"; \
-	  ln -sfn "$(RELEASES_DIR)/initial-$(TIMESTAMP)" "$(APP_DIR)/public"; \
-	else \
 	  mkdir -p "$(RELEASES_DIR)/initial-$(TIMESTAMP)"; \
-	  ln -sfn "$(RELEASES_DIR)/initial-$(TIMESTAMP)" "$(APP_DIR)/public"; \
+	  mv "$(APP_DIR)/public" "$(RELEASES_DIR)/initial-$(TIMESTAMP)/public"; \
+	  ln -s "$(RELEASES_DIR)/initial-$(TIMESTAMP)/public" "$(APP_DIR)/public.tmp"; \
+	  mv -Tf "$(APP_DIR)/public.tmp" "$(APP_DIR)/public"; \
+	else \
+	  mkdir -p "$(RELEASES_DIR)/initial-$(TIMESTAMP)/public"; \
+	  ln -s "$(RELEASES_DIR)/initial-$(TIMESTAMP)/public" "$(APP_DIR)/public.tmp"; \
+	  mv -Tf "$(APP_DIR)/public.tmp" "$(APP_DIR)/public"; \
 	fi; \
 	echo "==> Creating worktree at $(WORKTREE_DIR)"; \
 	git worktree add --detach "$(WORKTREE_DIR)" origin/main; \
@@ -53,9 +63,12 @@ deploy:
 	echo "==> Cleaning worktree"; \
 	git worktree remove --force "$(WORKTREE_DIR)"; \
 	echo "==> Atomically switching public -> $(RELEASE_DIR)/public"; \
-	ln -sfn "$(RELEASE_DIR)/public" "$(APP_DIR)/public"; \
-	echo "==> Done. Live site now serves the new build."
+	ln -s "$(RELEASE_DIR)/public" "$(APP_DIR)/public.tmp"; \
+	mv -Tf "$(APP_DIR)/public.tmp" "$(APP_DIR)/public"; \
+	echo "==> Done. Live site now serves the new build."; \
+	echo "==> Keeping only the most recent 10 releases"; \
+	ls -1dt "$(RELEASES_DIR)"/20* 2>/dev/null | tail -n +11 | xargs -r rm -rf || true
 
 clean:
-	@rm -rf "$(RELEASES_DIR)" "$(APP_DIR)"/.worktree-*
+	@rm -rf "$(RELEASES_DIR)"
 

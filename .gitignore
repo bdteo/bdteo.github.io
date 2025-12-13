@@ -57,6 +57,8 @@ typings/
 # gatsby files
 .cache/
 public/
+.releases/
+.worktree-*
 
 # Mac files
 .DS_Store
