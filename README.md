@@ -39,9 +39,21 @@ The blog covers a wide range of technical and creative topics, including:
 
 ## Development and Deployment
 
-- Uses Yarn for package management
+- Uses pnpm for package management
 - Implements continuous deployment (likely through GitHub Pages, as indicated by the `docs -> public` symlink)
 - Includes shell tools for content gathering and management
+
+## Run locally
+
+This site uses Gatsby v5, which expects a **supported Node LTS** (recommended: **Node 22**). If you run Node v23+, Gatsby may crash during startup (LMDB datastore).
+
+If you use `nvm`, this repo includes an `.nvmrc`:
+
+- `nvm install && nvm use`
+- `pnpm install`
+- `pnpm develop`
+
+Then open `http://localhost:8000`.
 
 ## Future Potential
 

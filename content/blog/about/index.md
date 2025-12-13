@@ -12,7 +12,7 @@ A blog exploring the intersections of software development, theoretical computer
 - **Job Title**: Senior Software Developer at ShareRig
 - **Skills and Technologies**:
     - Programming Languages: PHP 8.0, JavaScript (ES11), TypeScript, Python, Java, C (low-level), Assembler
-    - Web Development Frameworks: Laravel 9.0+, Symfony, Vite, Yarn
+    - Web Development Frameworks: Laravel 9.0+, Symfony, Vite, pnpm
     - AI and Machine Learning: Neural Networks, Stable Diffusion, Large Language Models (LLMs)
     - System and DevOps: Linux/Unix, Bash scripting, Apple scripting, DevOps practices
     - Databases: Relational databases, Database optimization

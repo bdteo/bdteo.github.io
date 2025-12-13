@@ -3,12 +3,12 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Build & Development Commands
-- Development: `yarn dev` or `npm run dev`
-- Build: `yarn build` or `npm run build`
-- Format: `yarn format` or `npm run format`
-- Serve: `yarn serve` or `npm run serve`
-- Clean: `yarn clean` or `npm run clean`
-- Deploy: `yarn deploy` or `npm run deploy`
+- Development: `pnpm dev`
+- Build: `pnpm build`
+- Format: `pnpm format`
+- Serve: `pnpm serve`
+- Clean: `pnpm clean`
+- Deploy: `pnpm deploy`
 
 ## Code Style Guidelines
 - Formatting: Use Prettier with default config
