@@ -12,6 +12,9 @@ const Seo = ({
   description,
   title,
   image,
+  imageAlt,
+  imageWidth,
+  imageHeight,
   article = false,
   keywords = [],
   datePublished,
@@ -55,6 +58,7 @@ const Seo = ({
   const metaImage = image ? `${siteUrl}${image}` : null
   const url = `${siteUrl}${pathname}`
   const metaKeywords = keywords.length > 0 ? keywords.join(", ") : "programming, software development, web development, AI, machine learning"
+  const metaImageAlt = imageAlt || metaTitle
 
   return (
     <>
@@ -72,6 +76,10 @@ const Seo = ({
       <meta property="og:description" content={metaDescription} />
       <meta property="og:site_name" content={defaultTitle} />
       {metaImage && <meta property="og:image" content={metaImage} />}
+      {metaImage && <meta property="og:image:secure_url" content={metaImage} />}
+      {metaImage && <meta property="og:image:alt" content={metaImageAlt} />}
+      {metaImage && imageWidth && <meta property="og:image:width" content={String(imageWidth)} />}
+      {metaImage && imageHeight && <meta property="og:image:height" content={String(imageHeight)} />}
       {article && datePublished && (
         <meta property="article:published_time" content={datePublished} />
       )}
@@ -85,6 +93,7 @@ const Seo = ({
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
       {metaImage && <meta name="twitter:image" content={metaImage} />}
+      {metaImage && <meta name="twitter:image:alt" content={metaImageAlt} />}
 
       {/* Bing Verification */}
       <meta name="msvalidate.01" content="DE9AA37DB58BF3C5CD561AE0B187709C" />

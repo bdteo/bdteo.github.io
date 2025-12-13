@@ -74,8 +74,11 @@ const BlogPostTemplate = ({
 }
 
 export const Head = ({ data: { markdownRemark: post, site } }) => {
-  // Extract the featured image path for SEO
-  const featuredImagePath = post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData?.images?.fallback?.src
+  // Extract the featured image path for SEO.
+  // Use a JPG derivative for maximum compatibility with link previews (Slack/Discord/etc).
+  const ogImage = post.frontmatter.featuredImage?.childImageSharp?.resize?.src
+  const ogImageWidth = post.frontmatter.featuredImage?.childImageSharp?.resize?.width
+  const ogImageHeight = post.frontmatter.featuredImage?.childImageSharp?.resize?.height
   
   // Extract frontmatter fields
   const { title, description, date, tags, jsonld } = post.frontmatter
@@ -87,7 +90,10 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
     <Seo
       title={title}
       description={description || post.excerpt}
-      image={featuredImagePath}
+      image={ogImage}
+      imageAlt={title}
+      imageWidth={ogImageWidth}
+      imageHeight={ogImageHeight}
       article={true}
       keywords={tags || []}
       datePublished={datePublished}
@@ -124,6 +130,11 @@ export const pageQuery = graphql`
         featuredImage {
           childImageSharp {
             gatsbyImageData(width: 800, layout: FULL_WIDTH)
+            resize(width: 1200, toFormat: JPG, quality: 82) {
+              src
+              width
+              height
+            }
           }
         }
       }
