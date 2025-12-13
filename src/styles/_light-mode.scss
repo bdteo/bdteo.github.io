@@ -20,37 +20,49 @@ body.light-mode {
   --color-secondary-dark: #059669;  // Emerald 600
   
   // Text colors
-  --color-text: #111827;           // Gray 900
-  --color-text-light: #4B5563;     // Gray 600
-  --color-text-lighter: #9CA3AF;   // Gray 400
-  --color-text-dark: #000000;      // Black
+  // Apple-inspired semantic labels (primary/secondary/tertiary)
+  // - Primary label: #000000
+  // - Secondary label: rgba(60, 60, 67, 0.60)
+  // - Tertiary label: rgba(60, 60, 67, 0.30)
+  --color-text: #000000;
+  --color-text-light: rgba(60, 60, 67, 0.60);
+  --color-text-lighter: rgba(60, 60, 67, 0.30);
+  --color-text-dark: #000000;
   --color-text-accent: #6D28D9;    // Primary color
   
   // Background colors
-  --color-background: #FFFFFF;             // White
-  --color-background-alt: #F9FAFB;         // Gray 50
-  --color-background-soft: #F3F4F6;        // Gray 100
-  --color-background-muted: #E5E7EB;       // Gray 200
+  // Apple-inspired system backgrounds
+  // - systemBackground: #FFFFFF
+  // - secondarySystemBackground / grouped background feel: #F2F2F7
+  // - subtle separators/filled regions: #E5E5EA
+  --color-background: #FFFFFF;
+  --color-background-alt: #F2F2F7;
+  --color-background-soft: #FFFFFF;
+  --color-background-muted: #E5E5EA;
   
   // Element colors
-  --color-border: #E5E7EB;         // Gray 200
-  --color-border-light: #F3F4F6;   // Gray 100
-  --color-border-dark: #D1D5DB;    // Gray 300
+  // Apple-inspired separators
+  // - separator: rgba(60, 60, 67, 0.29)
+  // - opaqueSeparator: #C6C6C8
+  --color-border: rgba(60, 60, 67, 0.29);
+  --color-border-light: rgba(60, 60, 67, 0.14);
+  --color-border-dark: #C6C6C8;
   
-  --color-accent: #E5E7EB;         // Gray 200
-  --color-accent-light: #F3F4F6;   // Gray 100
-  --color-accent-dark: #D1D5DB;    // Gray 300
+  --color-accent: #E5E5EA;
+  --color-accent-light: #F2F2F7;
+  --color-accent-dark: #C6C6C8;
   
   --color-hover: #5B21B6;          // Purple 800
   --color-active: #4C1D95;         // Purple 900
   
   // UI component colors
-  --color-card-bg: #F0F4FF;                    // Perfect blue-white tint
-  --color-card-bg-rgb: 240, 244, 255;
-  --color-card-border: #E5E7EB;
-  --color-card-shadow: rgba(0, 0, 0, 0.05);
+  // Apple-like card surface (secondary system background)
+  --color-card-bg: #F2F2F7;
+  --color-card-bg-rgb: 242, 242, 247;
+  --color-card-border: rgba(60, 60, 67, 0.14);
+  --color-card-shadow: rgba(0, 0, 0, 0.06);
   --color-card-title: var(--color-text-dark);
-  --color-figcaption-bg: rgba(229, 231, 235, 0.85);
+  --color-figcaption-bg: rgba(242, 242, 247, 0.85);
   --color-nav-bg: rgba(255, 255, 255, 0.9);
   
   // Button colors
@@ -60,9 +72,9 @@ body.light-mode {
   --color-button-text: #FFFFFF;          // Primary button text
   
   // Code block colors
-  --color-code-bg: #F3F4F6;               // Gray 100
-  --color-code-text: #1F2937;             // Gray 800
-  --color-code-border: #E5E7EB;           // Gray 200
+  --color-code-bg: #F2F2F7;
+  --color-code-text: #1C1C1E;
+  --color-code-border: rgba(60, 60, 67, 0.14);
   --color-code-inline-bg: transparent;   // Completely transparent
   
   // Special element colors

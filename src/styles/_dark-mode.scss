@@ -20,38 +20,51 @@ body.dark-mode {
   --color-secondary-dark: #10B981; // Emerald 500
   
   // Text colors
-  --color-text: #F9FAFB;           // Gray 50
-  --color-text-light: #D1D5DB;     // Gray 300
-  --color-text-lighter: #9CA3AF;   // Gray 400
-  --color-text-dark: #F3F4F6;      // Gray 100
+  // Apple-inspired semantic labels (primary/secondary/tertiary)
+  // - Primary label: #FFFFFF
+  // - Secondary label: rgba(235, 235, 245, 0.60)
+  // - Tertiary label: rgba(235, 235, 245, 0.30)
+  --color-text: #FFFFFF;
+  --color-text-light: rgba(235, 235, 245, 0.60);
+  --color-text-lighter: rgba(235, 235, 245, 0.30);
+  --color-text-dark: #FFFFFF;
   --color-text-accent: #A78BFA;    // Purple 400
   
   // Background colors
-  --color-background: #111827;           // Gray 900
-  --color-background-alt: #1F2937;       // Gray 800
-  --color-background-soft: #374151;      // Gray 700
-  --color-background-muted: #4B5563;     // Gray 600
+  // Apple-inspired system backgrounds (iOS-like dark surfaces)
+  // - systemBackground: #000000
+  // - secondarySystemBackground: #1C1C1E
+  // - tertiarySystemBackground: #2C2C2E
+  // - quaternary-ish surface: #3A3A3C
+  --color-background: #000000;
+  --color-background-alt: #1C1C1E;
+  --color-background-soft: #2C2C2E;
+  --color-background-muted: #3A3A3C;
   
   // Element colors
-  --color-border: #374151;         // Gray 700
-  --color-border-light: #4B5563;   // Gray 600
-  --color-border-dark: #1F2937;    // Gray 800
+  // Apple-inspired separators
+  // - separator: rgba(84, 84, 88, 0.60)
+  // - opaqueSeparator: #38383A
+  --color-border: rgba(84, 84, 88, 0.60);
+  --color-border-light: rgba(84, 84, 88, 0.35);
+  --color-border-dark: #38383A;
   
-  --color-accent: #374151;         // Gray 700
-  --color-accent-light: #4B5563;   // Gray 600
-  --color-accent-dark: #1F2937;    // Gray 800
+  --color-accent: #2C2C2E;
+  --color-accent-light: #3A3A3C;
+  --color-accent-dark: #1C1C1E;
   
   --color-hover: #C4B5FD;          // Purple 300
   --color-active: #DDD6FE;         // Purple 200
   
   // UI component colors
-  --color-card-bg: #1E293B;                    // Slate 800 (bluish tint)
-  --color-card-bg-rgb: 30, 41, 59;
-  --color-card-border: #374151;                // Gray 700
-  --color-card-shadow: rgba(0, 0, 0, 0.3);
+  // Apple-like card surface (secondary system background)
+  --color-card-bg: #1C1C1E;
+  --color-card-bg-rgb: 28, 28, 30;
+  --color-card-border: rgba(84, 84, 88, 0.60);
+  --color-card-shadow: rgba(0, 0, 0, 0.45);
   --color-card-title: var(--color-text-dark);
-  --color-figcaption-bg: rgba(31, 41, 55, 0.75);
-  --color-nav-bg: rgba(17, 24, 39, 0.9);       // Gray 900 with opacity
+  --color-figcaption-bg: rgba(28, 28, 30, 0.80);
+  --color-nav-bg: rgba(0, 0, 0, 0.85);
   
   // Button colors
   --color-button-primary: #8B5CF6;          // Purple 500
@@ -60,9 +73,9 @@ body.dark-mode {
   --color-button-text: #F9FAFB;             // Gray 50
   
   // Code block colors
-  --color-code-bg: #1E1E1E;                 // VS Code dark theme background
-  --color-code-text: #D4D4D4;               // VS Code text color
-  --color-code-border: #4B5563;             // Gray 600
+  --color-code-bg: #1C1C1E;
+  --color-code-text: rgba(235, 235, 245, 0.92);
+  --color-code-border: rgba(84, 84, 88, 0.60);
   --color-code-inline-bg: transparent;  // Completely transparent
   
   // Special element colors
