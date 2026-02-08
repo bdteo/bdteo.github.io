@@ -10,7 +10,7 @@ KEY_FILE="key.pem"
 KNOWN_HOSTS_FILE="known_hosts"
 
 umask 077
-printf "%s" "$SSH_PRIVATE_KEY" > "$KEY_FILE"
+printf "%s\n" "$SSH_PRIVATE_KEY" > "$KEY_FILE"
 chmod 600 "$KEY_FILE"
 
 if command -v ssh-keyscan >/dev/null 2>&1; then

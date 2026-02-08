@@ -1,7 +1,7 @@
 SHELL := /usr/bin/env bash
 .SHELLFLAGS := -euo pipefail -c
 
-.PHONY: deploy deploy-build clean
+.PHONY: deploy deploy-build clean gh-deploy
 
 # Zero-downtime deploy for the VPS:
 # - builds in a temporary git worktree (so we never delete the live public/)
@@ -68,6 +68,18 @@ deploy:
 	echo "==> Done. Live site now serves the new build."; \
 	echo "==> Keeping only the most recent 10 releases"; \
 	ls -1dt "$(RELEASES_DIR)"/20* 2>/dev/null | tail -n +11 | xargs -r rm -rf || true
+
+GH_REPO := bdteo/bdteo.github.io
+
+gh-deploy:
+	@echo "==> Pushing to GitHub..."; \
+	git push gh-origin main; \
+	echo "==> Triggering deploy workflow..."; \
+	gh workflow run deploy.yml -R "$(GH_REPO)"; \
+	sleep 3; \
+	RUN_ID=$$(gh run list -R "$(GH_REPO)" --workflow=deploy.yml --limit 1 --json databaseId -q '.[0].databaseId'); \
+	echo "==> Watching run $$RUN_ID..."; \
+	gh run watch -R "$(GH_REPO)" "$$RUN_ID"
 
 clean:
 	@rm -rf "$(RELEASES_DIR)"
