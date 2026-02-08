@@ -1,0 +1,52 @@
+name: Deploy to VPS
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-blog
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_PORT: ${{ secrets.SSH_PORT }}
+      REMOTE_APP_PATH: ${{ secrets.REMOTE_APP_PATH }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Prepare SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: bash tools/ci/prepare-ssh.sh
+
+      - name: Deploy to VPS
+        run: bash tools/ci/deploy.sh
+
+      - name: Cleanup key material
+        if: always()
+        run: |
+          shred -u "${SSH_KEY_PATH:-key.pem}" 2>/dev/null || true
+          rm -f "${SSH_KNOWN_HOSTS:-known_hosts}" 2>/dev/null || true
