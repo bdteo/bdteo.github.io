@@ -8,7 +8,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Format: `pnpm format`
 - Serve: `pnpm serve`
 - Clean: `pnpm clean`
-- Deploy: `pnpm deploy`
+- Deploy to VPS via GitHub Actions: `make gh-deploy` (pushes to `gh-origin` GitHub remote, triggers deploy workflow)
+- Direct VPS deploy (run on server): `make deploy` (zero-downtime worktree-based deploy)
+
+## Git Remotes
+- `origin`: Bitbucket (`bdteo/bdteo.com`) — primary source repo
+- `gh-origin`: GitHub (`bdteo/bdteo.github.io`) — deploy target, triggers GitHub Actions
 
 ## Code Style Guidelines
 - Formatting: Use Prettier with default config
@@ -19,4 +24,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Error handling: Use conditional rendering for missing data
 - File structure: Follow Gatsby conventions for pages, components, and templates
 - GraphQL queries: Co-locate with components using page/static queries
-- Theme handling: Support dark/light modes via gatsby-plugin-dark-mode
+- Theme handling: Dark/light modes via ThemeContext (src/context/ThemeContext.js), body class toggles (`dark-mode`/`light-mode`)
+- Theme variables: Defined in `src/styles/_dark-mode.scss` and `src/styles/_light-mode.scss` as CSS custom properties
+- Design language: Apple-inspired — pure black (#000) dark mode, pure white (#FFF) light mode, purple accent palette
+
+## Giscus Comments
+- Component: `src/components/GiscusComments.js` (used in `src/templates/blog-post.js`)
+- Custom theme CSS: `static/css/giscus/dark-theme.css` and `static/css/giscus/light-theme.css`
+- In development, Giscus uses built-in themes (`dark`/`light`) because the iframe can't load localhost CSS (Chrome CORS)
+- In production, Giscus loads the custom CSS files via absolute URL from the site
+- Theme switching uses MutationObserver watching body/html class changes
+- Repo: `bdteo/bdteo.com` on GitHub Discussions
