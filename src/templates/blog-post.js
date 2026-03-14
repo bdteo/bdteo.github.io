@@ -40,6 +40,7 @@ const BlogPostTemplate = ({
           itemProp="articleBody"
         />
       </article>
+      <hr />
       <nav className="blog-post-nav">
         <ul
           style={{

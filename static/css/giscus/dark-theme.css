@@ -1,14 +1,14 @@
 /* static/css/giscus/dark-theme.css */
 
-/* Inlined from https://giscus.app/themes/dark_dimmed.css */
+/* Custom dark theme matching site's dark mode palette */
+/* Pure black bg, white text, purple accents, white-alpha borders */
 /*! MIT License - Copyright (c) 2018 GitHub Inc. */
-main{--color-prettylights-syntax-comment:#768390;--color-prettylights-syntax-constant:#6cb6ff;--color-prettylights-syntax-entity:#dcbdfb;--color-prettylights-syntax-storage-modifier-import:#adbac7;--color-prettylights-syntax-entity-tag:#8ddb8c;--color-prettylights-syntax-keyword:#f47067;--color-prettylights-syntax-string:#96d0ff;--color-prettylights-syntax-variable:#f69d50;--color-prettylights-syntax-brackethighlighter-unmatched:#e5534b;--color-prettylights-syntax-invalid-illegal-text:#cdd9e5;--color-prettylights-syntax-invalid-illegal-bg:#922323;--color-prettylights-syntax-carriage-return-text:#cdd9e5;--color-prettylights-syntax-carriage-return-bg:#ad2e2c;--color-prettylights-syntax-string-regexp:#8ddb8c;--color-prettylights-syntax-markup-list:#eac55f;--color-prettylights-syntax-markup-heading:#316dca;--color-prettylights-syntax-markup-italic:#adbac7;--color-prettylights-syntax-markup-bold:#adbac7;--color-prettylights-syntax-markup-deleted-text:#ffd8d3;--color-prettylights-syntax-markup-deleted-bg:#78191b;--color-prettylights-syntax-markup-inserted-text:#b4f1b4;--color-prettylights-syntax-markup-inserted-bg:#1b4721;--color-prettylights-syntax-markup-changed-text:#ffddb0;--color-prettylights-syntax-markup-changed-bg:#682d0f;--color-prettylights-syntax-markup-ignored-text:#adbac7;--color-prettylights-syntax-markup-ignored-bg:#255ab2;--color-prettylights-syntax-meta-diff-range:#dcbdfb;--color-prettylights-syntax-brackethighlighter-angle:#768390;--color-prettylights-syntax-sublimelinter-gutter-mark:#545d68;--color-prettylights-syntax-constant-other-reference-link:#96d0ff;--color-btn-text:#adbac7;--color-btn-bg:#373e47;--color-btn-border:#cdd9e51a;--color-btn-shadow:0 0 #0000;--color-btn-inset-shadow:0 0 #0000;--color-btn-hover-bg:#444c56;--color-btn-hover-border:#768390;--color-btn-active-bg:#3d444d;--color-btn-active-border:#636e7b;--color-btn-selected-bg:#2d333b;--color-btn-primary-text:#fff;--color-btn-primary-bg:#347d39;--color-btn-primary-border:#cdd9e51a;--color-btn-primary-shadow:0 0 #0000;--color-btn-primary-inset-shadow:0 0 #0000;--color-btn-primary-hover-bg:#46954a;--color-btn-primary-hover-border:#cdd9e51a;--color-btn-primary-selected-bg:#347d39;--color-btn-primary-selected-shadow:0 0 #0000;--color-btn-primary-disabled-text:#cdd9e580;--color-btn-primary-disabled-bg:#347d3999;--color-btn-primary-disabled-border:#cdd9e51a;--color-action-list-item-default-hover-bg:#909dab1f;--color-segmented-control-bg:#636e7b1a;--color-segmented-control-button-bg:#22272e;--color-segmented-control-button-selected-border:#636e7b;--color-fg-default:#adbac7;--color-fg-muted:#768390;--color-fg-subtle:#636e7b;--color-canvas-default:#22272e;--color-canvas-overlay:#2d333b;--color-canvas-inset:#1c2128;--color-canvas-subtle:#2d333b;--color-border-default:#444c56;--color-border-muted:#373e47;--color-neutral-muted:#636e7b66;--color-accent-fg:#539bf5;--color-accent-emphasis:#316dca;--color-accent-muted:#4184e466;--color-accent-subtle:#4184e41a;--color-success-fg:#57ab5a;--color-attention-fg:#c69026;--color-attention-muted:#ae7c1466;--color-attention-subtle:#ae7c1426;--color-danger-fg:#e5534b;--color-danger-muted:#e5534b66;--color-danger-subtle:#e5534b1a;--color-primer-shadow-inset:0 0 #0000;--color-scale-gray-7:#373e47;--color-scale-blue-8:#143d79;--color-social-reaction-bg-hover:var(--color-scale-gray-7);--color-social-reaction-bg-reacted-hover:var(--color-scale-blue-8)}
+main{--color-prettylights-syntax-comment:#6A9955;--color-prettylights-syntax-constant:#9CDCFE;--color-prettylights-syntax-entity:#C4B5FD;--color-prettylights-syntax-storage-modifier-import:#E0E0E0;--color-prettylights-syntax-entity-tag:#4EC9B0;--color-prettylights-syntax-keyword:#569CD6;--color-prettylights-syntax-string:#CE9178;--color-prettylights-syntax-variable:#9CDCFE;--color-prettylights-syntax-brackethighlighter-unmatched:#EF4444;--color-prettylights-syntax-invalid-illegal-text:#F0F0F0;--color-prettylights-syntax-invalid-illegal-bg:#7F1D1D;--color-prettylights-syntax-carriage-return-text:#F0F0F0;--color-prettylights-syntax-carriage-return-bg:#991B1B;--color-prettylights-syntax-string-regexp:#4EC9B0;--color-prettylights-syntax-markup-list:#FBBF24;--color-prettylights-syntax-markup-heading:#A78BFA;--color-prettylights-syntax-markup-italic:#E0E0E0;--color-prettylights-syntax-markup-bold:#E0E0E0;--color-prettylights-syntax-markup-deleted-text:#FCA5A5;--color-prettylights-syntax-markup-deleted-bg:#7F1D1D;--color-prettylights-syntax-markup-inserted-text:#86EFAC;--color-prettylights-syntax-markup-inserted-bg:#14532D;--color-prettylights-syntax-markup-changed-text:#FDE68A;--color-prettylights-syntax-markup-changed-bg:#78350F;--color-prettylights-syntax-markup-ignored-text:#E0E0E0;--color-prettylights-syntax-markup-ignored-bg:#4C1D95;--color-prettylights-syntax-meta-diff-range:#C4B5FD;--color-prettylights-syntax-brackethighlighter-angle:#78787D;--color-prettylights-syntax-sublimelinter-gutter-mark:#525257;--color-prettylights-syntax-constant-other-reference-link:#9CDCFE;--color-btn-text:#FFFFFF;--color-btn-bg:#1A1A1A;--color-btn-border:rgba(255,255,255,0.12);--color-btn-shadow:0 0 #0000;--color-btn-inset-shadow:0 0 #0000;--color-btn-hover-bg:#2C2C2E;--color-btn-hover-border:rgba(255,255,255,0.20);--color-btn-active-bg:#1A1A1A;--color-btn-active-border:rgba(255,255,255,0.25);--color-btn-selected-bg:#111111;--color-btn-primary-text:#F9FAFB;--color-btn-primary-bg:#8B5CF6;--color-btn-primary-border:rgba(255,255,255,0.12);--color-btn-primary-shadow:0 0 #0000;--color-btn-primary-inset-shadow:0 0 #0000;--color-btn-primary-hover-bg:#A78BFA;--color-btn-primary-hover-border:rgba(255,255,255,0.12);--color-btn-primary-selected-bg:#7C3AED;--color-btn-primary-selected-shadow:0 0 #0000;--color-btn-primary-disabled-text:rgba(255,255,255,0.5);--color-btn-primary-disabled-bg:rgba(139,92,246,0.6);--color-btn-primary-disabled-border:rgba(255,255,255,0.12);--color-action-list-item-default-hover-bg:rgba(255,255,255,0.08);--color-segmented-control-bg:rgba(255,255,255,0.06);--color-segmented-control-button-bg:#000000;--color-segmented-control-button-selected-border:rgba(255,255,255,0.20);--color-fg-default:#FFFFFF;--color-fg-muted:#98989D;--color-fg-subtle:#78787D;--color-canvas-default:#000000;--color-canvas-overlay:#0A0A0A;--color-canvas-inset:#0A0A0A;--color-canvas-subtle:#111111;--color-border-default:rgba(255,255,255,0.12);--color-border-muted:rgba(255,255,255,0.06);--color-neutral-muted:rgba(120,120,125,0.4);--color-accent-fg:#A78BFA;--color-accent-emphasis:#8B5CF6;--color-accent-muted:rgba(167,139,250,0.4);--color-accent-subtle:rgba(167,139,250,0.1);--color-success-fg:#34D399;--color-attention-fg:#FBBF24;--color-attention-muted:rgba(251,191,36,0.4);--color-attention-subtle:rgba(251,191,36,0.15);--color-danger-fg:#EF4444;--color-danger-muted:rgba(239,68,68,0.4);--color-danger-subtle:rgba(239,68,68,0.1);--color-primer-shadow-inset:0 0 #0000;--color-scale-gray-7:#2C2C2E;--color-scale-blue-8:#4C1D95;--color-social-reaction-bg-hover:var(--color-scale-gray-7);--color-social-reaction-bg-reacted-hover:var(--color-scale-blue-8)}
 main .pagination-loader-container{background-image:url(https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg)}
 main .gsc-loading-image{background-image:url(https://github.githubassets.com/images/mona-loading-dimmed.gif)}
 
 /* --- General Giscus Container --- */
 .gsc-main {
-  /* Example: margin-top: 0 !important; */
 }
 
 /* --- Reactions Block --- */
@@ -33,7 +33,6 @@ main .gsc-loading-image{background-image:url(https://github.githubassets.com/ima
 }
 .gsc-reactions-count a {
   text-decoration: none !important;
-  /* color: inherit !important; */
 }
 .gsc-reactions-count a:hover {
   text-decoration: underline !important;
@@ -62,12 +61,8 @@ main .gsc-loading-image{background-image:url(https://github.githubassets.com/ima
   border-radius: 6px !important;
   font-size: 0.875em !important;
   line-height: 1.4 !important;
-  /* border: 1px solid #373e47 !important; */ /* Giscus dark_dimmed border */
-  /* background-color: #22272e !important; */ /* Giscus dark_dimmed bg */
 }
 .gsc-reactions .gsc-social-reaction-summary-item.has-reacted {
-  /* border-color: #316dca !important; */ /* Giscus dark_dimmed active border */
-  /* background-color: #143157 !important; */ /* Giscus dark_dimmed active bg */
 }
 
 .gsc-reactions .gsc-direct-reaction-button-emoji {
@@ -82,22 +77,18 @@ main .gsc-loading-image{background-image:url(https://github.githubassets.com/ima
 .gsc-reactions-menu summary.gsc-reactions-button {
   padding: 4px !important;
   border-radius: 6px !important;
-  /* border: 1px solid #373e47 !important; */
 }
 .gsc-reactions-menu summary.gsc-reactions-button:hover {
-  /* background-color: #2d333b !important; */ /* Subtle hover */
 }
 .gsc-reactions-menu summary.gsc-reactions-button svg {
   width: 14px !important;
   height: 14px !important;
-  /* color: #768390 !important; */
 }
 
 /* --- Comment Count Header --- */
 .gsc-comments > .gsc-header {
   margin-bottom: 12px !important;
   padding-bottom: 8px !important;
-  /* border-bottom: 1px solid #373e47 !important; */
 }
 .gsc-comments-count {
   margin: 0 !important;
@@ -106,39 +97,29 @@ main .gsc-loading-image{background-image:url(https://github.githubassets.com/ima
 }
 .gsc-comments-count a {
   text-decoration: none !important;
-  /* color: #adbac7 !important; */
 }
 .gsc-comments-count a:hover {
   text-decoration: underline !important;
 }
 .gsc-header em.color-text-secondary { /* "powered by giscus" */
   font-size: 0.8em !important;
-  /* color: #768390 !important; */
 }
 
 /* --- Comment Input Box --- */
 .gsc-comment-box {
   border-radius: 8px !important;
-  /* border: 1px solid #373e47 !important; */
-  /* background-color: #1c2128 !important; */ /* Giscus dark_dimmed main bg */
   margin-top: 0 !important;
 }
 .gsc-comment-box-tabs {
-  /* background-color: #22272e !important; */ /* Giscus dark_dimmed slightly lighter bg */
   padding: 4px 8px 0 8px !important;
-  border-bottom: 1px solid #373e47 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.12) !important;
 }
 .gsc-comment-box-tabs .gsc-tab {
   padding: 6px 12px !important;
   font-size: 0.9em !important;
   border-radius: 6px 6px 0 0 !important;
-  /* border-color: transparent !important; */
 }
 .gsc-comment-box-tabs .gsc-tab.gsc-tab-active {
-  /* background-color: #1c2128 !important; */ /* Match main input area bg */
-  /* border-color: #373e47 !important; */
-  /* border-bottom-color: #1c2128 !important; */ /* Make it look connected */
-  /* color: #adbac7 !important; */
   font-weight: 600 !important;
 }
 
@@ -146,49 +127,35 @@ main .gsc-loading-image{background-image:url(https://github.githubassets.com/ima
   min-height: 100px !important;
   padding: 10px !important;
   font-size: 0.95em !important;
-  /* background-color: #1c2128 !important; */
-  /* color: #adbac7 !important; */
-  /* border: none !important; */
   border-radius: 0 !important;
 }
 .gsc-comment-box-textarea::placeholder {
-  /* color: #535d69 !important; */
 }
 
 .gsc-comment-box-bottom {
   padding: 8px 10px !important;
-  /* background-color: #22272e !important; */
-  border-top: 1px solid #373e47 !important;
+  border-top: 1px solid rgba(255,255,255,0.12) !important;
   border-radius: 0 0 7px 7px !important;
 }
 
 .gsc-comment-box-buttons .btn.btn-primary {
-  /* background-color: #2d7a43 !important; */ /* GitHub dark green */
-  /* color: #f0f6fc !important; */
-  /* border-color: rgba(194,207,219,0.1) !important; */
   font-weight: 500 !important;
   font-size: 0.9em !important;
   padding: 6px 14px !important;
   border-radius: 6px !important;
 }
 .gsc-comment-box-buttons .btn.btn-primary:hover {
-  /* background-color: #31884a !important; */
 }
 .gsc-comment-box-buttons .btn.btn-primary:disabled {
-  /* background-color: #265934 !important; */
-  /* color: rgba(173,186,199,0.5) !important; */
 }
 
 /* Sign out link */
 .gsc-comment-box-bottom button.link-secondary {
   font-size: 0.8em !important;
-  /* color: #768390 !important; */
 }
 .gsc-comment-box-bottom button.link-secondary:hover {
-  /* color: #58a6ff !important; */
 }
 
 /* Markdown hint */
 .gsc-comment-box-markdown-hint svg {
-  /* color: #768390 !important; */
 }
