@@ -1,15 +1,14 @@
 /* static/css/giscus/light-theme.css */
 
-/* Inlined from https://giscus.app/themes/light.css */
+/* Custom light theme matching site's light mode palette */
+/* Pure white bg, dark text, purple accents, black-alpha borders */
 /*! MIT License - Copyright (c) 2018 GitHub Inc. */
-main{--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-btn-text:#24292f;--color-btn-bg:#f6f8fa;--color-btn-border:#1f232826;--color-btn-shadow:0 1px 0 #1f23280a;--color-btn-inset-shadow:inset 0 1px 0 #ffffff40;--color-btn-hover-bg:#f3f4f6;--color-btn-hover-border:#1f232826;--color-btn-active-bg:#ebecf0;--color-btn-active-border:#1f232826;--color-btn-selected-bg:#eeeff2;--color-btn-primary-text:#fff;--color-btn-primary-bg:#1f883d;--color-btn-primary-border:#1f232826;--color-btn-primary-shadow:0 1px 0 #1f23281a;--color-btn-primary-inset-shadow:inset 0 1px 0 #ffffff08;--color-btn-primary-hover-bg:#1a7f37;--color-btn-primary-hover-border:#1f232826;--color-btn-primary-selected-bg:#187733;--color-btn-primary-selected-shadow:inset 0 1px 0 #002d1133;--color-btn-primary-disabled-text:#fffc;--color-btn-primary-disabled-bg:#94d3a2;--color-btn-primary-disabled-border:#1f232826;--color-action-list-item-default-hover-bg:#d0d7de52;--color-segmented-control-bg:#eaeef2;--color-segmented-control-button-bg:#fff;--color-segmented-control-button-selected-border:#8c959f;--color-fg-default:#1f2328;--color-fg-muted:#656d76;--color-fg-subtle:#6e7781;--color-canvas-default:#fff;--color-canvas-overlay:#fff;--color-canvas-inset:#f6f8fa;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:#d8dee4;--color-neutral-muted:#afb8c133;--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-accent-muted:#54aeff66;--color-accent-subtle:#ddf4ff;--color-success-fg:#1a7f37;--color-attention-fg:#9a6700;--color-attention-muted:#d4a72c66;--color-attention-subtle:#fff8c5;--color-danger-fg:#d1242f;--color-danger-muted:#ff818266;--color-danger-subtle:#ffebe9;--color-primer-shadow-inset:inset 0 1px 0 #d0d7de33;--color-scale-gray-1:#eaeef2;--color-scale-blue-1:#b6e3ff;--color-social-reaction-bg-hover:var(--color-scale-gray-1);--color-social-reaction-bg-reacted-hover:var(--color-scale-blue-1)}
+main{--color-prettylights-syntax-comment:#008000;--color-prettylights-syntax-constant:#1F377F;--color-prettylights-syntax-entity:#6D28D9;--color-prettylights-syntax-storage-modifier-import:#111111;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#0550AE;--color-prettylights-syntax-string:#A31515;--color-prettylights-syntax-variable:#1F377F;--color-prettylights-syntax-brackethighlighter-unmatched:#B91C1C;--color-prettylights-syntax-invalid-illegal-text:#F5F5F5;--color-prettylights-syntax-invalid-illegal-bg:#B91C1C;--color-prettylights-syntax-carriage-return-text:#F5F5F5;--color-prettylights-syntax-carriage-return-bg:#DC2626;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#78350F;--color-prettylights-syntax-markup-heading:#6D28D9;--color-prettylights-syntax-markup-italic:#111111;--color-prettylights-syntax-markup-bold:#111111;--color-prettylights-syntax-markup-deleted-text:#B91C1C;--color-prettylights-syntax-markup-deleted-bg:#FEE2E2;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#DCFCE7;--color-prettylights-syntax-markup-changed-text:#92400E;--color-prettylights-syntax-markup-changed-bg:#FEF3C7;--color-prettylights-syntax-markup-ignored-text:#F5F5F5;--color-prettylights-syntax-markup-ignored-bg:#6D28D9;--color-prettylights-syntax-meta-diff-range:#6D28D9;--color-prettylights-syntax-brackethighlighter-angle:#636366;--color-prettylights-syntax-sublimelinter-gutter-mark:#9CA3AF;--color-prettylights-syntax-constant-other-reference-link:#1F377F;--color-btn-text:#111111;--color-btn-bg:#F5F5F5;--color-btn-border:rgba(0,0,0,0.12);--color-btn-shadow:0 1px 0 rgba(0,0,0,0.04);--color-btn-inset-shadow:inset 0 1px 0 rgba(255,255,255,0.25);--color-btn-hover-bg:#E5E5EA;--color-btn-hover-border:rgba(0,0,0,0.12);--color-btn-active-bg:#E5E5EA;--color-btn-active-border:rgba(0,0,0,0.20);--color-btn-selected-bg:#FAFAFA;--color-btn-primary-text:#FFFFFF;--color-btn-primary-bg:#6D28D9;--color-btn-primary-border:rgba(0,0,0,0.12);--color-btn-primary-shadow:0 1px 0 rgba(0,0,0,0.1);--color-btn-primary-inset-shadow:inset 0 1px 0 rgba(255,255,255,0.03);--color-btn-primary-hover-bg:#5B21B6;--color-btn-primary-hover-border:rgba(0,0,0,0.12);--color-btn-primary-selected-bg:#4C1D95;--color-btn-primary-selected-shadow:inset 0 1px 0 rgba(0,0,0,0.2);--color-btn-primary-disabled-text:rgba(255,255,255,0.75);--color-btn-primary-disabled-bg:rgba(109,40,217,0.5);--color-btn-primary-disabled-border:rgba(0,0,0,0.12);--color-action-list-item-default-hover-bg:rgba(0,0,0,0.04);--color-segmented-control-bg:#F5F5F5;--color-segmented-control-button-bg:#FFFFFF;--color-segmented-control-button-selected-border:rgba(0,0,0,0.20);--color-fg-default:#111111;--color-fg-muted:#56565B;--color-fg-subtle:#636366;--color-canvas-default:#FFFFFF;--color-canvas-overlay:#FFFFFF;--color-canvas-inset:#FAFAFA;--color-canvas-subtle:#F5F5F5;--color-border-default:rgba(0,0,0,0.12);--color-border-muted:rgba(0,0,0,0.06);--color-neutral-muted:rgba(99,99,102,0.2);--color-accent-fg:#6D28D9;--color-accent-emphasis:#6D28D9;--color-accent-muted:rgba(109,40,217,0.4);--color-accent-subtle:rgba(109,40,217,0.08);--color-success-fg:#059669;--color-attention-fg:#D97706;--color-attention-muted:rgba(217,119,6,0.4);--color-attention-subtle:rgba(217,119,6,0.1);--color-danger-fg:#DC2626;--color-danger-muted:rgba(220,38,38,0.4);--color-danger-subtle:rgba(220,38,38,0.08);--color-primer-shadow-inset:inset 0 1px 0 rgba(0,0,0,0.04);--color-scale-gray-1:#F5F5F5;--color-scale-blue-1:#EDE9FE;--color-social-reaction-bg-hover:var(--color-scale-gray-1);--color-social-reaction-bg-reacted-hover:var(--color-scale-blue-1)}
 main .pagination-loader-container{background-image:url(https://github.com/images/modules/pulls/progressive-disclosure-line.svg)}
 main .gsc-loading-image{background-image:url(https://github.githubassets.com/images/mona-loading-default.gif)}
 
 /* --- General Giscus Container --- */
 .gsc-main {
-  /* You can adjust overall padding/margin for the Giscus block if needed */
-  /* Example: margin-top: 0 !important; */
 }
 
 /* --- Reactions Block --- */
@@ -34,7 +33,6 @@ main .gsc-loading-image{background-image:url(https://github.githubassets.com/ima
 }
 .gsc-reactions-count a {
   text-decoration: none !important;
-  /* color: inherit !important; */ /* Inherit color from parent */
 }
 .gsc-reactions-count a:hover {
   text-decoration: underline !important;
@@ -59,137 +57,90 @@ main .gsc-loading-image{background-image:url(https://github.githubassets.com/ima
 }
 
 .gsc-reactions .gsc-social-reaction-summary-item {
-  padding: 3px 8px !important; /* Slightly more balanced padding */
+  padding: 3px 8px !important;
   border-radius: 6px !important;
   font-size: 0.875em !important;
   line-height: 1.4 !important;
-  /* border: 1px solid #d0d7de !important; */ /* Giscus default light border */
-  /* background-color: #f6f8fa !important; */ /* Giscus default light bg */
 }
 .gsc-reactions .gsc-social-reaction-summary-item.has-reacted {
-  /* border-color: #0969da !important; */ /* Giscus default light active border */
-  /* background-color: #ddf4ff !important; */ /* Giscus default light active bg */
 }
 
 .gsc-reactions .gsc-direct-reaction-button-emoji {
-  font-size: 1em !important; /* Keep emoji standard size */
-  margin-right: 2px !important; /* Tiny space before count */
+  font-size: 1em !important;
+  margin-right: 2px !important;
 }
 
 .gsc-reactions .gsc-social-reaction-summary-item-count {
-  font-size: 0.85em !important; /* Slightly smaller count */
+  font-size: 0.85em !important;
 }
 
 .gsc-reactions-menu summary.gsc-reactions-button {
-  padding: 4px !important; /* Slightly more clickable area */
+  padding: 4px !important;
   border-radius: 6px !important;
-  /* border: 1px solid #d0d7de !important; */
 }
 .gsc-reactions-menu summary.gsc-reactions-button:hover {
-  /* background-color: #f3f4f6 !important; */ /* Subtle hover */
 }
 .gsc-reactions-menu summary.gsc-reactions-button svg {
   width: 14px !important;
   height: 14px !important;
-  /* color: #57606a !important; */
 }
 
-/* --- Comment Count Header --- */
+/* --- Comment Count Header (hidden — redundant with our own "Comments" heading) --- */
 .gsc-comments > .gsc-header {
-  margin-bottom: 12px !important;
-  padding-bottom: 8px !important;
-  /* border-bottom: 1px solid #d0d7de !important; */ /* Giscus default light border */
-}
-.gsc-comments-count {
-  margin: 0 !important;
-  font-size: 1em !important; /* Match your h3/h4 style more closely */
-  font-weight: 600 !important;
-}
-.gsc-comments-count a {
-  text-decoration: none !important;
-  /* color: #24292f !important; */
-}
-.gsc-comments-count a:hover {
-  text-decoration: underline !important;
-}
-.gsc-header em.color-text-secondary { /* "powered by giscus" */
-  font-size: 0.8em !important;
-  /* color: #57606a !important; */
+  display: none !important;
 }
 
 /* --- Comment Input Box --- */
 .gsc-comment-box {
   border-radius: 8px !important;
-  /* border: 1px solid #d0d7de !important; */
-  /* background-color: #ffffff !important; */
-  margin-top: 0 !important; /* Remove Giscus's default margin if any */
+  margin-top: 0 !important;
 }
 .gsc-comment-box-tabs {
-  /* background-color: #f6f8fa !important; */
-  padding: 4px 8px 0 8px !important; /* Adjust padding */
-  border-bottom: 1px solid #d0d7de !important; /* Giscus default light border */
+  padding: 4px 8px 0 8px !important;
+  border-bottom: 1px solid rgba(0,0,0,0.12) !important;
 }
 .gsc-comment-box-tabs .gsc-tab {
-  padding: 6px 12px !important; /* Adjust tab padding */
+  padding: 6px 12px !important;
   font-size: 0.9em !important;
   border-radius: 6px 6px 0 0 !important;
-  /* border-color: transparent !important; */
 }
 .gsc-comment-box-tabs .gsc-tab.gsc-tab-active {
-  /* background-color: #ffffff !important; */
-  /* border-color: #d0d7de !important; */
-  /* border-bottom-color: #ffffff !important; */ /* Make it look connected */
-  /* color: #24292f !important; */
   font-weight: 600 !important;
 }
 
 .gsc-comment-box-textarea {
   min-height: 100px !important;
   padding: 10px !important;
-  font-size: 0.95em !important; /* Slightly larger for readability */
-  /* background-color: #ffffff !important; */
-  /* color: #24292f !important; */
-  /* border: none !important; */ /* Remove border if tabs provide top border */
-  border-radius: 0 !important; /* Remove radius if tabs are present */
+  font-size: 0.95em !important;
+  border-radius: 0 !important;
 }
 .gsc-comment-box-textarea::placeholder {
-  /* color: #6e7781 !important; */
 }
 
 .gsc-comment-box-bottom {
   padding: 8px 10px !important;
-  /* background-color: #f6f8fa !important; */
-  border-top: 1px solid #d0d7de !important; /* Giscus default light border */
-  border-radius: 0 0 7px 7px !important; /* Match outer radius, minus 1px for border */
+  border-top: 1px solid rgba(0,0,0,0.12) !important;
+  border-radius: 0 0 7px 7px !important;
 }
 
-.gsc-comment-box-buttons .btn.btn-primary { /* Giscus primary button */
-  /* background-color: #2c974b !important; */ /* GitHub green */
-  /* color: white !important; */
-  /* border-color: rgba(27,31,36,0.15) !important; */
+.gsc-comment-box-buttons .btn.btn-primary {
   font-weight: 500 !important;
   font-size: 0.9em !important;
   padding: 6px 14px !important;
   border-radius: 6px !important;
 }
 .gsc-comment-box-buttons .btn.btn-primary:hover {
-  /* background-color: #288944 !important; */
 }
 .gsc-comment-box-buttons .btn.btn-primary:disabled {
-  /* background-color: #94d3a2 !important; */
-  /* color: rgba(255,255,255,0.75) !important; */
 }
 
 /* Sign out link */
 .gsc-comment-box-bottom button.link-secondary {
   font-size: 0.8em !important;
-  /* color: #57606a !important; */
 }
 .gsc-comment-box-bottom button.link-secondary:hover {
-  /* color: #0969da !important; */
 }
 
 /* Markdown hint */
 .gsc-comment-box-markdown-hint svg {
-  /* color: #57606a !important; */
 }

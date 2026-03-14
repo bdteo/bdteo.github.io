@@ -85,24 +85,9 @@ main .gsc-loading-image{background-image:url(https://github.githubassets.com/ima
   height: 14px !important;
 }
 
-/* --- Comment Count Header --- */
+/* --- Comment Count Header (hidden — redundant with our own "Comments" heading) --- */
 .gsc-comments > .gsc-header {
-  margin-bottom: 12px !important;
-  padding-bottom: 8px !important;
-}
-.gsc-comments-count {
-  margin: 0 !important;
-  font-size: 1em !important;
-  font-weight: 600 !important;
-}
-.gsc-comments-count a {
-  text-decoration: none !important;
-}
-.gsc-comments-count a:hover {
-  text-decoration: underline !important;
-}
-.gsc-header em.color-text-secondary { /* "powered by giscus" */
-  font-size: 0.8em !important;
+  display: none !important;
 }
 
 /* --- Comment Input Box --- */

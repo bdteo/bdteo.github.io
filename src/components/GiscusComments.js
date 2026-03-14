@@ -30,16 +30,8 @@ const GiscusComments = () => {
       const isLightMode = document.documentElement.classList.contains('light-mode') ||
         document.body.classList.contains('light-mode');
 
-      const isDevelopment = process.env.NODE_ENV === 'development';
-
-      if (isDevelopment) {
-        // Giscus iframe can't load localhost CSS (CORS loopback block in Chrome 142+)
-        if (isDarkMode) return 'dark';
-        if (isLightMode) return 'light';
-        return 'preferred_color_scheme';
-      }
-
-      // Production: use custom theme CSS from the production URL
+      // Always use production URL for custom CSS — the Giscus iframe (on giscus.app)
+      // can't load localhost CSS due to CORS, but can load from the live domain.
       const baseUrl = productionSiteUrl.replace(/\/$/, '');
       const cssPath = isDarkMode ? '/css/giscus/dark-theme.css' : '/css/giscus/light-theme.css';
       return `${baseUrl}${cssPath}`;
