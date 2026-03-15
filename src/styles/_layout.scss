@@ -113,6 +113,10 @@ body {
       border-radius: var(--border-radius-lg);
       object-fit: cover;
       flex-shrink: 0;
+
+      .dark-mode & {
+        filter: invert(1);
+      }
     }
 
     .site-title {

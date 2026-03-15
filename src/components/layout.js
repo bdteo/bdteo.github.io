@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import { BThemeToggler } from "./BThemeToggler";
-import Logo from "../images/bd-icon@4x.png"; // Import your logo
+import Logo from "../images/bd-icon.svg";
 import useScrollDirection from "../hooks/useScrollDirection";
 
 const Layout = ({ location, title, children }) => {

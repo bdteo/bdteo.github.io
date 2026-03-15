@@ -32,7 +32,10 @@ const MagicScriptTag = () => {
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
 };
 
-export const onRenderBody = ({ setHtmlAttributes, setPreBodyComponents }) => {
+export const onRenderBody = ({ setHtmlAttributes, setPreBodyComponents, setHeadComponents }) => {
   setHtmlAttributes({ lang: 'en' });
   setPreBodyComponents(<MagicScriptTag key="theme-script" />);
+  setHeadComponents([
+    <link key="favicon-svg" rel="icon" type="image/svg+xml" href="/images/favicon.svg" />,
+  ]);
 };
