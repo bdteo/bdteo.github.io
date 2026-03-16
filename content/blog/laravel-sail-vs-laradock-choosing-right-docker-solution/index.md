@@ -1,158 +1,126 @@
 ---
 title: "Laravel Sail vs Laradock: Comparison for PHP Docker Devs"
 date: "2024-08-08T12:00:00.000Z"
-description: "Compare Laravel Sail & Laradock for PHP development. Understand differences in scope, complexity, customization & when to choose each Docker solution."
+slug: "laravel-sail-vs-laradock-choosing-right-docker-solution"
+description: "Honest comparison of Laravel Sail, Laradock, Herd, and FrankenPHP for PHP development in 2026. Which Docker setup to choose -- and when to skip Docker entirely."
 featuredImage: "./images/featured.png"
+tags: ["Laravel", "Docker", "PHP", "Laravel Sail", "Laradock", "Laravel Herd", "FrankenPHP", "Development Environment", "Docker Compose"]
 imageCaption: "A visual comparison of Laravel Sail and Laradock containerization solutions"
 ---
 
-In the fast-paced world of web development, containerization has become a crucial tool for creating consistent, reproducible environments. For PHP developers, especially those working with Laravel, two Docker-based solutions stand out: Laravel Sail and Laradock. But which one should you choose for your project? Let's dive into a comprehensive comparison to help you make an informed decision.
+> **TL;DR:** For most Laravel developers in 2026: use **Laravel Herd** if you want zero friction (native, no Docker, seconds to set up). Use **Sail** if your team needs identical environments or you depend on services like Redis/Meilisearch. Use **Laradock** if you work across multiple PHP frameworks. Use a **custom Docker Compose** setup if you've outgrown the abstractions. And if performance is everything, look at **FrankenPHP + Octane**.
 
-## What are Laravel Sail and Laradock? 🧭
+> *Originally published August 2024. Updated March 2026 with Laravel 12/Herd/FrankenPHP and current ecosystem state.*
 
-Before we jump into the comparison, let's introduce our contenders:
+The question used to be "Sail or Laradock?" That framing is too narrow now. The real question is: **how should I set up my Laravel dev environment in 2026?** There are more options than ever, and the best choice depends on what you actually need.
 
-- **Laravel Sail** 🚢: A lightweight command-line interface for interacting with Laravel's default Docker development environment. Introduced in Laravel 8, Sail provides an excellent starting point for building Laravel applications using PHP, MySQL, and Redis without requiring prior Docker experience.
+I've used most of these. I currently run a custom Docker Compose setup because I want full control over my containers without abstractions hiding what's happening. But that's my preference, not a universal recommendation. Let me walk through what each option gives you.
 
-- **Laradock** 🐋: An open-source, full PHP development environment for Docker. It supports not just Laravel, but a wide range of PHP projects and comes with a vast array of pre-configured software and tools.
+## The Contenders
 
-## Head-to-Head Comparison 🥊
+### Laravel Herd
 
-Let's break down the key differences between Laravel Sail and Laradock:
+[Herd](https://herd.laravel.com/) is the newest option and, for many developers, the right one. It's a native application (macOS and Windows -- no Linux yet) that gives you PHP, Nginx, Node.js, and Dnsmasq without Docker. The Pro version adds MySQL, PostgreSQL, Redis, and debugging tools.
 
-### 🎯 Primary Purpose
-- **Laravel Sail**: Local development for Laravel projects
-- **Laradock**: Development and production for various PHP projects
+The killer feature: PHP version switching in seconds (7.4 through 8.4), automatic `*.test` domain routing, and zero Docker overhead. If you're building a standard Laravel app and don't need exotic services, Herd gets you coding in under a minute.
 
-### 🏠 Scope
-- **Laravel Sail**: Single project
-- **Laradock**: Multiple projects
+### Laravel Sail
 
-### 🔄 Complexity
-- **Laravel Sail**: 🟢 Low (simplified for Laravel)
-- **Laradock**: 🟠 Higher (more flexible, more options)
+[Sail](https://laravel.com/docs/12.x/sail) is Laravel's official Docker-based development environment. It wraps Docker Compose with a `sail` CLI that abstracts the common commands (`sail up`, `sail artisan`, `sail php`).
 
-### ⏱️ Setup Time
-- **Laravel Sail**: ⚡ Quick (minutes)
-- **Laradock**: ⏳ Longer (can take hours for full setup)
+As of Laravel 12, Sail ships with PHP 8.5 by default, uses `compose.yaml` (the modern filename, not `docker-compose.yml`), and includes Swoole for Octane out of the box. It also supports devcontainer generation via `--devcontainer` for VS Code/GitHub Codespaces integration.
 
-### 🧰 Default Services
-- **Laravel Sail**: PHP, MySQL, Redis, Meilisearch, Mailhog, and Selenium
-- **Laradock**: 70+ services available (Apache, Nginx, PHP-FPM, MySQL, PostgreSQL, Redis, etc.)
+Default services: PHP, MySQL, Redis, Meilisearch, Mailpit, and Selenium.
 
-### 🛠️ Customization
-- **Laravel Sail**: Limited, focused on Laravel needs
-- **Laradock**: Highly customizable for various project requirements
+### Laradock
 
-### 📈 Learning Curve
-- **Laravel Sail**: Low (especially for Laravel developers)
-- **Laradock**: Steeper (requires more Docker knowledge)
+[Laradock](https://laradock.io/) is the Swiss army knife. It's an open-source Docker environment that supports any PHP project -- not just Laravel. It offers 70+ pre-configured services and can be configured for production use.
 
-### 🤝 Integration with Laravel
-- **Laravel Sail**: Tight integration, uses Laravel-specific commands
-- **Laradock**: Generic, not Laravel-specific
+Still actively maintained as of December 2025 (recent PHP-FPM and workspace image updates). The tradeoff is complexity: setup takes longer, configuration involves editing multiple files, and you need real Docker knowledge.
 
-### 🖥️ Command Structure
-- **Laravel Sail**: Uses `sail` command (e.g., `sail up`, `sail artisan`)
-- **Laradock**: Uses standard Docker Compose commands
+### FrankenPHP + Octane
 
-### 📝 Configuration
-- **Laravel Sail**: Simple, mostly through `.env` file
-- **Laradock**: More complex, involves editing multiple config files
+[FrankenPHP](https://frankenphp.dev/) is a modern PHP application server built on Caddy. Combined with Laravel Octane, it achieves 4-6ms framework boot time per request -- a developer reported dropping latency from 7 seconds to 66ms by switching to Worker Mode <small><a href="#ref1">[1]</a></small>.
 
-### 🛡️ Maintenance
-- **Laravel Sail**: Maintained by Laravel team
-- **Laradock**: Community-driven
+Laravel Cloud uses FrankenPHP in its Octane runtime in production <small><a href="#ref2">[2]</a></small>. The latest release (v1.11.2, February 2026) brought 30% faster CGO and 40% faster garbage collection from Go 1.26.
 
-### 🚀 Production Use
-- **Laravel Sail**: 🚫 Not recommended
-- **Laradock**: ✅ Possible with proper configuration
+This isn't a dev environment in the traditional sense -- it's a production-grade PHP runtime that you can also use in development. Sail includes integration for running Octane with FrankenPHP or Swoole.
 
-### 🏙️ Multi-project Support
-- **Laravel Sail**: Limited
-- **Laradock**: Excellent
+## When to Use What
 
-### ⚡ Performance
-- **Laravel Sail**: Optimized for Laravel
-- **Laradock**: May require optimization for specific use cases
+Here's my honest take, based on actually using these tools:
 
-### 👥 Community Support
-- **Laravel Sail**: Large (Laravel community)
-- **Laradock**: Large (general Docker community)
+**Use Herd if** you're solo or on a small team, building standard Laravel apps, and want to spend zero time on infrastructure. It's the fastest path from "I have an idea" to "I'm writing code." The limitation is that it's macOS/Windows only and the free version doesn't include databases.
 
-### 📚 Documentation
-- **Laravel Sail**: Clear, focused on Laravel use cases
-- **Laradock**: Extensive, covers many scenarios
+**Use Sail if** your team needs environment parity, you depend on specific service versions (Redis 7, MySQL 8, PostgreSQL 15), or you work in a CI/CD pipeline that needs Docker. Sail's `sail:publish` command lets you customize the Docker setup when you outgrow the defaults.
 
-### 🔄 Updates
-- **Laravel Sail**: Frequent, in sync with Laravel
-- **Laradock**: Regular, but may lag behind latest Docker features
+**Use Laradock if** you work across multiple PHP frameworks (Symfony, Shopware, vanilla PHP), need exotic services (Aerospike, RethinkDB, Manticore), or want one Docker environment for multiple projects. The learning curve is steeper, but the flexibility is unmatched.
 
-## Detailed Analysis 🔍
+**Use a custom Docker Compose setup if** you've outgrown both Sail and Laradock and want full control. This is what I do. I maintain my own `compose.yaml` with exactly the services I need, no abstraction layer, and Docker Compose aliases to keep the commands short. It takes more work upfront but there's no magic -- everything is explicit.
 
-### Ease of Use and Learning Curve 🏫
+**Use FrankenPHP + Octane if** you're building a high-performance API or your application is latency-sensitive. The performance difference is not marginal -- it's an order of magnitude. Worth exploring even if you use another tool for general development.
 
-Laravel Sail shines when it comes to ease of use, especially for developers already familiar with Laravel. Its tight integration with Laravel's ecosystem means you can be up and running with a fully dockerized development environment in minutes. The `sail` command abstracts away much of the complexity of Docker, making it accessible even to those with limited Docker experience.
+## The Details That Matter
 
-Laradock, on the other hand, offers a more traditional Docker experience. While this means a steeper learning curve, it also provides more flexibility and control over your environment. For developers comfortable with Docker or those working on complex, multi-service applications, Laradock's approach can be advantageous.
+### Setup Time
 
-### Scope and Flexibility 🌈
+| Tool | Time to First Request |
+|------|----------------------|
+| Herd | Under 1 minute |
+| Sail | 5-10 minutes (image pulls) |
+| Custom Compose | 30-60 minutes (initial setup) |
+| Laradock | 1-2 hours (full configuration) |
 
-Laravel Sail is designed with a specific use case in mind: local development of Laravel applications. It provides a curated set of services commonly used in Laravel development, making it an excellent choice for Laravel-centric projects.
+### Customization
 
-Laradock casts a wider net. It's not tied to any specific PHP framework and can be used for a variety of PHP projects. With support for over 70 services, Laradock can accommodate more complex application architectures and varied technology stacks.
+Sail is intentionally limited. You get the services Laravel needs and not much more. You *can* customize by running `sail:publish` and editing the Dockerfiles, but at that point you're maintaining a custom Docker setup with Sail's abstractions on top -- worst of both worlds.
 
-### Configuration and Customization 🔧
+Laradock gives you everything but demands you understand what you're enabling. Turning on a service means editing `.env` and possibly `docker-compose.yml`, and some services have their own configuration directories.
 
-Sail's configuration is primarily handled through Laravel's `.env` file, making it straightforward to adjust common settings. However, this simplicity comes at the cost of fine-grained control.
+Custom Compose gives you exactly what you write. Nothing more, nothing less.
 
-Laradock offers extensive customization options. You can easily add, remove, or configure services by editing the appropriate configuration files. This flexibility is powerful but can be overwhelming for simpler projects.
+### Production Readiness
 
-### Performance and Production Readiness 🚀
+Sail is explicitly not for production. Laradock can be configured for production, but you need to know what you're doing with security hardening, resource limits, and proper networking. FrankenPHP is production-ready by design -- it's built for it.
 
-Laravel Sail is optimized for development environments and isn't recommended for production use. Its focus is on providing a quick, easy-to-use local development setup.
+### Multi-Project Support
 
-Laradock, with proper configuration, can be used in production environments. However, this requires careful setup and consideration of security and performance optimizations.
+Sail: one project per environment. You can run multiple Sail instances, but they'll fight over ports.
 
-### Community and Support 👥
+Laradock: designed for multi-project setups. One environment, multiple projects, shared services.
 
-Both Sail and Laradock benefit from large, active communities. Sail, being an official Laravel project, is tightly integrated with Laravel's ecosystem and benefits from the framework's extensive documentation and community support.
+Custom Compose: whatever you architect. I keep separate compose files per project with shared network definitions.
 
-Laradock, while not officially tied to any framework, has a diverse and active community. Its flexibility means you can find support for a wide range of use cases and configurations.
+## What I Actually Use
 
-## Making the Choice 🤔
+Custom Docker Compose. I have aliases for everything -- `dcu` for `docker compose up -d`, `dce` for exec, `dcefpm` for PHP-FPM shell access, and a `sail` function that auto-discovers the project root. The setup is in my [Docker Compose evolution notes](/docker-compose-major-changes-since-october-2023/).
 
-Choosing between Laravel Sail and Laradock depends on your specific needs:
+I started with Laradock years ago, moved to Sail when it launched, and eventually settled on a custom setup because I wanted to understand exactly what was running and why. Every abstraction hides decisions. Sometimes that's fine. Sometimes those hidden decisions cause problems that are hard to debug because you can't see them.
 
-- **Choose Laravel Sail if:**
-    - 🎯 You're primarily developing Laravel applications
-    - ⚡ You want a quick, easy setup for local development
-    - 🤝 You prefer a solution that's tightly integrated with Laravel
-    - 🐣 You're new to Docker and want a gentle introduction
+That said, if I were starting a new Laravel project today with a team that doesn't care about Docker internals, I'd use Sail. And if I were mentoring someone new to Laravel, I'd tell them to install Herd and start writing code immediately.
 
-- **Choose Laradock if:**
-    - 🌐 You work on various PHP projects, not just Laravel
-    - 🏙️ You need support for multiple projects in one environment
-    - 🛠️ You require a highly customizable Docker setup
-    - 🐋 You're comfortable with Docker and want fine-grained control
-    - 🚀 You might need to use your Docker setup in production
+## Other Options Worth Mentioning
 
-## Bonus: Lesser-Known Facts 💡
+- **[DDEV](https://ddev.com/)** -- Docker-based, good Laravel support, active 2026 roadmap with Gitpod integration planned. Worth evaluating if you use it for other CMS projects (WordPress, Drupal).
+- **[Lando](https://lando.dev/)** -- another Docker abstraction layer with a Laravel plugin (v1.10.0, January 2026). Similar philosophy to Sail but framework-agnostic.
+- **Valet** -- the predecessor to Herd. Still works but Herd has superseded it for most use cases.
 
-1. **Sail's Customizability** 🔧: While Sail is designed to be simple, you can actually customize its Docker setup. The `sail:publish` Artisan command publishes Sail's Docker files to your application, allowing for customization.
+---
 
-2. **Laradock's Laravel Optimization** 🚀: Despite being framework-agnostic, Laradock includes specific optimizations for Laravel projects, making it a viable alternative even for Laravel-centric development.
+### References
 
-3. **Sail's Testing Features** 🧪: Sail includes built-in support for running your application's test suite, including the ability to watch for changes and automatically re-run tests.
+<a id="ref1"></a>1. [Setup and Boost Laravel with FrankenPHP Worker Mode](https://medium.com/@danarcahyaa/setup-and-boost-your-laravel-app-with-frankenphp-worker-mode-c0228f44f71b) -- *Real-world performance comparison: 7s to 66ms latency.*<br>
+<a id="ref2"></a>2. [How Laravel Cloud Uses FrankenPHP in Production](https://devconf.net/talk/florian-beer-how-laravel-cloud-uses-frankenphp-in-production) -- *DevConf talk on Laravel Cloud's Octane runtime.*<br>
+<a id="ref3"></a>3. [Laravel 12.x Sail Documentation](https://laravel.com/docs/12.x/sail) -- *Official Sail docs with PHP 8.5 and compose.yaml changes.*<br>
+<a id="ref4"></a>4. [Laravel Herd](https://herd.laravel.com/) -- *Official site for the native Laravel development environment.*<br>
+<a id="ref5"></a>5. [FrankenPHP v1.11.2 Release](https://laravel-news.com/frankenphp-v1112-released-with-30-faster-cgo-40-faster-gc-and-security-patches) -- *February 2026 release with performance and security updates.*<br>
+<a id="ref6"></a>6. [Laradock on GitHub](https://github.com/laradock/laradock) -- *Still maintained, Dec 2025 updates.*<br>
+<a id="ref7"></a>7. [The Current State of Local Laravel Development](https://aschmelyun.com/blog/the-current-state-of-local-laravel-development/) -- *Andrew Schmelyun's ecosystem overview.*
 
-4. **Laradock's Caching** ⚡: Laradock implements smart caching mechanisms in its build process, which can significantly speed up rebuilds of your Docker environment.
+---
 
-5. **Sail's Extendability** 🔌: You can create custom Sail commands by adding methods to a `routes/console.php` file, extending Sail's functionality to fit your project's specific needs.
+### Related Posts
 
-## Conclusion 🏁
-
-Both Laravel Sail and Laradock are powerful tools in the PHP developer's arsenal. Sail offers a streamlined, Laravel-focused experience that's perfect for quick setups and smaller teams. Laradock provides a more flexible, comprehensive solution suitable for diverse projects and production environments.
-
-Ultimately, the choice between Sail and Laradock should be guided by your project requirements, team expertise, and long-term development goals. Whichever you choose, both tools demonstrate the power of Docker in creating efficient, consistent development environments for PHP projects.
-
-Happy coding, and may your containers always be shipshape! 🚢🐳
+- [Docker Compose Evolution: What Changed and Why It Matters](/docker-compose-major-changes-since-october-2023/) -- the Docker Compose changes that affect all of these tools.
+- [PHP 8.5: A Tour of the Incoming Features](/php-8-5-new-features-pipe-operator-guide/) -- what's coming in the PHP version that Laravel 12 defaults to.
+- [PHP 8.3.6 + IMAP on macOS using phpenv](/installing-php-8-3-6-with-imap-on-macos-using-phpenv/) -- when you need a specific PHP setup outside of Docker.
