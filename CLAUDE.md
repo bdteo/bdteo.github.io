@@ -8,12 +8,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Format: `pnpm format`
 - Serve: `pnpm serve`
 - Clean: `pnpm clean`
-- Deploy to VPS via GitHub Actions: `make gh-deploy` (pushes to `gh-origin` GitHub remote AND manually triggers `workflow_dispatch` deploy). Pushing alone does NOT auto-deploy.
+- Deploy to VPS via GitHub Actions: `make gh-deploy` (pushes to `origin` AND manually triggers `workflow_dispatch` deploy). Pushing alone does NOT auto-deploy.
 - Direct VPS deploy (run on server): `make deploy` (zero-downtime worktree-based deploy)
 
-## Git Remotes
-- `origin`: Bitbucket (`bdteo/bdteo.com`) — primary source repo
-- `gh-origin`: GitHub (`bdteo/bdteo.github.io`) — deploy target. Deploy workflow is `workflow_dispatch` only (not triggered by push).
+## Git Remote
+- `origin`: GitHub (`bdteo/bdteo.github.io`) — sole remote. Deploy workflow is `workflow_dispatch` only (not triggered by push).
 
 ## Code Style Guidelines
 - Formatting: Use Prettier with default config

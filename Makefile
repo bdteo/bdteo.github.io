@@ -73,7 +73,7 @@ GH_REPO := bdteo/bdteo.github.io
 
 gh-deploy:
 	@echo "==> Pushing to GitHub..."; \
-	git push gh-origin main; \
+	git push origin main; \
 	echo "==> Triggering deploy workflow..."; \
 	gh workflow run deploy.yml -R "$(GH_REPO)"; \
 	sleep 3; \
