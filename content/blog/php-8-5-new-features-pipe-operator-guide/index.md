@@ -36,7 +36,7 @@ tags: [
   "backenddevelopment"
 ] 
 featuredImage: "./images/featured.jpg"
-imageCaption: "Constellation-style PHP 8.5 cover image: centered glowing elephant silhouette made of stars with feature symbols (pipe operator, attributes, globe) in a dark nebula."
+imageCaption: "A copper conduit elbow joining two runs into one on a plaster wall."
 ---
 
 ## TL;DR Hype Ladder (My Playful Ranking)

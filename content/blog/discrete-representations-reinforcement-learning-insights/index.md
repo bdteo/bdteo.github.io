@@ -6,7 +6,7 @@ author: "Boris D. Teoharov"
 description: "Explore Edan Meyer's research on discrete representations in RL. Learn why they improve world models, boost AI adaptability, and increase efficiency."
 tags: ["Artificial Intelligence", "Reinforcement Learning", "Discrete Representations", "Edan Meyer", "AI Research"]
 featuredImage: "./images/featured.jpg"
-imageCaption: "A visual representation of discrete states in reinforcement learning, inspired by Edan Meyer's research"
+imageCaption: "A fanned arc of plain cards on dark cloth. A hand lifts one from the finite set."
 ---
 
 Have you ever wondered how AI agents learn to understand and interact with complex environments? Edan Meyer, a researcher in the field of reinforcement learning (RL), has been exploring an intriguing approach that might just change the way we think about AI learning. Let's dive into his fascinating work on discrete representations in RL!

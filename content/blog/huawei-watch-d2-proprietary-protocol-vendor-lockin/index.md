@@ -6,7 +6,7 @@ author: "Boris Teoharov"
 description: "Deep dive into the Huawei Watch D2's proprietary BLE pairing protocol -- a non-standard 11-step handshake with HMAC-SHA256 and custom encryption. How it locks users in, and how the community is fighting back."
 featuredImage: "./images/featured.jpg"
 tags: ["Huawei", "WatchD2", "BluetoothLE", "BLE", "Pairing", "Authentication", "ReverseEngineering", "VendorLockIn", "ProprietaryProtocol", "D2Explorer", "SimpleBLE", "Crypto", "Gadgetbridge", "EU-DMA"]
-imageCaption: "Untangling the complex threads of a proprietary Bluetooth LE pairing protocol."
+imageCaption: "A calm canary perched in an ornate brass cage, backlit by a window."
 ---
 
 > **TL;DR:** The Huawei Watch D2 doesn't use standard BLE pairing. Instead, it requires an 11-step proprietary handshake involving custom GATT characteristics, HMAC-SHA256 key derivation from a QR code, and application-level encryption. This is vendor lock-in by design -- it forces you into Huawei's Health app. The good news: the community has reverse-engineered it. Gadgetbridge now supports the Watch D2, and open-source implementations like `huawei-lpv2` exist. The EU DMA is also starting to push back.
