@@ -6,7 +6,7 @@ author: "Boris D. Teoharov"
 description: "Learn why 'git grep' beats standard grep for code search in Git repos. Search tracked files, ignore .gitignore, use regex & search branches efficiently."
 tags: ["git", "git grep", "code search", "developer tools", "software development", "command line tools"]
 featuredImage: "./images/featured.jpg"
-imageCaption: "An abstract image of a developer navigating a labyrinth of code, symbolizing the hidden paths unlocked by using git grep."
+imageCaption: "A library card catalog drawer pulled open. One card stands slightly proud — the passage you were looking for."
 ---
 
 In a vast kingdom filled with countless scrolls and manuscripts, there lived a scholar named Alaric. His library was immense—a labyrinth of knowledge where ancient texts mingled with contemporary writings, and secrets hid between the lines. Alaric often found himself searching for a single elusive phrase amidst this sea of information, a task that grew more daunting with each passing day.

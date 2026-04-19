@@ -4,7 +4,7 @@ date: "2025-12-13T13:00:00.000Z"
 description: "When you need to delete ~80%+ of a MySQL table, stop using DELETE. Copy the rows you want to keep, TRUNCATE, then reinsert—often 10–100× faster."
 tags: ["mysql", "innodb", "databases", "performance", "operations", "laravel"]
 featuredImage: "./images/featured.webp"
-imageCaption: "A protected island of rows remains, while everything else is cleanly cleared—TRUNCATE + reinsert as the blunt, fast rewrite."
+imageCaption: "Two hands lifting a small bundle of preserved herb sprigs above a basket of trimmed stems — keeping what matters before the sweep."
 ---
 
 You need to delete millions of rows from a MySQL table.

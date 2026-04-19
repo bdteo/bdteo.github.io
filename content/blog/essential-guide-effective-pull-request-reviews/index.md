@@ -4,7 +4,7 @@ date: "2025-07-06"
 description: "Elevate your team's code quality with this essential guide to effective pull request reviews. Learn best practices for constructive feedback, small PRs, and fostering shared code ownership."
 tags: ["Code Review", "Pull Requests", "Software Engineering", "Best Practices", "Developer Workflow", "Git", "Collaboration", "Code Quality"]
 featuredImage: "./images/featured.jpg"
-imageCaption: "Two abstract figures collaborating on a holographic code blueprint, representing the innovative and team-oriented nature of modern code reviews."
+imageCaption: "A proof sheet marked up in pencil, a brass loupe, two pencils, a cup of cooling tea — the quiet craft of reading someone else's work."
 ---
 
 As someone who writes and reviews a lot of code, I’ve learned pull request (PR) reviews are more than bug checks—they’re about shared ownership, knowledge transfer, and building better code together. Here's a concise, practical guide to make PRs valuable and less painful.

@@ -4,7 +4,7 @@ date: "2025-12-13T12:00:00.000Z"
 description: "Type 0 refactoring is a constrained, behavior-preserving cleanup that makes messy code readable and safe to work in before you attempt a real refactor or ship a hotfix."
 tags: ["refactoring", "software engineering", "debugging", "maintainability"]
 featuredImage: "./images/featured.webp"
-imageCaption: "A spotlight of attention isolates a clean vertical spine of structure, while chaotic blueprint-like paths swirl around it—Type 0 refactoring as clarity before change."
+imageCaption: "Mise en place. The work before the work."
 ---
 
 There’s a category of refactoring teams do constantly, benefit from immediately, and almost never name.
