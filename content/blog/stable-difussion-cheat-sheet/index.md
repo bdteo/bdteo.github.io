@@ -5,7 +5,7 @@ slug: "stable-difussion-cheat-sheet"
 description: "Practical Stable Diffusion cheat sheet for SDXL, SD 3.5, and Flux. Covers samplers, CFG, resolution, negative prompts, model selection, and UI choice. Updated March 2026."
 featuredImage: "./images/featured.jpg"
 tags: ["Stable Diffusion", "AI", "Image Generation", "SDXL", "Flux", "ComfyUI", "Machine Learning"]
-imageCaption: "A hyper-realistic AI-generated image showcasing the capabilities of Stable Diffusion"
+imageCaption: "A dog-eared ivory stack of index cards on linen, held together with an amber rubber band."
 ---
 
 > **Updated March 2026.** The original version of this cheat sheet was written for SD 1.5 in May 2023. Almost everything has changed since then -- new architectures (SDXL, SD 3.5, Flux), new UIs (ComfyUI), new hardware (RTX 5090), and a complete reversal on negative prompt philosophy. This is the current version.

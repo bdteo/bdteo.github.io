@@ -3,7 +3,7 @@ title: "Google AI History: Promises, Stock Performance & Impact"
 date: "2024-05-11T12:00:00.000Z"
 description: "Explore Google's AI history, analyzing promises (TensorFlow, Gemini) vs. stock performance & market impact. Covers milestones, successes, failures & outlook."
 featuredImage: "./images/featured.jpg"
-imageCaption: "A hyper-realistic AI-generated image showcasing the capabilities of Stable Diffusion"
+imageCaption: "An open notebook on oak. A subtle hand-drawn line chart, a fountain pen, a cup of tea — patience written down."
 ---
 
 Google's journey through the development and marketing of AI technologies such as the Gemini series

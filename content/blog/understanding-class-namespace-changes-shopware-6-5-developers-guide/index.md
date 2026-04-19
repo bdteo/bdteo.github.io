@@ -6,7 +6,7 @@ author: "Boris Teoharov"
 description: "Adapt to Shopware 6.5/6.6: Key class/namespace changes, Symfony 6, Stock API, Bootstrap 5, CSRF fixes & Offcanvas Cart data-off-canvas-cart update."
 tags: ["Shopware 6.5", "Shopware 6.6", "Class changes", "Namespace changes", "Developer's guide", "Shopware updates", "Code migration", "PHP development", "Symfony 6", "Media path handling", "Elasticsearch migration", "Bootstrap 5", "Stock API", "Data Attributes", "Offcanvas Cart", "CSRF Protection", "SameSite Cookies", "E-commerce platform", "Software upgrade", "Programming best practices", "Custom plugins", "Code refactoring", "Software compatibility", "Shopware tutorials"]
 featuredImage: "./images/featured.jpg"
-imageCaption: "Understanding Class and Namespace Changes in Shopware 6.5 and 6.6: A Developer's Guide Illustration"
+imageCaption: "A hand tying a fresh blank cloth tag onto a pantry jar. The old tag rests beside it."
 ---
 
 Shopware 6.5 and 6.6 introduced several significant changes to classes, namespaces, data attributes, and security mechanisms that developers need to be aware of when updating or maintaining their Shopware projects. This article provides a concise yet comprehensive overview of these changes, along with observations on their impact and how to adapt your code accordingly.

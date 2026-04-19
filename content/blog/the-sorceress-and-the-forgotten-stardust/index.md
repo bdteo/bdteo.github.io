@@ -3,7 +3,7 @@ title: "The Sorceress and the Forgotten Stardust: A Tale of Inner Light"
 date: "2024-06-26T04:38:11.000Z"
 description: "A fantasy tale of Lyra, a sorceress whose magic fades. Guided by a starseer, she uses celestial rituals to reignite her inner light and find true magic."
 featuredImage: "./images/featured.jpg"
-imageCaption: "A mystical sorceress surrounded by swirling stardust, her hands glowing with celestial energy."
+imageCaption: "A young sorceress floating cross-legged above a glowing rose-pink rune circle, a pink orb of light between her hands."
 imagePosition: "top"
 ---
 

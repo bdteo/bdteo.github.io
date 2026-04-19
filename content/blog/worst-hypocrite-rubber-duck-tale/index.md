@@ -3,7 +3,7 @@ title: "The Worst Hypocrite: A Rubber Duck's Tale of Self-Love"
 date: "2024-07-17T12:00:00.000Z"
 description: "A short story about two rubber ducks navigating self-doubt, perceived perfection, hypocrisy, and learning the importance of self-love and understanding."
 featuredImage: "./images/featured.jpg"
-imageCaption: "Two yellow rubber ducks floating in a reflective pool, surrounded by swirling, starry patterns."
+imageCaption: "Two yellow rubber ducks on a warm wooden bathroom shelf, angled slightly toward each other."
 imagePosition: "center"
 ---
 

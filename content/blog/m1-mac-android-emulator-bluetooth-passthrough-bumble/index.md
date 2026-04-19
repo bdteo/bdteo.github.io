@@ -6,7 +6,7 @@ author: "Boris Teoharov" # Or your preferred author name
 description: "Fix Bluetooth passthrough for Android Emulator on M1 Macs. Guide details the successful Bumble setup using Netsim, explicit endpoints, and API 32 AVDs."
 tags: ["Android Emulator", "Bluetooth", "BLE", "HCI", "Bumble", "macOS", "M1", "Apple Silicon", "Docker", "QEMU", "Netsim", "Passthrough", "Troubleshooting", "API 32"]
 featuredImage: "./images/featured.jpg" # Replace with a relevant image path
-imageCaption: "Visualizing the complex bridge needed to connect M1 Mac Bluetooth to the Android Emulator."
+imageCaption: "Two modern phones face-down on marble. A faint cyan halo crosses the gap between them."
 ---
 
 If you're a developer working with Bluetooth on an M1/M2/M3 Mac and trying to get your host machine's Bluetooth radio working inside the Android Emulator, you've probably felt some pain. What seems like it *should* be straightforward often turns into a frustrating rabbit hole of failed connections, cryptic errors, and documentation dead ends. I recently went through this exact battle, and after hitting multiple walls, I finally found a combination using the **Bumble** Python Bluetooth stack that *actually works*.
