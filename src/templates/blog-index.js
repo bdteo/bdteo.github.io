@@ -105,7 +105,6 @@ export default BlogIndex
 export const Head = () => {
   return (
     <Seo
-      title="All posts"
       keywords={[
         "software development",
         "programming",

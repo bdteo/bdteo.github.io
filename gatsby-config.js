@@ -10,16 +10,17 @@ module.exports = {
   pathPrefix: "",
   assetPrefix: "https://bdteo.com",
   siteMetadata: {
-    title: `Boris's Blog`,
+    title: `Boris D. Teoharov`,
     author: {
       name: `Boris D. Teoharov`,
       summary: `Senior Software Developer at GetHookd AI with expertise in web development, AI/ML, DevOps, and low-level programming. Passionate about exploring theoretical computer science, mathematics, and the creative applications of AI.`,
     },
-    description: `A blog exploring the intersections of software development, theoretical computer science, and creative applications of AI.`,
+    description: `Quiet essays on engineering, language, and what shows up at the edge of every honest inquiry.`,
     siteUrl: `https://bdteo.com`,
     social: {
       github: `bdteo`,
       email: `boristeoharov@gmail.com`,
+      twitter: `@boris_teo`,
     },
   },
   plugins: [
