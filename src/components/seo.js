@@ -51,15 +51,25 @@ const Seo = ({
     author,
   } = site.siteMetadata
 
+  const DEFAULT_OG_IMAGE = "/og/cover.jpg"
+  const DEFAULT_OG_IMAGE_WIDTH = 1920
+  const DEFAULT_OG_IMAGE_HEIGHT = 1280
+  const DEFAULT_OG_IMAGE_ALT =
+    "An old wooden door, slightly open. Dawn light spilling onto the threshold."
+
   const metaDescription = description || defaultDescription
   const metaTitle = title ? `${title}` : defaultTitle
-  const metaImage = image ? `${siteUrl}${image}` : null
+  const metaImage = image
+    ? `${siteUrl}${image}`
+    : `${siteUrl}${DEFAULT_OG_IMAGE}`
+  const finalImageWidth = image ? imageWidth : DEFAULT_OG_IMAGE_WIDTH
+  const finalImageHeight = image ? imageHeight : DEFAULT_OG_IMAGE_HEIGHT
   const url = `${siteUrl}${pathname}`
   const metaKeywords =
     keywords.length > 0
       ? keywords.join(", ")
       : "programming, software development, web development, AI, machine learning"
-  const metaImageAlt = imageAlt || metaTitle
+  const metaImageAlt = imageAlt || (image ? metaTitle : DEFAULT_OG_IMAGE_ALT)
 
   return (
     <>
@@ -76,14 +86,14 @@ const Seo = ({
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:site_name" content={defaultTitle} />
-      {metaImage && <meta property="og:image" content={metaImage} />}
-      {metaImage && <meta property="og:image:secure_url" content={metaImage} />}
-      {metaImage && <meta property="og:image:alt" content={metaImageAlt} />}
-      {metaImage && imageWidth && (
-        <meta property="og:image:width" content={String(imageWidth)} />
+      <meta property="og:image" content={metaImage} />
+      <meta property="og:image:secure_url" content={metaImage} />
+      <meta property="og:image:alt" content={metaImageAlt} />
+      {finalImageWidth && (
+        <meta property="og:image:width" content={String(finalImageWidth)} />
       )}
-      {metaImage && imageHeight && (
-        <meta property="og:image:height" content={String(imageHeight)} />
+      {finalImageHeight && (
+        <meta property="og:image:height" content={String(finalImageHeight)} />
       )}
       {article && datePublished && (
         <meta property="article:published_time" content={datePublished} />
@@ -93,15 +103,14 @@ const Seo = ({
       )}
 
       {/* Twitter */}
-      <meta
-        name="twitter:card"
-        content={metaImage ? "summary_large_image" : "summary"}
-      />
-      <meta name="twitter:creator" content={social?.github || ""} />
+      <meta name="twitter:card" content="summary_large_image" />
+      {social?.twitter && (
+        <meta name="twitter:creator" content={social.twitter} />
+      )}
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
-      {metaImage && <meta name="twitter:image" content={metaImage} />}
-      {metaImage && <meta name="twitter:image:alt" content={metaImageAlt} />}
+      <meta name="twitter:image" content={metaImage} />
+      <meta name="twitter:image:alt" content={metaImageAlt} />
 
       {/* Bing Verification */}
       <meta name="msvalidate.01" content="DE9AA37DB58BF3C5CD561AE0B187709C" />

@@ -66,7 +66,17 @@ regenerating, refining, or matching the voice of a new cover.
 6. After all swaps: commit, then `make gh-deploy` (pushing alone does not
    trigger the VPS deploy; only `workflow_dispatch` does).
 
-## Index — currently installed covers
+## Site-level covers
+
+Non-article covers (e.g. the default OG image used as fallback when a page has
+no `featuredImage`) live here too, prefixed with `_`. They are wired in code
+rather than referenced from a markdown frontmatter.
+
+| Path                                                | Installed at        | Metaphor                                                       | Stock / camera (from prompt)        |
+| --------------------------------------------------- | ------------------- | -------------------------------------------------------------- | ----------------------------------- |
+| [\_landing-og](_landing-og.prompt.txt) (site OG)    | `/og/cover.jpg`     | interior view of an ajar wooden door, dawn spill on threshold  | Mamiya 7II 80 mm f/4, Portra 400    |
+
+## Index — currently installed article covers
 
 | Article slug                                                                                                                                            | Metaphor installed                                                                | Stock / camera (from prompt)                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
