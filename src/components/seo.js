@@ -64,6 +64,9 @@ const Seo = ({
     : `${siteUrl}${DEFAULT_OG_IMAGE}`
   const finalImageWidth = image ? imageWidth : DEFAULT_OG_IMAGE_WIDTH
   const finalImageHeight = image ? imageHeight : DEFAULT_OG_IMAGE_HEIGHT
+  const imageMimeType = metaImage.toLowerCase().endsWith(".webp")
+    ? "image/webp"
+    : "image/jpeg"
   const url = `${siteUrl}${pathname}`
   const metaKeywords =
     keywords.length > 0
@@ -88,6 +91,7 @@ const Seo = ({
       <meta property="og:site_name" content={defaultTitle} />
       <meta property="og:image" content={metaImage} />
       <meta property="og:image:secure_url" content={metaImage} />
+      <meta property="og:image:type" content={imageMimeType} />
       <meta property="og:image:alt" content={metaImageAlt} />
       {finalImageWidth && (
         <meta property="og:image:width" content={String(finalImageWidth)} />
@@ -101,9 +105,13 @@ const Seo = ({
       {article && dateModified && (
         <meta property="article:modified_time" content={dateModified} />
       )}
+      {article && (
+        <meta property="article:author" content={`${siteUrl}/about/`} />
+      )}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
+      {social?.twitter && <meta name="twitter:site" content={social.twitter} />}
       {social?.twitter && (
         <meta name="twitter:creator" content={social.twitter} />
       )}
