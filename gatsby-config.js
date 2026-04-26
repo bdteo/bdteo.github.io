@@ -13,7 +13,7 @@ module.exports = {
     title: `Boris D. Teoharov`,
     author: {
       name: `Boris D. Teoharov`,
-      summary: `Senior Software Developer at GetHookd AI with expertise in web development, AI/ML, DevOps, and low-level programming. Passionate about exploring theoretical computer science, mathematics, and the creative applications of AI.`,
+      summary: `I am not a writer. I am not a philosopher. I am just a backend engineer from Bulgaria, sitting between Laravel queues and hundred-million-row indexes for a living. The rest of the time I read medicine I have no business reading, French novels I half-understand, and whatever else my small rubber head wants to chew on. Two rescued strays keep me honest.`,
     },
     description: `Quiet essays on engineering, language, and what shows up at the edge of every honest inquiry.`,
     siteUrl: `https://bdteo.com`,
