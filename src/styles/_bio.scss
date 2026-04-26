@@ -76,17 +76,6 @@
       }
     }
 
-    .bio-summary {
-      font-size: var(--font-size-sm);
-      color: var(--color-text-light);
-      line-height: 1.7;
-      margin-bottom: var(--spacing-3);
-      text-align: center;
-
-      @media (min-width: 768px) {
-        text-align: left;
-      }
-    }
 
     .bio-social {
       margin-top: var(--spacing-3);
