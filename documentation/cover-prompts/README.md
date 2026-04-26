@@ -70,6 +70,7 @@ regenerating, refining, or matching the voice of a new cover.
 
 | Article slug | Metaphor installed | Stock / camera (from prompt) |
 | --- | --- | --- |
+| [the-pillar-and-the-ivy](the-pillar-and-the-ivy.prompt.txt) | weathered fieldstone gatepost with ivy in dawn mist | Hasselblad 500C/M 80 mm Planar, Portra 400 |
 | [where-all-sciences-meet](where-all-sciences-meet.prompt.txt) | open notebook at dawn with blank right page glowing | Fujifilm X-T5 35 mm f/2 *(digital reference, film-grain aesthetic)* |
 | [wash-one-more-plate-refactoring-philosophy](wash-one-more-plate-refactoring-philosophy.prompt.txt) | stack of five clean plates + one extra beside them (the "one more") | Fujifilm X-T5 35 mm f/2 |
 | [the-queue-that-never-stopped](the-queue-that-never-stopped.prompt.txt) | modern polished-chrome faucet dripping, sink just overflowing | Mamiya 7II 80 mm f/4, Portra 400 |
