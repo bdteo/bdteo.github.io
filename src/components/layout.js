@@ -1,37 +1,46 @@
 // src/components/layout.js
 
-import * as React from "react";
-import { Link } from "gatsby";
-import { BThemeToggler } from "./BThemeToggler";
-import Logo from "../images/bd-icon.svg";
-import useScrollDirection from "../hooks/useScrollDirection";
+import * as React from "react"
+import { Link } from "gatsby"
+import { BThemeToggler } from "./BThemeToggler"
+import Logo from "../images/bd-icon.svg"
+import useScrollDirection from "../hooks/useScrollDirection"
 
 const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
-  const isRootPath = location.pathname === rootPath;
-  const { scrollDirection, isAtTop } = useScrollDirection();
+  const rootPath = `${__PATH_PREFIX__}/`
+  const isRootPath = location.pathname === rootPath
+  const { scrollDirection, isAtTop } = useScrollDirection()
 
   return (
     <>
       <a href="#main-content" className="skip-to-main-content">
         Skip to main content
       </a>
-      
-      <header className={`global-header no-print ${scrollDirection === 'down' && !isAtTop ? 'header-hidden' : 'header-visible'}`}>
+
+      <header
+        className={`global-header no-print ${scrollDirection === "down" && !isAtTop ? "header-hidden" : "header-visible"}`}
+      >
         <div className="container">
           <div className="header-content">
             <div className="header-left">
               <div className="site-logo">
                 <Link to="/" className="header-logo" aria-label={title}>
                   <img src={Logo} alt={title} width="40" height="40" />
-                  <span className="site-title" aria-hidden="true">{title}</span>
+                  <span className="site-title" aria-hidden="true">
+                    {title}
+                  </span>
                 </Link>
               </div>
-              
+
               <nav className="site-nav">
                 <ul className="nav-list">
                   <li className="nav-item">
-                    <Link to="/" className="nav-link" activeClassName="active" partiallyActive={false}>
+                    <Link
+                      to="/"
+                      className="nav-link"
+                      activeClassName="active"
+                      partiallyActive={false}
+                    >
                       <span className="nav-text">Home</span>
                       <div className="indicator-container">
                         <span className="nav-indicator"></span>
@@ -39,7 +48,12 @@ const Layout = ({ location, title, children }) => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/about" className="nav-link" activeClassName="active" partiallyActive={false}>
+                    <Link
+                      to="/about"
+                      className="nav-link"
+                      activeClassName="active"
+                      partiallyActive={false}
+                    >
                       <span className="nav-text">About</span>
                       <div className="indicator-container">
                         <span className="nav-indicator"></span>
@@ -49,7 +63,7 @@ const Layout = ({ location, title, children }) => {
                 </ul>
               </nav>
             </div>
-            
+
             <div className="header-right">
               <div className="theme-toggle-container">
                 <BThemeToggler />
@@ -58,11 +72,9 @@ const Layout = ({ location, title, children }) => {
           </div>
         </div>
       </header>
-      
+
       <main id="main-content" className="main-content">
-        <div className="container">
-          {children}
-        </div>
+        <div className="container">{children}</div>
       </main>
 
       <footer className="site-footer no-print">
@@ -71,13 +83,29 @@ const Layout = ({ location, title, children }) => {
           <div className="footer-content">
             <div className="footer-copyright">
               © {new Date().getFullYear()}, Built with{" "}
-              <a href="https://www.gatsbyjs.com" target="_blank" rel="noopener noreferrer">Gatsby</a>
+              <a
+                href="https://www.gatsbyjs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Gatsby
+              </a>
             </div>
             <div className="footer-links">
-              <a href="https://github.com/bdteo" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+              <a
+                href="https://github.com/bdteo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+              >
                 GitHub
               </a>
-              <a href="/rss.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS Feed">
+              <a
+                href="/rss.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="RSS Feed"
+              >
                 RSS
               </a>
             </div>
@@ -85,7 +113,7 @@ const Layout = ({ location, title, children }) => {
         </div>
       </footer>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

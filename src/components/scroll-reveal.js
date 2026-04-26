@@ -23,11 +23,11 @@ const ScrollReveal = ({ children, index = 0 }) => {
 
   // Merge refs (react-intersection-observer ref + our element ref)
   const setRefs = React.useCallback(
-    (node) => {
+    node => {
       elementRef.current = node
       inViewRef(node)
     },
-    [inViewRef]
+    [inViewRef],
   )
 
   useEffect(() => {

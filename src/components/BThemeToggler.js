@@ -1,26 +1,28 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
+import React, { useContext } from "react"
+import { ThemeContext } from "../context/ThemeContext"
 
 export const BThemeToggler = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   if (!theme) {
-    return null;
+    return null
   }
 
-  const isDarkTheme = theme === 'dark-mode';
+  const isDarkTheme = theme === "dark-mode"
 
   return (
     <div className="theme-toggle-wrapper">
       <button
         className="theme-toggle-button"
         onClick={toggleTheme}
-        aria-label={isDarkTheme ? 'Switch to light mode' : 'Switch to dark mode'}
-        title={isDarkTheme ? 'Switch to light mode' : 'Switch to dark mode'}
+        aria-label={
+          isDarkTheme ? "Switch to light mode" : "Switch to dark mode"
+        }
+        title={isDarkTheme ? "Switch to light mode" : "Switch to dark mode"}
       >
         <span className="toggle-icon-container">
           <svg
-            className={`toggle-icon toggle-icon--sun ${isDarkTheme ? 'is-active' : ''}`}
+            className={`toggle-icon toggle-icon--sun ${isDarkTheme ? "is-active" : ""}`}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             width="16"
@@ -42,7 +44,7 @@ export const BThemeToggler = () => {
             <line x1="16.95" y1="7.05" x2="19.07" y2="4.93" />
           </svg>
           <svg
-            className={`toggle-icon toggle-icon--moon ${!isDarkTheme ? 'is-active' : ''}`}
+            className={`toggle-icon toggle-icon--moon ${!isDarkTheme ? "is-active" : ""}`}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             width="16"
@@ -58,5 +60,5 @@ export const BThemeToggler = () => {
         </span>
       </button>
     </div>
-  );
-};
+  )
+}

@@ -39,7 +39,11 @@ const BlogIndex = ({ data, location }) => {
     return (
       <ScrollReveal key={slug} index={index}>
         <Link to={slug} className="blog-card-link">
-          <article className="blog-card" itemScope itemType="http://schema.org/Article">
+          <article
+            className="blog-card"
+            itemScope
+            itemType="http://schema.org/Article"
+          >
             <div className="blog-card-header">
               {featuredImage && (
                 <div className="blog-card-image">
@@ -48,8 +52,16 @@ const BlogIndex = ({ data, location }) => {
               )}
               <span className="blog-card-date">{post.frontmatter.date}</span>
               <div className="blog-card-overlay">
-                <h3 className="blog-card-title" itemProp="headline">{title}</h3>
-                <p className="blog-card-excerpt" dangerouslySetInnerHTML={{ __html: post.frontmatter.description }} itemProp="description" />
+                <h3 className="blog-card-title" itemProp="headline">
+                  {title}
+                </h3>
+                <p
+                  className="blog-card-excerpt"
+                  dangerouslySetInnerHTML={{
+                    __html: post.frontmatter.description,
+                  }}
+                  itemProp="description"
+                />
               </div>
             </div>
           </article>
@@ -101,7 +113,7 @@ export const Head = () => {
         "artificial intelligence",
         "machine learning",
         "theoretical computer science",
-        "blog"
+        "blog",
       ]}
     />
   )
@@ -114,9 +126,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
-      sort: { frontmatter: { date: DESC } }
-    ) {
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       nodes {
         fields {
           slug

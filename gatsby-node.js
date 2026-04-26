@@ -34,7 +34,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
-      result.errors
+      result.errors,
     )
     return
   }
@@ -159,12 +159,12 @@ exports.createSchemaCustomization = ({ actions }) => {
 // Fix sitemap-index.xml: gatsby-plugin-sitemap duplicates the domain
 // when assetPrefix is set (e.g. bdteo.com/bdteo.com/sitemap-0.xml)
 exports.onPostBuild = () => {
-  const sitemapIndex = path.join(__dirname, 'public', 'sitemap-index.xml')
+  const sitemapIndex = path.join(__dirname, "public", "sitemap-index.xml")
   if (fs.existsSync(sitemapIndex)) {
-    let content = fs.readFileSync(sitemapIndex, 'utf8')
+    let content = fs.readFileSync(sitemapIndex, "utf8")
     const fixed = content.replace(
       /https:\/\/bdteo\.com\/bdteo\.com\//g,
-      'https://bdteo.com/'
+      "https://bdteo.com/",
     )
     if (fixed !== content) {
       fs.writeFileSync(sitemapIndex, fixed)

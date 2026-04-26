@@ -60,7 +60,7 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
             options: {
               aliases: {
-                'c++': 'cpp',
+                "c++": "cpp",
               },
             },
           },
@@ -127,21 +127,19 @@ module.exports = {
         background_color: `#1a1a1a`,
         theme_color: `#1a1a1a`,
         display: `minimal-ui`,
-        icon: 'src/images/bd-icon@4x.png',
+        icon: "src/images/bd-icon@4x.png",
       },
     },
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
-        displayName: process.env.NODE_ENV !== 'production',
+        displayName: process.env.NODE_ENV !== "production",
       },
     },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [
-          'G-7MSGWE21G5',
-        ],
+        trackingIds: ["G-7MSGWE21G5"],
         gtagConfig: {
           optimize_id: "OPT_CONTAINER_ID",
           anonymize_ip: true,
@@ -183,54 +181,57 @@ module.exports = {
             }
           }
         `,
-        resolvePages: ({ allSitePage: { nodes: allPages }, allMarkdownRemark: { nodes: allPosts } }) => {
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allMarkdownRemark: { nodes: allPosts },
+        }) => {
           // Create a map of post slugs to their dates
           const postsByPath = allPosts.reduce((acc, post) => {
             if (post.fields && post.fields.slug) {
               acc[post.fields.slug] = {
                 date: post.frontmatter.date,
-              };
+              }
             }
-            return acc;
-          }, {});
-          
+            return acc
+          }, {})
+
           // Add date info to pages
           return allPages.map(page => {
             // Find matching post data if it exists
-            const postData = Object.keys(postsByPath).find(slug => 
-              page.path.endsWith(slug)
-            );
-            
+            const postData = Object.keys(postsByPath).find(slug =>
+              page.path.endsWith(slug),
+            )
+
             // For blog posts, use their date and higher priority
             if (postData) {
-              return { 
-                ...page, 
+              return {
+                ...page,
                 lastmod: postsByPath[postData].date,
                 priority: 0.9,
-                changefreq: 'monthly'
-              };
+                changefreq: "monthly",
+              }
             }
-            
+
             // For other pages, use defaults
-            return { 
+            return {
               ...page,
-              priority: page.path === '/' ? 1.0 : 0.7,
-              changefreq: page.path === '/' ? 'daily' : 'weekly'
-            };
-          });
+              priority: page.path === "/" ? 1.0 : 0.7,
+              changefreq: page.path === "/" ? "daily" : "weekly",
+            }
+          })
         },
         serialize: ({ path, lastmod, changefreq, priority }) => {
           const sitemapItem = {
             url: path,
-            changefreq: changefreq || 'weekly',
+            changefreq: changefreq || "weekly",
             priority: priority || 0.7,
-          };
-          
-          if (lastmod) {
-            sitemapItem.lastmod = lastmod;
           }
-          
-          return sitemapItem;
+
+          if (lastmod) {
+            sitemapItem.lastmod = lastmod
+          }
+
+          return sitemapItem
         },
       },
     },

@@ -1,5 +1,5 @@
-import React from 'react';
-import { ThemeProvider } from './src/context/ThemeContext';
+import React from "react"
+import { ThemeProvider } from "./src/context/ThemeContext"
 
 // Import custom typefaces and styles
 import "@fontsource-variable/montserrat"
@@ -34,5 +34,5 @@ export const onRouteUpdate = () => {
 }
 
 export const wrapRootElement = ({ element }) => {
-  return <ThemeProvider>{element}</ThemeProvider>;
-};
+  return <ThemeProvider>{element}</ThemeProvider>
+}

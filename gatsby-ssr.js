@@ -1,9 +1,9 @@
-import React from 'react';
-import { ThemeProvider } from './src/context/ThemeContext';
+import React from "react"
+import { ThemeProvider } from "./src/context/ThemeContext"
 
 export const wrapRootElement = ({ element }) => {
-  return <ThemeProvider>{element}</ThemeProvider>;
-};
+  return <ThemeProvider>{element}</ThemeProvider>
+}
 
 const MagicScriptTag = () => {
   const codeToRunOnClient = `
@@ -27,15 +27,24 @@ const MagicScriptTag = () => {
   const theme = getInitialTheme();
   document.body.className = theme;
 })();
-`;
+`
   // eslint-disable-next-line react/no-danger
-  return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
-};
+  return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
+}
 
-export const onRenderBody = ({ setHtmlAttributes, setPreBodyComponents, setHeadComponents }) => {
-  setHtmlAttributes({ lang: 'en' });
-  setPreBodyComponents(<MagicScriptTag key="theme-script" />);
+export const onRenderBody = ({
+  setHtmlAttributes,
+  setPreBodyComponents,
+  setHeadComponents,
+}) => {
+  setHtmlAttributes({ lang: "en" })
+  setPreBodyComponents(<MagicScriptTag key="theme-script" />)
   setHeadComponents([
-    <link key="favicon-svg" rel="icon" type="image/svg+xml" href="/images/favicon.svg" />,
-  ]);
-};
+    <link
+      key="favicon-svg"
+      rel="icon"
+      type="image/svg+xml"
+      href="/images/favicon.svg"
+    />,
+  ])
+}

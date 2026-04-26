@@ -3,6 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Build & Development Commands
+
 - Development: `pnpm dev`
 - Build: `pnpm build`
 - Format: `pnpm format`
@@ -12,9 +13,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Direct VPS deploy (run on server): `make deploy` (zero-downtime worktree-based deploy)
 
 ## Git Remote
+
 - `origin`: GitHub (`bdteo/bdteo.github.io`) — sole remote. Deploy workflow is `workflow_dispatch` only (not triggered by push).
 
 ## Code Style Guidelines
+
 - Formatting: Use Prettier with default config
 - React components: Functional components with hooks
 - CSS: SCSS modules with BEM naming convention (bt--component--element)
@@ -28,6 +31,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Design language: Apple-inspired — pure black (#000) dark mode, pure white (#FFF) light mode, purple accent palette
 
 ## Giscus Comments
+
 - Component: `src/components/GiscusComments.js` (used in `src/templates/blog-post.js`)
 - Custom theme CSS: `static/css/giscus/dark-theme.css` and `static/css/giscus/light-theme.css`
 - In development, Giscus uses built-in themes (`dark`/`light`) because the iframe can't load localhost CSS (Chrome CORS)

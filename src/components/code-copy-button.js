@@ -26,7 +26,7 @@ export const addCopyButtons = () => {
   if (typeof window === "undefined" || typeof document === "undefined") {
     return // Exit if not in browser environment
   }
-  
+
   // Wait for DOM to be fully loaded
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initCopyButtons)
@@ -38,15 +38,15 @@ export const addCopyButtons = () => {
 const initCopyButtons = () => {
   // Select all code blocks
   const codeBlocks = document.querySelectorAll(".gatsby-highlight")
-  
+
   codeBlocks.forEach(block => {
     // Check if button is already added
     if (block.querySelector(".copy-button")) return
-    
+
     // Get the code content
     const codeElement = block.querySelector("pre code")
     if (!codeElement) return
-    
+
     // Get code content as text
     const textContent = codeElement.textContent || ""
 
@@ -54,7 +54,7 @@ const initCopyButtons = () => {
     const button = document.createElement("button")
     button.className = "copy-button"
     button.setAttribute("aria-label", "Copy code to clipboard")
-    
+
     // Only add the icon SVG
     button.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -62,11 +62,11 @@ const initCopyButtons = () => {
         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
       </svg>
     `
-    
+
     // Add click event
     button.addEventListener("click", () => {
       copyToClipboard(textContent)
-      
+
       // Replace with checkmark SVG for success state
       button.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -74,7 +74,7 @@ const initCopyButtons = () => {
         </svg>
       `
       button.classList.add("copied")
-      
+
       // Reset after 2 seconds
       setTimeout(() => {
         button.innerHTML = `
@@ -86,7 +86,7 @@ const initCopyButtons = () => {
         button.classList.remove("copied")
       }, 2000)
     })
-    
+
     // Add button to the code block
     block.appendChild(button)
   })

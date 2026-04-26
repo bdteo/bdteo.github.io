@@ -9,9 +9,9 @@ import Seo from "../components/seo"
 import GiscusComments from "../components/GiscusComments"
 
 const BlogPostTemplate = ({
-                            data: { previous, next, site, markdownRemark: post },
-                            location,
-                          }) => {
+  data: { previous, next, site, markdownRemark: post },
+  location,
+}) => {
   const siteTitle = site.siteMetadata?.title || `Title`
   const featuredImage = getImage(post.frontmatter.featuredImage)
 
@@ -79,15 +79,17 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
   // Extract the featured image path for SEO.
   // Use a JPG derivative for maximum compatibility with link previews (Slack/Discord/etc).
   const ogImage = post.frontmatter.featuredImage?.childImageSharp?.resize?.src
-  const ogImageWidth = post.frontmatter.featuredImage?.childImageSharp?.resize?.width
-  const ogImageHeight = post.frontmatter.featuredImage?.childImageSharp?.resize?.height
-  
+  const ogImageWidth =
+    post.frontmatter.featuredImage?.childImageSharp?.resize?.width
+  const ogImageHeight =
+    post.frontmatter.featuredImage?.childImageSharp?.resize?.height
+
   // Extract frontmatter fields
   const { title, description, date, tags, jsonld } = post.frontmatter
-  
+
   // Format dates in ISO format for structured data
   const datePublished = new Date(date).toISOString()
-  
+
   return (
     <Seo
       title={title}
