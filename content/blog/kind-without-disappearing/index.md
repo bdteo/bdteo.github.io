@@ -1,6 +1,6 @@
 ---
 title: "I Can Be Kind Without Disappearing"
-date: "2026-05-10T01:00:00.000Z"
+date: "2026-05-10T02:14:00.000+03:00"
 description: "A personal essay about guilt, inherited shame, apology, and learning that goodness is not the same as vanishing into service."
 featuredImage: "./images/featured.jpg"
 imageCaption: "An old wooden loom in a moonlit chamber. Between its warp, one silver thread is just being woven."
@@ -8,7 +8,7 @@ imagePosition: "center"
 audioUrl: "/audio/articles/kind-without-disappearing/am_santa-f210c71010c5.m4a"
 audioDuration: "5:13"
 audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioGeneratedAt: "2026-05-10"
 audioTextSource: "content/tts/kind-without-disappearing.md"
 ---
 
