@@ -5,6 +5,11 @@ description: "A short story about two rubber ducks navigating self-doubt, percei
 featuredImage: "./images/featured.jpg"
 imageCaption: "Two yellow rubber ducks on a warm wooden bathroom shelf, angled slightly toward each other."
 imagePosition: "center"
+audioUrl: "/audio/articles/worst-hypocrite-rubber-duck-tale/am_santa-3f12f01563e5.m4a"
+audioDuration: "5:19"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/worst-hypocrite-rubber-duck-tale.md"
 ---
 
 From Boris to a Cherished Friend:

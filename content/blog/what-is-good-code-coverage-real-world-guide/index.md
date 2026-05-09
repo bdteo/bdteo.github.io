@@ -5,6 +5,11 @@ description: "Debunking the 100 % myth: I break down proven coverage targets for
 tags: ["code-coverage", "testing", "typescript", "php", "best-practices", "quality-assurance"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "80 % coverage ≠ 80 % quality — here’s why"
+audioUrl: "/audio/articles/what-is-good-code-coverage-real-world-guide/am_santa-c2a2cad8cc06.m4a"
+audioDuration: "4:25"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/what-is-good-code-coverage-real-world-guide.md"
 ---
 
 # What Is “Good” Code Coverage? My Real-World Guide to Stopping Bugs Without Wasting Engineering Time

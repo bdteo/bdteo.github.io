@@ -7,6 +7,11 @@ description: "When 'git grep' beats plain grep, when 'rg' (ripgrep) beats both, 
 tags: ["git", "git grep", "ripgrep", "code search", "developer tools", "software development", "command line tools"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A library card catalog drawer pulled open. One card stands slightly proud — the passage you were looking for."
+audioUrl: "/audio/articles/unlocking-the-power-of-git-grep/am_santa-84c432323b88.m4a"
+audioDuration: "10:25"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/unlocking-the-power-of-git-grep.md"
 ---
 
 In a vast kingdom filled with countless scrolls and manuscripts, there lived a scholar named Alaric. His library was immense—a labyrinth of knowledge where ancient texts mingled with contemporary writings, and secrets hid between the lines. Alaric often found himself searching for a single elusive phrase amidst this sea of information, a task that grew more daunting with each passing day.

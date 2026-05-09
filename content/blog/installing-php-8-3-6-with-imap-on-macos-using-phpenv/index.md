@@ -7,6 +7,11 @@ description: "Install PHP 8.3 with IMAP on macOS using phpenv. Covers brew deps,
 tags: ["PHP", "macOS", "IMAP", "phpenv", "Development Environment", "PECL", "Deprecated"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A phone on white marble. A pale cyan notification halo, a folded letter, a fountain pen."
+audioUrl: "/audio/articles/installing-php-8-3-6-with-imap-on-macos-using-phpenv/am_santa-24536acf919f.m4a"
+audioDuration: "5:45"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/installing-php-8-3-6-with-imap-on-macos-using-phpenv.md"
 ---
 
 > **Important (2024-11 update):** PHP 8.4 **unbundled ext-imap** from core. The extension moved to PECL and is effectively deprecated -- the underlying C library (libc-client) hasn't been updated since 2018. If you're starting a new project or on PHP 8.4+, skip to [Do You Actually Need ext-imap?](#do-you-actually-need-ext-imap) for modern alternatives. If you're on PHP 8.3 or earlier and need the native extension, this guide still works.

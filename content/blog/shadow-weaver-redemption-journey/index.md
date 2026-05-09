@@ -4,6 +4,11 @@ date: "2024-09-14T12:30:00.000Z"
 description: "A fantasy tale of Aiden, the Shadow Weaver, on a journey through magical challenges to find redemption and learn the power of self-forgiveness and healing."
 featuredImage: "./images/featured.jpg"
 imageCaption: "An old wooden loom in a moonlit chamber. Between its warp, one silver thread is just being woven."
+audioUrl: "/audio/articles/shadow-weaver-redemption-journey/am_santa-ce85b6f779e6.m4a"
+audioDuration: "4:17"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/shadow-weaver-redemption-journey.md"
 ---
 
 In the land of Luminara, where day and night danced together in an endless twilight, lived a young man named Aiden. He was a weaver, known for creating tapestries that told stories of great heroes and distant lands. Yet, despite the beauty he wove into his art, his heart was heavy with sorrow and regret.

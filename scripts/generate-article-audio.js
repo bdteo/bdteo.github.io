@@ -10,6 +10,7 @@ const path = require("node:path")
 const rootDir = path.resolve(__dirname, "..")
 const defaultKokoroUrl = "http://127.0.0.1:8880"
 const maxChunkLength = 900
+const synthRetryDelays = [1500, 4000, 9000, 15000]
 
 const args = process.argv.slice(2)
 const slug = args.find(arg => !arg.startsWith("--"))
@@ -173,30 +174,54 @@ const splitForSpeech = text => {
   return chunks
 }
 
-const synthesizeChunk = async (text, outputPath, index, total) => {
-  process.stdout.write(`Synthesizing chunk ${index}/${total}...\n`)
-
-  const response = await fetch(`${kokoroUrl}/v1/audio/speech`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "kokoro",
-      voice,
-      speed,
-      response_format: "wav",
-      input: text,
-    }),
+const wait = milliseconds =>
+  new Promise(resolve => {
+    setTimeout(resolve, milliseconds)
   })
 
-  if (!response.ok) {
-    const body = await response.text()
-    throw new Error(`Kokoro returned ${response.status}: ${body}`)
-  }
+const synthesizeChunk = async (text, outputPath, index, total) => {
+  for (let attempt = 0; attempt <= synthRetryDelays.length; attempt += 1) {
+    process.stdout.write(
+      `Synthesizing chunk ${index}/${total}${attempt ? ` retry ${attempt}` : ""}...\n`,
+    )
 
-  const audio = Buffer.from(await response.arrayBuffer())
-  await fs.writeFile(outputPath, audio)
+    try {
+      const response = await fetch(`${kokoroUrl}/v1/audio/speech`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "kokoro",
+          voice,
+          speed,
+          response_format: "wav",
+          input: text,
+        }),
+      })
+
+      if (!response.ok) {
+        const body = await response.text()
+
+        if (response.status < 500 || attempt === synthRetryDelays.length) {
+          throw new Error(`Kokoro returned ${response.status}: ${body}`)
+        }
+
+        await wait(synthRetryDelays[attempt])
+        continue
+      }
+
+      const audio = Buffer.from(await response.arrayBuffer())
+      await fs.writeFile(outputPath, audio)
+      return
+    } catch (error) {
+      if (attempt === synthRetryDelays.length) {
+        throw error
+      }
+
+      await wait(synthRetryDelays[attempt])
+    }
+  }
 }
 
 const yamlQuote = value => JSON.stringify(String(value))
@@ -242,10 +267,24 @@ const formatDuration = seconds => {
 }
 
 const ensureKokoroIsHealthy = async () => {
-  const response = await fetch(`${kokoroUrl}/health`)
+  for (let attempt = 0; attempt <= synthRetryDelays.length; attempt += 1) {
+    try {
+      const response = await fetch(`${kokoroUrl}/health`)
 
-  if (!response.ok) {
-    throw new Error(`Kokoro health returned ${response.status}`)
+      if (response.ok) {
+        return
+      }
+
+      if (attempt === synthRetryDelays.length) {
+        throw new Error(`Kokoro health returned ${response.status}`)
+      }
+    } catch (error) {
+      if (attempt === synthRetryDelays.length) {
+        throw error
+      }
+    }
+
+    await wait(synthRetryDelays[attempt])
   }
 }
 

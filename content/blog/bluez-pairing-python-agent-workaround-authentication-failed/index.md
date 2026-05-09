@@ -7,6 +7,11 @@ description: "Solve BlueZ pairing 'AuthenticationFailed' errors on 5.66+. Why in
 tags: ["BlueZ", "DBus", "PairingAgent", "Python", "C++", "sd-bus", "AuthenticationFailed", "LinuxBluetooth", "Workaround", "BluetoothPairing", "EmbeddedLinux"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Navigating the complexities of BlueZ D-Bus pairing agent interactions on Linux."
+audioUrl: "/audio/articles/bluez-pairing-python-agent-workaround-authentication-failed/am_santa-69fe72139433.m4a"
+audioDuration: "8:59"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/bluez-pairing-python-agent-workaround-authentication-failed.md"
 ---
 
 > **TL;DR:** If you're getting `org.bluez.Error.AuthenticationFailed` with a custom C++/sd-bus pairing agent on BlueZ 5.66+, your internal agent registration is likely the problem. Run an external Python agent (`simple-agent.py`) as a separate process, and implement D-Bus property polling instead of relying on `PropertiesChanged` signals. Details and code below.

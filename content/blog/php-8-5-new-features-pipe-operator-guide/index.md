@@ -37,6 +37,11 @@ tags: [
 ] 
 featuredImage: "./images/featured.jpg"
 imageCaption: "A copper conduit elbow joining two runs into one on a plaster wall."
+audioUrl: "/audio/articles/php-8-5-new-features-pipe-operator-guide/am_santa-afe33d5ea59b.m4a"
+audioDuration: "14:04"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/php-8-5-new-features-pipe-operator-guide.md"
 ---
 
 ## TL;DR Hype Ladder (My Playful Ranking)

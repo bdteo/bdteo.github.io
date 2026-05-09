@@ -32,6 +32,11 @@ jsonld: |
     }
   }
 featuredImage: "./images/featured.jpg"
+audioUrl: "/audio/articles/wash-one-more-plate-refactoring-philosophy/am_santa-74051e9ab211.m4a"
+audioDuration: "7:28"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/wash-one-more-plate-refactoring-philosophy.md"
 ---
 
 > **TL;DR**: Treat every change to your codebase like cooking a meal. You will dirty some plates. When you’re done, wash not just the plates you used—wash *one more*. Over time, that tiny surplus of care compounds into a kitchen (codebase) that stays clean rather than decays into chaos.

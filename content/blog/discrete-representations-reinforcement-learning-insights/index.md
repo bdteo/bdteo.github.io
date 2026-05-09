@@ -7,6 +7,11 @@ description: "Explore Edan Meyer's research on discrete representations in RL. L
 tags: ["Artificial Intelligence", "Reinforcement Learning", "Discrete Representations", "Edan Meyer", "AI Research"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A fanned arc of plain cards on dark cloth. A hand lifts one from the finite set."
+audioUrl: "/audio/articles/discrete-representations-reinforcement-learning-insights/am_santa-f6a748828295.m4a"
+audioDuration: "5:20"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/discrete-representations-reinforcement-learning-insights.md"
 ---
 
 Have you ever wondered how AI agents learn to understand and interact with complex environments? Edan Meyer, a researcher in the field of reinforcement learning (RL), has been exploring an intriguing approach that might just change the way we think about AI learning. Let's dive into his fascinating work on discrete representations in RL!

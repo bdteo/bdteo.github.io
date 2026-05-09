@@ -6,6 +6,11 @@ description: "Docker Compose has changed drastically -- v1 is dead, the version 
 featuredImage: "./images/featured.jpg"
 tags: ["Docker", "Docker Compose", "DevOps", "Containers", "Development Environment"]
 imageCaption: "A row of small wooden shipping crates on a harbor dock at first light."
+audioUrl: "/audio/articles/docker-compose-major-changes-since-october-2023/am_santa-35348c9073d4.m4a"
+audioDuration: "8:17"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/docker-compose-major-changes-since-october-2023.md"
 ---
 
 > **TL;DR:** Docker Compose v1 (`docker-compose`) was fully removed in April 2025. The `version` field in your YAML is dead. The `x-develop` key is now just `develop`. Watch mode is production-ready with `initial_sync`. There's a critical path traversal CVE (CVE-2025-62725) if you use `include` with OCI artifacts -- update to v2.40.2+. And yes, Compose jumped from v2 to v5. Details below.

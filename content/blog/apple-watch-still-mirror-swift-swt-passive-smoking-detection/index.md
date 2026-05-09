@@ -7,6 +7,11 @@ description: "My journey building 'Still Mirror,' an Apple Watch app for passive
 tags: ["Apple Watch", "HealthKit", "Swift", "Xcode", "Stationary Wavelet Transform", "SWT", "AI", "Signal Processing", "Wearables", "Health Tech", "Passive Monitoring", "iOS Development"]
 featuredImage: "./images/featured-still-mirror.jpg"
 imageCaption: "Conceptual art: An Apple Watch displaying subtle physiological wave patterns transforming into a discreet event notification, against a backdrop of neural networks and wavelet graphs."
+audioUrl: "/audio/articles/apple-watch-still-mirror-swift-swt-passive-smoking-detection/am_santa-5b722209cd1d.m4a"
+audioDuration: "9:09"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/apple-watch-still-mirror-swift-swt-passive-smoking-detection.md"
 ---
 
 The idea of truly understanding our habits, especially those we perform almost unconsciously, has always fascinated me. What if our wearables could offer a gentle, non-judgmental mirror to these patterns? This question sparked the "Still Mirror" project: an attempt to passively detect smoking or vaping events using the rich physiological data from an Apple Watch, without requiring manual input from the user. This is not about building another cessation app, but rather a tool for pure, unadulterated awareness.

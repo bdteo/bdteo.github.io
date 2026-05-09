@@ -5,6 +5,11 @@ description: "When you need to delete ~80%+ of a MySQL table, stop using DELETE.
 tags: ["mysql", "innodb", "databases", "performance", "operations", "laravel"]
 featuredImage: "./images/featured.webp"
 imageCaption: "Two hands lifting a small bundle of preserved herb sprigs above a basket of trimmed stems — keeping what matters before the sweep."
+audioUrl: "/audio/articles/todo-bulk-deletion-nuclear-option/am_santa-a4c88eba1286.m4a"
+audioDuration: "7:11"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/todo-bulk-deletion-nuclear-option.md"
 ---
 
 You need to delete millions of rows from a MySQL table.

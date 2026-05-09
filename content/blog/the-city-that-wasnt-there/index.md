@@ -32,6 +32,11 @@ jsonld: |
     }
   }
 featuredImage: "./images/featured.jpg"
+audioUrl: "/audio/articles/the-city-that-wasnt-there/am_santa-416740200ebd.m4a"
+audioDuration: "4:47"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/the-city-that-wasnt-there.md"
 ---
 
 I built a thing that pulls data from a source, cleans it up, shows it better than the original. Standard work.

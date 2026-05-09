@@ -5,6 +5,11 @@ description: "A small essay about language, incompleteness, a brain that is not 
 featuredImage: "./images/featured.jpg"
 imageCaption: "An open notebook at dawn. The right page is blank. On purpose."
 imagePosition: "center"
+audioUrl: "/audio/articles/where-all-sciences-meet/am_santa-c9cc5db0f938.m4a"
+audioDuration: "6:39"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/where-all-sciences-meet.md"
 ---
 
 I am not a mathematician. I am not a philosopher. I am not a neuroscientist. I am just a person that likes to think... And I keep catching the sciences winking at each other when they think nobody is looking.

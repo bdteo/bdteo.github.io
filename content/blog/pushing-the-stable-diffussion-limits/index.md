@@ -6,6 +6,11 @@ description: "Achieve photorealistic AI images with Stable Diffusion, SDXL, and 
 featuredImage: "./images/featured.jpg"
 tags: ["Stable Diffusion", "AI", "Image Generation", "Photorealism", "SDXL", "Flux", "GPU", "ControlNet", "Machine Learning"]
 imageCaption: "A painter's well-used wooden palette, crowded with tested color mixes, a palette knife mid-blend."
+audioUrl: "/audio/articles/pushing-the-stable-diffussion-limits/am_santa-79101816b234.m4a"
+audioDuration: "9:05"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/pushing-the-stable-diffussion-limits.md"
 ---
 
 > **Updated March 2026.** This article was originally written in May 2023 when SD 1.5 at 512x512 was the standard and RTX 3090 was the peak hardware. Everything has changed. Flux 2, SDXL fine-tunes, SD 3.5, ControlNet, and the RTX 5090 have completely redefined what's possible. This is the current state.

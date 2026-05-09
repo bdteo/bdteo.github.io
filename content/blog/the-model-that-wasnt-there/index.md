@@ -32,6 +32,11 @@ jsonld: |
     }
   }
 featuredImage: "./images/featured.jpg"
+audioUrl: "/audio/articles/the-model-that-wasnt-there/am_santa-87d09f6e148a.m4a"
+audioDuration: "5:31"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/the-model-that-wasnt-there.md"
 ---
 
 We were generating ad images with Gemini 3 Pro. Ranked #4 on the Artificial Analysis leaderboard. The quality was genuinely impressive - better prompt adherence, better typography, better creative output than anything else we'd tried. Google was everywhere with it. YouTube videos. Conferences. Seminars. Blog posts. "The best image generation model in the world."

@@ -4,6 +4,11 @@ date: "2024-05-11T12:00:00.000Z"
 description: "Explore Google's AI history, analyzing promises (TensorFlow, Gemini) vs. stock performance & market impact. Covers milestones, successes, failures & outlook."
 featuredImage: "./images/featured.jpg"
 imageCaption: "An open notebook on oak. A subtle hand-drawn line chart, a fountain pen, a cup of tea — patience written down."
+audioUrl: "/audio/articles/google-ai-ambitions-historical-analysis-promises-stock-market-impact/am_santa-6732bf691ef3.m4a"
+audioDuration: "8:18"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/google-ai-ambitions-historical-analysis-promises-stock-market-impact.md"
 ---
 
 Google's journey through the development and marketing of AI technologies such as the Gemini series

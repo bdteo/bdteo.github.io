@@ -5,6 +5,11 @@ description: "See how Claude Code AI redesigned a Gatsby blog. Transformed basic
 tags: ["Claude Code", "AI", "Web Development", "Gatsby", "CSS", "Design"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Abstract visualization of AI-powered web design: flowing digital strands weaving a beautiful blog interface from basic HTML elements."
+audioUrl: "/audio/articles/claude-code-transformed-my-blog-design-in-minutes/am_santa-47bfa5a08e83.m4a"
+audioDuration: "6:10"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/claude-code-transformed-my-blog-design-in-minutes.md"
 ---
 
 As a developer who spends most of my time in the backend, I've always struggled with design. My personal blog was functional but looked like it was stuck in 2010 - basic styling, inconsistent spacing, and a color scheme that could generously be described as "minimal." I'd been meaning to overhaul it for months, but the thought of diving into CSS and design systems was giving me nightmares.

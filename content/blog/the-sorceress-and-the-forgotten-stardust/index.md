@@ -5,6 +5,11 @@ description: "A fantasy tale of Lyra, a sorceress whose magic fades. Guided by a
 featuredImage: "./images/featured.jpg"
 imageCaption: "A young sorceress floating cross-legged above a glowing rose-pink rune circle, a pink orb of light between her hands."
 imagePosition: "top"
+audioUrl: "/audio/articles/the-sorceress-and-the-forgotten-stardust/am_santa-bb4002906bce.m4a"
+audioDuration: "2:22"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/the-sorceress-and-the-forgotten-stardust.md"
 ---
 
 In a realm where dreams shaped reality, young sorceress Lyra's magic flickered like a dying star. Her essence, once bright as celestial fire, had dimmed to a mere ember. But fate intervened when an ancient starseer arrived, bearing wisdom of three celestial rituals to reignite her inner cosmos.

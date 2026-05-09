@@ -3,6 +3,11 @@ title: "About"
 date: "2023-05-04T22:12:03.284Z"
 featuredImage: "./images/boris-teoharov.jpg"
 description: "Boris D. Teoharov — backend engineer from Bulgaria, occasional essayist, kept honest by two rescued strays."
+audioUrl: "/audio/articles/about/am_santa-d0c9b54b0f88.m4a"
+audioDuration: "1:52"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/about.md"
 ---
 
 About pages are a strange thing to write. You end up describing yourself like a stranger, and I am suspicious of that.
