@@ -1,6 +1,6 @@
 ---
 title: "The People I Love Are Allowed to Be Human"
-date: "2026-05-10T02:15:00.000+03:00"
+date: "2026-05-10T12:15:00.000Z"
 description: "A personal essay about tenderness, worship, disappointment, and learning to love people without turning them into altars."
 featuredImage: "./images/featured.jpg"
 imageCaption: "A young sorceress floating cross-legged above a rose-pink circle of light."

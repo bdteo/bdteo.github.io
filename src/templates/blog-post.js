@@ -116,6 +116,7 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
     title,
     description,
     date,
+    dateRaw,
     tags,
     jsonld,
     audioUrl,
@@ -125,7 +126,7 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
   } = post.frontmatter
 
   // Format dates in ISO format for structured data
-  const datePublished = new Date(date).toISOString()
+  const datePublished = new Date(dateRaw || date).toISOString()
 
   return (
     <Seo
@@ -170,6 +171,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        dateRaw: date
         description
         imageCaption
         tags

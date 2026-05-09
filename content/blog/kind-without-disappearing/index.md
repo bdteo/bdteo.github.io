@@ -1,6 +1,6 @@
 ---
 title: "I Can Be Kind Without Disappearing"
-date: "2026-05-10T02:14:00.000+03:00"
+date: "2026-05-10T12:14:00.000Z"
 description: "A personal essay about guilt, inherited shame, apology, and learning that goodness is not the same as vanishing into service."
 featuredImage: "./images/featured.jpg"
 imageCaption: "An old wooden loom in a moonlit chamber. Between its warp, one silver thread is just being woven."
