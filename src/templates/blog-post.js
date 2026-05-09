@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
 import Breadcrumb from "../components/breadcrumb"
+import ArticleAudioPlayer from "../components/ArticleAudioPlayer"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import GiscusComments from "../components/GiscusComments"
@@ -14,6 +15,7 @@ const BlogPostTemplate = ({
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
   const featuredImage = getImage(post.frontmatter.featuredImage)
+  const hasArticleAudio = Boolean(post.frontmatter.audioUrl)
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -25,15 +27,40 @@ const BlogPostTemplate = ({
         <Breadcrumb title={post.frontmatter.title} />
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <p className="blog-post__date">{post.frontmatter.date}</p>
+          {post.frontmatter.description && (
+            <p className="blog-post__dek">{post.frontmatter.description}</p>
+          )}
         </header>
-        {featuredImage && (
-          <figure className="featured-image">
-            <GatsbyImage image={featuredImage} alt={post.frontmatter.title} />
-            {post.frontmatter.imageCaption && (
-              <figcaption>{post.frontmatter.imageCaption}</figcaption>
-            )}
-          </figure>
+        {featuredImage ? (
+          <div
+            className={`blog-post__media${
+              hasArticleAudio ? " blog-post__media--with-audio" : ""
+            }`}
+          >
+            <figure className="featured-image">
+              <div className="blog-post__media-frame">
+                <GatsbyImage
+                  image={featuredImage}
+                  alt={post.frontmatter.title}
+                />
+                <ArticleAudioPlayer
+                  title={post.frontmatter.title}
+                  src={post.frontmatter.audioUrl}
+                  duration={post.frontmatter.audioDuration}
+                />
+              </div>
+              {post.frontmatter.imageCaption && (
+                <figcaption>{post.frontmatter.imageCaption}</figcaption>
+              )}
+            </figure>
+          </div>
+        ) : (
+          <ArticleAudioPlayer
+            title={post.frontmatter.title}
+            src={post.frontmatter.audioUrl}
+            duration={post.frontmatter.audioDuration}
+          />
         )}
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -85,7 +112,17 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
     post.frontmatter.featuredImage?.childImageSharp?.resize?.height
 
   // Extract frontmatter fields
-  const { title, description, date, tags, jsonld } = post.frontmatter
+  const {
+    title,
+    description,
+    date,
+    tags,
+    jsonld,
+    audioUrl,
+    audioDuration,
+    audioVoice,
+    audioGeneratedAt,
+  } = post.frontmatter
 
   // Format dates in ISO format for structured data
   const datePublished = new Date(date).toISOString()
@@ -103,6 +140,12 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
       datePublished={datePublished}
       dateModified={datePublished} // Use the same date if no modified date available
       schema={jsonld}
+      audio={{
+        url: audioUrl,
+        duration: audioDuration,
+        voice: audioVoice,
+        generatedAt: audioGeneratedAt,
+      }}
     />
   )
 }
@@ -131,6 +174,11 @@ export const pageQuery = graphql`
         imageCaption
         tags
         jsonld
+        audioUrl
+        audioDuration
+        audioVoice
+        audioGeneratedAt
+        audioTextSource
         featuredImage {
           childImageSharp {
             gatsbyImageData(width: 800, layout: FULL_WIDTH)

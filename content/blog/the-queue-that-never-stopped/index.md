@@ -32,6 +32,11 @@ jsonld: |
     }
   }
 featuredImage: "./images/featured.jpg"
+audioUrl: "/audio/articles/the-queue-that-never-stopped/am_santa-5ba51dadcd8c.m4a"
+audioDuration: "2:48"
+audioVoice: "Santa (Kokoro am_santa)"
+audioGeneratedAt: "2026-05-09"
+audioTextSource: "content/tts/the-queue-that-never-stopped.md"
 ---
 
 Emails were failing. That part was expected — broken SMTP credentials during a migration. What wasn't expected: they never stopped failing.

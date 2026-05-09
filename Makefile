@@ -1,7 +1,7 @@
 SHELL := /usr/bin/env bash
 .SHELLFLAGS := -euo pipefail -c
 
-.PHONY: deploy deploy-build clean gh-deploy
+.PHONY: deploy deploy-build clean gh-deploy article-audio
 
 # Zero-downtime deploy for the VPS:
 # - builds in a temporary git worktree (so we never delete the live public/)
@@ -84,3 +84,12 @@ gh-deploy:
 clean:
 	@rm -rf "$(RELEASES_DIR)"
 
+AUDIO_SLUG ?= $(slug)
+AUDIO_ARGS ?= $(args)
+
+article-audio:
+	@if [ -z "$(AUDIO_SLUG)" ]; then \
+	  echo 'usage: make article-audio slug=<article-slug> [args="--force --voice=am_santa"]'; \
+	  exit 2; \
+	fi
+	pnpm article:audio "$(AUDIO_SLUG)" $(AUDIO_ARGS)

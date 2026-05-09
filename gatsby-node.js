@@ -148,6 +148,11 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String
       date: Date @dateformat
       featuredImage: File @fileByRelativePath
+      audioUrl: String
+      audioDuration: String
+      audioVoice: String
+      audioGeneratedAt: Date @dateformat
+      audioTextSource: String
     }
 
     type Fields {

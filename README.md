@@ -55,6 +55,36 @@ If you use `nvm`, this repo includes an `.nvmrc`:
 
 Then open `http://localhost:8000`.
 
+## Article Audio / TTS
+
+Article narration is generated locally from a separate listenable script, then
+attached to a post through frontmatter.
+
+For a post at `content/blog/<slug>/index.md`:
+
+1. Write the spoken version in `content/tts/<slug>.md`.
+2. Make sure local Kokoro is running at `http://127.0.0.1:8880`.
+3. Generate and wire the audio:
+
+   ```bash
+   make article-audio slug=<slug>
+   ```
+
+The wrapper calls `pnpm article:audio <slug>`, uses the Santa Kokoro voice
+(`am_santa`) by default, writes an `.m4a` under
+`static/audio/articles/<slug>/`, and updates the post frontmatter with
+`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, and
+`audioTextSource`.
+
+Useful variants:
+
+```bash
+make article-audio slug=<slug> args="--force"
+make article-audio slug=<slug> args="--voice=am_santa --speed=0.95"
+```
+
+See `documentation/article-audio.md` for the object storage upload hook.
+
 ## Future Potential
 
 The project structure and content suggest potential for:
