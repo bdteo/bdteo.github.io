@@ -1,0 +1,10 @@
+[mcp_servers.analytics-mcp]
+args = [
+    "run",
+    "analytics-mcp",
+]
+command = "pipx"
+
+[mcp_servers.analytics-mcp.env]
+GOOGLE_APPLICATION_CREDENTIALS = "/Users/boris/.config/gcloud/application_default_credentials.json"
+GOOGLE_PROJECT_ID = "bdteo-com"
