@@ -226,6 +226,58 @@
     }
   }
 
+  .acrostic-poem {
+    position: relative;
+    margin: var(--spacing-8) 0 var(--spacing-10);
+    padding: var(--spacing-7) var(--spacing-5);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(var(--color-primary-rgb), 0.08) 0%,
+        transparent 4.25rem
+      ),
+      var(--color-background-soft);
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      content: "";
+      background: var(--accent-line-gradient);
+    }
+  }
+
+  .acrostic-poem__stanza {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    margin: 0;
+
+    & + .acrostic-poem__stanza {
+      margin-top: var(--spacing-7);
+    }
+  }
+
+  .acrostic-poem__line {
+    display: block;
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
+    line-height: 1.75;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+
+    &::first-letter {
+      color: var(--color-secondary);
+      font-weight: var(--font-weight-bold);
+    }
+  }
+
   hr {
     background-color: var(--color-accent);
     height: 1px;

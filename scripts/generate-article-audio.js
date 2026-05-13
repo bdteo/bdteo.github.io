@@ -94,8 +94,24 @@ const normalizeForSpeech = content =>
   stripFrontmatter(content)
     .replace(/\r\n/g, "\n")
     .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/^#{1,6}\s+/gm, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim()
+
+const readSpeechOptions = content => {
+  const pauseMatch = content.match(
+    /<!--\s*tts:paragraph-pauses(?:=(\d+(?:\.\d+)?))?\s*-->/i,
+  )
+  const paragraphPauseSeconds = pauseMatch
+    ? Number(pauseMatch[1] || "0.55")
+    : 0
+
+  return {
+    paragraphPauseSeconds: Number.isFinite(paragraphPauseSeconds)
+      ? paragraphPauseSeconds
+      : 0.55,
+  }
+}
 
 const splitLongParagraph = paragraph => {
   const sentences = paragraph.match(/[^.!?]+[.!?]+["')\]]*|.+$/g) || [paragraph]
@@ -136,7 +152,19 @@ const splitLongParagraph = paragraph => {
   return chunks
 }
 
-const splitForSpeech = text => {
+const splitForSpeech = (text, options = {}) => {
+  if (options.preserveParagraphs) {
+    return text
+      .split(/\n{2,}/)
+      .map(paragraph => paragraph.replace(/\s+/g, " ").trim())
+      .filter(Boolean)
+      .flatMap(paragraph =>
+        paragraph.length > maxChunkLength
+          ? splitLongParagraph(paragraph)
+          : [paragraph],
+      )
+  }
+
   const chunks = []
   let current = ""
 
@@ -297,7 +325,9 @@ const main = async () => {
     fail(`spoken source not found: ${spokenPath}`)
   }
 
-  const spokenText = normalizeForSpeech(await fs.readFile(spokenPath, "utf8"))
+  const rawSpokenText = await fs.readFile(spokenPath, "utf8")
+  const speechOptions = readSpeechOptions(rawSpokenText)
+  const spokenText = normalizeForSpeech(rawSpokenText)
 
   if (!spokenText) {
     fail(`${spokenPath} is empty after frontmatter`)
@@ -305,7 +335,9 @@ const main = async () => {
 
   const hash = crypto
     .createHash("sha256")
-    .update(`${voice}\0${speed}\0${spokenText}`)
+    .update(
+      `${voice}\0${speed}\0${speechOptions.paragraphPauseSeconds}\0${spokenText}`,
+    )
     .digest("hex")
     .slice(0, 12)
   const fileName = `${voice}-${hash}.m4a`
@@ -323,7 +355,9 @@ const main = async () => {
     await ensureKokoroIsHealthy()
 
     const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "article-audio-"))
-    const chunks = splitForSpeech(spokenText)
+    const chunks = splitForSpeech(spokenText, {
+      preserveParagraphs: speechOptions.paragraphPauseSeconds > 0,
+    })
     const chunkFiles = chunks.map((_, index) =>
       path.join(tempDir, `chunk-${String(index + 1).padStart(3, "0")}.wav`),
     )
@@ -337,9 +371,32 @@ const main = async () => {
       )
     }
 
+    let pauseFile = null
+    if (speechOptions.paragraphPauseSeconds > 0 && chunkFiles.length > 1) {
+      pauseFile = path.join(tempDir, "paragraph-pause.wav")
+      await run("ffmpeg", [
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-y",
+        "-f",
+        "lavfi",
+        "-i",
+        "anullsrc=r=24000:cl=mono",
+        "-t",
+        String(speechOptions.paragraphPauseSeconds),
+        pauseFile,
+      ])
+    }
+
     const concatFile = path.join(tempDir, "concat.txt")
     const mergedWav = path.join(tempDir, "merged.wav")
-    const concatList = chunkFiles
+    const concatFiles = pauseFile
+      ? chunkFiles.flatMap((file, index) =>
+          index === chunkFiles.length - 1 ? [file] : [file, pauseFile],
+        )
+      : chunkFiles
+    const concatList = concatFiles
       .map(file => `file '${file.replace(/'/g, "'\\''")}'`)
       .join("\n")
 
