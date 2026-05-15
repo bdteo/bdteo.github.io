@@ -46,40 +46,41 @@ const Bio = () => {
         alt={author?.name || "Profile picture"}
         itemProp="image"
       />
-      <div className="bio-content">
-        {author?.name && (
-          <>
+      {author?.name && (
+        <>
+          <div className="bio-heading">
+            <p className="bio-kicker">Author</p>
             <h2 className="bio-name" itemProp="name">
               Hey, I'm Boris
             </h2>
-            <p className="bio-intro" itemProp="description">
-              {author.summary}
-            </p>
-            <meta itemProp="url" content="https://bdteo.com" />
-          </>
+          </div>
+          <p className="bio-intro" itemProp="description">
+            {author.summary}
+          </p>
+          <meta itemProp="url" content="https://bdteo.com" />
+        </>
+      )}
+      <div className="bio-social">
+        {social?.github && (
+          <a
+            href={`https://github.com/${social.github}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            itemProp="sameAs"
+          >
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
         )}
-        <div className="bio-social">
-          {social?.github && (
-            <a
-              href={`https://github.com/${social.github}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              itemProp="sameAs"
-            >
-              <FontAwesomeIcon icon={faGithub} />
-            </a>
-          )}
-          {social?.email && (
-            <a
-              href={`mailto:${social.email}`}
-              aria-label="Email"
-              itemProp="email"
-            >
-              <FontAwesomeIcon icon={faEnvelope} />
-            </a>
-          )}
-        </div>
+        {social?.email && (
+          <a
+            href={`mailto:${social.email}`}
+            aria-label="Email"
+            itemProp="email"
+          >
+            <FontAwesomeIcon icon={faEnvelope} />
+          </a>
+        )}
       </div>
     </div>
   )

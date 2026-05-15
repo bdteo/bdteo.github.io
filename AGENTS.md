@@ -42,6 +42,7 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 - The generator writes `.m4a` files under `static/audio/articles/<slug>/` and updates frontmatter fields: `audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, and `audioTextSource`.
 - If object storage is configured, use the documented `BLOG_AUDIO_RCLONE_TARGET` and `BLOG_AUDIO_PUBLIC_BASE_URL` environment variables; otherwise keep `audioUrl` local under `/audio/articles/...`.
 - Do not send raw article markdown directly to TTS unless Boris explicitly asks; prepare or update the TTS-friendly version first.
+- For Kokoro, do not mirror visual poem/prose line breaks in `content/tts/*.md`: group connected sentences into spoken paragraphs/stanzas and use blank lines only for real movement breaks, because newlines/short chunks can cause cadence resets.
 - See `documentation/article-audio.md` for the full workflow.
 
 ## Giscus Comments
