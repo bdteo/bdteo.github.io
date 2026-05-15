@@ -1,11 +1,25 @@
-<!-- tts:paragraph-pauses=0.7 -->
+<!-- tts:paragraph-pauses=0.65 -->
 
-Some things do not ask to be solved. They wait quietly, and the first reading is allowed to be enough.
+Illuminate me... wake me slowly... anger - doesn't touch me.
+Noble in the blood... Time is stuck!
 
-Illuminate me. Wake me slowly. Anger doesn't touch me. Noble in the blood. Time is stuck.
+Yelling at a stone wall... , oblivious to truth..., useful...
 
-Yelling at a stone wall. Oblivious to truth. Useful.
+Yet you know me better than myself, even in a quiet room...
+Tonight I am on my own. Young and beautiful.
 
-Yet you know me better than myself. Even in a quiet room. Tonight I'm on my own. Young and beautiful.
+Oh, I have a mercy for myself, usually I don't, did I tell you that?
 
-Oh I have a mercy for myself. Usually I don't. Did I tell you that? Ordinary people, ordinary things. Nonsense. Trust. What about tonight? Am I good for you? Nobody is better. Time will pass. Maybe I don't matter. Even if I'm good.
+Ordinary people..., ordinary things.
+
+Nonsense!!!
+
+Trust?
+
+What about tonight?;Am I good for you? Nobody is better.
+
+...
+  
+...time will pass...
+Maybe? - I don't matter!
+...even if I'm good!
