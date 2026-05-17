@@ -56,7 +56,7 @@ deploy:
 	  nvm use $(NODE_VERSION) >/dev/null; \
 	  corepack enable >/dev/null 2>&1 || true; \
 	  pnpm install --frozen-lockfile; \
-	  pnpm build'; \
+	  pnpm build:inplace'; \
 	echo "==> Capturing build output"; \
 	mkdir -p "$(RELEASE_DIR)"; \
 	mv "$(WORKTREE_DIR)/public" "$(RELEASE_DIR)/public"; \

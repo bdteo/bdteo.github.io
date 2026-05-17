@@ -64,7 +64,8 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
-    "build": "gatsby clean && gatsby build --prefix-paths",
+    "build": "node scripts/build-isolated.js",
+    "build:inplace": "gatsby clean && gatsby build --prefix-paths",
     "dev": "gatsby develop",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
@@ -74,7 +75,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby clean && gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "pnpm build:inplace && gh-pages -d public"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

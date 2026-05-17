@@ -5,7 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build & Development Commands
 
 - Development: `pnpm dev`
-- Build: `pnpm build`
+- Build: `pnpm build` (safe isolated build; does not touch the active dev server's `.cache`/`public`)
+- In-place build: `pnpm build:inplace` (destructive current-tree build for deploy worktrees only)
 - Format: `pnpm format`
 - Serve: `pnpm serve`
 - Clean: `pnpm clean`
