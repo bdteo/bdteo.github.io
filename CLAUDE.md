@@ -39,7 +39,11 @@ Default engine is ElevenLabs (voice `alistair`, model `eleven_v3`); Kokoro `sant
 - **`/bdteo-tts-prepare <slug>`** — reads `content/blog/<slug>/index.md` and (if present) `content/tts/<slug>.md`; produces a v3-tagged `content/tts/<slug>.md`. Preserves Boris's prose; layers tags using the catalog. Essays ≈ 1 tag per 2 paragraphs; poems get one opening tag per stanza. Stops for review — does NOT generate audio, does NOT commit.
 - **`/bdteo-publish-audio <slug>`** — ensures TTS is current (delegates to the prep skill), runs `pnpm article:audio <slug> --force`, plays via `afplay`, iterates on feedback, then commits + pushes + triggers deploy following the Deploy & Publish Ordering rules above.
 
-The generator (`scripts/generate-article-audio.js`) chunks ElevenLabs requests at 2,500 chars with concurrency 3 (Creator-tier cap), auto-sends `voice_settings`, packages `.m4a`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
+The generator (`scripts/generate-article-audio.js`) chunks ElevenLabs requests at 2,500 chars with concurrency 3 (conservative default; the empirical API cap is 5 concurrent requests as of May 2026), auto-sends `voice_settings`, packages `.m4a`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
+
+### Parallel-Agent Cap
+
+When spawning background agents that each run their own audio generation, **the total in-flight ElevenLabs request count across all agents must not exceed the API concurrency cap (currently 5)**. With per-agent `--concurrency=1`, that means **at most 5 parallel agents**. Spawning more causes the slowest chunks to exhaust the generator's 4 retries and fail with `concurrent_limit_exceeded`, leaving the TTS file modernized but no audio produced — requiring a serial retry afterward. The chosen tactic: spawn ≤5 in parallel, or accept that one or two will need serial regeneration.
 
 ### Cost & Pacing — Don't Guess
 

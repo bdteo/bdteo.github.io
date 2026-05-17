@@ -85,7 +85,8 @@ If you need to estimate cost before a big batch, **ask Boris for the dashboard s
 
 ### Generator notes
 
-- `scripts/generate-article-audio.js` chunks ElevenLabs requests at 2,500 chars with concurrency 3 (Creator-tier cap), auto-sends `voice_settings`, packages `.m4a` via `ffmpeg`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
+- `scripts/generate-article-audio.js` chunks ElevenLabs requests at 2,500 chars with concurrency 3 (conservative default; the empirical API cap is 5 concurrent requests as of May 2026), auto-sends `voice_settings`, packages `.m4a` via `ffmpeg`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
+- **Parallel-agent cap.** When spawning background agents that each run their own audio generation, total in-flight ElevenLabs requests across all agents must not exceed the API cap (5). With per-agent `--concurrency=1`, that means **at most 5 parallel agents**. Spawning more causes the slowest chunks to exhaust the generator's 4 retries and fail with `concurrent_limit_exceeded`, leaving the TTS file modernized but no audio produced — requiring a serial retry afterward.
 - For Kokoro, do not mirror visual poem/prose line breaks in `content/tts/*.md` — group sentences into stanzas and use blank lines only for real movement breaks; newlines/short chunks cause cadence resets.
 - If object storage is configured, use `BLOG_AUDIO_RCLONE_TARGET` and `BLOG_AUDIO_PUBLIC_BASE_URL`; otherwise `audioUrl` stays local under `/audio/articles/...`.
 - Sample voices before committing: `pnpm voice:sample alistair,george,ak --text="..."` or `pnpm voice:sample --list`.
