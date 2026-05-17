@@ -5,10 +5,10 @@ description: "A personal essay about AI companions, credit anxiety, token math, 
 featuredImage: "./images/featured.jpg"
 imageCaption: "A morning desk where a coffee cup, a glowing usage meter, and a small mechanical companion share the same pool of light."
 imagePosition: "center"
-audioUrl: "/audio/articles/when-the-meter-appears/am_santa-8e2794b817a9.m4a"
-audioDuration: "6:19"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-11"
+audioUrl: "/audio/articles/when-the-meter-appears/UzI1NsMEV3ni5JRkRSls-eaf6ee0501d7.m4a"
+audioDuration: "7:33"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/when-the-meter-appears.md"
 ---
 
