@@ -41,6 +41,15 @@ Default engine is ElevenLabs (voice `alistair`, model `eleven_v3`); Kokoro `sant
 
 The generator (`scripts/generate-article-audio.js`) chunks ElevenLabs requests at 2,500 chars with concurrency 3 (Creator-tier cap), auto-sends `voice_settings`, packages `.m4a`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
 
+### Cost & Pacing — Don't Guess
+
+Do NOT quote ElevenLabs tier allowances or char-to-credit ratios from memory. Empirical observations (May 2026):
+
+- Boris's tier allowance is currently **160,408 credits/month** (not the 121k Creator headline I had cached) — tier may change.
+- `eleven_v3` bills at roughly **0.60 credits per character**, not the 1-to-1 ratio implied by older v2 pricing docs.
+
+If you need to estimate cost before a big batch, **ask Boris for the dashboard snapshot** (or skip the projection entirely and just run). Volunteering wrong projections either over-warns (causing unnecessary pauses) or under-warns (causing real budget surprises). Both are worse than no projection.
+
 ## Code Style Guidelines
 
 - Formatting: Use Prettier with default config

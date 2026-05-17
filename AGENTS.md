@@ -74,6 +74,15 @@ Once the TTS script is approved:
 5. Once Boris approves, **two commits**: (a) generator changes if any, (b) the audio publication — `git rm` any tracked old `am_santa-*.m4a`, `rm` superseded local takes, `git add` the new audio + updated frontmatter + TTS script, commit, push.
 6. Trigger deploy: `gh workflow run deploy.yml -R bdteo/bdteo.github.io`. Follow the **Deploy & Publish Ordering** rules above (commit + push BEFORE triggering; one deploy per coherent state; cancel duplicates quickly).
 
+### Cost & Pacing — Don't Guess
+
+Do NOT quote ElevenLabs tier allowances or char-to-credit ratios from memory. Empirical observations (May 2026):
+
+- Boris's tier allowance is currently **160,408 credits/month** (not the 121k Creator headline) — tier may change.
+- `eleven_v3` bills at roughly **0.60 credits per character**, not the 1-to-1 ratio implied by older v2 pricing docs.
+
+If you need to estimate cost before a big batch, **ask Boris for the dashboard snapshot** (or skip the projection entirely and just run). Volunteering wrong projections either over-warns (causing unnecessary pauses) or under-warns (causing real budget surprises). Both are worse than no projection.
+
 ### Generator notes
 
 - `scripts/generate-article-audio.js` chunks ElevenLabs requests at 2,500 chars with concurrency 3 (Creator-tier cap), auto-sends `voice_settings`, packages `.m4a` via `ffmpeg`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
