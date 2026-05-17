@@ -5,10 +5,10 @@ description: "A small picture for the computer science underdog. The textbook is
 featuredImage: "./images/featured.jpg"
 imageCaption: "A weathered fieldstone gatepost in dawn mist. The ivy climbs. The post does not care."
 imagePosition: "center"
-audioUrl: "/audio/articles/the-pillar-and-the-ivy/am_santa-ba87867d31c2.m4a"
-audioDuration: "3:27"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/the-pillar-and-the-ivy/UzI1NsMEV3ni5JRkRSls-ed023713f744.m4a"
+audioDuration: "4:24"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/the-pillar-and-the-ivy.md"
 ---
 

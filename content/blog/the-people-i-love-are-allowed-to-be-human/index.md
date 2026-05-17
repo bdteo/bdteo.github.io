@@ -5,10 +5,10 @@ description: "A personal essay about tenderness, worship, disappointment, and le
 featuredImage: "./images/featured.jpg"
 imageCaption: "A young sorceress floating cross-legged above a rose-pink circle of light."
 imagePosition: "top"
-audioUrl: "/audio/articles/the-people-i-love-are-allowed-to-be-human/am_santa-a1308d43fc0f.m4a"
-audioDuration: "4:31"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-10"
+audioUrl: "/audio/articles/the-people-i-love-are-allowed-to-be-human/UzI1NsMEV3ni5JRkRSls-29b169cdda63.m4a"
+audioDuration: "5:50"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/the-people-i-love-are-allowed-to-be-human.md"
 ---
 

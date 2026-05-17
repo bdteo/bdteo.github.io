@@ -5,10 +5,10 @@ description: "A small essay about language, incompleteness, a brain that is not 
 featuredImage: "./images/featured.jpg"
 imageCaption: "An open notebook at dawn. The right page is blank. On purpose."
 imagePosition: "center"
-audioUrl: "/audio/articles/where-all-sciences-meet/am_santa-c9cc5db0f938.m4a"
-audioDuration: "6:39"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/where-all-sciences-meet/UzI1NsMEV3ni5JRkRSls-1e687d24bda5.m4a"
+audioDuration: "8:18"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/where-all-sciences-meet.md"
 ---
 

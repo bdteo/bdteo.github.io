@@ -5,10 +5,10 @@ description: "A personal essay about guilt, inherited shame, apology, and learni
 featuredImage: "./images/featured.jpg"
 imageCaption: "An old wooden loom in a moonlit chamber. Between its warp, one silver thread is just being woven."
 imagePosition: "center"
-audioUrl: "/audio/articles/kind-without-disappearing/am_santa-f210c71010c5.m4a"
-audioDuration: "5:13"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-10"
+audioUrl: "/audio/articles/kind-without-disappearing/UzI1NsMEV3ni5JRkRSls-80ecb8714af8.m4a"
+audioDuration: "6:22"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/kind-without-disappearing.md"
 ---
 
