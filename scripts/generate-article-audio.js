@@ -7,9 +7,10 @@ const fsSync = require("node:fs")
 const os = require("node:os")
 const path = require("node:path")
 
+const { resolveVoice, DEFAULT_PRESET } = require("./voice-presets")
+
 const rootDir = path.resolve(__dirname, "..")
 const defaultKokoroUrl = "http://127.0.0.1:8880"
-const maxChunkLength = 900
 const synthRetryDelays = [1500, 4000, 9000, 15000]
 
 const args = process.argv.slice(2)
@@ -23,12 +24,29 @@ const readOption = (name, fallback) => {
   return match ? match.slice(prefix.length) : fallback
 }
 
+const voiceArg = readOption(
+  "voice",
+  process.env.BLOG_AUDIO_VOICE || DEFAULT_PRESET,
+)
+const voice = resolveVoice(voiceArg)
+if (!voice) {
+  console.error(`article:audio: unknown voice "${voiceArg}". Run \`pnpm voice:sample --list\` to see presets.`)
+  process.exit(1)
+}
+
 const kokoroUrl = readOption(
   "kokoro-url",
   process.env.KOKORO_URL || defaultKokoroUrl,
 ).replace(/\/$/, "")
-const voice = readOption("voice", process.env.KOKORO_VOICE || "am_santa")
 const speed = Number(readOption("speed", process.env.KOKORO_SPEED || "1"))
+const elevenLabsModel = readOption(
+  "model",
+  process.env.ELEVENLABS_MODEL || "eleven_v3",
+)
+const elevenLabsConcurrency = Number(
+  readOption("concurrency", process.env.ELEVENLABS_CONCURRENCY || "3"),
+)
+const maxChunkLength = voice.engine === "elevenlabs" ? 2500 : 900
 const publicBaseUrl = (process.env.BLOG_AUDIO_PUBLIC_BASE_URL || "").replace(
   /\/$/,
   "",
@@ -37,6 +55,9 @@ const rcloneTarget = (process.env.BLOG_AUDIO_RCLONE_TARGET || "").replace(
   /\/$/,
   "",
 )
+const voiceFilenameTag = (voice.voiceId || voice.kokoroVoice || "voice")
+  .replace(/[^A-Za-z0-9_-]/g, "")
+  .slice(0, 24)
 
 const fail = message => {
   console.error(`article:audio: ${message}`)
@@ -207,10 +228,10 @@ const wait = milliseconds =>
     setTimeout(resolve, milliseconds)
   })
 
-const synthesizeChunk = async (text, outputPath, index, total) => {
+const synthesizeKokoroChunk = async (text, outputPath, index, total) => {
   for (let attempt = 0; attempt <= synthRetryDelays.length; attempt += 1) {
     process.stdout.write(
-      `Synthesizing chunk ${index}/${total}${attempt ? ` retry ${attempt}` : ""}...\n`,
+      `Synthesizing chunk ${index}/${total} (kokoro)${attempt ? ` retry ${attempt}` : ""}...\n`,
     )
 
     try {
@@ -221,7 +242,7 @@ const synthesizeChunk = async (text, outputPath, index, total) => {
         },
         body: JSON.stringify({
           model: "kokoro",
-          voice,
+          voice: voice.kokoroVoice,
           speed,
           response_format: "wav",
           input: text,
@@ -250,6 +271,98 @@ const synthesizeChunk = async (text, outputPath, index, total) => {
       await wait(synthRetryDelays[attempt])
     }
   }
+}
+
+const synthesizeElevenLabsChunk = async (text, outputPath, index, total) => {
+  const apiKey = process.env.ELEVENLABS_API_KEY
+  if (!apiKey) {
+    throw new Error("ELEVENLABS_API_KEY not set in env")
+  }
+
+  const mp3Path = `${outputPath}.mp3`
+  for (let attempt = 0; attempt <= synthRetryDelays.length; attempt += 1) {
+    process.stdout.write(
+      `Synthesizing chunk ${index}/${total} (elevenlabs ${elevenLabsModel})${attempt ? ` retry ${attempt}` : ""}...\n`,
+    )
+
+    try {
+      const response = await fetch(
+        `https://api.elevenlabs.io/v1/text-to-speech/${voice.voiceId}?output_format=mp3_44100_128`,
+        {
+          method: "POST",
+          headers: {
+            "xi-api-key": apiKey,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ text, model_id: elevenLabsModel }),
+        },
+      )
+
+      if (!response.ok) {
+        const body = await response.text()
+        const isRetryable =
+          response.status >= 500 ||
+          response.status === 429 ||
+          body.includes("concurrent_limit_exceeded")
+
+        if (!isRetryable || attempt === synthRetryDelays.length) {
+          throw new Error(`ElevenLabs returned ${response.status}: ${body.slice(0, 400)}`)
+        }
+
+        await wait(synthRetryDelays[attempt])
+        continue
+      }
+
+      await fs.writeFile(mp3Path, Buffer.from(await response.arrayBuffer()))
+      // Normalize to WAV at 24kHz mono so the existing concat pipeline stays unchanged.
+      await run("ffmpeg", [
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-y",
+        "-i",
+        mp3Path,
+        "-ac",
+        "1",
+        "-ar",
+        "24000",
+        outputPath,
+      ])
+      await fs.rm(mp3Path, { force: true })
+      return
+    } catch (error) {
+      if (attempt === synthRetryDelays.length) {
+        throw error
+      }
+      await wait(synthRetryDelays[attempt])
+    }
+  }
+}
+
+const synthesizeChunk = (text, outputPath, index, total) =>
+  voice.engine === "elevenlabs"
+    ? synthesizeElevenLabsChunk(text, outputPath, index, total)
+    : synthesizeKokoroChunk(text, outputPath, index, total)
+
+const runWithConcurrency = async (items, limit, worker) => {
+  const results = new Array(items.length)
+  let cursor = 0
+
+  const launchNext = async () => {
+    while (true) {
+      const index = cursor
+      cursor += 1
+      if (index >= items.length) return
+      results[index] = await worker(items[index], index)
+    }
+  }
+
+  const runners = Array.from(
+    { length: Math.max(1, Math.min(limit, items.length)) },
+    () => launchNext(),
+  )
+  await Promise.all(runners)
+  return results
 }
 
 const yamlQuote = value => JSON.stringify(String(value))
@@ -333,14 +446,16 @@ const main = async () => {
     fail(`${spokenPath} is empty after frontmatter`)
   }
 
-  const hash = crypto
-    .createHash("sha256")
-    .update(
-      `${voice}\0${speed}\0${speechOptions.paragraphPauseSeconds}\0${spokenText}`,
-    )
-    .digest("hex")
-    .slice(0, 12)
-  const fileName = `${voice}-${hash}.m4a`
+  const hashKey = [
+    voice.engine,
+    voice.engine === "elevenlabs" ? elevenLabsModel : "",
+    voice.voiceId || voice.kokoroVoice || "",
+    speed,
+    speechOptions.paragraphPauseSeconds,
+    spokenText,
+  ].join("\0")
+  const hash = crypto.createHash("sha256").update(hashKey).digest("hex").slice(0, 12)
+  const fileName = `${voiceFilenameTag}-${hash}.m4a`
   const remoteKey = `audio/articles/${slug}/${fileName}`
   const outputPath = path.join(audioDir, fileName)
   const publicUrl = publicBaseUrl
@@ -352,27 +467,36 @@ const main = async () => {
   if (!force && fsSync.existsSync(outputPath)) {
     process.stdout.write(`Audio exists: ${outputPath}\n`)
   } else {
-    await ensureKokoroIsHealthy()
+    if (voice.engine === "kokoro") {
+      await ensureKokoroIsHealthy()
+    }
 
     const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "article-audio-"))
-    const chunks = splitForSpeech(spokenText, {
-      preserveParagraphs: speechOptions.paragraphPauseSeconds > 0,
-    })
+    // ElevenLabs v3 audio tags handle pauses inline; skip silence injection for it.
+    const preserveParagraphs =
+      voice.engine === "kokoro" && speechOptions.paragraphPauseSeconds > 0
+    const chunks = splitForSpeech(spokenText, { preserveParagraphs })
     const chunkFiles = chunks.map((_, index) =>
       path.join(tempDir, `chunk-${String(index + 1).padStart(3, "0")}.wav`),
     )
 
-    for (let index = 0; index < chunks.length; index += 1) {
-      await synthesizeChunk(
-        chunks[index],
-        chunkFiles[index],
-        index + 1,
-        chunks.length,
+    if (voice.engine === "elevenlabs") {
+      await runWithConcurrency(chunks, elevenLabsConcurrency, (chunk, index) =>
+        synthesizeChunk(chunk, chunkFiles[index], index + 1, chunks.length),
       )
+    } else {
+      for (let index = 0; index < chunks.length; index += 1) {
+        await synthesizeChunk(
+          chunks[index],
+          chunkFiles[index],
+          index + 1,
+          chunks.length,
+        )
+      }
     }
 
     let pauseFile = null
-    if (speechOptions.paragraphPauseSeconds > 0 && chunkFiles.length > 1) {
+    if (preserveParagraphs && chunkFiles.length > 1) {
       pauseFile = path.join(tempDir, "paragraph-pause.wav")
       await run("ffmpeg", [
         "-hide_banner",
@@ -460,7 +584,7 @@ const main = async () => {
   await updateArticleFrontmatter({
     audioUrl: publicUrl,
     audioDuration: duration,
-    audioVoice: `Santa (Kokoro ${voice})`,
+    audioVoice: voice.label,
     audioGeneratedAt: new Date().toISOString().slice(0, 10),
     audioTextSource: `content/tts/${slug}.md`,
   })

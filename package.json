@@ -69,6 +69,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "article:audio": "node scripts/generate-article-audio.js",
+    "voice:sample": "node scripts/voice-sample.js",
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

@@ -1,7 +1,7 @@
 SHELL := /usr/bin/env bash
 .SHELLFLAGS := -euo pipefail -c
 
-.PHONY: deploy deploy-build clean gh-deploy article-audio
+.PHONY: deploy deploy-build clean gh-deploy article-audio voice-sample
 
 # Zero-downtime deploy for the VPS:
 # - builds in a temporary git worktree (so we never delete the live public/)
@@ -86,10 +86,24 @@ clean:
 
 AUDIO_SLUG ?= $(slug)
 AUDIO_ARGS ?= $(args)
+SAMPLE_VOICES ?= $(voices)
+SAMPLE_TEXT ?= $(text)
 
 article-audio:
 	@if [ -z "$(AUDIO_SLUG)" ]; then \
-	  echo 'usage: make article-audio slug=<article-slug> [args="--force --voice=am_santa"]'; \
+	  echo 'usage: make article-audio slug=<article-slug> [args="--force --voice=alistair"]'; \
+	  echo 'default voice: alistair (ElevenLabs). See `pnpm voice:sample --list` for presets.'; \
 	  exit 2; \
 	fi
 	pnpm article:audio "$(AUDIO_SLUG)" $(AUDIO_ARGS)
+
+voice-sample:
+	@if [ -z "$(SAMPLE_VOICES)" ]; then \
+	  pnpm voice:sample --list; \
+	  exit 0; \
+	fi
+	@if [ -n "$(SAMPLE_TEXT)" ]; then \
+	  pnpm voice:sample "$(SAMPLE_VOICES)" --text="$(SAMPLE_TEXT)"; \
+	else \
+	  pnpm voice:sample "$(SAMPLE_VOICES)"; \
+	fi
