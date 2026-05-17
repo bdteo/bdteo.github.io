@@ -1,6 +1,6 @@
 # Apple Watch Smoking Detection: Building Still Mirror
 
-The idea of truly understanding our habits, especially the ones we perform almost unconsciously, has always fascinated me.
+[reflective] The idea of truly understanding our habits, especially the ones we perform almost unconsciously, has always fascinated me.
 
 What if our wearables could offer a gentle, non-judgmental mirror to those patterns?
 
@@ -10,19 +10,19 @@ This is not about building another cessation app. It is about pure awareness. A 
 
 ## The Challenge
 
-The core challenge is immense.
+[matter-of-fact] The core challenge is immense.
 
 How do you distinguish the subtle physiological signature of smoking or vaping from all the other things that happen in a normal day?
 
 Stress can change your heart rate. A brisk walk can change it. A startling noise, a cup of coffee, a bad email, or a sudden interruption can all leave traces in heart rate and heart rate variability.
 
-The signal I am looking for is a whisper inside a symphony of physiological noise.
+[slows down] The signal I am looking for is a whisper inside a symphony of physiological noise.
 
 To isolate those fleeting events, I needed something more sophisticated than basic time-series analysis. I needed a technique that could see changes across time and frequency, without losing the exact moment where something unusual happened.
 
 ## Choosing the Toolkit
 
-For a project targeting the Apple Watch, the ecosystem choice is clear.
+[conversational tone] For a project targeting the Apple Watch, the ecosystem choice is clear.
 
 First, Xcode and Swift. They are the native development environment and language for Apple platforms. Building Still Mirror meant going deeper into Swift, which I find elegant and powerful, while also wrestling with the ordinary complexity of Xcode.
 
@@ -32,7 +32,7 @@ Third, the watch itself. Developing for watchOS always means balancing ambition 
 
 ## The Algorithmic Heart
 
-The algorithmic heart of this idea is the Stationary Wavelet Transform, or SWT.
+[deliberate] The algorithmic heart of this idea is the Stationary Wavelet Transform, or SWT.
 
 Traditional time-series analysis often struggles with non-stationary signals. In plain language, that means signals whose behavior changes over time. Physiological data is exactly like that. Heart rate and heart rate variability do not sit still. Their average, variance, and short-term patterns move constantly.
 
@@ -42,7 +42,7 @@ The standard Discrete Wavelet Transform can be sensitive to small shifts in the 
 
 For this problem, SWT gives us three important advantages.
 
-First, time-frequency localization. It can decompose a signal into different frequency bands while preserving timing information. That means we can look for sudden bursts of high-frequency activity in heart rate, or specific changes in heart rate variability bands, at precise moments.
+[matter-of-fact] First, time-frequency localization. It can decompose a signal into different frequency bands while preserving timing information. That means we can look for sudden bursts of high-frequency activity in heart rate, or specific changes in heart rate variability bands, at precise moments.
 
 Second, denoising. Physiological signals are messy. SWT can help separate the underlying signal from random noise by looking at coefficients at different scales.
 
@@ -54,7 +54,7 @@ Instead of staring at raw numbers, we can look for characteristic shapes or ener
 
 ## From Data to Detection
 
-The development journey starts with data collection.
+[conversational tone] The development journey starts with data collection.
 
 HealthKit has to fetch data reliably in the background, respect user permissions, and handle updates efficiently. That sounds simple until you are dealing with the practical details of Apple platform lifecycles and watchOS constraints.
 
@@ -82,7 +82,7 @@ An iOS companion app would show the timeline of detected events, provide insight
 
 ## The Mirror Philosophy
 
-It is important to say this clearly: Still Mirror is an awareness tool, not a medical device and not a cessation program.
+[deliberate] It is important to say this clearly: Still Mirror is an awareness tool, not a medical device and not a cessation program.
 
 Privacy comes first. Ideally, the sensitive algorithmic work happens on-device. HealthKit access is strictly permission-based.
 
@@ -94,7 +94,7 @@ The goal is empowerment. Still Mirror should give people data about their own bo
 
 ## Learning Swift and the Apple Way
 
-For developers coming from other backgrounds, like my PHP and Laravel roots, diving into Swift, SwiftUI, Xcode, and watchOS is a real learning curve.
+[conversational tone] For developers coming from other backgrounds, like my PHP and Laravel roots, diving into Swift, SwiftUI, Xcode, and watchOS is a real learning curve.
 
 Apple frameworks have their own philosophy. App lifecycles, background tasks, HealthKit queries, and WatchConnectivity all come with specific patterns and Apple ways of doing things.
 
@@ -102,7 +102,7 @@ That can be frustrating, but also rewarding. Swift is powerful, the documentatio
 
 ## The Potential of a Silent Observer
 
-Still Mirror is still an exploration. It is a challenging attempt to push the boundaries of what passive sensing on a consumer wearable can do.
+[reflective] Still Mirror is still an exploration. It is a challenging attempt to push the boundaries of what passive sensing on a consumer wearable can do.
 
 The Stationary Wavelet Transform offers a promising path for dissecting complex physiological signals and uncovering subtle patterns that are easy to miss.
 
@@ -110,4 +110,4 @@ The journey is not just coding in Swift or wrestling with Xcode. It also means l
 
 Whether Still Mirror becomes a widely used app or remains an intricate technical exploration, the process itself sits at a fascinating intersection: AI, health, signal processing, and personal technology.
 
-It is about trying to build a quiet reflective surface. A still mirror for greater self-awareness.
+[slows down] It is about trying to build a quiet reflective surface. A still mirror for greater self-awareness.

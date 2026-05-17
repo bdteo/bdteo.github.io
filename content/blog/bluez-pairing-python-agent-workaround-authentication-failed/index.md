@@ -7,10 +7,10 @@ description: "Solve BlueZ pairing 'AuthenticationFailed' errors on 5.66+. Why in
 tags: ["BlueZ", "DBus", "PairingAgent", "Python", "C++", "sd-bus", "AuthenticationFailed", "LinuxBluetooth", "Workaround", "BluetoothPairing", "EmbeddedLinux"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Navigating the complexities of BlueZ D-Bus pairing agent interactions on Linux."
-audioUrl: "/audio/articles/bluez-pairing-python-agent-workaround-authentication-failed/am_santa-69fe72139433.m4a"
-audioDuration: "8:59"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/bluez-pairing-python-agent-workaround-authentication-failed/UzI1NsMEV3ni5JRkRSls-a1d83421ab3c.m4a"
+audioDuration: "10:37"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/bluez-pairing-python-agent-workaround-authentication-failed.md"
 ---
 

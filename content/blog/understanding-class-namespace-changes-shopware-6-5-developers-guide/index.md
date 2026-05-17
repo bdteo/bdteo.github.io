@@ -7,10 +7,10 @@ description: "Adapt to Shopware 6.5/6.6: Key class/namespace changes, Symfony 6,
 tags: ["Shopware 6.5", "Shopware 6.6", "Class changes", "Namespace changes", "Developer's guide", "Shopware updates", "Code migration", "PHP development", "Symfony 6", "Media path handling", "Elasticsearch migration", "Bootstrap 5", "Stock API", "Data Attributes", "Offcanvas Cart", "CSRF Protection", "SameSite Cookies", "E-commerce platform", "Software upgrade", "Programming best practices", "Custom plugins", "Code refactoring", "Software compatibility", "Shopware tutorials"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A hand tying a fresh blank cloth tag onto a pantry jar. The old tag rests beside it."
-audioUrl: "/audio/articles/understanding-class-namespace-changes-shopware-6-5-developers-guide/am_santa-521900ed7ccf.m4a"
-audioDuration: "9:41"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/understanding-class-namespace-changes-shopware-6-5-developers-guide/UzI1NsMEV3ni5JRkRSls-0cc8dbd2c52a.m4a"
+audioDuration: "11:06"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/understanding-class-namespace-changes-shopware-6-5-developers-guide.md"
 ---
 

@@ -1,6 +1,6 @@
 # Docker Compose Evolution: What Changed and Why It Matters
 
-Short version: Docker Compose has changed a lot.
+[conversational tone] Short version: Docker Compose has changed a lot.
 
 The old docker-compose command with a hyphen is gone. The version field in Compose YAML is dead. The old x-develop key is now just develop. Watch mode is production-ready and supports initial sync. There is a critical path traversal CVE if you use include with OCI artifacts. And yes, Compose jumped from v2 to v5.
 
@@ -16,7 +16,7 @@ Here is what actually matters.
 
 ## What Broke
 
-First: docker-compose is dead.
+[matter-of-fact] First: docker-compose is dead.
 
 Not deprecated. Not in maintenance mode. Dead.
 
@@ -32,7 +32,7 @@ The Go-based docker compose implementation has been the real implementation sinc
 
 Second: the version field is gone.
 
-Stop putting version colon three point eight at the top of your Compose files.
+[deliberate] Stop putting version colon three point eight at the top of your Compose files.
 
 It does nothing. It has been ignored since Compose v2 and is now officially deprecated. Modern Compose files start with services.
 
@@ -48,7 +48,7 @@ And if you are doing complex volume mounts, prefer the long-form syntax with typ
 
 ## What Is New and Actually Useful
 
-The biggest quality-of-life improvement is watch mode.
+[matter-of-fact] The biggest quality-of-life improvement is watch mode.
 
 The develop section, formerly x-develop, lets you define file watch rules that automatically sync files, restart services, or rebuild containers when files change.
 
@@ -72,7 +72,7 @@ No more manual rebuilds during development. This genuinely changed my workflow.
 
 ## Include with OCI Artifacts
 
-The include directive can now pull Compose fragments from OCI registries.
+[deliberate] The include directive can now pull Compose fragments from OCI registries.
 
 That means you can share common service definitions across projects: database configs, monitoring stacks, repeated infrastructure pieces, and so on.
 
@@ -106,7 +106,7 @@ The restart true and required false options are genuinely useful for resilient l
 
 ## What You Should Know
 
-The big security issue is CVE-2025-62725.
+[deliberate] The big security issue is CVE-2025-62725.
 
 If you use include with OCI artifacts, update to Docker Compose v2.40.2 or later immediately.
 
@@ -116,7 +116,7 @@ Docker patched this with a path validation check, but you need to be on a fixed 
 
 ## Compose v5
 
-Docker jumped from v2 to v5.
+[matter-of-fact] Docker jumped from v2 to v5.
 
 It skipped 3 and 4 to avoid confusion with the old Compose file format versions.
 
@@ -126,7 +126,7 @@ To check your version, run docker compose version.
 
 ## Bake Is the Default Build Tool
 
-Docker Bake, through BuildKit, is now the default for docker compose build.
+[conversational tone] Docker Bake, through BuildKit, is now the default for docker compose build.
 
 It handles multi-target builds, cross-platform compilation, and advanced caching better than the legacy builder.
 
@@ -134,7 +134,7 @@ If you have not looked at docker-bake.hcl files yet, they are worth understandin
 
 ## Healthcheck Improvements
 
-Healthchecks also improved.
+[slows down] Healthchecks also improved.
 
 The start_interval field lets you use a faster check interval during the startup grace period.
 
@@ -144,7 +144,7 @@ That means dependent services can start faster without weakening normal health c
 
 ## Migration Checklist
 
-If you have not updated your Compose setup in a while, here is what I would do.
+[matter-of-fact] If you have not updated your Compose setup in a while, here is what I would do.
 
 Remove version fields from all Compose files.
 
@@ -160,7 +160,7 @@ And test your CI. GitHub Actions runners moved to newer Compose versions, so old
 
 ## Final Thought
 
-Compose is still Compose. The core idea is the same: describe services, wire them together, and run a local or simple multi-container environment without making the setup miserable.
+[reflective] Compose is still Compose. The core idea is the same: describe services, wire them together, and run a local or simple multi-container environment without making the setup miserable.
 
 But the tooling around that idea has changed sharply.
 

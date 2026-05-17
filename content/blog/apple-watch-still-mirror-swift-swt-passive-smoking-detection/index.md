@@ -7,10 +7,10 @@ description: "My journey building 'Still Mirror,' an Apple Watch app for passive
 tags: ["Apple Watch", "HealthKit", "Swift", "Xcode", "Stationary Wavelet Transform", "SWT", "AI", "Signal Processing", "Wearables", "Health Tech", "Passive Monitoring", "iOS Development"]
 featuredImage: "./images/featured-still-mirror.jpg"
 imageCaption: "Conceptual art: An Apple Watch displaying subtle physiological wave patterns transforming into a discreet event notification, against a backdrop of neural networks and wavelet graphs."
-audioUrl: "/audio/articles/apple-watch-still-mirror-swift-swt-passive-smoking-detection/am_santa-5b722209cd1d.m4a"
-audioDuration: "9:09"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/apple-watch-still-mirror-swift-swt-passive-smoking-detection/UzI1NsMEV3ni5JRkRSls-5fba7618561c.m4a"
+audioDuration: "10:09"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/apple-watch-still-mirror-swift-swt-passive-smoking-detection.md"
 ---
 

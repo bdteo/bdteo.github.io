@@ -5,10 +5,10 @@ description: "Elevate your team's code quality with this essential guide to effe
 tags: ["Code Review", "Pull Requests", "Software Engineering", "Best Practices", "Developer Workflow", "Git", "Collaboration", "Code Quality"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A proof sheet marked up in pencil, a brass loupe, two pencils, a cup of cooling tea — the quiet craft of reading someone else's work."
-audioUrl: "/audio/articles/essential-guide-effective-pull-request-reviews/am_santa-f8b45d10bcc2.m4a"
-audioDuration: "6:09"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/essential-guide-effective-pull-request-reviews/UzI1NsMEV3ni5JRkRSls-7c0fd34919fa.m4a"
+audioDuration: "7:19"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/essential-guide-effective-pull-request-reviews.md"
 ---
 

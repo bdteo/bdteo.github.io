@@ -5,10 +5,10 @@ description: "See how Claude Code AI redesigned a Gatsby blog. Transformed basic
 tags: ["Claude Code", "AI", "Web Development", "Gatsby", "CSS", "Design"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Abstract visualization of AI-powered web design: flowing digital strands weaving a beautiful blog interface from basic HTML elements."
-audioUrl: "/audio/articles/claude-code-transformed-my-blog-design-in-minutes/am_santa-47bfa5a08e83.m4a"
-audioDuration: "6:10"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/claude-code-transformed-my-blog-design-in-minutes/UzI1NsMEV3ni5JRkRSls-2f24a6a1e23c.m4a"
+audioDuration: "6:55"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/claude-code-transformed-my-blog-design-in-minutes.md"
 ---
 

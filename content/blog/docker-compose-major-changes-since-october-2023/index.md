@@ -6,10 +6,10 @@ description: "Docker Compose has changed drastically -- v1 is dead, the version 
 featuredImage: "./images/featured.jpg"
 tags: ["Docker", "Docker Compose", "DevOps", "Containers", "Development Environment"]
 imageCaption: "A row of small wooden shipping crates on a harbor dock at first light."
-audioUrl: "/audio/articles/docker-compose-major-changes-since-october-2023/am_santa-35348c9073d4.m4a"
-audioDuration: "8:17"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/docker-compose-major-changes-since-october-2023/UzI1NsMEV3ni5JRkRSls-65e9864f8994.m4a"
+audioDuration: "19:52"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/docker-compose-major-changes-since-october-2023.md"
 ---
 

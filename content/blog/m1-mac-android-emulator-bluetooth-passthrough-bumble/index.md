@@ -7,10 +7,10 @@ description: "Fix Bluetooth passthrough for Android Emulator on M1 Macs. Guide d
 tags: ["Android Emulator", "Bluetooth", "BLE", "HCI", "Bumble", "macOS", "M1", "Apple Silicon", "Docker", "QEMU", "Netsim", "Passthrough", "Troubleshooting", "API 32"]
 featuredImage: "./images/featured.jpg" # Replace with a relevant image path
 imageCaption: "Two modern phones face-down on marble. A faint cyan halo crosses the gap between them."
-audioUrl: "/audio/articles/m1-mac-android-emulator-bluetooth-passthrough-bumble/am_santa-062eb2933e08.m4a"
-audioDuration: "8:55"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/m1-mac-android-emulator-bluetooth-passthrough-bumble/UzI1NsMEV3ni5JRkRSls-6d739f7cbd55.m4a"
+audioDuration: "10:22"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/m1-mac-android-emulator-bluetooth-passthrough-bumble.md"
 ---
 

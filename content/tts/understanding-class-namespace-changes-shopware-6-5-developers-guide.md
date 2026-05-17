@@ -1,16 +1,16 @@
-Developer guide: Shopware 6.5 and 6.6 class and namespace updates.
+[matter-of-fact] Developer guide: Shopware 6.5 and 6.6 class and namespace updates.
 
 Shopware 6.5 and 6.6 introduced several significant changes to classes, namespaces, data attributes, and security mechanisms that developers need to know about when updating or maintaining Shopware projects.
 
 This is a concise but practical tour through those changes, with notes on their impact and how to adapt your code.
 
-As Shopware evolves, updates bring improvements, optimizations, and new features. But they can also change assumptions that existing codebases depend on. Understanding those changes is what keeps an upgrade from turning into an archeological dig.
+[conversational tone] As Shopware evolves, updates bring improvements, optimizations, and new features. But they can also change assumptions that existing codebases depend on. Understanding those changes is what keeps an upgrade from turning into an archeological dig.
 
 The main areas are Elasticsearch namespace migration, media path handling, method changes in Available Combination Loader, the Symfony 6 upgrade, stock handling updates, the Storefront Bootstrap upgrade, offcanvas cart data attributes, CSRF protection changes, and Rule Builder enhancements.
 
 First: Elasticsearch namespace migration.
 
-The previous namespace was O N G R Elasticsearch D S L. The new namespace is OpenSearch D S L.
+[deliberate] The previous namespace was O N G R Elasticsearch D S L. The new namespace is OpenSearch D S L.
 
 Any classes and methods that interact with Elasticsearch need to update their imports and references to use the new namespace.
 
@@ -24,7 +24,7 @@ Media paths are now stored directly in the database instead of being generated d
 
 That affects classes and services that relied on dynamic path generation. Instead of asking a media service to calculate a path from a media ID, access the path directly from the media entity.
 
-The practical change is: use the media entity's get path method.
+[slows down] The practical change is: use the media entity's get path method.
 
 Storing media paths in the database reduces computation overhead and makes media handling more consistent and reliable.
 
@@ -36,7 +36,7 @@ If you have custom classes extending Abstract Available Combination Loader, they
 
 That means renaming or refactoring your implementation to match the new method name and signature.
 
-The change is clearer than the old name, but still worth checking carefully. There may be additional parameters or return type expectations depending on the exact Shopware version and implementation.
+[matter-of-fact] The change is clearer than the old name, but still worth checking carefully. There may be additional parameters or return type expectations depending on the exact Shopware version and implementation.
 
 Fourth: Symfony framework upgrade to version 6.
 
@@ -44,7 +44,7 @@ Shopware has upgraded its Symfony components to version 6.
 
 This brings better performance, security, and access to newer Symfony features, but it also means older deprecated features and changed method signatures can break custom code.
 
-Review your code for deprecated Symfony features. Update anything that depends on older behavior. Then test the upgrade in the paths that matter, because framework upgrades have a special talent for finding code you forgot existed.
+[conversational tone] Review your code for deprecated Symfony features. Update anything that depends on older behavior. Then test the upgrade in the paths that matter, because framework upgrades have a special talent for finding code you forgot existed.
 
 Fifth: stock handling updates.
 
@@ -68,7 +68,7 @@ Bootstrap 5 brings performance improvements, fewer dependencies, and more modern
 
 Seventh: offcanvas cart data attribute changes in Shopware 6.6.
 
-This one is subtle, but it matters.
+[deliberate] This one is subtle, but it matters.
 
 The old data attribute was data dash offcanvas dash cart. The new one is data dash off dash canvas dash cart.
 
@@ -86,7 +86,7 @@ Shopware 6.5 and later removed explicit CSRF token handling in templates and mov
 
 Templates and forms that still include CSRF tokens through the old sw csrf function will throw errors, because that function no longer exists.
 
-Remove the old CSRF token function calls from your templates. Rely on the built-in SameSite cookie strategy for CSRF protection. Then make sure forms and AJAX requests are configured correctly for the new mechanism.
+[matter-of-fact] Remove the old CSRF token function calls from your templates. Rely on the built-in SameSite cookie strategy for CSRF protection. Then make sure forms and AJAX requests are configured correctly for the new mechanism.
 
 In practical terms, if your form used to render sw csrf for a route, remove that line and leave the normal form fields and submit button.
 
@@ -100,13 +100,13 @@ Even after updating the data attribute and removing the old CSRF function, you m
 
 The root cause can be missing or incorrect parameters in the form submission, especially the missing redirect To input field.
 
-Add a hidden input named redirect To with the value frontend cart offcanvas in your add-to-cart forms.
+[slows down] Add a hidden input named redirect To with the value frontend cart offcanvas in your add-to-cart forms.
 
 Also verify that the required data attributes are present and correctly named.
 
 That redirect To parameter tells Shopware to load the offcanvas cart after adding an item, so the cart displays correctly.
 
-This is a good reminder that tiny omissions in templates can cause large functional symptoms. A missing hidden input can look like a JavaScript bug, a cart bug, or a cache bug, when the real issue is simply that Shopware was not given the parameter it expects.
+[reflective] This is a good reminder that tiny omissions in templates can cause large functional symptoms. A missing hidden input can look like a JavaScript bug, a cart bug, or a cache bug, when the real issue is simply that Shopware was not given the parameter it expects.
 
 Double-check related data attributes, review JavaScript dependencies, and clear Shopware and browser caches after making template changes.
 
@@ -120,12 +120,12 @@ The benefit is better targeting and more precise customization inside Shopware. 
 
 Conclusion.
 
-Shopware 6.5 and 6.6 introduce important changes across namespaces, data attributes, security, stock handling, storefront behavior, and framework foundations.
+[conversational tone] Shopware 6.5 and 6.6 introduce important changes across namespaces, data attributes, security, stock handling, storefront behavior, and framework foundations.
 
 The upgrade is not just a version bump. It is a review exercise.
 
 Plan ahead. Read the official release notes and upgrade guides. Test changes in staging. Use the documentation and community knowledge when a specific behavior feels under-documented. And keep watching deprecation notices, because they are tomorrow's breaking changes trying to be polite today.
 
-Small details matter here. A namespace, a hidden input, a removed template function, or one extra hyphen in a data attribute can decide whether an upgrade feels smooth or haunted.
+[reflective] Small details matter here. A namespace, a hidden input, a removed template function, or one extra hyphen in a data attribute can decide whether an upgrade feels smooth or haunted.
 
 By understanding these changes before they surprise you, you can keep Shopware projects compatible, maintainable, and ready for the next round of platform evolution.

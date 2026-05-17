@@ -7,10 +7,10 @@ description: "Deep dive into the Huawei Watch D2's proprietary BLE pairing proto
 featuredImage: "./images/featured.jpg"
 tags: ["Huawei", "WatchD2", "BluetoothLE", "BLE", "Pairing", "Authentication", "ReverseEngineering", "VendorLockIn", "ProprietaryProtocol", "D2Explorer", "SimpleBLE", "Crypto", "Gadgetbridge", "EU-DMA"]
 imageCaption: "A calm canary perched in an ornate brass cage, backlit by a window."
-audioUrl: "/audio/articles/huawei-watch-d2-proprietary-protocol-vendor-lockin/am_santa-640beea87d5d.m4a"
-audioDuration: "10:53"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/huawei-watch-d2-proprietary-protocol-vendor-lockin/UzI1NsMEV3ni5JRkRSls-583983e4dbd5.m4a"
+audioDuration: "12:13"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/huawei-watch-d2-proprietary-protocol-vendor-lockin.md"
 ---
 
