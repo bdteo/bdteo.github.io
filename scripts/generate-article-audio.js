@@ -288,13 +288,29 @@ const synthesizeKokoroChunk = async (text, outputPath, index, total) => {
   }
 }
 
-const synthesizeElevenLabsChunk = async (text, outputPath, index, total) => {
+const synthesizeElevenLabsChunk = async (
+  text,
+  outputPath,
+  index,
+  total,
+  { previousText = null, nextText = null } = {},
+) => {
   const apiKey = process.env.ELEVENLABS_API_KEY
   if (!apiKey) {
     throw new Error("ELEVENLABS_API_KEY not set in env")
   }
 
   const mp3Path = `${outputPath}.mp3`
+  const requestBody = {
+    text,
+    model_id: elevenLabsModel,
+    voice_settings: elevenLabsVoiceSettings,
+  }
+  // eleven_v3 rejects stitching params; only v2 models accept them.
+  const stitchingSupported = !elevenLabsModel.startsWith("eleven_v3")
+  if (stitchingSupported && previousText) requestBody.previous_text = previousText
+  if (stitchingSupported && nextText) requestBody.next_text = nextText
+
   for (let attempt = 0; attempt <= synthRetryDelays.length; attempt += 1) {
     process.stdout.write(
       `Synthesizing chunk ${index}/${total} (elevenlabs ${elevenLabsModel})${attempt ? ` retry ${attempt}` : ""}...\n`,
@@ -309,11 +325,7 @@ const synthesizeElevenLabsChunk = async (text, outputPath, index, total) => {
             "xi-api-key": apiKey,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            text,
-            model_id: elevenLabsModel,
-            voice_settings: elevenLabsVoiceSettings,
-          }),
+          body: JSON.stringify(requestBody),
         },
       )
 
@@ -358,9 +370,9 @@ const synthesizeElevenLabsChunk = async (text, outputPath, index, total) => {
   }
 }
 
-const synthesizeChunk = (text, outputPath, index, total) =>
+const synthesizeChunk = (text, outputPath, index, total, opts) =>
   voice.engine === "elevenlabs"
-    ? synthesizeElevenLabsChunk(text, outputPath, index, total)
+    ? synthesizeElevenLabsChunk(text, outputPath, index, total, opts)
     : synthesizeKokoroChunk(text, outputPath, index, total)
 
 const runWithConcurrency = async (items, limit, worker) => {
@@ -500,9 +512,22 @@ const main = async () => {
     )
 
     if (voice.engine === "elevenlabs") {
-      await runWithConcurrency(chunks, elevenLabsConcurrency, (chunk, index) =>
-        synthesizeChunk(chunk, chunkFiles[index], index + 1, chunks.length),
-      )
+      const stitchWindow = 500
+      await runWithConcurrency(chunks, elevenLabsConcurrency, (chunk, index) => {
+        const previousText =
+          index > 0 ? chunks[index - 1].slice(-stitchWindow) : null
+        const nextText =
+          index < chunks.length - 1
+            ? chunks[index + 1].slice(0, stitchWindow)
+            : null
+        return synthesizeChunk(
+          chunk,
+          chunkFiles[index],
+          index + 1,
+          chunks.length,
+          { previousText, nextText },
+        )
+      })
     } else {
       for (let index = 0; index < chunks.length; index += 1) {
         await synthesizeChunk(
