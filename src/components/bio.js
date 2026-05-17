@@ -42,15 +42,17 @@ const Bio = ({ lang = DEFAULT_LANGUAGE }) => {
 
   return (
     <div className="bio" itemScope itemType="http://schema.org/Person">
-      <StaticImage
-        className="bio-avatar"
-        src="../images/profile-pic.png"
-        width={150}
-        height={150}
-        quality={95}
-        alt={author?.name || "Profile picture"}
-        itemProp="image"
-      />
+      <div className="bio-portrait">
+        <StaticImage
+          className="bio-avatar"
+          src="../images/profile-pic.png"
+          width={360}
+          height={360}
+          quality={95}
+          alt={author?.name || "Profile picture"}
+          itemProp="image"
+        />
+      </div>
       {author?.name && (
         <>
           <div className="bio-heading">
