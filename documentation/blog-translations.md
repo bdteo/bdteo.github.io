@@ -31,7 +31,7 @@ featuredImage: "<same value as English source>"
 imageCaption: "Translated image caption"
 ```
 
-Do not add `audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, or `audioTextSource` to translated pages until translated audio is deliberately produced. English audio must not appear on translated pages.
+Do not add `audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, or `audioTextSource` to translated pages until translated audio is deliberately produced. The article UI may fall back to the English source audio when a translated page has no localized audio yet; keep that fallback in code, not in translated frontmatter.
 
 ## Translation Rules
 
@@ -49,5 +49,5 @@ Before handing back a translation:
 1. Run `pnpm i18n:check`.
 2. Confirm the language page route and the English route both build.
 3. Confirm the translated page has its own canonical URL and alternates, not a canonical link to English.
-4. Confirm no translated page renders the English audio player unless that language has its own audio metadata.
+4. Confirm translated pages have no audio frontmatter. If the English fallback player appears, its label must make the audio language clear.
 5. Stop for Boris's review. Do not commit, push, deploy, or generate audio from a translation skill.

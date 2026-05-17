@@ -12,15 +12,26 @@ import GiscusComments from "../components/GiscusComments"
 import { formatDisplayDate } from "../../i18n.config"
 
 const BlogPostTemplate = ({
-  data: { previous, next, site, markdownRemark: post },
+  data: { previous, next, site, markdownRemark: post, englishSourceAudio },
   location,
   pageContext,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
   const featuredImage = getImage(post.frontmatter.featuredImage)
-  const hasArticleAudio = Boolean(post.frontmatter.audioUrl)
   const { lang, alternatePaths = {}, activeLanguages = [] } = pageContext || {}
   const displayDate = formatDisplayDate(post.frontmatter.dateRaw, lang)
+  const articleAudio = post.frontmatter.audioUrl
+    ? {
+        src: post.frontmatter.audioUrl,
+        duration: post.frontmatter.audioDuration,
+        isFallback: false,
+      }
+    : {
+        src: englishSourceAudio?.frontmatter?.audioUrl,
+        duration: englishSourceAudio?.frontmatter?.audioDuration,
+        isFallback: Boolean(englishSourceAudio?.frontmatter?.audioUrl),
+      }
+  const hasArticleAudio = Boolean(articleAudio.src)
 
   return (
     <Layout
@@ -61,9 +72,10 @@ const BlogPostTemplate = ({
                 />
                 <ArticleAudioPlayer
                   title={post.frontmatter.title}
-                  src={post.frontmatter.audioUrl}
-                  duration={post.frontmatter.audioDuration}
+                  src={articleAudio.src}
+                  duration={articleAudio.duration}
                   lang={lang}
+                  isFallback={articleAudio.isFallback}
                 />
               </div>
               {post.frontmatter.imageCaption && (
@@ -74,9 +86,10 @@ const BlogPostTemplate = ({
         ) : (
           <ArticleAudioPlayer
             title={post.frontmatter.title}
-            src={post.frontmatter.audioUrl}
-            duration={post.frontmatter.audioDuration}
+            src={articleAudio.src}
+            duration={articleAudio.duration}
             lang={lang}
+            isFallback={articleAudio.isFallback}
           />
         )}
         <section
@@ -178,6 +191,7 @@ export default BlogPostTemplate
 export const pageQuery = graphql`
   query BlogPostBySlug(
     $id: String!
+    $sourceSlug: String!
     $previousPostId: String
     $nextPostId: String
   ) {
@@ -233,6 +247,14 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+      }
+    }
+    englishSourceAudio: markdownRemark(
+      fields: { sourceSlug: { eq: $sourceSlug }, lang: { eq: "en" } }
+    ) {
+      frontmatter {
+        audioUrl
+        audioDuration
       }
     }
   }

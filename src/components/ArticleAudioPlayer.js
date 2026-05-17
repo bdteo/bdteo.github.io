@@ -104,7 +104,13 @@ const parseDuration = duration => {
 
 const audioIsPlaying = audio => !audio.paused && !audio.ended
 
-const ArticleAudioPlayer = ({ title, src, duration, lang }) => {
+const ArticleAudioPlayer = ({
+  title,
+  src,
+  duration,
+  lang,
+  isFallback = false,
+}) => {
   const audioRef = React.useRef(null)
   const playbackRateRef = React.useRef(DEFAULT_PLAYBACK_RATE)
   const [currentTime, setCurrentTime] = React.useState(0)
@@ -191,6 +197,11 @@ const ArticleAudioPlayer = ({ title, src, duration, lang }) => {
     return null
   }
 
+  const label =
+    isFallback && labels.fallbackLabel ? labels.fallbackLabel : labels.label
+  const playerTitle =
+    isFallback && labels.fallbackTitle ? labels.fallbackTitle : labels.title
+
   const togglePlayback = async () => {
     const audio = audioRef.current
 
@@ -239,7 +250,7 @@ const ArticleAudioPlayer = ({ title, src, duration, lang }) => {
   return (
     <section
       className={`bt--article-audio${isPlaying ? " bt--article-audio--playing" : ""}`}
-      aria-label={`${labels.label} ${title}`}
+      aria-label={`${label} ${title}`}
     >
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} preload="metadata" src={src} />
@@ -281,7 +292,7 @@ const ArticleAudioPlayer = ({ title, src, duration, lang }) => {
       <div className="bt--article-audio__body">
         <div className="bt--article-audio__header">
           <div className="bt--article-audio__copy">
-            <p className="bt--article-audio__title">{labels.title}</p>
+            <p className="bt--article-audio__title">{playerTitle}</p>
             <p className="bt--article-audio__meta">
               {formatTime(currentTime)} / {formatTime(totalDuration)}
             </p>
