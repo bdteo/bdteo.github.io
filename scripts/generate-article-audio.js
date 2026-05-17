@@ -46,6 +46,21 @@ const elevenLabsModel = readOption(
 const elevenLabsConcurrency = Number(
   readOption("concurrency", process.env.ELEVENLABS_CONCURRENCY || "3"),
 )
+const elevenLabsVoiceSettings = {
+  stability: Number(
+    readOption("stability", process.env.ELEVENLABS_STABILITY || "0.5"),
+  ),
+  similarity_boost: Number(
+    readOption(
+      "similarity-boost",
+      process.env.ELEVENLABS_SIMILARITY_BOOST || "0.75",
+    ),
+  ),
+  style: Number(readOption("style", process.env.ELEVENLABS_STYLE || "0.4")),
+  use_speaker_boost:
+    (process.env.ELEVENLABS_USE_SPEAKER_BOOST || "true").toLowerCase() !==
+    "false",
+}
 const maxChunkLength = voice.engine === "elevenlabs" ? 2500 : 900
 const publicBaseUrl = (process.env.BLOG_AUDIO_PUBLIC_BASE_URL || "").replace(
   /\/$/,
@@ -294,7 +309,11 @@ const synthesizeElevenLabsChunk = async (text, outputPath, index, total) => {
             "xi-api-key": apiKey,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ text, model_id: elevenLabsModel }),
+          body: JSON.stringify({
+            text,
+            model_id: elevenLabsModel,
+            voice_settings: elevenLabsVoiceSettings,
+          }),
         },
       )
 
