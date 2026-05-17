@@ -32,10 +32,10 @@ jsonld: |
     }
   }
 featuredImage: "./images/featured.jpg"
-audioUrl: "/audio/articles/the-model-that-wasnt-there/am_santa-87d09f6e148a.m4a"
-audioDuration: "5:31"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/the-model-that-wasnt-there/UzI1NsMEV3ni5JRkRSls-30b35a5ac4db.m4a"
+audioDuration: "6:33"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/the-model-that-wasnt-there.md"
 ---
 

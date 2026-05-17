@@ -5,10 +5,10 @@ description: "Type 0 refactoring is a constrained, behavior-preserving cleanup t
 tags: ["refactoring", "software engineering", "debugging", "maintainability"]
 featuredImage: "./images/featured.webp"
 imageCaption: "Mise en place. The work before the work."
-audioUrl: "/audio/articles/type-0-refactoring-step-before-step-one/am_santa-c271d2d87b50.m4a"
-audioDuration: "11:39"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/type-0-refactoring-step-before-step-one/UzI1NsMEV3ni5JRkRSls-9cf54c91d0d1.m4a"
+audioDuration: "13:44"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/type-0-refactoring-step-before-step-one.md"
 ---
 

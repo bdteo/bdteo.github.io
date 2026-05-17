@@ -37,10 +37,10 @@ tags: [
 ] 
 featuredImage: "./images/featured.jpg"
 imageCaption: "A copper conduit elbow joining two runs into one on a plaster wall."
-audioUrl: "/audio/articles/php-8-5-new-features-pipe-operator-guide/am_santa-afe33d5ea59b.m4a"
-audioDuration: "14:04"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/php-8-5-new-features-pipe-operator-guide/UzI1NsMEV3ni5JRkRSls-6b99b029c291.m4a"
+audioDuration: "26:42"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/php-8-5-new-features-pipe-operator-guide.md"
 ---
 

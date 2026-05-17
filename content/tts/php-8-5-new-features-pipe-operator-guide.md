@@ -1,6 +1,6 @@
 PHP 8.5: a tour of the incoming features
 
-Let me start with the hype ladder, my playful ranking of the PHP 8.5 features.
+[conversational tone] Let me start with the hype ladder, my playful ranking of the PHP 8.5 features.
 
 Number one: the pipe operator. Readable, linear transformation bliss. A refactor magnet.
 
@@ -26,7 +26,7 @@ Yes, your order may differ. That is the fun. Debate it over coffee.
 
 One: the pipe operator
 
-Nested calls and temporary throwaway variables? Gone.
+[matter-of-fact] Nested calls and temporary throwaway variables? Gone.
 
 The pipe operator takes the value on the left and feeds it as the first argument to the callable on the right.
 
@@ -38,7 +38,7 @@ Or worse, you might nest the whole thing into one compressed expression: send em
 
 After the pipe operator, the same flow reads like a sequence: request string email, pipe into trim, pipe into lowercase, pipe into send email.
 
-Why does that matter?
+[deliberate] Why does that matter?
 
 You get visual data flow.
 
@@ -76,13 +76,13 @@ And in a pipeline, each stage's return is inherently consumed by the next, so ac
 
 Three: static closures in constant expressions
 
-This one has a real "wait, what?" quality.
+[reflective] This one has a real "wait, what?" quality.
 
 You can now embed static closures, or first-class callables, inside constant expressions, default property values, attribute arguments, and default parameter arrays.
 
 Think compile-time registries without boot-time wiring gymnastics.
 
-For example, a Sanitizers class can define a constant map where trim points to the trim callable, and upper points to a static closure that uppercases a string.
+[slows down] For example, a Sanitizers class can define a constant map where trim points to the trim callable, and upper points to a static closure that uppercases a string.
 
 An attribute can also receive validation rules where title and slug each map to static closures.
 
@@ -118,7 +118,7 @@ Pro tip: capture the output in version control for runtime baselines.
 
 Five: attributes on global and class constants
 
-Constants graduate from dumb values to annotated participants.
+[matter-of-fact] Constants graduate from dumb values to annotated participants.
 
 You can decorate domain flags, feature toggles, deprecation notices, and unit semantics directly at the definition site.
 
@@ -146,7 +146,7 @@ Cleaner diffs. Fewer micro-bugs.
 
 Seven: get exception handler and better fatal traces
 
-Framework and infrastructure developers, rejoice.
+[conversational tone] Framework and infrastructure developers, rejoice.
 
 You can now introspect the active exception handler.
 
@@ -262,7 +262,7 @@ Snapshot-test per locale.
 
 Show me: a mini playground
 
-Picture a password hashing function marked NoDiscard. It returns a hash that must be stored or compared.
+[slows down] Picture a password hashing function marked NoDiscard. It returns a hash that must be stored or compared.
 
 Picture a sanitize email function that lowercases and trims a string.
 
@@ -288,7 +288,7 @@ If your legacy codebase is mid-upgrade, introduce one feature at a time. Avoid c
 
 Mental model recap
 
-The pipe operator is linear value threading. It eliminates nesting and throwaway variables.
+[deliberate] The pipe operator is linear value threading. It eliminates nesting and throwaway variables.
 
 NoDiscard forces intentional consumption: use the value or explicitly ignore it.
 
@@ -310,7 +310,7 @@ Build and resource polish gives PHP more standardization and introspection.
 
 Final vibes
 
-PHP 8.5 is not screaming with paradigm shifts.
+[reflective] PHP 8.5 is not screaming with paradigm shifts.
 
 It is whispering relentless ergonomic wins.
 
@@ -318,12 +318,12 @@ The pipe operator and NoDiscard combo alone will nudge your code toward clearer 
 
 Sprinkle in compile-time closures and constant attributes, and your frameworks and components feel more declarative, more explicit, more discoverable.
 
-Bam bam boom. Ship it.
+[emphasized] Bam bam boom. Ship it.
 
 Your move: pick one feature, probably the pipe, apply it surgically in a small module, measure clarity in code review feedback, then expand.
 
 Momentum beats big-bang rewrites.
 
-Stay playful, refactor bravely, and yes, message your Taylors when you find the "Wait, what?" moments.
+[conversational tone] Stay playful, refactor bravely, and yes, message your Taylors when you find the "Wait, what?" moments.
 
 Happy coding.

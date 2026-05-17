@@ -1,16 +1,16 @@
-Type Zero Refactoring: The Step Before Step One
+[reflective] Type Zero Refactoring: The Step Before Step One
 
-There is a category of refactoring teams do constantly, benefit from immediately, and almost never name.
+[conversational tone] There is a category of refactoring teams do constantly, benefit from immediately, and almost never name.
 
 It is the work you do right before you touch the scary file. The feature request forces you into the messy module. The incident lands, and the bug is hiding somewhere inside a method that looks like it has its own weather system.
 
 You are not redesigning the system. You are not introducing a new abstraction. You are not improving anything in a clever way.
 
-You are just making the code readable enough that you can work.
+[gently] You are just making the code readable enough that you can work.
 
 I started calling this Type Zero refactoring.
 
-Type Zero refactoring is a preparatory, behavior-preserving cleanup that makes code easier to reason about before you do architectural refactors, performance work, or feature work.
+[deliberate] Type Zero refactoring is a preparatory, behavior-preserving cleanup that makes code easier to reason about before you do architectural refactors, performance work, or feature work.
 
 It is the get the floor dry before you remodel the kitchen step. Most teams already do it informally. Naming it turns it into a shared tool.
 
@@ -18,7 +18,7 @@ The real reason Type Zero exists is that humans have a working-memory budget.
 
 Here is the blunt truth behind the idea.
 
-My brain, and yours, is not built to reliably debug a two thousand line method under time pressure.
+[matter-of-fact] My brain, and yours, is not built to reliably debug a two thousand line method under time pressure.
 
 That is not a personal defect. It is just how cognition works.
 
@@ -28,13 +28,13 @@ In small code, this is manageable.
 
 In big code with high cyclomatic complexity, it turns into probabilistic guessing. You can still get lucky, but it is expensive and risky, especially during a hotfix.
 
-Type Zero is a practical response. It is how you buy clarity quickly without taking on the cost and risk of a real refactor.
+[reflective] Type Zero is a practical response. It is how you buy clarity quickly without taking on the cost and risk of a real refactor.
 
 Why it is called Type Zero.
 
 The name did not come from a grand theory. It came from a high-pressure moment.
 
-I was working on a hotfix. The bug was buried inside a method that was effectively its own small universe, about two thousand lines.
+[deliberate] I was working on a hotfix. The bug was buried inside a method that was effectively its own small universe, about two thousand lines.
 
 The bug was not conceptually hard. The method was.
 
@@ -52,17 +52,17 @@ It came back with a list of four types of refactoring. All sensible. All applica
 
 Then it asked the polite question: should I start with Type One?
 
-That is when I replied: no, let us start with Type Zero.
+[emphasized] That is when I replied: no, let us start with Type Zero.
 
 And I defined Type Zero on the spot: a constrained, mechanical set of changes that reduce complexity and increase readability without changing behavior or architecture.
 
 The method became navigable. My brain could track execution again. I found the bug, fixed it, and shipped without collateral damage.
 
-That is why I like the name Type Zero. It is the refactor you do before the real refactor types, especially when you are under pressure and need a safe way to create clarity fast.
+[reflective] That is why I like the name Type Zero. It is the refactor you do before the real refactor types, especially when you are under pressure and need a safe way to create clarity fast.
 
 The problem Type Zero solves.
 
-Most refactoring advice assumes you can already see the design.
+[matter-of-fact] Most refactoring advice assumes you can already see the design.
 
 In real codebases, methods are long and multi-purpose. Repeated expressions and incidental complexity hide intent. Variables are cryptic. Dead code and unused imports create mental noise. The shape of the code is so messy that even small changes feel risky.
 
@@ -70,7 +70,7 @@ When you attempt real refactoring on top of that, you stack uncertainty on uncer
 
 You cannot easily tell what behavior you are preserving. You cannot predict the blast radius. Reviews devolve into subjective debates. People get afraid to touch things, and the mess compounds.
 
-Type Zero is how you lower the cognitive load first. It creates a stable base where deeper work can happen safely.
+[deliberate] Type Zero is how you lower the cognitive load first. It creates a stable base where deeper work can happen safely.
 
 Reach for Type Zero when you must debug fast during a hotfix or incident and the code is too large or branchy to reason about safely.
 
@@ -86,9 +86,9 @@ Type Zero is not a luxury. In these cases, it is often the fastest way to regain
 
 A definition you can use in your team.
 
-Type Zero refactoring is a set of micro-refactorings that improve readability and maintainability without changing behavior or architecture.
+[deliberate] Type Zero refactoring is a set of micro-refactorings that improve readability and maintainability without changing behavior or architecture.
 
-It is intentionally constrained. The constraints are the feature.
+[emphasized] It is intentionally constrained. The constraints are the feature.
 
 Type Zero consists of four mandatory sub-patterns.
 
@@ -112,7 +112,7 @@ If you violate those rules, you are not doing Type Zero anymore. You have moved 
 
 Why name it at all?
 
-Because naming changes how teams coordinate.
+[conversational tone] Because naming changes how teams coordinate.
 
 When someone says, I am only doing Type Zero in this pull request, reviewers know what to look for: behavior preservation and readability, not architecture debates.
 
@@ -122,7 +122,7 @@ When you say, let us do Type Zero as step zero, you create a small ritual that p
 
 The four sub-patterns.
 
-Zero A is method extraction. The goal is to break large methods into small, focused ones so a human can read intent linearly.
+[matter-of-fact] Zero A is method extraction. The goal is to break large methods into small, focused ones so a human can read intent linearly.
 
 Break down methods that are too long to hold in working memory. Each extracted method should do one thing and have a descriptive name. Extract meaningful steps, not arbitrary chunks of twenty lines.
 
@@ -134,11 +134,11 @@ Extract repeated expressions into local variables. Extract repeated log contexts
 
 Conciseness reduces cognitive load. It makes diffs smaller and changes safer. It prevents copy and paste drift.
 
-Zero C is empathy. The goal is to write for the next human, not the compiler.
+[gently] Zero C is empathy. The goal is to write for the next human, not the compiler.
 
 Use descriptive variable names. Avoid names like e, d, or temp unless they are truly obvious. Maintain consistent terminology across a module. Rename misleading names. Make code self-documenting.
 
-The litmus test is simple: if someone reads this at two in the morning during an incident, will it help them keep the execution path in their head?
+[softly] The litmus test is simple: if someone reads this at two in the morning during an incident, will it help them keep the execution path in their head?
 
 Zero D is dead code removal. The goal is to delete everything that pretends to matter but does not.
 
@@ -148,13 +148,13 @@ Less code means fewer things to misunderstand. Search results become trustworthy
 
 What Type Zero is not.
 
-Type Zero is not changing service boundaries. It is not introducing new abstractions or patterns. It is not re-architecting a workflow. It is not replacing libraries. It is not reordering responsibilities across layers. And it is not fixing logic you suspect is wrong, unless you explicitly declare a behavior change and test it.
+[matter-of-fact] Type Zero is not changing service boundaries. It is not introducing new abstractions or patterns. It is not re-architecting a workflow. It is not replacing libraries. It is not reordering responsibilities across layers. And it is not fixing logic you suspect is wrong, unless you explicitly declare a behavior change and test it.
 
 If you catch yourself saying, while I am here, let us also do this, or this would be nicer if we did that, or we should probably redesign this, you might be leaving Type Zero.
 
 That is not inherently bad. But it should be intentional.
 
-The core promise is behavior preservation, and you have to keep that promise true.
+[reflective] The core promise is behavior preservation, and you have to keep that promise true.
 
 Type Zero only works if teams trust it.
 
@@ -162,7 +162,7 @@ And yes, you are right to be suspicious. Method extraction can accidentally chan
 
 So Type Zero needs discipline that keeps it honest.
 
-Extract as-is, then rename and clean up.
+[deliberate] Extract as-is, then rename and clean up.
 
 First pass: move code into methods without changing logic.
 
@@ -176,11 +176,11 @@ Do not reorder condition checks for readability. Do not replace logic with equiv
 
 And if you have any safety net, even a thin one, use it. Run a focused test. Replay the failing scenario. Validate the one path you are touching.
 
-Type Zero is about being fast, but fast by reducing cognitive complexity, not fast by skipping safety.
+[emphasized] Type Zero is about being fast, but fast by reducing cognitive complexity, not fast by skipping safety.
 
 Type Zero as a repeatable team ritual.
 
-First, decide the scope. A timebox helps.
+[conversational tone] First, decide the scope. A timebox helps.
 
 For example: Type Zero the hot path before debugging. Or: Type Zero only the path touched by this bug fix.
 
@@ -198,10 +198,10 @@ No behavior changes. No architectural moves. Methods extracted and named as mean
 
 Closing thought.
 
-Type Zero refactoring is the simplest promise a developer can make.
+[reflective] Type Zero refactoring is the simplest promise a developer can make.
 
-I am leaving this code easier to work with than I found it, without changing what it does.
+[tenderly] I am leaving this code easier to work with than I found it, without changing what it does.
 
 Sometimes it is nice to have.
 
-And sometimes it is the only way a human can safely move fast inside a high-complexity mess, especially during a hotfix.
+[gently] And sometimes it is the only way a human can safely move fast inside a high-complexity mess, especially during a hotfix.

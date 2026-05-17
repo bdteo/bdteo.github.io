@@ -32,10 +32,10 @@ jsonld: |
     }
   }
 featuredImage: "./images/featured.jpg"
-audioUrl: "/audio/articles/the-queue-that-never-stopped/am_santa-5ba51dadcd8c.m4a"
-audioDuration: "2:48"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/the-queue-that-never-stopped/UzI1NsMEV3ni5JRkRSls-6dc061e3d6d2.m4a"
+audioDuration: "3:18"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/the-queue-that-never-stopped.md"
 ---
 

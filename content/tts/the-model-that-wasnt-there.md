@@ -6,9 +6,9 @@ The quality was genuinely impressive: better prompt adherence, better typography
 
 Google was everywhere with it. YouTube videos. Conferences. Seminars. Blog posts.
 
-The best image generation model in the world.
+[reflective] The best image generation model in the world.
 
-I believed them. The images were good.
+[matter-of-fact] I believed them. The images were good.
 
 Then a user reported that cloning an ad took four minutes.
 
@@ -18,7 +18,7 @@ The generation itself finished in under thirty seconds.
 
 The other three and a half minutes?
 
-The job was retrying against a wall.
+[flatly] The job was retrying against a wall.
 
 Four twenty nine. Resource exhausted.
 
@@ -26,7 +26,7 @@ Google had hard-capped Gemini image generation at two requests per minute.
 
 Per project. Globally.
 
-Two.
+[deliberate] Two.
 
 Not two hundred. Not twenty. Two.
 
@@ -44,7 +44,7 @@ They suggested we switch to Imagen 4.
 
 I looked it up.
 
-Imagen 4 Ultra was ranked number ten. Imagen 4 Standard was number forty-two. Imagen 4 Fast was number sixty.
+[deadpan] Imagen 4 Ultra was ranked number ten. Imagen 4 Standard was number forty-two. Imagen 4 Fast was number sixty.
 
 We were on number four.
 
@@ -68,7 +68,7 @@ Then: multiple GCP projects.
 
 Each project gets its own two requests per minute. Technically, this works.
 
-Architecturally, this is what desperation looks like.
+[resigned tone] Architecturally, this is what desperation looks like.
 
 I started researching what other developers were experiencing.
 
@@ -80,7 +80,7 @@ Our thirty thousand dollars a month of GCP spend did not help. Standard pay-as-y
 
 Google is not going to raise this limit.
 
-And then the interesting question: why not?
+[reflective] And then the interesting question: why not?
 
 Gemini generates images through the same autoregressive transformer that handles text. It is not a diffusion model. It is the full LLM, reasoning its way pixel by pixel through an image.
 
@@ -90,7 +90,7 @@ At six point seven cents per image, Google is almost certainly losing money on e
 
 Imagen 4 uses classic latent diffusion, which is orders of magnitude cheaper to run. That is why Imagen gets thirty to one hundred fifty requests per minute, and why Google is pushing everyone toward it.
 
-The expensive model gets the marketing.
+[matter-of-fact] The expensive model gets the marketing.
 
 The cheap model gets the throughput.
 
@@ -104,7 +104,7 @@ Then: two requests per minute. No increase available. Use our worse model instea
 
 The API exists. The endpoint works. The demo is stunning.
 
-But you cannot actually use it.
+[flatly] But you cannot actually use it.
 
 We switched to Gemini 2.5 Flash Image.
 
@@ -112,9 +112,9 @@ The older model. The boring one. The one nobody makes YouTube videos about.
 
 It has forty requests per minute.
 
-It works.
+[deadpan] It works.
 
-Four lessons, condensed.
+[deliberate] Four lessons, condensed.
 
 First: marketing is not a product. Topping a leaderboard does not mean you can serve production traffic. Benchmarks measure quality. Rate limits measure commitment.
 
@@ -124,4 +124,4 @@ Third: preview means preview. Google can change limits, kill models, or redirect
 
 Fourth: the boring model works. The one with forty requests per minute and no conference talks will serve your users while the world-class model sits behind a velvet rope generating two images a minute.
 
-The scariest vendor lock-in is the one that starts with a demo you cannot resist.
+[reflective] The scariest vendor lock-in is the one that starts with a demo you cannot resist.

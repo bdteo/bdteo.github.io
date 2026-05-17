@@ -32,10 +32,10 @@ jsonld: |
     }
   }
 featuredImage: "./images/featured.jpg"
-audioUrl: "/audio/articles/wash-one-more-plate-refactoring-philosophy/am_santa-74051e9ab211.m4a"
-audioDuration: "7:28"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/wash-one-more-plate-refactoring-philosophy/UzI1NsMEV3ni5JRkRSls-65402d122b21.m4a"
+audioDuration: "9:18"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/wash-one-more-plate-refactoring-philosophy.md"
 ---
 

@@ -32,10 +32,10 @@ jsonld: |
     }
   }
 featuredImage: "./images/featured.jpg"
-audioUrl: "/audio/articles/the-city-that-wasnt-there/am_santa-416740200ebd.m4a"
-audioDuration: "4:47"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/the-city-that-wasnt-there/UzI1NsMEV3ni5JRkRSls-fe1f4626b4a0.m4a"
+audioDuration: "5:53"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/the-city-that-wasnt-there.md"
 ---
 

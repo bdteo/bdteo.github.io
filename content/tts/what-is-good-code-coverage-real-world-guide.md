@@ -1,22 +1,22 @@
-What Is Good Code Coverage? My Real-World Guide to Stopping Bugs Without Wasting Engineering Time
+[conversational tone] What Is Good Code Coverage? My Real-World Guide to Stopping Bugs Without Wasting Engineering Time
 
 Every time I run npm run coverage or phpunit coverage, the same question pops up.
 
-Okay. Seventy-four percent. Is that enough?
+[reflective] Okay. Seventy-four percent. Is that enough?
 
 The software dev blogosphere shouts: one hundred percent or nothing.
 
-Meanwhile, LaunchDarkly politely reminds me that one hundred percent executed does not mean one hundred percent tested.
+[matter-of-fact] Meanwhile, LaunchDarkly politely reminds me that one hundred percent executed does not mean one hundred percent tested.
 
 I have spent weeks chasing the shiny metric, and more weeks debugging other issues.
 
-This is the field-tested middle ground I have settled on.
+[deliberate] This is the field-tested middle ground I have settled on.
 
 Why one hundred percent coverage is a mirage.
 
 In theory, one hundred percent line execution means no hidden bugs.
 
-In practice, there are three problems.
+[matter-of-fact] In practice, there are three problems.
 
 First: diminishing returns. Going from ninety percent to ninety-five percent can double your test suite for a single-digit risk reduction.
 
@@ -26,7 +26,7 @@ Third: business reality. Every extra test is time not spent on features your cus
 
 The aerospace people can aim for one hundred percent. It is life or death.
 
-For the rest of us, around eighty percent is the eighty-twenty line. That is where most projects cluster after return-on-investment calculations.
+[deliberate] For the rest of us, around eighty percent is the eighty-twenty line. That is where most projects cluster after return-on-investment calculations.
 
 TestDevLab calls the useful range seventy to ninety percent for this exact reason.
 
@@ -42,7 +42,7 @@ If coverage is sixty to seventy percent, use it as a merge gate. Fail the pull r
 
 If coverage is below fifty percent, that is a weekend of tech debt. Pivot to the critical paths first.
 
-I stole the shape of these numbers from Atlassian's internal guide: sixty percent acceptable, seventy-five percent commendable, ninety percent exemplary.
+[matter-of-fact] I stole the shape of these numbers from Atlassian's internal guide: sixty percent acceptable, seventy-five percent commendable, ninety percent exemplary.
 
 It works in every retro.
 
@@ -56,7 +56,7 @@ In Jest config, I usually set the global threshold to eighty percent, then raise
 
 Third, target user hot paths, not the Redux boilerplate logger.
 
-Coverage is not a trophy. It is a flashlight. Point it where bugs hurt.
+[emphasized] Coverage is not a trophy. It is a flashlight. Point it where bugs hurt.
 
 How I hit eighty percent in Laravel: the PHP playbook.
 
@@ -66,7 +66,7 @@ Second, use PHPUnit with a filter that includes your source directory, so uncove
 
 Third, care more about mutation score than line count. Infection is the tool I use to catch lines that are covered but not really tested.
 
-That distinction matters. A line can be executed and still be meaningless if no assertion would fail when the behavior breaks.
+[deliberate] That distinction matters. A line can be executed and still be meaningless if no assertion would fail when the behavior breaks.
 
 Four rules my team lives by.
 
@@ -84,22 +84,22 @@ Lower the gate by five percent every year rather than breaking teams with red da
 
 Rule four: measure bugs in production.
 
-If coverage is eighty-five percent but incidents spike, coverage is not the culprit. Assertions are.
+[matter-of-fact] If coverage is eighty-five percent but incidents spike, coverage is not the culprit. Assertions are.
 
 The short version, for executives and recruiters too.
 
 Do not ask me for a magic number.
 
-Ask which parts of the product cannot break.
+[stress on next word] Ask which parts of the product cannot break.
 
 Cover those to ninety percent.
 
 Give the rest healthy smoke tests.
 
-Use code coverage as a spotlight, not a finish line.
+[deliberate] Use code coverage as a spotlight, not a finish line.
 
 Trust the bugs you catch, not the numbers you boast.
 
 Let the coverage dashboard be green. Your customers will never see it, but their error bar will stay empty.
 
-End of rant. Back to the editor.
+[conversational tone] End of rant. Back to the editor.
