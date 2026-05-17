@@ -1,10 +1,10 @@
 Stable Diffusion photorealism: settings and GPU limits
 
-This article was updated in March 2026.
+[conversational tone] This article was updated in March 2026.
 
 It was originally written in May 2023, when Stable Diffusion 1.5 at 512 by 512 was the standard and the RTX 3090 was peak hardware.
 
-Everything has changed.
+[matter-of-fact] Everything has changed.
 
 Flux 2, SDXL fine-tunes, SD 3.5, ControlNet, and the RTX 5090 have completely redefined what is possible.
 
@@ -12,7 +12,7 @@ This is the current state.
 
 The gap between AI-generated images and real photographs has nearly closed.
 
-In 2023, photorealistic meant almost convincing if you squint.
+[reflective] In 2023, photorealistic meant almost convincing if you squint.
 
 In 2026, the best models produce images that are genuinely difficult to distinguish from professional photography.
 
@@ -26,7 +26,7 @@ Here is where things stand.
 
 Flux 2: the new king
 
-Flux 2 by Black Forest Labs, released in November 2025, is arguably the best open-weight model for photorealism in 2026.
+[awe] Flux 2 by Black Forest Labs, released in November 2025, is arguably the best open-weight model for photorealism in 2026.
 
 It produces images with natural lighting, accurate skin textures, and coherent composition that rivals professional photography.
 
@@ -38,7 +38,7 @@ You can describe what you want in plain English, without the keyword soup that S
 
 SDXL fine-tunes: the workhorses
 
-For SDXL-based photorealism, the current leaders are Juggernaut XL, Realistic Vision, and EpicRealism.
+[matter-of-fact] For SDXL-based photorealism, the current leaders are Juggernaut XL, Realistic Vision, and EpicRealism.
 
 Juggernaut XL, especially versions 9 and 10, is the go-to for cinematic, photographic output. It is popular among photographers and filmmakers.
 
@@ -62,7 +62,7 @@ SD 3.0 was deprecated in April 2025, so make sure you are on 3.5.
 
 GPU reality check
 
-The hardware requirements have escalated significantly.
+[matter-of-fact] The hardware requirements have escalated significantly.
 
 An RTX 3060 with 12 gigabytes of VRAM is fine for Stable Diffusion 1.5 photorealism, but SDXL is tight.
 
@@ -72,11 +72,11 @@ The RTX 4090, with 24 gigabytes, is the sweet spot.
 
 It handles SDXL, Flux, and SD 3.5 comfortably at 1024 by 1024 and above.
 
-The RTX 5090, with 32 gigabytes of GDDR7 and a 512-bit bus, handles everything, including 4K generation and batch workflows.
+[awe] The RTX 5090, with 32 gigabytes of GDDR7 and a 512-bit bus, handles everything, including 4K generation and batch workflows.
 
 Eight-gigabyte cards are minimum viable with ComfyUI's VRAM management, but they are not comfortable.
 
-The 2023 sweet spot of 512 by 512 on an RTX 3080 is ancient history.
+[reflective] The 2023 sweet spot of 512 by 512 on an RTX 3080 is ancient history.
 
 1024 by 1024 is now the standard resolution, and you want at least 16 gigabytes of VRAM to work without constant frustration.
 
@@ -88,7 +88,7 @@ Settings for photorealism
 
 Sampler
 
-For SDXL photorealism, use DPM++ 2M Karras at 25 to 30 steps.
+[deliberate] For SDXL photorealism, use DPM++ 2M Karras at 25 to 30 steps.
 
 That is the settled consensus: the best speed-to-quality ratio.
 
@@ -98,7 +98,7 @@ For Flux, use the default sampler at 20 to 30 steps.
 
 CFG
 
-For SDXL photorealism, use CFG 7 to 9.
+[deliberate] For SDXL photorealism, use CFG 7 to 9.
 
 That gives strong prompt adherence without the oversaturated, overcooked look that happens above 10.
 
@@ -108,7 +108,7 @@ For Flux, follow the model-specific recommendations, but generally use a lower v
 
 Resolution
 
-Generate at the model's native resolution, usually 1024 by 1024 for SDXL, SD 3.5, and Flux.
+[deliberate] Generate at the model's native resolution, usually 1024 by 1024 for SDXL, SD 3.5, and Flux.
 
 Then upscale for higher resolution.
 
@@ -118,7 +118,7 @@ For upscaling, use hi-res fix in Automatic 1111 or dedicated upscaling nodes in 
 
 Prompting for photorealism
 
-The biggest shift from 2023 is this: write naturally, not in keywords.
+[matter-of-fact] The biggest shift from 2023 is this: write naturally, not in keywords.
 
 Stable Diffusion 1.5 needed prompts like: portrait of a woman, photorealistic, 8K, ultra detailed, sharp focus, professional photography, Fujifilm X-T4, 85 millimeter, F 1.4.
 
@@ -136,7 +136,7 @@ Cartoon, illustration, and painting are usually enough to keep things photoreali
 
 ControlNet changes everything
 
-If you are serious about photorealistic composition, ControlNet is non-negotiable.
+[matter-of-fact] If you are serious about photorealistic composition, ControlNet is non-negotiable.
 
 It lets you control the structure of your image through depth maps, Canny edge detection, OpenPose, and surface normals.
 
@@ -164,7 +164,7 @@ Generate a photorealistic image with the same composition.
 
 Speed versus quality
 
-If you need fast iterations for concept work or prompt testing, use SDXL Lightning.
+[matter-of-fact] If you need fast iterations for concept work or prompt testing, use SDXL Lightning.
 
 It generates quality 1024-pixel images in two to eight steps.
 
@@ -178,7 +178,7 @@ The practical workflow
 
 Here is what actually works for photorealistic output in 2026.
 
-First, choose your model: Flux 2 for best photorealism, or Juggernaut XL for the SDXL ecosystem.
+[deliberate] First, choose your model: Flux 2 for best photorealism, or Juggernaut XL for the SDXL ecosystem.
 
 Second, write a natural-language prompt describing what you see.
 
@@ -196,4 +196,4 @@ This is the same workflow whether you are in ComfyUI or Automatic 1111.
 
 The tools differ.
 
-The pipeline does not.
+[matter-of-fact] The pipeline does not.

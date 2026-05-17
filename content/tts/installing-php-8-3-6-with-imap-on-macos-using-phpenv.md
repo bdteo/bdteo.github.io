@@ -1,6 +1,6 @@
 PHP 8.3.6 plus IMAP on macOS using phpenv
 
-Important update from November 2024: PHP 8.4 unbundled ext-imap from core.
+[matter-of-fact] Important update from November 2024: PHP 8.4 unbundled ext-imap from core.
 
 The extension moved to PECL, and it is effectively deprecated. The underlying C library, libc-client from UW-IMAP, has not been updated since 2018.
 
@@ -10,7 +10,7 @@ If you are on PHP 8.3 or earlier and need the native extension, this guide still
 
 The quick fix
 
-If you just want the commands and do not care about the why, here is the order.
+[deliberate] If you just want the commands and do not care about the why, here is the order.
 
 You need Homebrew and phpenv already installed.
 
@@ -32,7 +32,7 @@ If it does not, read on.
 
 Do you actually need ext-imap?
 
-Serious question.
+[conversational tone] Serious question.
 
 Before fighting with C libraries and compiler flags, consider whether you actually need the native IMAP extension.
 
@@ -56,7 +56,7 @@ Use ext-imap only if you are maintaining a legacy codebase on PHP 8.3 or earlier
 
 What each step does
 
-If the quick fix worked, you can stop here.
+[matter-of-fact] If the quick fix worked, you can stop here.
 
 If it did not, or if you want to understand what is happening, here is the breakdown.
 
@@ -82,7 +82,7 @@ with-kerberos is required for IMAP authentication.
 
 The CPPFLAGS fix
 
-Even with configure flags, the C preprocessor sometimes cannot find header files.
+[slows down] Even with configure flags, the C preprocessor sometimes cannot find header files.
 
 This happens because macOS does not put Homebrew headers in the default search path.
 
@@ -106,7 +106,7 @@ Upgrade imap-uw with Homebrew, then rerun the PHP install.
 
 The future of PHP and IMAP
 
-The writing is on the wall.
+[reflective] The writing is on the wall.
 
 ext-imap is deprecated. The underlying C library is abandoned. PHP 8.4 already removed it from core.
 

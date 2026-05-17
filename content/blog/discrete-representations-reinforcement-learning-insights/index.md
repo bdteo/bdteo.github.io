@@ -7,10 +7,10 @@ description: "Explore Edan Meyer's research on discrete representations in RL. L
 tags: ["Artificial Intelligence", "Reinforcement Learning", "Discrete Representations", "Edan Meyer", "AI Research"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A fanned arc of plain cards on dark cloth. A hand lifts one from the finite set."
-audioUrl: "/audio/articles/discrete-representations-reinforcement-learning-insights/am_santa-f6a748828295.m4a"
-audioDuration: "5:20"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/discrete-representations-reinforcement-learning-insights/UzI1NsMEV3ni5JRkRSls-442799701a76.m4a"
+audioDuration: "5:50"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/discrete-representations-reinforcement-learning-insights.md"
 ---
 

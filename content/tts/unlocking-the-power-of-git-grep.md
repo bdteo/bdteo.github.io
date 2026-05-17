@@ -1,6 +1,6 @@
 Unlock the Power of git grep for Efficient Code Searching
 
-In a vast kingdom filled with countless scrolls and manuscripts, there lived a scholar named Alaric.
+[conversational tone] In a vast kingdom filled with countless scrolls and manuscripts, there lived a scholar named Alaric.
 
 His library was immense, a labyrinth of knowledge where ancient texts mingled with contemporary writings, and secrets hid between the lines.
 
@@ -22,7 +22,7 @@ Armed with this new approach, Alaric tried again. This time, the irrelevant clut
 
 It was as if he had unlocked a secret gateway in his labyrinth, granting him swift access to the exact knowledge he needed.
 
-Poof. The secret was revealed: the power of git grep.
+[emphasized] Poof. The secret was revealed: the power of git grep.
 
 What git grep actually is.
 
@@ -34,7 +34,7 @@ That one design choice is where most of its value comes from.
 
 Git grep is good at a few specific things.
 
-First, it searches tracked files, not the whole filesystem. Git keeps a list of every file you have staged or committed. That list is the index. Git grep reads from that list. Untracked junk is simply not there. No node modules, no dist folder, no coverage reports, no random log file, because Git was never told about any of them.
+[matter-of-fact] First, it searches tracked files, not the whole filesystem. Git keeps a list of every file you have staged or committed. That list is the index. Git grep reads from that list. Untracked junk is simply not there. No node modules, no dist folder, no coverage reports, no random log file, because Git was never told about any of them.
 
 Second, it is faster than plain recursive grep on large repositories. It already has the file list, so it skips the filesystem walk. It also runs multiple threads in parallel.
 
@@ -46,7 +46,7 @@ This is the killer feature. A tag, a branch, a commit, a tree object: point git 
 
 Practical examples.
 
-For a basic search, run git grep initializeSettings.
+[deliberate] For a basic search, run git grep initializeSettings.
 
 That scans all tracked files in the current branch for the exact match.
 
@@ -58,7 +58,7 @@ To search in a different branch without switching to it, run git grep validateUs
 
 That is the move that is hard to beat. No checkout, no stash, just the answer.
 
-To search across every branch, including remotes, you can pipe the branch list into git grep. The shape is: git branch dash a, then xargs, then git grep configureDatabase.
+[slows down] To search across every branch, including remotes, you can pipe the branch list into git grep. The shape is: git branch dash a, then xargs, then git grep configureDatabase.
 
 To search across every commit Git has ever heard of, not just the tips of branches, run git grep configureDatabase with the output of git rev-list all.
 
@@ -76,7 +76,7 @@ For example, you can search for Python function definitions with a pattern that 
 
 What git grep does and does not read.
 
-Git grep walks the index. That is it.
+[deliberate] Git grep walks the index. That is it.
 
 It does not parse dot gitignore.
 
@@ -88,7 +88,7 @@ The moment a file is both gitignored and tracked, because someone force-added it
 
 Ripgrep will not, at least not by default.
 
-You can prove this quickly. Create a demo repository. Add a dot gitignore rule that ignores log files. Create a tracked log file anyway by force-adding it. Commit it. Now search for a secret phrase.
+[matter-of-fact] You can prove this quickly. Create a demo repository. Add a dot gitignore rule that ignores log files. Create a tracked log file anyway by force-adding it. Commit it. Now search for a secret phrase.
 
 Git grep finds it, because the file is tracked. Ripgrep finds nothing, because ripgrep actually reads dot gitignore.
 
@@ -106,7 +106,7 @@ Default git grep, with no flags, never opens your dot gitignore file.
 
 When to reach for ripgrep instead.
 
-Git grep and ripgrep are not really competitors. They walk different things, and a serious toolbox has both.
+[conversational tone] Git grep and ripgrep are not really competitors. They walk different things, and a serious toolbox has both.
 
 Git grep walks the index: tracked files, plus any ref or tree object you point it at.
 
@@ -134,7 +134,7 @@ Put ripgrep next to git grep in your toolbox. They cover different jobs.
 
 The benefits of git grep.
 
-Relevance. It searches only what you are tracking. Build outputs, caches, and node modules are not in your way, because Git never saw them.
+[matter-of-fact] Relevance. It searches only what you are tracking. Build outputs, caches, and node modules are not in your way, because Git never saw them.
 
 Speed on large repositories. It is multi-threaded and skips the filesystem walk.
 
@@ -154,7 +154,7 @@ Use git grep dash l and pipe the result into your editor command when you want t
 
 Conclusion.
 
-Just as Alaric found a hidden path in his labyrinthine library, git grep cuts a clean line through a tracked codebase: fast, branch-aware, and uncluttered by anything Git was never told about.
+[reflective] Just as Alaric found a hidden path in his labyrinthine library, git grep cuts a clean line through a tracked codebase: fast, branch-aware, and uncluttered by anything Git was never told about.
 
 It is not a universal replacement for grep, and it is not a replacement for ripgrep.
 

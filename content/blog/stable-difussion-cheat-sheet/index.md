@@ -6,10 +6,10 @@ description: "Practical Stable Diffusion cheat sheet for SDXL, SD 3.5, and Flux.
 featuredImage: "./images/featured.jpg"
 tags: ["Stable Diffusion", "AI", "Image Generation", "SDXL", "Flux", "ComfyUI", "Machine Learning"]
 imageCaption: "A dog-eared ivory stack of index cards on linen, held together with an amber rubber band."
-audioUrl: "/audio/articles/stable-difussion-cheat-sheet/am_santa-400a3e2eb241.m4a"
-audioDuration: "8:33"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/stable-difussion-cheat-sheet/UzI1NsMEV3ni5JRkRSls-7f88ba951b19.m4a"
+audioDuration: "9:46"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/stable-difussion-cheat-sheet.md"
 ---
 

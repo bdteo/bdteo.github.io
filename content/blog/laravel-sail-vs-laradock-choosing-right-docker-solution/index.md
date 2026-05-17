@@ -6,10 +6,10 @@ description: "Honest comparison of Laravel Sail, Laradock, Herd, and FrankenPHP 
 featuredImage: "./images/featured.jpg"
 tags: ["Laravel", "Docker", "PHP", "Laravel Sail", "Laradock", "Laravel Herd", "FrankenPHP", "Development Environment", "Docker Compose"]
 imageCaption: "Two modern wireless computer mice side by side on white marble. Pick one."
-audioUrl: "/audio/articles/laravel-sail-vs-laradock-choosing-right-docker-solution/am_santa-4c74afa27df7.m4a"
-audioDuration: "8:36"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/laravel-sail-vs-laradock-choosing-right-docker-solution/UzI1NsMEV3ni5JRkRSls-ab5ecae34456.m4a"
+audioDuration: "9:56"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/laravel-sail-vs-laradock-choosing-right-docker-solution.md"
 ---
 

@@ -7,10 +7,10 @@ description: "When 'git grep' beats plain grep, when 'rg' (ripgrep) beats both, 
 tags: ["git", "git grep", "ripgrep", "code search", "developer tools", "software development", "command line tools"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A library card catalog drawer pulled open. One card stands slightly proud — the passage you were looking for."
-audioUrl: "/audio/articles/unlocking-the-power-of-git-grep/am_santa-84c432323b88.m4a"
-audioDuration: "10:25"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/unlocking-the-power-of-git-grep/UzI1NsMEV3ni5JRkRSls-c29f08baf739.m4a"
+audioDuration: "12:07"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/unlocking-the-power-of-git-grep.md"
 ---
 

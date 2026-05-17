@@ -6,10 +6,10 @@ description: "Achieve photorealistic AI images with Stable Diffusion, SDXL, and 
 featuredImage: "./images/featured.jpg"
 tags: ["Stable Diffusion", "AI", "Image Generation", "Photorealism", "SDXL", "Flux", "GPU", "ControlNet", "Machine Learning"]
 imageCaption: "A painter's well-used wooden palette, crowded with tested color mixes, a palette knife mid-blend."
-audioUrl: "/audio/articles/pushing-the-stable-diffussion-limits/am_santa-79101816b234.m4a"
-audioDuration: "9:05"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/pushing-the-stable-diffussion-limits/UzI1NsMEV3ni5JRkRSls-21a4c0161124.m4a"
+audioDuration: "10:11"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/pushing-the-stable-diffussion-limits.md"
 ---
 

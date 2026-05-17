@@ -7,10 +7,10 @@ description: "Install PHP 8.3 with IMAP on macOS using phpenv. Covers brew deps,
 tags: ["PHP", "macOS", "IMAP", "phpenv", "Development Environment", "PECL", "Deprecated"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "A phone on white marble. A pale cyan notification halo, a folded letter, a fountain pen."
-audioUrl: "/audio/articles/installing-php-8-3-6-with-imap-on-macos-using-phpenv/am_santa-24536acf919f.m4a"
-audioDuration: "5:45"
-audioVoice: "Santa (Kokoro am_santa)"
-audioGeneratedAt: "2026-05-09"
+audioUrl: "/audio/articles/installing-php-8-3-6-with-imap-on-macos-using-phpenv/UzI1NsMEV3ni5JRkRSls-a891fba35036.m4a"
+audioDuration: "17:00"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/installing-php-8-3-6-with-imap-on-macos-using-phpenv.md"
 ---
 
