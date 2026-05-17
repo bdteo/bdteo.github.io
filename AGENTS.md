@@ -17,6 +17,15 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 - `origin`: GitHub (`bdteo/bdteo.github.io`) — sole remote. Deploy workflow is `workflow_dispatch` only (not triggered by push).
 
+## Deploy & Publish Ordering
+
+The deploy workflow checks out `origin/main` at trigger time. Order matters when shipping multi-step work:
+
+1. **Generate build artifacts first** (audio files, images, etc.) — never trigger a deploy expecting an artifact you haven't committed yet.
+2. **Commit + push BEFORE triggering deploy.** Uncommitted local work is invisible to the workflow; the artifact must already be on `origin/main`.
+3. **One deploy per coherent state.** If iteration is mid-flight, hold the deploy. Don't fire one for "what's already pushed" when related work is still uncommitted — you'll end up with two deploys, both consuming the build queue, racing for whatever lands on `origin/main` last.
+4. **If you trigger two deploys close together**, cancel the older one with `gh run cancel <id> -R bdteo/bdteo.github.io` *quickly* — `gh run cancel` is rejected once status is `completed`, and the workflow build step is fast. The race is harmless only when each intermediate `origin/main` snapshot is internally consistent (frontmatter and the file it points to ship together).
+
 ## Code Style Guidelines
 
 - Formatting: Use Prettier with default config
@@ -31,19 +40,46 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 - Theme variables: Defined in `src/styles/_dark-mode.scss` and `src/styles/_light-mode.scss` as CSS custom properties
 - Design language: Apple-inspired — pure black (#000) dark mode, pure white (#FFF) light mode, purple accent palette
 
-## Article Audio / TTS Flow
+## Article Audio / TTS Workflows
 
-- Article audio is opt-in per post. A post shows the player only when its frontmatter has the audio fields wired by the generator.
-- Keep the normal article in `content/blog/<slug>/index.md` and the listenable/TTS-friendly script in `content/tts/<slug>.md`.
-- Generate narration locally with Kokoro running at `http://127.0.0.1:8880`:
-  `make article-audio slug=<slug>`.
-- Pass generator options through `args`, for example:
-  `make article-audio slug=<slug> args="--force --voice=am_santa --speed=0.95"`.
-- The generator writes `.m4a` files under `static/audio/articles/<slug>/` and updates frontmatter fields: `audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, and `audioTextSource`.
-- If object storage is configured, use the documented `BLOG_AUDIO_RCLONE_TARGET` and `BLOG_AUDIO_PUBLIC_BASE_URL` environment variables; otherwise keep `audioUrl` local under `/audio/articles/...`.
-- Do not send raw article markdown directly to TTS unless Boris explicitly asks; prepare or update the TTS-friendly version first.
-- For Kokoro, do not mirror visual poem/prose line breaks in `content/tts/*.md`: group connected sentences into spoken paragraphs/stanzas and use blank lines only for real movement breaks, because newlines/short chunks can cause cadence resets.
-- See `documentation/article-audio.md` for the full workflow.
+Default engine is **ElevenLabs** (voice `alistair`, model `eleven_v3`); Kokoro `santa` is the free local fallback. Voice presets live in `scripts/voice-presets.js`. Article audio is opt-in per post — the player renders only when frontmatter has the audio fields wired by the generator.
+
+**Reference docs (single source of truth — do not duplicate this content):**
+
+- `documentation/article-audio.md` — user-facing workflow (commands, options, env vars, sampler)
+- `documentation/elevenlabs-prompting.md` — Eleven v3 audio-tag catalog, voice-settings recipe per content type (essay vs poem), punctuation cues, anti-patterns, and v3 quirks (notably: `previous_text`/`next_text` stitching is rejected on v3)
+
+**Two workflows.** Claude has these as slash commands (`/bdteo-tts-prepare`, `/bdteo-publish-audio`); Codex follows the same procedure linearly.
+
+### Prepare the TTS script (`bdteo-tts-prepare`)
+
+For brand-new articles AND for modernizing Kokoro-era scripts. Given a slug:
+
+1. Read `content/blog/<slug>/index.md` (canonical source) and `content/tts/<slug>.md` if it exists.
+2. Pick the rewrite scope:
+   - **No TTS file** → draft from the article: strip markdown (headings, code blocks, links), spell out symbols (`$20` → "twenty dollars"), convert lists to flowing sentences, then layer tags.
+   - **Kokoro-era TTS** → preserve the prose; layer v3 tags; strip the `<!-- tts:paragraph-pauses=... -->` comment and Kokoro pacing hacks (compound `…, `, stranded `-` → `—`).
+   - **Already v3** → touch only what's broken or weak.
+3. Apply tags per `documentation/elevenlabs-prompting.md`. Essays ≈ 1 tag per 2 paragraphs; poems get one opening tag per stanza. Preserve Boris's authorial voice.
+4. Stop for Boris's review. Do **not** generate audio. Do **not** commit. Do **not** push.
+
+### Publish audio (`bdteo-publish-audio`)
+
+Once the TTS script is approved:
+
+1. `source ~/.ButtercupZsh/.Rc/env.zsh` to load `ELEVENLABS_API_KEY`.
+2. `pnpm article:audio <slug> --force` (or `make article-audio slug=<slug> args="--force"`). Override for poems: `ELEVENLABS_STABILITY=0.35 ELEVENLABS_STYLE=0.45 pnpm article:audio <slug> --force`.
+3. `afplay static/audio/articles/<slug>/<new>.m4a`.
+4. Iterate with Boris if needed (each run produces a new hashed `.m4a`; keep takes around until he picks one).
+5. Once Boris approves, **two commits**: (a) generator changes if any, (b) the audio publication — `git rm` any tracked old `am_santa-*.m4a`, `rm` superseded local takes, `git add` the new audio + updated frontmatter + TTS script, commit, push.
+6. Trigger deploy: `gh workflow run deploy.yml -R bdteo/bdteo.github.io`. Follow the **Deploy & Publish Ordering** rules above (commit + push BEFORE triggering; one deploy per coherent state; cancel duplicates quickly).
+
+### Generator notes
+
+- `scripts/generate-article-audio.js` chunks ElevenLabs requests at 2,500 chars with concurrency 3 (Creator-tier cap), auto-sends `voice_settings`, packages `.m4a` via `ffmpeg`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
+- For Kokoro, do not mirror visual poem/prose line breaks in `content/tts/*.md` — group sentences into stanzas and use blank lines only for real movement breaks; newlines/short chunks cause cadence resets.
+- If object storage is configured, use `BLOG_AUDIO_RCLONE_TARGET` and `BLOG_AUDIO_PUBLIC_BASE_URL`; otherwise `audioUrl` stays local under `/audio/articles/...`.
+- Sample voices before committing: `pnpm voice:sample alistair,george,ak --text="..."` or `pnpm voice:sample --list`.
 
 ## Giscus Comments
 
