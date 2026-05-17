@@ -1,25 +1,23 @@
-<!-- tts:paragraph-pauses=0.65 -->
+[softly][slowly] Illuminate me… wake me slowly… anger — doesn't touch me.
+[wistfully] Noble in the blood… Time is stuck!
 
-Illuminate me... wake me slowly... anger - doesn't touch me.
-Noble in the blood... Time is stuck!
+[hesitantly] Yelling at a stone wall… oblivious to truth… useful…
 
-Yelling at a stone wall... , oblivious to truth..., useful...
-
-Yet you know me better than myself, even in a quiet room...
+[gently] Yet you know me better than myself, even in a quiet room…
 Tonight I am on my own. Young and beautiful.
 
-Oh, I have a mercy for myself, usually I don't, did I tell you that?
+[reflective] Oh, I have a mercy for myself, usually I don't, did I tell you that?
 
-Ordinary people..., ordinary things.
+[quietly] Ordinary people, ordinary things.
 
-Nonsense!!!
+[sighs] [softly] Nonsense!
 
-Trust?
+[softly] Trust?
 
-What about tonight?;Am I good for you? Nobody is better.
+[tenderly] What about tonight? Am I good for you? Nobody is better.
 
-...
-  
-...time will pass...
-Maybe? - I don't matter!
-...even if I'm good!
+[long pause]
+
+[drawn out][sadly] …time will pass…
+[resigned tone] Maybe I don't matter
+[softly] …even if I'm good.
