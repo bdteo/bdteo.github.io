@@ -10,6 +10,9 @@ const rootDir = path.resolve(__dirname, "..")
 const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "bdteo-build-"))
 const workDir = path.join(tempRoot, "site")
 const keepTemp = process.env.BLOG_BUILD_KEEP === "1"
+const outputDir = process.env.BLOG_BUILD_OUTPUT
+  ? path.resolve(rootDir, process.env.BLOG_BUILD_OUTPUT)
+  : null
 
 const run = (command, args, options = {}) => {
   const result = childProcess.spawnSync(command, args, {
@@ -68,6 +71,31 @@ const installDependencies = () => {
   run("pnpm", ["install", "--frozen-lockfile", "--prefer-offline"])
 }
 
+const copyPublicToOutput = async () => {
+  if (!outputDir) {
+    return
+  }
+
+  const builtPublic = path.join(workDir, "public")
+  console.log(`==> Copying isolated public output to ${outputDir}`)
+  await fsp.rm(outputDir, { recursive: true, force: true })
+  await fsp.mkdir(path.dirname(outputDir), { recursive: true })
+
+  const result = childProcess.spawnSync(
+    "rsync",
+    ["-a", "--delete", `${builtPublic}/`, `${outputDir}/`],
+    { stdio: "inherit" },
+  )
+
+  if (result.error) {
+    throw result.error
+  }
+
+  if (result.status !== 0) {
+    process.exit(result.status || 1)
+  }
+}
+
 const main = async () => {
   try {
     console.log(`==> Creating isolated build copy at ${workDir}`)
@@ -79,6 +107,8 @@ const main = async () => {
     run("pnpm", ["exec", "gatsby", "build", "--prefix-paths"])
 
     console.log(`==> Isolated build succeeded: ${path.join(workDir, "public")}`)
+    await copyPublicToOutput()
+
     if (!keepTemp) {
       await fsp.rm(tempRoot, { recursive: true, force: true })
     } else {
