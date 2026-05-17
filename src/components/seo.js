@@ -8,6 +8,8 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 
+import { DEFAULT_LANGUAGE, getChrome, getLanguage } from "../../i18n.config"
+
 const toAbsoluteUrl = (value, siteUrl) => {
   if (!value) {
     return undefined
@@ -176,6 +178,10 @@ const Seo = ({
   dateModified,
   schema,
   audio,
+  lang = DEFAULT_LANGUAGE,
+  canonicalPath,
+  alternatePaths = {},
+  xDefaultPath,
   children,
 }) => {
   const { pathname } = useLocation()
@@ -212,8 +218,22 @@ const Seo = ({
   const DEFAULT_OG_IMAGE_HEIGHT = 1280
   const DEFAULT_OG_IMAGE_ALT =
     "An old wooden door, slightly open. Dawn light spilling onto the threshold."
+  const language = getLanguage(lang)
+  const chrome = getChrome(lang)
+  const alternateEntries = Object.entries(alternatePaths)
+    .filter(([code, path]) => getLanguage(code) && path)
+    .map(([code, path]) => ({
+      code,
+      path,
+      language: getLanguage(code),
+      url: toAbsoluteUrl(path, siteUrl),
+    }))
+  const alternateLocaleEntries = alternateEntries.filter(
+    entry => entry.code !== language.code,
+  )
 
-  const metaDescription = description || defaultDescription
+  const metaDescription =
+    description || chrome.siteDescription || defaultDescription
   const metaTitle = title ? `${title}` : defaultTitle
   const metaImage = image
     ? `${siteUrl}${image}`
@@ -223,7 +243,12 @@ const Seo = ({
   const imageMimeType = metaImage.toLowerCase().endsWith(".webp")
     ? "image/webp"
     : "image/jpeg"
-  const url = `${siteUrl}${pathname}`
+  const canonicalHref = toAbsoluteUrl(canonicalPath || pathname, siteUrl)
+  const url = canonicalHref
+  const xDefaultHref = toAbsoluteUrl(
+    xDefaultPath || alternatePaths[DEFAULT_LANGUAGE],
+    siteUrl,
+  )
   const metaKeywords =
     keywords.length > 0
       ? keywords.join(", ")
@@ -256,6 +281,7 @@ const Seo = ({
     },
     datePublished: datePublished,
     dateModified: dateModified || datePublished,
+    inLanguage: language.schemaLanguage,
     publisher: {
       "@type": "Organization",
       name: defaultTitle,
@@ -288,6 +314,17 @@ const Seo = ({
       {metaKeywords && <meta name="keywords" content={metaKeywords} />}
       <meta name="author" content={author.name} />
       <link rel="canonical" href={url} />
+      {alternateEntries.map(entry => (
+        <link
+          key={`alternate-${entry.code}`}
+          rel="alternate"
+          hrefLang={entry.language.hreflang}
+          href={entry.url}
+        />
+      ))}
+      {xDefaultHref && (
+        <link rel="alternate" hrefLang="x-default" href={xDefaultHref} />
+      )}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={article ? "article" : "website"} />
@@ -295,6 +332,14 @@ const Seo = ({
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:site_name" content={defaultTitle} />
+      <meta property="og:locale" content={language.ogLocale} />
+      {alternateLocaleEntries.map(entry => (
+        <meta
+          key={`og-locale-${entry.code}`}
+          property="og:locale:alternate"
+          content={entry.language.ogLocale}
+        />
+      ))}
       <meta property="og:image" content={metaImage} />
       <meta property="og:image:secure_url" content={metaImage} />
       <meta property="og:image:type" content={imageMimeType} />
@@ -348,7 +393,7 @@ const Seo = ({
         name="bingbot"
         content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
       />
-      <html lang="en" />
+      <html lang={language.hreflang} />
       {/* Structured Data for Articles */}
       {article && (
         <script

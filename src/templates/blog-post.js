@@ -2,35 +2,50 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
+import ArticleLanguageLinks from "../components/ArticleLanguageLinks"
 import Bio from "../components/bio"
 import Breadcrumb from "../components/breadcrumb"
 import ArticleAudioPlayer from "../components/ArticleAudioPlayer"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import GiscusComments from "../components/GiscusComments"
+import { formatDisplayDate } from "../../i18n.config"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
   location,
+  pageContext,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
   const featuredImage = getImage(post.frontmatter.featuredImage)
   const hasArticleAudio = Boolean(post.frontmatter.audioUrl)
+  const { lang, alternatePaths = {}, activeLanguages = [] } = pageContext || {}
+  const displayDate = formatDisplayDate(post.frontmatter.dateRaw, lang)
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout
+      location={location}
+      title={siteTitle}
+      lang={lang}
+      alternatePaths={alternatePaths}
+      activeLanguages={activeLanguages}
+    >
       <article
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article"
       >
-        <Breadcrumb title={post.frontmatter.title} />
+        <Breadcrumb title={post.frontmatter.title} lang={lang} />
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p className="blog-post__date">{post.frontmatter.date}</p>
+          <p className="blog-post__date">{displayDate}</p>
           {post.frontmatter.description && (
-            <p className="blog-post__dek">{post.frontmatter.description}</p>
+            <div className="blog-post__dek">{post.frontmatter.description}</div>
           )}
+          <ArticleLanguageLinks
+            currentLang={lang}
+            alternatePaths={alternatePaths}
+          />
         </header>
         {featuredImage ? (
           <div
@@ -48,6 +63,7 @@ const BlogPostTemplate = ({
                   title={post.frontmatter.title}
                   src={post.frontmatter.audioUrl}
                   duration={post.frontmatter.audioDuration}
+                  lang={lang}
                 />
               </div>
               {post.frontmatter.imageCaption && (
@@ -60,6 +76,7 @@ const BlogPostTemplate = ({
             title={post.frontmatter.title}
             src={post.frontmatter.audioUrl}
             duration={post.frontmatter.audioDuration}
+            lang={lang}
           />
         )}
         <section
@@ -80,29 +97,29 @@ const BlogPostTemplate = ({
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+              <Link to={previous.fields.localizedPath} rel="prev">
                 <span>{previous.frontmatter.title}</span>
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
+              <Link to={next.fields.localizedPath} rel="next">
                 <span>{next.frontmatter.title}</span>
               </Link>
             )}
           </li>
         </ul>
       </nav>
-      <GiscusComments />
+      <GiscusComments lang={lang} />
       <footer className="blog-post-bio">
-        <Bio />
+        <Bio lang={lang} />
       </footer>
     </Layout>
   )
 }
 
-export const Head = ({ data: { markdownRemark: post, site } }) => {
+export const Head = ({ data: { markdownRemark: post, site }, pageContext }) => {
   // Extract the featured image path for SEO.
   // Use a JPG derivative for maximum compatibility with link previews (Slack/Discord/etc).
   const ogImage = post.frontmatter.featuredImage?.childImageSharp?.resize?.src
@@ -124,6 +141,7 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
     audioVoice,
     audioGeneratedAt,
   } = post.frontmatter
+  const { lang, alternatePaths, xDefaultPath } = pageContext || {}
 
   // Format dates in ISO format for structured data
   const datePublished = new Date(dateRaw || date).toISOString()
@@ -141,6 +159,10 @@ export const Head = ({ data: { markdownRemark: post, site } }) => {
       datePublished={datePublished}
       dateModified={datePublished} // Use the same date if no modified date available
       schema={jsonld}
+      lang={lang}
+      canonicalPath={post.fields.localizedPath}
+      alternatePaths={alternatePaths}
+      xDefaultPath={xDefaultPath}
       audio={{
         url: audioUrl,
         duration: audioDuration,
@@ -168,6 +190,10 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        localizedPath
+        lang
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
@@ -195,7 +221,7 @@ export const pageQuery = graphql`
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
       fields {
-        slug
+        localizedPath
       }
       frontmatter {
         title
@@ -203,7 +229,7 @@ export const pageQuery = graphql`
     }
     next: markdownRemark(id: { eq: $nextPostId }) {
       fields {
-        slug
+        localizedPath
       }
       frontmatter {
         title

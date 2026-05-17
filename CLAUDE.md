@@ -55,6 +55,14 @@ Do NOT quote ElevenLabs tier allowances or char-to-credit ratios from memory. Em
 
 If you need to estimate cost before a big batch, **ask Boris for the dashboard snapshot** (or skip the projection entirely and just run). Volunteering wrong projections either over-warns (causing unnecessary pauses) or under-warns (causing real budget surprises). Both are worse than no projection.
 
+## Multilingual Blog Workflow
+
+- English URLs stay canonical and unchanged. Translations live beside each source article as `index.bg.md`, `index.fr.md`, or `index.de.md`, with routes under `/bg/`, `/fr/`, and `/de/`.
+- `documentation/blog-translations.md` is the source of truth for translation frontmatter, source hashes, tone rules, SEO checks, and the "no translated audio yet" rule.
+- Validate translation work with `pnpm i18n:check`. Use `pnpm i18n:check -- --hash <slug>` when updating a translation's `translationSourceHash`.
+- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-bg`, `bdteo-translate-fr`, and `bdteo-translate-de`. They stop for review and must not commit, push, deploy, or generate audio.
+- SEO is part of done: verify canonical URLs, `hreflang` alternates, `x-default`, `<html lang>`, Open Graph locale, sitemap links, and `inLanguage` structured data before shipping multilingual changes.
+
 ## Code Style Guidelines
 
 - Formatting: Use Prettier with default config

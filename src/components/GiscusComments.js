@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react"
 import Giscus from "@giscus/react"
 import { useStaticQuery, graphql } from "gatsby"
 
-const GiscusComments = () => {
+import { DEFAULT_LANGUAGE, getChrome, getLanguage } from "../../i18n.config"
+
+const GiscusComments = ({ lang = DEFAULT_LANGUAGE }) => {
   const [giscusThemeSetting, setGiscusThemeSetting] = useState(
     "preferred_color_scheme",
   )
@@ -71,9 +73,11 @@ const GiscusComments = () => {
   const giscusRepoId = "R_kgDOOpaGqQ"
   const giscusCategory = "Blog Comments"
   const giscusCategoryId = "DIC_kwDOOpaGqc4CqGt8"
+  const chrome = getChrome(lang)
+  const language = getLanguage(lang)
 
   if (!giscusThemeSetting) {
-    return <div style={{ minHeight: "200px" }}>Loading comments...</div>
+    return <div style={{ minHeight: "200px" }}>{chrome.comments}...</div>
   }
 
   return (
@@ -92,7 +96,7 @@ const GiscusComments = () => {
           color: "var(--color-text)",
         }}
       >
-        Comments
+        {chrome.comments}
       </h2>
       <Giscus
         id="comments"
@@ -105,7 +109,7 @@ const GiscusComments = () => {
         emitMetadata="0"
         inputPosition="top"
         theme={giscusThemeSetting}
-        lang="en"
+        lang={language.giscusLang}
         loading="lazy"
       />
     </div>

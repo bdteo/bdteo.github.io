@@ -12,9 +12,11 @@ import {
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope"
 import { library } from "@fortawesome/fontawesome-svg-core"
 
+import { DEFAULT_LANGUAGE, getChrome } from "../../i18n.config"
+
 library.add(faGithub, faLinkedin, faTwitter, faEnvelope)
 
-const Bio = () => {
+const Bio = ({ lang = DEFAULT_LANGUAGE }) => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       site {
@@ -34,6 +36,9 @@ const Bio = () => {
 
   const author = data.site.siteMetadata?.author
   const social = data.site.siteMetadata?.social
+  const chrome = getChrome(lang)
+  const summary =
+    lang === DEFAULT_LANGUAGE ? author?.summary : chrome.bioSummary
 
   return (
     <div className="bio" itemScope itemType="http://schema.org/Person">
@@ -49,13 +54,13 @@ const Bio = () => {
       {author?.name && (
         <>
           <div className="bio-heading">
-            <p className="bio-kicker">Author</p>
+            <p className="bio-kicker">{chrome.bioKicker}</p>
             <h2 className="bio-name" itemProp="name">
-              Hey, I'm Boris
+              {chrome.bioName}
             </h2>
           </div>
-          <p className="bio-intro" itemProp="description">
-            {author.summary}
+          <p className="bio-intro bio-summary" itemProp="description">
+            {summary}
           </p>
           <meta itemProp="url" content="https://bdteo.com" />
         </>

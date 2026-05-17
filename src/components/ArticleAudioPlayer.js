@@ -2,6 +2,8 @@ import * as React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons"
 
+import { getChrome } from "../../i18n.config"
+
 const DEFAULT_PLAYBACK_RATE = 1
 const SPEEDS = [DEFAULT_PLAYBACK_RATE, 1.25, 1.5]
 const PLAYBACK_RATE_STORAGE_KEY = "bdteo.articleAudio.playbackRate"
@@ -102,7 +104,7 @@ const parseDuration = duration => {
 
 const audioIsPlaying = audio => !audio.paused && !audio.ended
 
-const ArticleAudioPlayer = ({ title, src, duration }) => {
+const ArticleAudioPlayer = ({ title, src, duration, lang }) => {
   const audioRef = React.useRef(null)
   const playbackRateRef = React.useRef(DEFAULT_PLAYBACK_RATE)
   const [currentTime, setCurrentTime] = React.useState(0)
@@ -110,6 +112,7 @@ const ArticleAudioPlayer = ({ title, src, duration }) => {
   const [isPlaying, setIsPlaying] = React.useState(false)
   const [playbackRate, setPlaybackRate] = React.useState(DEFAULT_PLAYBACK_RATE)
   const [hasError, setHasError] = React.useState(false)
+  const labels = getChrome(lang).articleAudio
 
   const fallbackDuration = React.useMemo(
     () => parseDuration(duration),
@@ -236,14 +239,14 @@ const ArticleAudioPlayer = ({ title, src, duration }) => {
   return (
     <section
       className={`bt--article-audio${isPlaying ? " bt--article-audio--playing" : ""}`}
-      aria-label={`Audio narration for ${title}`}
+      aria-label={`${labels.label} ${title}`}
     >
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} preload="metadata" src={src} />
 
       <div className="bt--article-audio__controls">
         <fieldset className="bt--article-audio__secondary">
-          <legend className="sr-only">Playback speed</legend>
+          <legend className="sr-only">{labels.speedLegend}</legend>
           <div className="bt--article-audio__speed-options">
             {SPEEDS.map(speed => (
               <label className="bt--article-audio__speed-option" key={speed}>
@@ -267,8 +270,8 @@ const ArticleAudioPlayer = ({ title, src, duration }) => {
             type="button"
             onClick={togglePlayback}
             disabled={hasError}
-            aria-label={isPlaying ? "Pause narration" : "Play narration"}
-            title={isPlaying ? "Pause" : "Play"}
+            aria-label={isPlaying ? labels.pause : labels.play}
+            title={isPlaying ? labels.pause : labels.play}
           >
             <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
           </button>
@@ -278,7 +281,7 @@ const ArticleAudioPlayer = ({ title, src, duration }) => {
       <div className="bt--article-audio__body">
         <div className="bt--article-audio__header">
           <div className="bt--article-audio__copy">
-            <p className="bt--article-audio__title">Listen to article</p>
+            <p className="bt--article-audio__title">{labels.title}</p>
             <p className="bt--article-audio__meta">
               {formatTime(currentTime)} / {formatTime(totalDuration)}
             </p>
@@ -286,7 +289,7 @@ const ArticleAudioPlayer = ({ title, src, duration }) => {
         </div>
 
         <label className="bt--article-audio__scrubber-label">
-          <span className="sr-only">Narration progress</span>
+          <span className="sr-only">{labels.progress}</span>
           <input
             className="bt--article-audio__scrubber"
             type="range"
@@ -301,11 +304,7 @@ const ArticleAudioPlayer = ({ title, src, duration }) => {
         </label>
       </div>
 
-      {hasError && (
-        <p className="bt--article-audio__error">
-          Audio could not be loaded from this page.
-        </p>
-      )}
+      {hasError && <p className="bt--article-audio__error">{labels.error}</p>}
     </section>
   )
 }

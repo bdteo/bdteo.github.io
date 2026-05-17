@@ -1,5 +1,88 @@
 // File: gatsby-config.js
 
+const fs = require("fs")
+const path = require("path")
+
+const {
+  DEFAULT_LANGUAGE,
+  buildIndexPath,
+  getChrome,
+  getLanguage,
+  getLanguageCodes,
+} = require("./i18n.config")
+
+const getPublishedLanguageCodes = () => {
+  const blogDir = path.join(__dirname, "content", "blog")
+  const published = new Set([DEFAULT_LANGUAGE])
+
+  if (!fs.existsSync(blogDir)) {
+    return [DEFAULT_LANGUAGE]
+  }
+
+  fs.readdirSync(blogDir, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .forEach(entry => {
+      const articleDir = path.join(blogDir, entry.name)
+      fs.readdirSync(articleDir).forEach(fileName => {
+        const match = fileName.match(/^index\.([a-z]{2})\.md$/)
+        if (match && getLanguageCodes().includes(match[1])) {
+          published.add(match[1])
+        }
+      })
+    })
+
+  return getLanguageCodes().filter(code => published.has(code))
+}
+
+const createFeedConfig = lang => {
+  const language = getLanguage(lang)
+  const chrome = getChrome(lang)
+  const output =
+    lang === DEFAULT_LANGUAGE ? "/rss.xml" : `${buildIndexPath(lang)}rss.xml`
+  const siteUrl = "https://bdteo.com"
+  const languageHome = `${siteUrl}${buildIndexPath(lang)}`
+
+  return {
+    serialize: ({ query: { site, allMarkdownRemark } }) =>
+      allMarkdownRemark.nodes.map(node => ({
+        ...node.frontmatter,
+        description: node.excerpt,
+        date: node.frontmatter.date,
+        url: site.siteMetadata.siteUrl + node.fields.localizedPath,
+        guid: site.siteMetadata.siteUrl + node.fields.localizedPath,
+        custom_elements: [{ "content:encoded": node.html }],
+      })),
+    query: `
+      {
+        allMarkdownRemark(
+          sort: {frontmatter: {date: DESC}}
+          filter: {fields: {lang: {eq: "${lang}"}}}
+        ) {
+          nodes {
+            excerpt
+            html
+            fields {
+              localizedPath
+            }
+            frontmatter {
+              title
+              date
+            }
+          }
+        }
+      }
+    `,
+    output,
+    description: chrome.siteDescription,
+    site_url: languageHome,
+    feed_url: `${siteUrl}${output}`,
+    title:
+      lang === DEFAULT_LANGUAGE
+        ? "Boris D. Teoharov's Blog RSS Feed"
+        : `${chrome.navHome} - Boris D. Teoharov (${language.label})`,
+  }
+}
+
 /**
  * Configure your Gatsby site with this file.
  *
@@ -85,38 +168,7 @@ module.exports = {
             }
           }
         `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) =>
-              allMarkdownRemark.nodes.map(node => ({
-                ...node.frontmatter,
-                description: node.excerpt,
-                date: node.frontmatter.date,
-                url: site.siteMetadata.siteUrl + node.fields.slug,
-                guid: site.siteMetadata.siteUrl + node.fields.slug,
-                custom_elements: [{ "content:encoded": node.html }],
-              })),
-            query: `
-              {
-                allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            `,
-            output: "/rss.xml",
-            title: "Boris D. Teoharov's Blog RSS Feed",
-          },
-        ],
+        feeds: getPublishedLanguageCodes().map(createFeedConfig),
       },
     },
     {
@@ -173,7 +225,9 @@ module.exports = {
             allMarkdownRemark {
               nodes {
                 fields {
-                  slug
+                  lang
+                  localizedPath
+                  sourceSlug
                 }
                 frontmatter {
                   date
@@ -183,14 +237,51 @@ module.exports = {
           }
         `,
         resolvePages: ({
+          site,
           allSitePage: { nodes: allPages },
           allMarkdownRemark: { nodes: allPosts },
         }) => {
-          // Create a map of post slugs to their dates
+          const siteUrl = site.siteMetadata.siteUrl.replace(/\/$/, "")
+          const activeLanguages = getPublishedLanguageCodes()
+          const indexLinks = activeLanguages.map(lang => ({
+            lang: getLanguage(lang).hreflang,
+            url: `${siteUrl}${buildIndexPath(lang)}`,
+          }))
+          indexLinks.push({
+            lang: "x-default",
+            url: `${siteUrl}${buildIndexPath(DEFAULT_LANGUAGE)}`,
+          })
+
+          // Create a map of localized post paths to their dates and alternates.
+          const postsBySourceSlug = allPosts.reduce((acc, post) => {
+            const sourceSlug = post.fields.sourceSlug
+            acc[sourceSlug] = acc[sourceSlug] || []
+            acc[sourceSlug].push(post)
+            return acc
+          }, {})
           const postsByPath = allPosts.reduce((acc, post) => {
-            if (post.fields && post.fields.slug) {
-              acc[post.fields.slug] = {
+            if (post.fields && post.fields.localizedPath) {
+              const sourceGroup = postsBySourceSlug[post.fields.sourceSlug] || [
+                post,
+              ]
+              const links = sourceGroup.map(alternate => ({
+                lang: getLanguage(alternate.fields.lang).hreflang,
+                url: `${siteUrl}${alternate.fields.localizedPath}`,
+              }))
+              const englishAlternate = sourceGroup.find(
+                alternate => alternate.fields.lang === DEFAULT_LANGUAGE,
+              )
+
+              if (englishAlternate) {
+                links.push({
+                  lang: "x-default",
+                  url: `${siteUrl}${englishAlternate.fields.localizedPath}`,
+                })
+              }
+
+              acc[post.fields.localizedPath] = {
                 date: post.frontmatter.date,
+                links,
               }
             }
             return acc
@@ -199,17 +290,27 @@ module.exports = {
           // Add date info to pages
           return allPages.map(page => {
             // Find matching post data if it exists
-            const postData = Object.keys(postsByPath).find(slug =>
-              page.path.endsWith(slug),
-            )
+            const postData = postsByPath[page.path]
 
             // For blog posts, use their date and higher priority
             if (postData) {
               return {
                 ...page,
-                lastmod: postsByPath[postData].date,
+                lastmod: postData.date,
+                links: postData.links,
                 priority: 0.9,
                 changefreq: "monthly",
+              }
+            }
+
+            if (
+              activeLanguages.some(lang => page.path === buildIndexPath(lang))
+            ) {
+              return {
+                ...page,
+                links: indexLinks,
+                priority: page.path === "/" ? 1.0 : 0.7,
+                changefreq: page.path === "/" ? "daily" : "weekly",
               }
             }
 
@@ -221,11 +322,15 @@ module.exports = {
             }
           })
         },
-        serialize: ({ path, lastmod, changefreq, priority }) => {
+        serialize: ({ path, lastmod, changefreq, priority, links }) => {
           const sitemapItem = {
             url: path,
             changefreq: changefreq || "weekly",
             priority: priority || 0.7,
+          }
+
+          if (links?.length) {
+            sitemapItem.links = links
           }
 
           if (lastmod) {

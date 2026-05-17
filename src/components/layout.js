@@ -3,18 +3,27 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { BThemeToggler } from "./BThemeToggler"
+import LanguageSwitcher from "./LanguageSwitcher"
 import Logo from "../images/bd-icon.svg"
 import useScrollDirection from "../hooks/useScrollDirection"
+import { DEFAULT_LANGUAGE, buildIndexPath, getChrome } from "../../i18n.config"
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
+const Layout = ({
+  title,
+  children,
+  lang = DEFAULT_LANGUAGE,
+  alternatePaths = {},
+  activeLanguages = [],
+}) => {
   const { scrollDirection, isAtTop } = useScrollDirection()
+  const chrome = getChrome(lang)
+  const homePath = buildIndexPath(lang)
+  const aboutPath = lang === DEFAULT_LANGUAGE ? "/about/" : `/${lang}/about/`
 
   return (
     <>
       <a href="#main-content" className="skip-to-main-content">
-        Skip to main content
+        {chrome.skipToContent}
       </a>
 
       <header
@@ -24,7 +33,7 @@ const Layout = ({ location, title, children }) => {
           <div className="header-content">
             <div className="header-left">
               <div className="site-logo">
-                <Link to="/" className="header-logo" aria-label={title}>
+                <Link to={homePath} className="header-logo" aria-label={title}>
                   <img src={Logo} alt={title} width="40" height="40" />
                   <span className="site-title" aria-hidden="true">
                     {title}
@@ -36,12 +45,12 @@ const Layout = ({ location, title, children }) => {
                 <ul className="nav-list">
                   <li className="nav-item">
                     <Link
-                      to="/"
+                      to={homePath}
                       className="nav-link"
                       activeClassName="active"
                       partiallyActive={false}
                     >
-                      <span className="nav-text">Home</span>
+                      <span className="nav-text">{chrome.navHome}</span>
                       <div className="indicator-container">
                         <span className="nav-indicator"></span>
                       </div>
@@ -49,12 +58,12 @@ const Layout = ({ location, title, children }) => {
                   </li>
                   <li className="nav-item">
                     <Link
-                      to="/about"
+                      to={aboutPath}
                       className="nav-link"
                       activeClassName="active"
                       partiallyActive={false}
                     >
-                      <span className="nav-text">About</span>
+                      <span className="nav-text">{chrome.navAbout}</span>
                       <div className="indicator-container">
                         <span className="nav-indicator"></span>
                       </div>
@@ -65,6 +74,11 @@ const Layout = ({ location, title, children }) => {
             </div>
 
             <div className="header-right">
+              <LanguageSwitcher
+                currentLang={lang}
+                alternatePaths={alternatePaths}
+                activeLanguages={activeLanguages}
+              />
               <div className="theme-toggle-container">
                 <BThemeToggler />
               </div>
@@ -82,7 +96,7 @@ const Layout = ({ location, title, children }) => {
           <hr />
           <div className="footer-content">
             <div className="footer-copyright">
-              © {new Date().getFullYear()}, Built with{" "}
+              © {new Date().getFullYear()}, {chrome.footerBuiltWith}{" "}
               <a
                 href="https://www.gatsbyjs.com"
                 target="_blank"
@@ -104,7 +118,7 @@ const Layout = ({ location, title, children }) => {
                 href="/rss.xml"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="RSS Feed"
+                aria-label={chrome.rssFeed}
               >
                 RSS
               </a>

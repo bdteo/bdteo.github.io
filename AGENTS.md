@@ -92,6 +92,14 @@ If you need to estimate cost before a big batch, **ask Boris for the dashboard s
 - If object storage is configured, use `BLOG_AUDIO_RCLONE_TARGET` and `BLOG_AUDIO_PUBLIC_BASE_URL`; otherwise `audioUrl` stays local under `/audio/articles/...`.
 - Sample voices before committing: `pnpm voice:sample alistair,george,ak --text="..."` or `pnpm voice:sample --list`.
 
+## Multilingual Blog Workflow
+
+- English URLs stay canonical and unchanged. Translations live beside each source article as `index.bg.md`, `index.fr.md`, or `index.de.md`, with routes under `/bg/`, `/fr/`, and `/de/`.
+- `documentation/blog-translations.md` is the source of truth for translation frontmatter, source hashes, tone rules, SEO checks, and the "no translated audio yet" rule.
+- Validate translation work with `pnpm i18n:check`. Use `pnpm i18n:check -- --hash <slug>` when updating a translation's `translationSourceHash`.
+- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-bg`, `bdteo-translate-fr`, and `bdteo-translate-de`. They stop for review and must not commit, push, deploy, or generate audio.
+- SEO is part of done: verify canonical URLs, `hreflang` alternates, `x-default`, `<html lang>`, Open Graph locale, sitemap links, and `inLanguage` structured data before shipping multilingual changes.
+
 ## Giscus Comments
 
 - Component: `src/components/GiscusComments.js` (used in `src/templates/blog-post.js`)

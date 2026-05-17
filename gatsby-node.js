@@ -6,10 +6,46 @@
 
 const path = require(`path`)
 const fs = require(`fs`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const {
+  DEFAULT_LANGUAGE,
+  LANGUAGES,
+  buildIndexPath,
+  buildLocalizedPath,
+  getLanguageCodes,
+} = require(`./i18n.config`)
 
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
+const blogIndex = path.resolve(`./src/templates/blog-index.js`)
+
+const articlePathPattern = /^(.+)\/index(?:\.([a-z]{2}))?\.md$/
+
+const parseArticlePath = relativePath => {
+  const match = relativePath.match(articlePathPattern)
+
+  if (!match) {
+    return null
+  }
+
+  const sourceSlug = match[1]
+  const lang = match[2] || DEFAULT_LANGUAGE
+
+  if (!LANGUAGES[lang]) {
+    return null
+  }
+
+  return {
+    lang,
+    sourceSlug,
+    localizedPath: buildLocalizedPath(sourceSlug, lang),
+  }
+}
+
+const getAlternatePaths = posts =>
+  posts.reduce((alternates, post) => {
+    alternates[post.fields.lang] = post.fields.localizedPath
+    return alternates
+  }, {})
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -24,7 +60,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           id
           fields {
-            slug
+            lang
+            sourceSlug
+            localizedPath
+          }
+          frontmatter {
+            date
           }
         }
       }
@@ -40,31 +81,69 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const posts = result.data.allMarkdownRemark.nodes
+  const postsByLanguage = getLanguageCodes().reduce((groups, lang) => {
+    groups[lang] = posts.filter(post => post.fields.lang === lang)
+    return groups
+  }, {})
+  const postsBySourceSlug = posts.reduce((groups, post) => {
+    const sourceSlug = post.fields.sourceSlug
+    groups[sourceSlug] = groups[sourceSlug] || []
+    groups[sourceSlug].push(post)
+    return groups
+  }, {})
+  const activeLanguages = getLanguageCodes().filter(
+    lang => lang === DEFAULT_LANGUAGE || postsByLanguage[lang].length > 0,
+  )
+  const indexAlternatePaths = activeLanguages.reduce((alternates, lang) => {
+    alternates[lang] = buildIndexPath(lang)
+    return alternates
+  }, {})
 
   // Create blog posts pages
   if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+    getLanguageCodes().forEach(lang => {
+      const languagePosts = postsByLanguage[lang]
 
-      createPage({
-        path: post.fields.slug,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
+      languagePosts.forEach((post, index) => {
+        const previousPostId = index === 0 ? null : languagePosts[index - 1].id
+        const nextPostId =
+          index === languagePosts.length - 1
+            ? null
+            : languagePosts[index + 1].id
+        const sourceGroup = postsBySourceSlug[post.fields.sourceSlug] || [post]
+        const alternatePaths = getAlternatePaths(sourceGroup)
+
+        createPage({
+          path: post.fields.localizedPath,
+          component: blogPost,
+          context: {
+            id: post.id,
+            lang,
+            sourceSlug: post.fields.sourceSlug,
+            previousPostId,
+            nextPostId,
+            alternatePaths,
+            xDefaultPath:
+              alternatePaths[DEFAULT_LANGUAGE] || post.fields.localizedPath,
+            activeLanguages,
+          },
+        })
       })
     })
   }
 
-  // Create single homepage with all posts (infinite scroll, no pagination)
-  const indexTemplate = path.resolve(`./src/templates/blog-index.js`)
-  createPage({
-    path: `/`,
-    component: indexTemplate,
-    context: {},
+  // Create one index page per language that has public content.
+  activeLanguages.forEach(lang => {
+    createPage({
+      path: buildIndexPath(lang),
+      component: blogIndex,
+      context: {
+        lang,
+        alternatePaths: indexAlternatePaths,
+        xDefaultPath: buildIndexPath(DEFAULT_LANGUAGE),
+        activeLanguages,
+      },
+    })
   })
 }
 
@@ -75,12 +154,32 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    const fileNode = getNode(node.parent)
+    const articlePath = parseArticlePath(fileNode.relativePath)
+
+    if (!articlePath) {
+      return
+    }
 
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value: articlePath.localizedPath,
+    })
+    createNodeField({
+      name: `localizedPath`,
+      node,
+      value: articlePath.localizedPath,
+    })
+    createNodeField({
+      name: `sourceSlug`,
+      node,
+      value: articlePath.sourceSlug,
+    })
+    createNodeField({
+      name: `lang`,
+      node,
+      value: articlePath.lang,
     })
   }
 }
@@ -148,6 +247,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String
       date: Date @dateformat
       featuredImage: File @fileByRelativePath
+      lang: String
+      translationOf: String
+      translationUpdatedAt: Date @dateformat
+      translationSourceHash: String
       audioUrl: String
       audioDuration: String
       audioVoice: String
@@ -157,6 +260,9 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type Fields {
       slug: String
+      localizedPath: String
+      sourceSlug: String
+      lang: String
     }
   `)
 }
