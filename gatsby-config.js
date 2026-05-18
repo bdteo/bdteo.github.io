@@ -24,7 +24,9 @@ const getPublishedLanguageCodes = () => {
     .forEach(entry => {
       const articleDir = path.join(blogDir, entry.name)
       fs.readdirSync(articleDir).forEach(fileName => {
-        const match = fileName.match(/^index\.([a-z]{2})\.md$/)
+        const match = fileName.match(
+          /^index\.([a-z]{2}(?:-[A-Za-z0-9]+)?)\.md$/,
+        )
         if (match && getLanguageCodes().includes(match[1])) {
           published.add(match[1])
         }

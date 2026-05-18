@@ -18,7 +18,8 @@ const {
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
 const blogIndex = path.resolve(`./src/templates/blog-index.js`)
 
-const articlePathPattern = /^(.+)\/index(?:\.([a-z]{2}))?\.md$/
+const articlePathPattern =
+  /^(.+)\/index(?:\.([a-z]{2}(?:-[A-Za-z0-9]+)?))?\.md$/
 
 const parseArticlePath = relativePath => {
   const match = relativePath.match(articlePathPattern)

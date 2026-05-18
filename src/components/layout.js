@@ -6,7 +6,12 @@ import { BThemeToggler } from "./BThemeToggler"
 import LanguageSwitcher from "./LanguageSwitcher"
 import Logo from "../images/bd-icon.svg"
 import useScrollDirection from "../hooks/useScrollDirection"
-import { DEFAULT_LANGUAGE, buildIndexPath, getChrome } from "../../i18n.config"
+import {
+  DEFAULT_LANGUAGE,
+  buildIndexPath,
+  buildLocalizedPath,
+  getChrome,
+} from "../../i18n.config"
 
 const Layout = ({
   title,
@@ -18,7 +23,7 @@ const Layout = ({
   const { scrollDirection, isAtTop } = useScrollDirection()
   const chrome = getChrome(lang)
   const homePath = buildIndexPath(lang)
-  const aboutPath = lang === DEFAULT_LANGUAGE ? "/about/" : `/${lang}/about/`
+  const aboutPath = buildLocalizedPath("about", lang)
 
   return (
     <>

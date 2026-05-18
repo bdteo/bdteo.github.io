@@ -15,7 +15,7 @@ const {
 
 const rootDir = path.resolve(__dirname, "..")
 const blogDir = path.join(rootDir, "content", "blog")
-const articleFilePattern = /^index(?:\.([a-z]{2}))?\.md$/
+const articleFilePattern = /^index(?:\.([a-z]{2}(?:-[A-Za-z0-9]+)?))?\.md$/
 const audioFields = [
   "audioUrl",
   "audioDuration",

@@ -9,11 +9,13 @@ This is the source of truth for bdteo.com article translations. Translation skil
   - Bulgarian: `content/blog/<slug>/index.bg.md`
   - French: `content/blog/<slug>/index.fr.md`
   - German: `content/blog/<slug>/index.de.md`
+  - Simplified Chinese: `content/blog/<slug>/index.zh-Hans.md`
 - Routes are generated from the file name:
   - English: `/<slug>/`
   - Bulgarian: `/bg/<slug>/`
   - French: `/fr/<slug>/`
   - German: `/de/<slug>/`
+  - Simplified Chinese: `/zh/<slug>/`
 
 ## Translation Frontmatter
 
@@ -31,6 +33,8 @@ featuredImage: "<same value as English source>"
 imageCaption: "Translated image caption"
 ```
 
+For Simplified Chinese, use `lang: "zh-Hans"` in frontmatter. The public route prefix is `/zh/`, while SEO metadata uses `hreflang="zh-Hans"`.
+
 Do not add `audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, or `audioTextSource` to translated pages until translated audio is deliberately produced. The article UI may fall back to the English source audio when a translated page has no localized audio yet; keep that fallback in code, not in translated frontmatter.
 
 ## Translation Rules
@@ -41,6 +45,7 @@ Do not add `audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, or `au
 - Do not localize code, package names, class names, commands, env vars, URLs, or quoted API strings.
 - Keep internal links valid. If a translated target exists, point to the language-prefixed route; otherwise keep the English URL.
 - Keep images co-located with the English source and reuse the same relative `featuredImage` path.
+- For Simplified Chinese, translate into natural mainland-facing Simplified Chinese. Prefer idiomatic restructuring over English word order when needed, but keep Boris's quiet directness and dry edges intact.
 
 ## Review and Validation
 

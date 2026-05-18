@@ -24,7 +24,7 @@ The deploy workflow checks out `origin/main` at trigger time. Order matters when
 1. **Generate build artifacts first** (audio files, images, etc.) — never trigger a deploy expecting an artifact you haven't committed yet.
 2. **Commit + push BEFORE triggering deploy.** Uncommitted local work is invisible to the workflow; the artifact must already be on `origin/main`.
 3. **One deploy per coherent state.** If iteration is mid-flight, hold the deploy. Don't fire one for "what's already pushed" when related work is still uncommitted — you'll end up with two deploys, both consuming the build queue, racing for whatever lands on `origin/main` last.
-4. **If you trigger two deploys close together**, cancel the older one with `gh run cancel <id> -R bdteo/bdteo.github.io` *quickly* — `gh run cancel` is rejected once status is `completed`, and the workflow build step is fast. The race is harmless only when each intermediate `origin/main` snapshot is internally consistent (frontmatter and the file it points to ship together).
+4. **If you trigger two deploys close together**, cancel the older one with `gh run cancel <id> -R bdteo/bdteo.github.io` _quickly_ — `gh run cancel` is rejected once status is `completed`, and the workflow build step is fast. The race is harmless only when each intermediate `origin/main` snapshot is internally consistent (frontmatter and the file it points to ship together).
 
 ## Article Audio / TTS Workflows
 
@@ -57,10 +57,10 @@ If you need to estimate cost before a big batch, **ask Boris for the dashboard s
 
 ## Multilingual Blog Workflow
 
-- English URLs stay canonical and unchanged. Translations live beside each source article as `index.bg.md`, `index.fr.md`, or `index.de.md`, with routes under `/bg/`, `/fr/`, and `/de/`.
+- English URLs stay canonical and unchanged. Translations live beside each source article as `index.bg.md`, `index.fr.md`, `index.de.md`, or `index.zh-Hans.md`, with routes under `/bg/`, `/fr/`, `/de/`, and `/zh/`.
 - `documentation/blog-translations.md` is the source of truth for translation frontmatter, source hashes, tone rules, SEO checks, and the "no translated audio yet" rule.
 - Validate translation work with `pnpm i18n:check`. Use `pnpm i18n:check -- --hash <slug>` when updating a translation's `translationSourceHash`.
-- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-bg`, `bdteo-translate-fr`, and `bdteo-translate-de`. They stop for review and must not commit, push, deploy, or generate audio.
+- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-bg`, `bdteo-translate-fr`, `bdteo-translate-de`, and `bdteo-translate-zh-hans`. They stop for review and must not commit, push, deploy, or generate audio.
 - SEO is part of done: verify canonical URLs, `hreflang` alternates, `x-default`, `<html lang>`, Open Graph locale, sitemap links, and `inLanguage` structured data before shipping multilingual changes.
 
 ## Code Style Guidelines

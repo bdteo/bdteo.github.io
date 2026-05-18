@@ -1,5 +1,5 @@
 const DEFAULT_LANGUAGE = "en"
-const LANGUAGE_ORDER = ["en", "bg", "fr", "de"]
+const LANGUAGE_ORDER = ["en", "bg", "fr", "de", "zh-Hans"]
 
 const LANGUAGES = {
   en: {
@@ -48,6 +48,18 @@ const LANGUAGES = {
     schemaLanguage: "de",
     dateLocale: "de-DE",
     giscusLang: "de",
+    showWhenEmpty: false,
+  },
+  "zh-Hans": {
+    code: "zh-Hans",
+    label: "简体中文",
+    shortLabel: "ZH",
+    pathPrefix: "/zh",
+    hreflang: "zh-Hans",
+    ogLocale: "zh_CN",
+    schemaLanguage: "zh-Hans",
+    dateLocale: "zh-CN",
+    giscusLang: "zh-CN",
     showWhenEmpty: false,
   },
 }
@@ -188,6 +200,40 @@ const CHROME = {
       fallbackTitle: "Auf Englisch anhören",
       progress: "Fortschritt der Audiofassung",
       error: "Das Audio konnte von dieser Seite nicht geladen werden.",
+    },
+  },
+  "zh-Hans": {
+    skipToContent: "跳到主要内容",
+    navHome: "首页",
+    navAbout: "关于",
+    recentPosts: "最新文章",
+    morePosts: "更多文章",
+    siteDescription:
+      "关于工程、语言，以及每一次诚实追问边缘浮现之物的安静随笔。写得很慢，来自索菲亚。",
+    noPosts: "这个语言还没有发布文章。",
+    breadcrumbHome: "首页",
+    comments: "评论",
+    footerBuiltWith: "构建于",
+    rssFeed: "RSS 订阅",
+    languageSwitcherLabel: "切换语言",
+    languageSwitcherTitle: "语言",
+    currentLanguage: "当前语言",
+    articleLanguageLabel: "阅读本文：",
+    languageHomeSuffix: "首页",
+    bioKicker: "作者",
+    bioName: "你好，我是 Boris",
+    bioSummary:
+      "我不是作家，也不是哲学家。我只是一个来自保加利亚的后端工程师，靠在 Laravel 队列和上亿行索引之间讨生活。其余时间，我读一些本不该我读的医学资料，读一些半懂不懂的法国小说，也读我的小橡皮脑袋想咀嚼的别的东西。两只被救助的流浪狗让我保持诚实。",
+    articleAudio: {
+      label: "音频朗读：",
+      fallbackLabel: "英文朗读：",
+      speedLegend: "播放速度",
+      play: "播放朗读",
+      pause: "暂停朗读",
+      title: "收听文章",
+      fallbackTitle: "收听英文朗读",
+      progress: "朗读进度",
+      error: "无法从此页面加载音频。",
     },
   },
 }

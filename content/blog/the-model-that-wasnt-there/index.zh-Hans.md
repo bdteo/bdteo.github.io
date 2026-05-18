@@ -1,0 +1,121 @@
+---
+slug: the-model-that-wasnt-there
+lang: "zh-Hans"
+translationOf: "the-model-that-wasnt-there"
+translationUpdatedAt: "2026-05-18"
+translationSourceHash: "302e3501ec007351"
+title: "那个并不存在的模型"
+description: "Google 横扫所有基准榜。YouTube 视频、会议、研讨会。世界上最好的图像生成模型。然后我试着真正使用它。"
+meta_description: "Google 的 Gemini 图像生成如何登顶每个排行榜，却被硬性限制在每分钟 2 个请求；以及这件事如何暴露自回归图像生成的经济账。"
+keywords: ["gemini", "google", "图像生成", "vertex ai", "速率限制", "AI 经济账", "自回归", "生产环境", "api"]
+author: Bobby (Boris Deyanov Teoharov)
+reading_time: "4 分钟"
+date: "2026-03-14"
+jsonld: |
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "那个并不存在的模型",
+    "description": "Google 的 Gemini 图像生成如何登顶每个排行榜，却被硬性限制在每分钟 2 个请求；以及这件事如何暴露自回归图像生成的经济账。",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Boris Deyanov Teoharov"
+      }
+    ],
+    "datePublished": "2026-03-14",
+    "image": "https://bdteo.com/images/the-model-that-wasnt-there.jpg",
+    "keywords": "gemini, google, 图像生成, vertex ai, 速率限制, AI 经济账, 自回归",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Boris's Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bdteo.com/static/images/logo.png"
+      }
+    }
+  }
+featuredImage: "./images/featured.jpg"
+imageCaption: "红绒绳后面亮着灯的展台：承诺被陈列出来，却不是给人触碰的。"
+---
+
+我们当时用 Gemini 3 Pro 生成广告图片。它在 Artificial Analysis 排行榜上排第 #4。质量确实令人印象深刻：提示词遵循度更好，排版更好，创意输出比我们试过的任何东西都好。Google 到处都在讲它。YouTube 视频。会议。研讨会。博客文章。“世界上最好的图像生成模型。”
+
+我信了。图片确实好。
+
+---
+
+然后有个用户报告说，克隆一条广告要花四分钟。我查了。生成本身不到三十秒就完成。剩下那三分半钟呢？任务一直在撞墙重试。
+
+429. Resource Exhausted.
+
+---
+
+Google 给 Gemini 图像生成加了硬上限：每分钟两个请求。按项目。全局。
+
+两个。不是两百。不是二十。两个。
+
+前一天我们生成了 900 张图，一点问题没有。他们那边有什么东西变了。没有通知，没有邮件，没有更新日志条目。只是突然多了一个新天花板，低到两个用户同时点击就能撞上。
+
+---
+
+我们的 DevOps 提交了配额提升申请。30 RPM。对一个生产 SaaS 来说很合理。Google 的回复是：
+
+> "This gemini model is not available for quota increase."
+
+他们建议我们切到 Imagen 4。我查了一下。
+
+Imagen 4 Ultra - 排名 #10。Imagen 4 Standard - #42。Imagen 4 Fast - #60。
+
+我们用的是 #4。Google 的建议，是在他们自己的排行榜上往下退六到五十六名不等。
+
+---
+
+我把能想到的都试了。
+
+切到 Gemini 3.1 Flash：排名 #2，成本减半，比我们现有的还好。部署到 staging。然后我查了配额。同样的 2 RPM 上限。它不是按模型算的。它是按项目、按基础模型家族算的。所有 Gemini 图像模型共用同一个配额池。
+
+多区域分发：配额按区域计算，所以把请求分散到五个区域，可以得到 10 RPM。只不过 Gemini 3.x 图像模型只能走 global endpoint。没有 regional endpoints。global endpoint 上的 2 RPM，是唯一存在的配额池。
+
+多个 GCP 项目：每个项目都有自己的 2 RPM。技术上可行。从架构上看，这就是绝望的样子。
+
+---
+
+我开始研究其他开发者遇到了什么。同一个故事到处都是。未记录的 2 RPM 限制。论坛帖子没有 Google 回复。配额提升明明批准了，每次调用仍然返回 429。我们每月 $30K 的 GCP 支出？没用。标准 PayGo 层明确把图像生成模型排除在吞吐量收益之外。
+
+Google 不会提高这个限制。
+
+---
+
+接下来才是有意思的问题：为什么不？
+
+Gemini 通过同一个处理文本的自回归 transformer 来生成图片。它不是扩散模型。它是完整的 LLM，一边推理一边逐像素走完整张图。每张图烧掉的计算量，相当于几十次文本 API 调用。
+
+按每张 $0.067 的价格，Google 几乎肯定每生成一张就亏一张。2 RPM 上限不是他们忘了调整的配额。它是一次有意计算过的节流，因为经济账算不过来。
+
+Imagen 4 用的是经典 latent diffusion，运行成本低几个数量级。所以它能拿到 30-150 RPM，而 Google 正把所有人往它那里推。昂贵的模型拿到营销。便宜的模型拿到吞吐量。
+
+---
+
+想想这意味着什么。Google 做出了一个登顶所有基准榜的模型。他们在每场会议、每个 YouTube keynote、每篇开发者博客里营销它。“最先进。世界第一。” 开发者把它接进生产。用户开始依赖它。然后：每分钟两个请求，不能提升，用我们的差一点的模型吧。
+
+API 存在。Endpoint 能用。演示惊艳。
+
+但你不能真正使用它。
+
+---
+
+我们切到了 `gemini-2.5-flash-image`。旧模型。无聊的那个。没人为它做 YouTube 视频的那个。
+
+它有 40 RPM。它能用。
+
+---
+
+四个教训，压缩版：
+
+1. **营销不是产品。** 登顶排行榜不代表你能承载生产流量。基准测试衡量质量。速率限制衡量承诺。
+2. **自回归图像生成无法规模化。** 当生成一张图的成本相当于一百次文本查询时，没有商业模式能承受慷慨的速率限制。经济账就是破绽。
+3. **Preview 就是 preview。** Google 可以毫无通知地改限制、杀模型，或者把你导向更差的替代品。如果你的生产系统依赖 preview 模型，你的生产系统依赖的就是别人的营销日程。
+4. **无聊的模型能用。** 那个有 40 RPM、没有会议演讲的模型，会服务你的用户；那个世界级模型则坐在红绒绳后面，每分钟生成两张图。
+
+最吓人的供应商锁定，是从一个你无法抗拒的 demo 开始的。
