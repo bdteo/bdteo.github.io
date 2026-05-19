@@ -34,11 +34,16 @@ Default engine is ElevenLabs (voice `alistair`, model `eleven_v3`); Kokoro `sant
 
 - `documentation/article-audio.md` — user-facing workflow (commands, options, env vars, sampler)
 - `documentation/elevenlabs-prompting.md` — Eleven v3 audio-tag catalog, voice-settings recipe per content type (essay vs poem), punctuation cues, anti-patterns, and v3 quirks (notably: `previous_text`/`next_text` stitching is rejected on v3)
+- `documentation/bulgarian-article-audio-voices.md` — Bulgarian voice shortlist and the selected Carmelo default
 
-**Two skills, invocable via slash command:**
+**Audio and routing skills, invocable via slash command where mirrored:**
 
 - **`/bdteo-tts-prepare <slug>`** — reads `content/blog/<slug>/index.md` and (if present) `content/tts/<slug>.md`; produces a v3-tagged `content/tts/<slug>.md`. Preserves Boris's prose; layers tags using the catalog. Essays ≈ 1 tag per 2 paragraphs; poems get one opening tag per stanza. Stops for review — does NOT generate audio, does NOT commit.
-- **`/bdteo-publish-audio <slug>`** — ensures TTS is current (delegates to the prep skill), runs `pnpm article:audio <slug> --force`, plays via `afplay`, iterates on feedback, then commits + pushes + triggers deploy following the Deploy & Publish Ordering rules above.
+- **`/bdteo-publish-audio <slug>`** — ensures English TTS is current, runs `pnpm article:audio <slug> --force`, surfaces the generated file/blog URL for Boris to audition in the site UI, iterates on feedback, then commits + pushes + triggers deploy when asked.
+- **`/bdteo-publish-audio-bg <slug>`** — prepares/generates Bulgarian localized audio from `content/tts/<slug>.bg.md`, updates `index.bg.md`, writes under `static/audio/articles/<slug>/bg/`, and defaults to `carmelo-bg`.
+- **`/bdteo-skill-help`** — read-only router for choosing the right bdteo skill from the current article/session context.
+
+Do not autoplay full generated article audio. Use `afplay` only for short isolated pronunciation probes when Boris explicitly asks. Bulgarian TTS scripts may use phonetic transliteration for spoken software terms while the article prose keeps normal domain terms, for example `production` -> `пръдъкшън` in `content/tts/<slug>.bg.md` only.
 
 The generator (`scripts/generate-article-audio.js`) chunks ElevenLabs requests at 2,500 chars with concurrency 3 (conservative default; the empirical API cap is 5 concurrent requests as of May 2026), auto-sends `voice_settings`, packages `.m4a`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
 
@@ -58,9 +63,9 @@ If you need to estimate cost before a big batch, **ask Boris for the dashboard s
 ## Multilingual Blog Workflow
 
 - English URLs stay canonical and unchanged. Translations live beside each source article as `index.bg.md`, `index.fr.md`, `index.de.md`, or `index.zh-Hans.md`, with routes under `/bg/`, `/fr/`, `/de/`, and `/zh/`.
-- `documentation/blog-translations.md` is the source of truth for translation frontmatter, source hashes, tone rules, SEO checks, and the "no translated audio yet" rule.
+- `documentation/blog-translations.md` is the source of truth for translation frontmatter, source hashes, tone rules, SEO checks, and localized audio frontmatter.
 - Validate translation work with `pnpm i18n:check`. Use `pnpm i18n:check -- --hash <slug>` when updating a translation's `translationSourceHash`.
-- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-bg`, `bdteo-translate-fr`, `bdteo-translate-de`, and `bdteo-translate-zh-hans`. They stop for review and must not commit, push, deploy, or generate audio.
+- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-all`, `bdteo-translate-bg`, `bdteo-translate-fr`, `bdteo-translate-de`, and `bdteo-translate-zh-hans`. They stop for review and must not commit, push, deploy, or generate audio. They should preserve existing complete localized audio fields, but must not create new audio frontmatter.
 - SEO is part of done: verify canonical URLs, `hreflang` alternates, `x-default`, `<html lang>`, Open Graph locale, sitemap links, and `inLanguage` structured data before shipping multilingual changes.
 
 ## Code Style Guidelines

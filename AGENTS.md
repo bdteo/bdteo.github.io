@@ -49,8 +49,9 @@ Default engine is **ElevenLabs** (voice `alistair`, model `eleven_v3`); Kokoro `
 
 - `documentation/article-audio.md` — user-facing workflow (commands, options, env vars, sampler)
 - `documentation/elevenlabs-prompting.md` — Eleven v3 audio-tag catalog, voice-settings recipe per content type (essay vs poem), punctuation cues, anti-patterns, and v3 quirks (notably: `previous_text`/`next_text` stitching is rejected on v3)
+- `documentation/bulgarian-article-audio-voices.md` — Bulgarian voice shortlist and the selected Carmelo default
 
-**Two workflows.** Claude has these as slash commands (`/bdteo-tts-prepare`, `/bdteo-publish-audio`); Codex follows the same procedure linearly.
+**Core skills.** Claude has these as slash commands where mirrored; Codex uses the same shared skills from `/Users/boris/.agents/skills/`.
 
 ### Prepare the TTS script (`bdteo-tts-prepare`)
 
@@ -70,10 +71,20 @@ Once the TTS script is approved:
 
 1. `source ~/.ButtercupZsh/.Rc/env.zsh` to load `ELEVENLABS_API_KEY`.
 2. `pnpm article:audio <slug> --force` (or `make article-audio slug=<slug> args="--force"`). Override for poems: `ELEVENLABS_STABILITY=0.35 ELEVENLABS_STYLE=0.45 pnpm article:audio <slug> --force`.
-3. `afplay static/audio/articles/<slug>/<new>.m4a`.
+3. Do not autoplay full generated article audio. Surface the generated file and blog URL so Boris can audition it in the site UI. Use `afplay` only for short isolated pronunciation probes when he explicitly asks.
 4. Iterate with Boris if needed (each run produces a new hashed `.m4a`; keep takes around until he picks one).
 5. Once Boris approves, **two commits**: (a) generator changes if any, (b) the audio publication — `git rm` any tracked old `am_santa-*.m4a`, `rm` superseded local takes, `git add` the new audio + updated frontmatter + TTS script, commit, push.
 6. Trigger deploy: `gh workflow run deploy.yml -R bdteo/bdteo.github.io`. Follow the **Deploy & Publish Ordering** rules above (commit + push BEFORE triggering; one deploy per coherent state; cancel duplicates quickly).
+
+### Publish Bulgarian audio (`bdteo-publish-audio-bg`)
+
+Bulgarian localized audio uses `content/tts/<slug>.bg.md`, updates `content/blog/<slug>/index.bg.md`, writes under `static/audio/articles/<slug>/bg/`, and defaults to the `carmelo-bg` voice preset. The direct generator form is:
+
+```bash
+pnpm article:audio <slug> --lang=bg --voice=carmelo-bg --force
+```
+
+Bulgarian TTS scripts may use phonetic transliteration for spoken software terms while the article prose keeps normal domain terms. Example: article `production` can become `пръдъкшън` in `content/tts/<slug>.bg.md`. Treat these as TTS pronunciation hints only; do not write them back into translated article Markdown. Keep the detailed pronunciation map in the BG audio skill/docs.
 
 ### Cost & Pacing — Don't Guess
 
@@ -95,9 +106,10 @@ If you need to estimate cost before a big batch, **ask Boris for the dashboard s
 ## Multilingual Blog Workflow
 
 - English URLs stay canonical and unchanged. Translations live beside each source article as `index.bg.md`, `index.fr.md`, `index.de.md`, or `index.zh-Hans.md`, with routes under `/bg/`, `/fr/`, `/de/`, and `/zh/`.
-- `documentation/blog-translations.md` is the source of truth for translation frontmatter, source hashes, tone rules, SEO checks, and the "no translated audio yet" rule.
+- `documentation/blog-translations.md` is the source of truth for translation frontmatter, source hashes, tone rules, SEO checks, and localized audio frontmatter.
 - Validate translation work with `pnpm i18n:check`. Use `pnpm i18n:check -- --hash <slug>` when updating a translation's `translationSourceHash`.
-- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-bg`, `bdteo-translate-fr`, `bdteo-translate-de`, and `bdteo-translate-zh-hans`. They stop for review and must not commit, push, deploy, or generate audio.
+- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-all`, `bdteo-translate-bg`, `bdteo-translate-fr`, `bdteo-translate-de`, and `bdteo-translate-zh-hans`. They stop for review and must not commit, push, deploy, or generate audio. They should preserve existing complete localized audio fields, but must not create new audio frontmatter.
+- `bdteo-skill-help` is the read-only router for choosing the right bdteo skill from the current article/session context.
 - SEO is part of done: verify canonical URLs, `hreflang` alternates, `x-default`, `<html lang>`, Open Graph locale, sitemap links, and `inLanguage` structured data before shipping multilingual changes.
 
 ## Giscus Comments
