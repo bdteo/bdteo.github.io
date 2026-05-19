@@ -72,9 +72,9 @@ Non-article covers (e.g. the default OG image used as fallback when a page has
 no `featuredImage`) live here too, prefixed with `_`. They are wired in code
 rather than referenced from a markdown frontmatter.
 
-| Path                                                | Installed at        | Metaphor                                                       | Stock / camera (from prompt)        |
-| --------------------------------------------------- | ------------------- | -------------------------------------------------------------- | ----------------------------------- |
-| [\_landing-og](_landing-og.prompt.txt) (site OG)    | `/og/cover.jpg`     | interior view of an ajar wooden door, dawn spill on threshold  | Mamiya 7II 80 mm f/4, Portra 400    |
+| Path                                             | Installed at    | Metaphor                                                      | Stock / camera (from prompt)     |
+| ------------------------------------------------ | --------------- | ------------------------------------------------------------- | -------------------------------- |
+| [\_landing-og](_landing-og.prompt.txt) (site OG) | `/og/cover.jpg` | interior view of an ajar wooden door, dawn spill on threshold | Mamiya 7II 80 mm f/4, Portra 400 |
 
 ## Index — currently installed article covers
 
@@ -83,6 +83,7 @@ rather than referenced from a markdown frontmatter.
 | [the-acrostic](the-acrostic.prompt.txt)                                                                                                                 | ivory paper strips aligned by a red thread under amber darkroom light             | Nikon F3 35 mm f/2, Cinestill 800T                                     |
 | [the-pillar-and-the-ivy](the-pillar-and-the-ivy.prompt.txt)                                                                                             | weathered fieldstone gatepost with ivy in dawn mist                               | Hasselblad 500C/M 80 mm Planar, Portra 400                             |
 | [where-all-sciences-meet](where-all-sciences-meet.prompt.txt)                                                                                           | open notebook at dawn with blank right page glowing                               | Fujifilm X-T5 35 mm f/2 _(digital reference, film-grain aesthetic)_    |
+| [why-is-smoking-good-for-your-health](why-is-smoking-good-for-your-health.prompt.txt)                                                                   | weathered hands, water glass, and smoke in golden-hour kitchen light              | Hasselblad 500C/M 80 mm Planar, Portra 400                             |
 | [wash-one-more-plate-refactoring-philosophy](wash-one-more-plate-refactoring-philosophy.prompt.txt)                                                     | stack of five clean plates + one extra beside them (the "one more")               | Fujifilm X-T5 35 mm f/2                                                |
 | [the-queue-that-never-stopped](the-queue-that-never-stopped.prompt.txt)                                                                                 | modern polished-chrome faucet dripping, sink just overflowing                     | Mamiya 7II 80 mm f/4, Portra 400                                       |
 | [essential-guide-effective-pull-request-reviews](essential-guide-effective-pull-request-reviews.prompt.txt)                                             | typeset proof sheet marked up; two pencils, brass loupe, tea                      | Leica M6 50 mm Summilux f/1.4, Portra 400                              |
