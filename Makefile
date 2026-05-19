@@ -91,8 +91,8 @@ SAMPLE_TEXT ?= $(text)
 
 article-audio:
 	@if [ -z "$(AUDIO_SLUG)" ]; then \
-	  echo 'usage: make article-audio slug=<article-slug> [args="--force --voice=alistair"]'; \
-	  echo 'default voice: alistair (ElevenLabs). See `pnpm voice:sample --list` for presets.'; \
+	  echo 'usage: make article-audio slug=<article-slug> [args="--force --lang=bg --voice=carmelo-bg"]'; \
+	  echo 'default voice: alistair for English, carmelo-bg for Bulgarian. See `pnpm voice:sample --list` for presets.'; \
 	  exit 2; \
 	fi
 	pnpm article:audio "$(AUDIO_SLUG)" $(AUDIO_ARGS)

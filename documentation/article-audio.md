@@ -26,23 +26,38 @@ audioGeneratedAt: "2026-05-17"
 audioTextSource: "content/tts/<slug>.md"
 ```
 
+For translated article audio, pass `--lang=<code>`. For example Bulgarian audio
+reads `content/tts/<slug>.bg.md`, updates
+`content/blog/<slug>/index.bg.md`, and writes the file under
+`static/audio/articles/<slug>/bg/`:
+
+```bash
+make article-audio slug=<slug> args="--lang=bg --force"
+```
+
+`--lang=bg` defaults to the selected Bulgarian voice preset, `carmelo-bg`.
+
 ## Voice Presets
 
 Voices are resolved through `scripts/voice-presets.js`. `--voice=<name>` accepts
 either a preset name (auto-selects engine) or a raw Kokoro voice name / ElevenLabs
 voice ID.
 
-| Preset            | Engine     | Use it for                                          |
-|-------------------|------------|------------------------------------------------------|
+Bulgarian audition notes and the chosen Bulgarian default live in
+`documentation/bulgarian-article-audio-voices.md`.
+
+| Preset               | Engine     | Use it for                                        |
+| -------------------- | ---------- | ------------------------------------------------- |
 | `alistair` (default) | ElevenLabs | Older cultured British; poetry, reflective essays |
-| `george`          | ElevenLabs | Stock mature British, weighty                       |
-| `ak`              | ElevenLabs | Posh older British, smoking-jacket gravitas         |
-| `bartholomew`     | ElevenLabs | Warm wise audiobook narrator                        |
-| `gravel-midnight` | ElevenLabs | Raspy character voice for edged poems               |
-| `bill`            | ElevenLabs | American documentary narrator                       |
-| `brian`           | ElevenLabs | Deep American, trailer-voice                        |
-| `daniel`          | ElevenLabs | Authoritative British anchor                        |
-| `santa`           | Kokoro     | Local `am_santa` fallback, free                     |
+| `george`             | ElevenLabs | Stock mature British, weighty                     |
+| `ak`                 | ElevenLabs | Posh older British, smoking-jacket gravitas       |
+| `bartholomew`        | ElevenLabs | Warm wise audiobook narrator                      |
+| `gravel-midnight`    | ElevenLabs | Raspy character voice for edged poems             |
+| `bill`               | ElevenLabs | American documentary narrator                     |
+| `brian`              | ElevenLabs | Deep American, trailer-voice                      |
+| `daniel`             | ElevenLabs | Authoritative British anchor                      |
+| `carmelo-bg`         | ElevenLabs | Bulgarian default, mature and clear               |
+| `santa`              | Kokoro     | Local `am_santa` fallback, free                   |
 
 Sample a preset (or several) without touching any article:
 
@@ -59,13 +74,14 @@ Samples are saved to `$TMPDIR/voice-samples/` and played via `afplay` on macOS.
 ```bash
 make article-audio slug=<slug> args="--force"
 make article-audio slug=<slug> args="--voice=george"
+make article-audio slug=<slug> args="--lang=bg --voice=carmelo-bg"
 make article-audio slug=<slug> args="--voice=santa --speed=0.95"
 make article-audio slug=<slug> args="--model=eleven_multilingual_v2"
 ```
 
 Environment overrides: `BLOG_AUDIO_VOICE`, `ELEVENLABS_MODEL`,
-`ELEVENLABS_CONCURRENCY` (default 3, matches Creator-tier API cap),
-`KOKORO_URL`, `KOKORO_SPEED`.
+`BLOG_AUDIO_LANG`, `ELEVENLABS_CONCURRENCY` (default 3, conservative for the
+account cap), `KOKORO_URL`, `KOKORO_SPEED`.
 
 ## ElevenLabs Notes
 
@@ -74,9 +90,9 @@ Environment overrides: `BLOG_AUDIO_VOICE`, `ELEVENLABS_MODEL`,
   `[whispers]`, `[slowly]`. Plain text without tags works too.
 - Requires `ELEVENLABS_API_KEY` in env. Single-request body cap is ~5,000
   chars; the script auto-chunks at 2,500.
-- Concurrent request cap on Creator tier is 3. The script respects it
-  automatically; lower with `--concurrency=N` if you upgrade to a tier
-  with a different limit.
+- Default concurrency is 3. When multiple agents generate audio in parallel,
+  keep total in-flight ElevenLabs requests within the account cap; lower with
+  `--concurrency=N` for each agent.
 - Pause silence injection (`<!-- tts:paragraph-pauses=... -->`) is a
   Kokoro-only feature; ElevenLabs uses inline audio tags instead.
 

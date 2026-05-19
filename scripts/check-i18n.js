@@ -124,6 +124,64 @@ const imageExists = (sourceSlug, imagePath) => {
   return fs.existsSync(path.resolve(blogDir, sourceSlug, imagePath))
 }
 
+const localStaticPath = publicPath => {
+  const cleanPath = String(publicPath || "").split(/[?#]/)[0]
+
+  if (!cleanPath.startsWith("/")) {
+    return null
+  }
+
+  return path.join(rootDir, "static", cleanPath.replace(/^\/+/, ""))
+}
+
+const validateTranslatedAudio = ({
+  data,
+  filePath,
+  lang,
+  sourceSlug,
+  errors,
+}) => {
+  const presentAudioFields = audioFields.filter(field => data[field])
+
+  if (!presentAudioFields.length) {
+    return
+  }
+
+  audioFields
+    .filter(field => !data[field])
+    .forEach(field => {
+      errors.push(
+        `${filePath}: translated audio frontmatter is incomplete; missing ${field}`,
+      )
+    })
+
+  const expectedTextSource = `content/tts/${sourceSlug}.${lang}.md`
+  if (data.audioTextSource && data.audioTextSource !== expectedTextSource) {
+    errors.push(
+      `${filePath}: audioTextSource must be "${expectedTextSource}" for localized audio`,
+    )
+  }
+
+  if (
+    data.audioTextSource &&
+    !fs.existsSync(path.join(rootDir, data.audioTextSource))
+  ) {
+    errors.push(`${filePath}: audioTextSource file does not exist`)
+  }
+
+  const expectedAudioPath = `/audio/articles/${sourceSlug}/${lang}/`
+  if (data.audioUrl && !String(data.audioUrl).includes(expectedAudioPath)) {
+    errors.push(
+      `${filePath}: audioUrl must point under ${expectedAudioPath} for localized audio`,
+    )
+  }
+
+  const audioPath = localStaticPath(data.audioUrl)
+  if (audioPath && !fs.existsSync(audioPath)) {
+    errors.push(`${filePath}: audioUrl file does not exist at ${audioPath}`)
+  }
+}
+
 const printHash = slug => {
   const sourceFile = path.join(blogDir, slug, "index.md")
 
@@ -216,11 +274,7 @@ const main = () => {
       errors.push(`${filePath}: featuredImage does not exist`)
     }
 
-    audioFields.forEach(field => {
-      if (data[field]) {
-        errors.push(`${filePath}: translated pages must not define ${field}`)
-      }
-    })
+    validateTranslatedAudio({ data, filePath, lang, sourceSlug, errors })
 
     const expectedHash = sourceHash(source.article)
     if (data.translationSourceHash !== expectedHash) {

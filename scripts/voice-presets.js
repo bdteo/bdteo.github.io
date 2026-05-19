@@ -3,59 +3,78 @@ const VOICE_PRESETS = {
     engine: "elevenlabs",
     voiceId: "UzI1NsMEV3ni5JRkRSls",
     label: "Alistair (ElevenLabs cultured British)",
-    description: "Older, cultured British narrator. Literary, Shakespeare-actor cadence. Default for poetry and reflective essays.",
+    description:
+      "Older, cultured British narrator. Literary, Shakespeare-actor cadence. Default for poetry and reflective essays.",
   },
   george: {
     engine: "elevenlabs",
     voiceId: "JBFqnCBsd6RMkjVDRZzb",
     label: "George (ElevenLabs mature British)",
-    description: "Stock mature British narrator. Weighty, deliberate, news-anchor gravitas.",
+    description:
+      "Stock mature British narrator. Weighty, deliberate, news-anchor gravitas.",
   },
   ak: {
     engine: "elevenlabs",
     voiceId: "y0SYydk17lMbUIUvSf3N",
     label: "AK (ElevenLabs posh old man)",
-    description: "Posh British older man. Aged study, smoking-jacket gravitas. Even more weight than George.",
+    description:
+      "Posh British older man. Aged study, smoking-jacket gravitas. Even more weight than George.",
   },
   bartholomew: {
     engine: "elevenlabs",
     voiceId: "omWvcHeMcJkn0HBRjJYE",
     label: "Bartholomew (ElevenLabs wise narrator)",
-    description: "Warm wise narrator, hugely popular for long-form audiobooks. Rounder than George.",
+    description:
+      "Warm wise narrator, hugely popular for long-form audiobooks. Rounder than George.",
   },
   "gravel-midnight": {
     engine: "elevenlabs",
     voiceId: "M5E055lOUxMi0kJpGyE9",
     label: "Gravel Midnight (ElevenLabs raspy)",
-    description: "Raspy, gritty character voice. For poems with edge or weariness.",
+    description:
+      "Raspy, gritty character voice. For poems with edge or weariness.",
   },
   bill: {
     engine: "elevenlabs",
     voiceId: "pqHfZKP75CvOlQylNhV4",
     label: "Bill (ElevenLabs American narrator)",
-    description: "Stock older American documentary narrator. Warm gravitas, closest to am_santa's lane.",
+    description:
+      "Stock older American documentary narrator. Warm gravitas, closest to am_santa's lane.",
   },
   brian: {
     engine: "elevenlabs",
     voiceId: "nPczCjzI2devNBz1zQrb",
     label: "Brian (ElevenLabs deep narrator)",
-    description: "Stock deep American narrator. Gravelly bottom-end, trailer-voice energy.",
+    description:
+      "Stock deep American narrator. Gravelly bottom-end, trailer-voice energy.",
   },
   daniel: {
     engine: "elevenlabs",
     voiceId: "onwK4e9ZLuTAKqWW03F9",
     label: "Daniel (ElevenLabs British anchor)",
-    description: "Stock authoritative British, news-anchor polish. Clean, neutral.",
+    description:
+      "Stock authoritative British, news-anchor polish. Clean, neutral.",
+  },
+  "carmelo-bg": {
+    engine: "elevenlabs",
+    voiceId: "5egO01tkUjEzu7xSSE8M",
+    label: "Carmelo (ElevenLabs Bulgarian)",
+    description:
+      "Bulgarian article-audio default chosen by Boris on 2026-05-19. Mature, mysterious, clear, and high quality in Bulgarian.",
   },
   santa: {
     engine: "kokoro",
     kokoroVoice: "am_santa",
     label: "Santa (Kokoro am_santa)",
-    description: "Local Kokoro fallback. Free, runs at 127.0.0.1:8880. Used pre-ElevenLabs.",
+    description:
+      "Local Kokoro fallback. Free, runs at 127.0.0.1:8880. Used pre-ElevenLabs.",
   },
 }
 
 const DEFAULT_PRESET = "alistair"
+const DEFAULT_PRESET_BY_LANGUAGE = {
+  bg: "carmelo-bg",
+}
 
 const resolveVoice = nameOrId => {
   if (!nameOrId) {
@@ -98,6 +117,7 @@ const listPresets = () =>
 module.exports = {
   VOICE_PRESETS,
   DEFAULT_PRESET,
+  DEFAULT_PRESET_BY_LANGUAGE,
   resolveVoice,
   listPresets,
 }

@@ -35,7 +35,9 @@ imageCaption: "Translated image caption"
 
 For Simplified Chinese, use `lang: "zh-Hans"` in frontmatter. The public route prefix is `/zh/`, while SEO metadata uses `hreflang="zh-Hans"`.
 
-Do not add `audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, or `audioTextSource` to translated pages until translated audio is deliberately produced. The article UI may fall back to the English source audio when a translated page has no localized audio yet; keep that fallback in code, not in translated frontmatter.
+Do not add `audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, or `audioTextSource` to translated pages until translated audio is deliberately produced. Once localized audio is produced, include all five fields together. For Bulgarian, the generator reads `content/tts/<slug>.bg.md`, writes audio under `/audio/articles/<slug>/bg/`, and updates `index.bg.md`.
+
+The article UI may fall back to the English source audio when a translated page has no localized audio yet; keep that fallback in code, not in translated frontmatter.
 
 ## Translation Rules
 
@@ -54,5 +56,5 @@ Before handing back a translation:
 1. Run `pnpm i18n:check`.
 2. Confirm the language page route and the English route both build.
 3. Confirm the translated page has its own canonical URL and alternates, not a canonical link to English.
-4. Confirm translated pages have no audio frontmatter. If the English fallback player appears, its label must make the audio language clear.
+4. Confirm translated pages either have no audio frontmatter or have a complete localized audio set (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`). If the English fallback player appears, its label must make the audio language clear.
 5. Stop for Boris's review. Do not commit, push, deploy, or generate audio from a translation skill.

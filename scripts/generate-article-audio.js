@@ -7,7 +7,12 @@ const fsSync = require("node:fs")
 const os = require("node:os")
 const path = require("node:path")
 
-const { resolveVoice, DEFAULT_PRESET } = require("./voice-presets")
+const { DEFAULT_LANGUAGE, LANGUAGES } = require("../i18n.config")
+const {
+  resolveVoice,
+  DEFAULT_PRESET,
+  DEFAULT_PRESET_BY_LANGUAGE,
+} = require("./voice-presets")
 
 const rootDir = path.resolve(__dirname, "..")
 const defaultKokoroUrl = "http://127.0.0.1:8880"
@@ -24,13 +29,17 @@ const readOption = (name, fallback) => {
   return match ? match.slice(prefix.length) : fallback
 }
 
+const lang = readOption("lang", process.env.BLOG_AUDIO_LANG || DEFAULT_LANGUAGE)
+const defaultVoiceForLang = DEFAULT_PRESET_BY_LANGUAGE[lang] || DEFAULT_PRESET
 const voiceArg = readOption(
   "voice",
-  process.env.BLOG_AUDIO_VOICE || DEFAULT_PRESET,
+  process.env.BLOG_AUDIO_VOICE || defaultVoiceForLang,
 )
 const voice = resolveVoice(voiceArg)
 if (!voice) {
-  console.error(`article:audio: unknown voice "${voiceArg}". Run \`pnpm voice:sample --list\` to see presets.`)
+  console.error(
+    `article:audio: unknown voice "${voiceArg}". Run \`pnpm voice:sample --list\` to see presets.`,
+  )
   process.exit(1)
 }
 
@@ -80,16 +89,36 @@ const fail = message => {
 }
 
 if (!slug) {
-  fail("usage: pnpm article:audio <slug> [--force] [--voice=am_santa]")
+  fail(
+    "usage: pnpm article:audio <slug> [--force] [--lang=bg] [--voice=am_santa]",
+  )
+}
+
+if (!LANGUAGES[lang]) {
+  fail(
+    `unsupported language "${lang}". Supported: ${Object.keys(LANGUAGES).join(", ")}`,
+  )
 }
 
 if (!Number.isFinite(speed) || speed <= 0) {
   fail("--speed must be a positive number")
 }
 
-const articlePath = path.join(rootDir, "content", "blog", slug, "index.md")
-const spokenPath = path.join(rootDir, "content", "tts", `${slug}.md`)
-const audioDir = path.join(rootDir, "static", "audio", "articles", slug)
+const localizedSuffix = lang === DEFAULT_LANGUAGE ? "" : `.${lang}`
+const articlePath = path.join(
+  rootDir,
+  "content",
+  "blog",
+  slug,
+  `index${localizedSuffix}.md`,
+)
+const spokenFileName = `${slug}${localizedSuffix}.md`
+const spokenPath = path.join(rootDir, "content", "tts", spokenFileName)
+const audioRelativeDirSegments = ["audio", "articles", slug]
+if (lang !== DEFAULT_LANGUAGE) {
+  audioRelativeDirSegments.push(lang)
+}
+const audioDir = path.join(rootDir, "static", ...audioRelativeDirSegments)
 
 const run = (command, commandArgs, options = {}) =>
   new Promise((resolve, reject) => {
@@ -138,9 +167,7 @@ const readSpeechOptions = content => {
   const pauseMatch = content.match(
     /<!--\s*tts:paragraph-pauses(?:=(\d+(?:\.\d+)?))?\s*-->/i,
   )
-  const paragraphPauseSeconds = pauseMatch
-    ? Number(pauseMatch[1] || "0.55")
-    : 0
+  const paragraphPauseSeconds = pauseMatch ? Number(pauseMatch[1] || "0.55") : 0
 
   return {
     paragraphPauseSeconds: Number.isFinite(paragraphPauseSeconds)
@@ -308,7 +335,8 @@ const synthesizeElevenLabsChunk = async (
   }
   // eleven_v3 rejects stitching params; only v2 models accept them.
   const stitchingSupported = !elevenLabsModel.startsWith("eleven_v3")
-  if (stitchingSupported && previousText) requestBody.previous_text = previousText
+  if (stitchingSupported && previousText)
+    requestBody.previous_text = previousText
   if (stitchingSupported && nextText) requestBody.next_text = nextText
 
   for (let attempt = 0; attempt <= synthRetryDelays.length; attempt += 1) {
@@ -337,7 +365,9 @@ const synthesizeElevenLabsChunk = async (
           body.includes("concurrent_limit_exceeded")
 
         if (!isRetryable || attempt === synthRetryDelays.length) {
-          throw new Error(`ElevenLabs returned ${response.status}: ${body.slice(0, 400)}`)
+          throw new Error(
+            `ElevenLabs returned ${response.status}: ${body.slice(0, 400)}`,
+          )
         }
 
         await wait(synthRetryDelays[attempt])
@@ -478,6 +508,7 @@ const main = async () => {
   }
 
   const hashKey = [
+    lang,
     voice.engine,
     voice.engine === "elevenlabs" ? elevenLabsModel : "",
     voice.voiceId || voice.kokoroVoice || "",
@@ -485,9 +516,13 @@ const main = async () => {
     speechOptions.paragraphPauseSeconds,
     spokenText,
   ].join("\0")
-  const hash = crypto.createHash("sha256").update(hashKey).digest("hex").slice(0, 12)
+  const hash = crypto
+    .createHash("sha256")
+    .update(hashKey)
+    .digest("hex")
+    .slice(0, 12)
   const fileName = `${voiceFilenameTag}-${hash}.m4a`
-  const remoteKey = `audio/articles/${slug}/${fileName}`
+  const remoteKey = `${audioRelativeDirSegments.join("/")}/${fileName}`
   const outputPath = path.join(audioDir, fileName)
   const publicUrl = publicBaseUrl
     ? `${publicBaseUrl}/${remoteKey}`
@@ -513,21 +548,25 @@ const main = async () => {
 
     if (voice.engine === "elevenlabs") {
       const stitchWindow = 500
-      await runWithConcurrency(chunks, elevenLabsConcurrency, (chunk, index) => {
-        const previousText =
-          index > 0 ? chunks[index - 1].slice(-stitchWindow) : null
-        const nextText =
-          index < chunks.length - 1
-            ? chunks[index + 1].slice(0, stitchWindow)
-            : null
-        return synthesizeChunk(
-          chunk,
-          chunkFiles[index],
-          index + 1,
-          chunks.length,
-          { previousText, nextText },
-        )
-      })
+      await runWithConcurrency(
+        chunks,
+        elevenLabsConcurrency,
+        (chunk, index) => {
+          const previousText =
+            index > 0 ? chunks[index - 1].slice(-stitchWindow) : null
+          const nextText =
+            index < chunks.length - 1
+              ? chunks[index + 1].slice(0, stitchWindow)
+              : null
+          return synthesizeChunk(
+            chunk,
+            chunkFiles[index],
+            index + 1,
+            chunks.length,
+            { previousText, nextText },
+          )
+        },
+      )
     } else {
       for (let index = 0; index < chunks.length; index += 1) {
         await synthesizeChunk(
@@ -630,7 +669,7 @@ const main = async () => {
     audioDuration: duration,
     audioVoice: voice.label,
     audioGeneratedAt: new Date().toISOString().slice(0, 10),
-    audioTextSource: `content/tts/${slug}.md`,
+    audioTextSource: `content/tts/${spokenFileName}`,
   })
 
   process.stdout.write(`Audio ready: ${outputPath}\n`)
