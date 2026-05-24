@@ -17,6 +17,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `origin`: GitHub (`bdteo/bdteo.github.io`) — sole remote. Deploy workflow is `workflow_dispatch` only (not triggered by push).
 
+## Google Analytics
+
+- Active live blog property: `properties/439653136` (`Boris's Blog`), stream tag `G-7MSGWE21G5` in `gatsby-config.js` and on `https://bdteo.com`.
+- `properties/487002741` (`Bdteo.com`) uses stream tag `G-6NG94PS9WD`; despite the matching name/default URL, it is not the tag currently shipped by the site.
+
 ## Deploy & Publish Ordering
 
 The deploy workflow checks out `origin/main` at trigger time. Order matters when shipping multi-step work:
