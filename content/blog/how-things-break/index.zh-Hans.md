@@ -2,7 +2,7 @@
 lang: "zh-Hans"
 translationOf: "how-things-break"
 translationUpdatedAt: "2026-06-03"
-translationSourceHash: "4660350702d914c0"
+translationSourceHash: "10ab5b22e8e281e7"
 title: "事情是怎么坏掉的"
 date: "2026-06-03"
 description: "一个很小的生产发布故事，关于巧合、后台工作，以及现实给自己的 bug report 起名时那种荒唐的优雅。"
@@ -13,7 +13,6 @@ tags:
   - 事故
   - 工程
   - 故事
-status: draft
 ---
 
 有一种讽刺，像是被写出来的。
@@ -50,7 +49,18 @@ status: draft
 
 后来，故障恢复、系统重新健康之后，我数了一版更早的草稿。它有 1,199 个词。我查了这个数字，大多只是当作玩笑，然后互联网告诉我，1199 意味着 **“一个重大生命循环的结束，以及一条新路径的开始。”**
 
-配乐，自然是 [Lorn - Anvil](https://www.youtube.com/watch?v=I_ihVaAIWhY)。
+配乐，自然是 _Lorn - Anvil_。
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/I_ihVaAIWhY"
+  title="Lorn - Anvil"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
 
 荒唐。
 

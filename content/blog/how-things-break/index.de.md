@@ -2,7 +2,7 @@
 lang: "de"
 translationOf: "how-things-break"
 translationUpdatedAt: "2026-06-03"
-translationSourceHash: "4660350702d914c0"
+translationSourceHash: "10ab5b22e8e281e7"
 title: "Wie Dinge kaputtgehen"
 date: "2026-06-03"
 description: "Eine kleine Produktionsrelease-Geschichte über Zufall, Hintergrundarbeit und die lächerliche Eleganz, mit der die Wirklichkeit ihren eigenen Bugreport benennt."
@@ -13,7 +13,6 @@ tags:
   - vorfälle
   - engineering
   - geschichte
-status: draft
 ---
 
 Es gibt eine Art Ironie, die sich geschrieben anfühlt.
@@ -50,7 +49,18 @@ Ein Release ging wegen **How Things Break** kaputt.
 
 Später, nachdem der Incident wieder gesund war, zählte ich einen früheren Entwurf dieser Geschichte. Er hatte 1.199 Wörter. Ich suchte die Zahl, vor allem als Witz, und das Internet sagte mir, dass 1199 **"das Ende eines großen Lebenszyklus und den Beginn eines neuen Weges"** bedeutet.
 
-Der Soundtrack war, natürlich, [Lorn - Anvil](https://www.youtube.com/watch?v=I_ihVaAIWhY).
+Der Soundtrack war, natürlich, _Lorn - Anvil_.
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/I_ihVaAIWhY"
+  title="Lorn - Anvil"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
 
 Lächerlich.
 

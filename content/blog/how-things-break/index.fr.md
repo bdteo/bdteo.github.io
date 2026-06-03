@@ -2,7 +2,7 @@
 lang: "fr"
 translationOf: "how-things-break"
 translationUpdatedAt: "2026-06-03"
-translationSourceHash: "4660350702d914c0"
+translationSourceHash: "10ab5b22e8e281e7"
 title: "Comment les choses cassent"
 date: "2026-06-03"
 description: "Une petite histoire de mise en production à propos de coïncidence, de travail en arrière-plan, et de l'élégance ridicule avec laquelle la réalité nomme elle-même son rapport de bug."
@@ -13,7 +13,6 @@ tags:
   - incidents
   - ingénierie
   - récit
-status: draft
 ---
 
 Il existe une sorte d'ironie qui donne l'impression d'avoir été écrite.
@@ -50,7 +49,18 @@ Une release a cassé à cause de **How Things Break**.
 
 Plus tard, une fois l'incident résorbé, j'ai compté les mots d'un brouillon précédent de cette histoire. Il en avait 1 199. J'ai cherché le nombre, surtout pour rire, et internet m'a dit que 1199 signifie **« la fin d'un grand cycle de vie et le début d'un nouveau chemin »**.
 
-La bande-son, naturellement, était [Lorn - Anvil](https://www.youtube.com/watch?v=I_ihVaAIWhY).
+La bande-son, naturellement, était _Lorn - Anvil_.
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/I_ihVaAIWhY"
+  title="Lorn - Anvil"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
 
 Ridicule.
 

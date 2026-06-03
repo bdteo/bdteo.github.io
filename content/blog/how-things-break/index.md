@@ -9,7 +9,6 @@ tags:
   - incidents
   - engineering
   - story
-status: draft
 audioUrl: "/audio/articles/how-things-break/UzI1NsMEV3ni5JRkRSls-9f2201796dad.m4a"
 audioDuration: "2:56"
 audioVoice: "Alistair (ElevenLabs cultured British)"
@@ -51,7 +50,18 @@ A release broke because of **How Things Break**.
 
 Later, after the incident was healthy again, I counted an earlier draft of this story. It had 1,199 words. I searched the number, mostly as a joke, and the internet told me that 1199 means **"the end of a major life cycle and the beginning of a new path."**
 
-The soundtrack, naturally, was [Lorn - Anvil](https://www.youtube.com/watch?v=I_ihVaAIWhY).
+The soundtrack, naturally, was _Lorn - Anvil_.
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/I_ihVaAIWhY"
+  title="Lorn - Anvil"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
 
 Ridiculous.
 

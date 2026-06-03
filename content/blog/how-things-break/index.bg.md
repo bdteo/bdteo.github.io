@@ -2,7 +2,7 @@
 lang: "bg"
 translationOf: "how-things-break"
 translationUpdatedAt: "2026-06-03"
-translationSourceHash: "4660350702d914c0"
+translationSourceHash: "10ab5b22e8e281e7"
 title: "Как се чупят нещата"
 date: "2026-06-03"
 description: "Малка история от production release за съвпадение, фонова работа и нелепата елегантност, с която реалността сама кръщава собствения си bug report."
@@ -13,7 +13,6 @@ tags:
   - инциденти
   - инженерство
   - история
-status: draft
 audioUrl: "/audio/articles/how-things-break/bg/5egO01tkUjEzu7xSSE8M-badbef8020b0.m4a"
 audioDuration: "4:15"
 audioVoice: "Carmelo (ElevenLabs Bulgarian)"
@@ -55,7 +54,18 @@ audioTextSource: "content/tts/how-things-break.bg.md"
 
 По-късно, след като системата отново беше здрава, преброих една по-ранна чернова на тази история. Имаше 1199 думи. Потърсих числото, главно на шега, и интернет ми каза, че 1199 означава **„края на голям жизнен цикъл и началото на нов път.“**
 
-Саундтракът, естествено, беше [Lorn - Anvil](https://www.youtube.com/watch?v=I_ihVaAIWhY).
+Саундтракът, естествено, беше _Lorn - Anvil_.
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/I_ihVaAIWhY"
+  title="Lorn - Anvil"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
 
 Абсурдно.
 
