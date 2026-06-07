@@ -70,6 +70,10 @@ const elevenLabsVoiceSettings = {
     (process.env.ELEVENLABS_USE_SPEAKER_BOOST || "true").toLowerCase() !==
     "false",
 }
+const elevenLabsLanguageCode =
+  {
+    "zh-Hans": "zh",
+  }[lang] || lang
 const maxChunkLength = voice.engine === "elevenlabs" ? 2500 : 900
 const publicBaseUrl = (process.env.BLOG_AUDIO_PUBLIC_BASE_URL || "").replace(
   /\/$/,
@@ -90,7 +94,7 @@ const fail = message => {
 
 if (!slug) {
   fail(
-    "usage: pnpm article:audio <slug> [--force] [--lang=bg] [--voice=am_santa]",
+    "usage: pnpm article:audio <slug> [--force] [--lang=fr] [--voice=theodore-fr]",
   )
 }
 
@@ -331,6 +335,7 @@ const synthesizeElevenLabsChunk = async (
   const requestBody = {
     text,
     model_id: elevenLabsModel,
+    language_code: elevenLabsLanguageCode,
     voice_settings: elevenLabsVoiceSettings,
   }
   // eleven_v3 rejects stitching params; only v2 models accept them.

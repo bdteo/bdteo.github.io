@@ -62,6 +62,13 @@ const VOICE_PRESETS = {
     description:
       "Bulgarian article-audio default chosen by Boris on 2026-05-19. Mature, mysterious, clear, and high quality in Bulgarian.",
   },
+  "theodore-fr": {
+    engine: "elevenlabs",
+    voiceId: "hqfrgApggtO1785R4Fsn",
+    label: "Theodore (ElevenLabs French serene)",
+    description:
+      "French article-audio default chosen by Boris on 2026-06-07. Serene, grounded, calm male narration; close to Marishnou's mood without being female or whispery.",
+  },
   santa: {
     engine: "kokoro",
     kokoroVoice: "am_santa",
@@ -74,6 +81,7 @@ const VOICE_PRESETS = {
 const DEFAULT_PRESET = "alistair"
 const DEFAULT_PRESET_BY_LANGUAGE = {
   bg: "carmelo-bg",
+  fr: "theodore-fr",
 }
 
 const resolveVoice = nameOrId => {

@@ -5,6 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build & Development Commands
 
 - Development: `pnpm dev`
+- Pretty local URL: `http://bdteo.localhost/` via the shared host Caddy (`/opt/homebrew/etc/Caddyfile`) to Gatsby dev on `:8000`; keep `pnpm dev` running first.
 - Build: `pnpm build` (safe isolated build; does not touch the active dev server's `.cache`/`public`)
 - In-place build: `pnpm build:inplace` (destructive current-tree build for deploy worktrees only)
 - Format: `pnpm format`
@@ -40,15 +41,21 @@ Default engine is ElevenLabs (voice `alistair`, model `eleven_v3`); Kokoro `sant
 - `documentation/article-audio.md` — user-facing workflow (commands, options, env vars, sampler)
 - `documentation/elevenlabs-prompting.md` — Eleven v3 audio-tag catalog, voice-settings recipe per content type (essay vs poem), punctuation cues, anti-patterns, and v3 quirks (notably: `previous_text`/`next_text` stitching is rejected on v3)
 - `documentation/bulgarian-article-audio-voices.md` — Bulgarian voice shortlist and the selected Carmelo default
+- `documentation/french-article-audio-voices.md` — French voice shortlist and the selected Theodore default
 
 **Audio and routing skills, invocable via slash command where mirrored:**
 
-- **`/bdteo-tts-prepare <slug>`** — reads `content/blog/<slug>/index.md` and (if present) `content/tts/<slug>.md`; produces a v3-tagged `content/tts/<slug>.md`. Preserves Boris's prose; layers tags using the catalog. Essays ≈ 1 tag per 2 paragraphs; poems get one opening tag per stanza. Stops for review — does NOT generate audio, does NOT commit.
-- **`/bdteo-publish-audio <slug>`** — ensures English TTS is current, runs `pnpm article:audio <slug> --force`, surfaces the generated file/blog URL for Boris to audition in the site UI, iterates on feedback, then commits + pushes + triggers deploy when asked.
-- **`/bdteo-publish-audio-bg <slug>`** — prepares/generates Bulgarian localized audio from `content/tts/<slug>.bg.md`, updates `index.bg.md`, writes under `static/audio/articles/<slug>/bg/`, and defaults to `carmelo-bg`.
+- **`/bdteo-tts-prepare <slug>`** — generic TTS preparation for `content/tts/<slug>[.<lang>].md`; preserves Boris's prose, applies the language profile, and stops for review. Does NOT generate audio.
+- **`/bdteo-tts-prepare-all <slug>`** — prepares EN/BG/FR TTS scripts for one article and stops for review.
+- **`/bdteo-publish-audio <slug>`** — generic audio generation/audition/publication for English and profiled localized languages; defaults come from `scripts/voice-presets.js`.
+- **`/bdteo-audio-all <slug>`** — orchestrates EN/BG/FR TTS prep plus serial audio generation/wiring; preserves the review gate unless Boris explicitly asks for fast path/direct generation.
+- **`/bdteo-publish-audio-bg <slug>`** — thin Bulgarian shortcut over the generic publish skill: `lang=bg`, `carmelo-bg`, `static/audio/articles/<slug>/bg/`.
+- **`/bdteo-tts-prepare-fr <slug>`** — thin French TTS shortcut over the generic prepare skill: `lang=fr`, Theodore profile.
+- **`/bdteo-publish-audio-fr <slug>`** — thin French shortcut over the generic publish skill: `lang=fr`, `theodore-fr`, `static/audio/articles/<slug>/fr/`.
+- **`/bdteo-voice-audition`** — voice selection workflow: query/sample ElevenLabs voices, play numbered samples, record Boris's verdicts, and wire only the chosen default into docs/presets.
 - **`/bdteo-skill-help`** — read-only router for choosing the right bdteo skill from the current article/session context.
 
-Do not autoplay full generated article audio. Use `afplay` only for short isolated pronunciation probes when Boris explicitly asks. Bulgarian TTS scripts may use phonetic transliteration for spoken software terms while the article prose keeps normal domain terms, for example `production` -> `пръдъкшън` in `content/tts/<slug>.bg.md` only.
+Do not autoplay full generated article audio. Use `afplay` only for short isolated pronunciation probes when Boris explicitly asks. Bulgarian TTS scripts may use phonetic transliteration for spoken software terms while the article prose keeps normal domain terms, for example `production` -> `пръдъкшън` in `content/tts/<slug>.bg.md` only. French audio uses Theodore (`theodore-fr`), chosen on 2026-06-07; avoid whispering tags and echo-heavy cinematic alternatives.
 
 The generator (`scripts/generate-article-audio.js`) chunks ElevenLabs requests at 2,500 chars with concurrency 3 (conservative default; the empirical API cap is 5 concurrent requests as of May 2026), auto-sends `voice_settings`, packages `.m4a`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
 

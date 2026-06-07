@@ -26,11 +26,11 @@ Stability mapping:
 
 Suggested per content type:
 
-| Content | stability | style | Rationale |
-|---|---|---|---|
-| Essay (reflective, long) | 0.5 | 0.4 | Consistency over expressiveness across multi-chunk reads. |
-| Poem (slow, vulnerable) | 0.35 | 0.45 | Tags need to land hard; minor instability OK. |
-| Spoken-aloud announcement | 0.6 | 0.3 | Keep it boring on purpose. |
+| Content                   | stability | style | Rationale                                                 |
+| ------------------------- | --------- | ----- | --------------------------------------------------------- |
+| Essay (reflective, long)  | 0.5       | 0.4   | Consistency over expressiveness across multi-chunk reads. |
+| Poem (slow, vulnerable)   | 0.35      | 0.45  | Tags need to land hard; minor instability OK.             |
+| Spoken-aloud announcement | 0.6       | 0.3   | Keep it boring on purpose.                                |
 
 ## Punctuation Cues
 
@@ -71,20 +71,23 @@ Always preserve Boris's authorial voice. Tags layer onto his prose; do not rewor
 
 Source of truth: `scripts/voice-presets.js`. Default voice is `alistair`. Available:
 
-| Preset | Engine | Use for |
-|---|---|---|
-| `alistair` (default) | ElevenLabs | Cultured older British. Poetry and reflective essays. |
-| `george` | ElevenLabs | Stock mature British, weighty. |
-| `ak` | ElevenLabs | Posh older British, smoking-jacket gravitas. |
-| `bartholomew` | ElevenLabs | Warm wise audiobook narrator. |
-| `gravel-midnight` | ElevenLabs | Raspy character voice for edged poems. |
-| `bill` / `brian` / `daniel` | ElevenLabs | Stock ElevenLabs narrators. |
-| `santa` | Kokoro | Local `am_santa` fallback, free. |
+| Preset                      | Engine     | Use for                                                         |
+| --------------------------- | ---------- | --------------------------------------------------------------- |
+| `alistair` (default)        | ElevenLabs | Cultured older British. Poetry and reflective essays.           |
+| `george`                    | ElevenLabs | Stock mature British, weighty.                                  |
+| `ak`                        | ElevenLabs | Posh older British, smoking-jacket gravitas.                    |
+| `bartholomew`               | ElevenLabs | Warm wise audiobook narrator.                                   |
+| `gravel-midnight`           | ElevenLabs | Raspy character voice for edged poems.                          |
+| `bill` / `brian` / `daniel` | ElevenLabs | Stock ElevenLabs narrators.                                     |
+| `carmelo-bg`                | ElevenLabs | Bulgarian default chosen by Boris.                              |
+| `theodore-fr`               | ElevenLabs | French default chosen by Boris; serene grounded male narration. |
+| `santa`                     | Kokoro     | Local `am_santa` fallback, free.                                |
 
 Sample before committing:
 
 ```bash
 pnpm voice:sample alistair,george,ak --text="A representative line."
+pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."
 pnpm voice:sample --list
 ```
 

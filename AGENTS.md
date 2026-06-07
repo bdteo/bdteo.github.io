@@ -5,6 +5,7 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 ## Build & Development Commands
 
 - Development: `pnpm dev`
+- Pretty local URL: `http://bdteo.localhost/` via the shared host Caddy (`/opt/homebrew/etc/Caddyfile`) to Gatsby dev on `:8000`; keep `pnpm dev` running first.
 - Build: `pnpm build` (safe isolated build; does not touch the active dev server's `.cache`/`public`)
 - In-place build: `pnpm build:inplace` (destructive current-tree build for deploy worktrees only)
 - Format: `pnpm format`
@@ -55,31 +56,36 @@ Default engine is **ElevenLabs** (voice `alistair`, model `eleven_v3`); Kokoro `
 - `documentation/article-audio.md` — user-facing workflow (commands, options, env vars, sampler)
 - `documentation/elevenlabs-prompting.md` — Eleven v3 audio-tag catalog, voice-settings recipe per content type (essay vs poem), punctuation cues, anti-patterns, and v3 quirks (notably: `previous_text`/`next_text` stitching is rejected on v3)
 - `documentation/bulgarian-article-audio-voices.md` — Bulgarian voice shortlist and the selected Carmelo default
+- `documentation/french-article-audio-voices.md` — French voice shortlist and the selected Theodore default
 
 **Core skills.** Claude has these as slash commands where mirrored; Codex uses the same shared skills from `/Users/boris/.agents/skills/`.
 
-### Prepare the TTS script (`bdteo-tts-prepare`)
+### Prepare TTS scripts (`bdteo-tts-prepare`, `bdteo-tts-prepare-all`)
 
-For brand-new articles AND for modernizing Kokoro-era scripts. Given a slug:
+Generic script preparation for English and localized narration. Given a slug and optional language:
 
-1. Read `content/blog/<slug>/index.md` (canonical source) and `content/tts/<slug>.md` if it exists.
+1. Read `content/blog/<slug>/index[.<lang>].md` and `content/tts/<slug>[.<lang>].md` if it exists. Default `lang=en`; localized examples are `bg` and `fr`.
 2. Pick the rewrite scope:
    - **No TTS file** → draft from the article: strip markdown (headings, code blocks, links), spell out symbols (`$20` → "twenty dollars"), convert lists to flowing sentences, then layer tags.
    - **Kokoro-era TTS** → preserve the prose; layer v3 tags; strip the `<!-- tts:paragraph-pauses=... -->` comment and Kokoro pacing hacks (compound `…, `, stranded `-` → `—`).
    - **Already v3** → touch only what's broken or weak.
-3. Apply tags per `documentation/elevenlabs-prompting.md`. Essays ≈ 1 tag per 2 paragraphs; poems get one opening tag per stanza. Preserve Boris's authorial voice.
+3. Apply tags per `documentation/elevenlabs-prompting.md`. Essays ≈ 1 tag per 2 paragraphs; poems get one opening tag per stanza. Preserve Boris's authorial voice and load the language voice/profile doc when `lang != en`.
 4. Stop for Boris's review. Do **not** generate audio. Do **not** commit. Do **not** push.
 
-### Publish audio (`bdteo-publish-audio`)
+Use `bdteo-tts-prepare-all` when Boris wants English, Bulgarian, and French TTS scripts prepared together for one article. It writes only `content/tts/<slug>.md`, `.bg.md`, and `.fr.md` for languages whose article files exist, then stops for review.
 
-Once the TTS script is approved:
+### Publish audio (`bdteo-publish-audio`, `bdteo-audio-all`)
+
+Generic publication for English and localized narration. Once the TTS script is approved:
 
 1. `source ~/.ButtercupZsh/.Rc/env.zsh` to load `ELEVENLABS_API_KEY`.
-2. `pnpm article:audio <slug> --force` (or `make article-audio slug=<slug> args="--force"`). Override for poems: `ELEVENLABS_STABILITY=0.35 ELEVENLABS_STYLE=0.45 pnpm article:audio <slug> --force`.
+2. `pnpm article:audio <slug> --force` for English, `pnpm article:audio <slug> --lang=bg --force` for Bulgarian, or `pnpm article:audio <slug> --lang=fr --force` for French. The default voice comes from `scripts/voice-presets.js`; override only when Boris chose a different voice.
 3. Do not autoplay full generated article audio. Surface the generated file and blog URL so Boris can audition it in the site UI. Use `afplay` only for short isolated pronunciation probes when he explicitly asks.
 4. Iterate with Boris if needed (each run produces a new hashed `.m4a`; keep takes around until he picks one).
-5. Once Boris approves, **two commits**: (a) generator changes if any, (b) the audio publication — `git rm` any tracked old `am_santa-*.m4a`, `rm` superseded local takes, `git add` the new audio + updated frontmatter + TTS script, commit, push.
+5. Once Boris approves, commit the coherent audio publication: TTS script, localized article frontmatter, chosen `.m4a`, and generator/docs changes only if this run changed tooling.
 6. Trigger deploy: `gh workflow run deploy.yml -R bdteo/bdteo.github.io`. Follow the **Deploy & Publish Ordering** rules above (commit + push BEFORE triggering; one deploy per coherent state; cancel duplicates quickly).
+
+Use `bdteo-audio-all` when Boris wants English, Bulgarian, and French article audio generated and wired together. It serializes the per-language `pnpm article:audio` runs because each generator run already has internal ElevenLabs concurrency; it only skips the TTS review pause when Boris explicitly asks for the fast path/direct generation.
 
 ### Publish Bulgarian audio (`bdteo-publish-audio-bg`)
 
@@ -90,6 +96,16 @@ pnpm article:audio <slug> --lang=bg --voice=carmelo-bg --force
 ```
 
 Bulgarian TTS scripts may use phonetic transliteration for spoken software terms while the article prose keeps normal domain terms. Example: article `production` can become `пръдъкшън` in `content/tts/<slug>.bg.md`. Treat these as TTS pronunciation hints only; do not write them back into translated article Markdown. Keep the detailed pronunciation map in the BG audio skill/docs.
+
+### Publish French audio (`bdteo-tts-prepare-fr`, `bdteo-publish-audio-fr`)
+
+French localized audio uses `content/tts/<slug>.fr.md`, updates `content/blog/<slug>/index.fr.md`, writes under `static/audio/articles/<slug>/fr/`, and defaults to the `theodore-fr` voice preset. Prepare the script first and stop for Boris's review before generation. The direct generator form is:
+
+```bash
+pnpm article:audio <slug> --lang=fr --voice=theodore-fr --force
+```
+
+Theodore was selected on 2026-06-07 as the French default: serene, grounded male narration. Avoid whispering tags and echo-heavy cinematic voice alternatives; Boris rejected whispery French samples as irritating.
 
 ### Cost & Pacing — Don't Guess
 
@@ -103,10 +119,11 @@ If you need to estimate cost before a big batch, **ask Boris for the dashboard s
 ### Generator notes
 
 - `scripts/generate-article-audio.js` chunks ElevenLabs requests at 2,500 chars with concurrency 3 (conservative default; the empirical API cap is 5 concurrent requests as of May 2026), auto-sends `voice_settings`, packages `.m4a` via `ffmpeg`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
+- **Skill structure.** `bdteo-tts-prepare` and `bdteo-publish-audio` are the source-of-truth generic one-language workflows. `bdteo-tts-prepare-all` and `bdteo-audio-all` orchestrate EN/BG/FR batches. `bdteo-publish-audio-bg`, `bdteo-tts-prepare-fr`, and `bdteo-publish-audio-fr` are thin language shortcuts. `bdteo-voice-audition` handles future voice selection and updates voice docs/presets only after Boris chooses a winner.
 - **Parallel-agent cap.** When spawning background agents that each run their own audio generation, total in-flight ElevenLabs requests across all agents must not exceed the API cap (5). With per-agent `--concurrency=1`, that means **at most 5 parallel agents**. Spawning more causes the slowest chunks to exhaust the generator's 4 retries and fail with `concurrent_limit_exceeded`, leaving the TTS file modernized but no audio produced — requiring a serial retry afterward.
 - For Kokoro, do not mirror visual poem/prose line breaks in `content/tts/*.md` — group sentences into stanzas and use blank lines only for real movement breaks; newlines/short chunks cause cadence resets.
 - If object storage is configured, use `BLOG_AUDIO_RCLONE_TARGET` and `BLOG_AUDIO_PUBLIC_BASE_URL`; otherwise `audioUrl` stays local under `/audio/articles/...`.
-- Sample voices before committing: `pnpm voice:sample alistair,george,ak --text="..."` or `pnpm voice:sample --list`.
+- Sample voices before committing: `pnpm voice:sample alistair,george,ak --text="..."`, `pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."`, or `pnpm voice:sample --list`.
 
 ## Multilingual Blog Workflow
 

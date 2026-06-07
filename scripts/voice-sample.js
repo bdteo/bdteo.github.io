@@ -24,10 +24,13 @@ const wantsList = args.includes("--list")
 const noPlay = args.includes("--no-play")
 const text = readOption("text") || DEFAULT_TEXT
 const outDir = readOption("out") || path.join(os.tmpdir(), "voice-samples")
-const model =
-  readOption("model") ||
-  process.env.ELEVENLABS_MODEL ||
-  "eleven_v3"
+const lang = readOption("lang") || process.env.BLOG_AUDIO_LANG || null
+const elevenLabsLanguageCode = lang
+  ? {
+      "zh-Hans": "zh",
+    }[lang] || lang
+  : null
+const model = readOption("model") || process.env.ELEVENLABS_MODEL || "eleven_v3"
 
 const fail = message => {
   console.error(`voice:sample: ${message}`)
@@ -38,11 +41,14 @@ const printList = () => {
   console.log("Available voice presets:\n")
   listPresets().forEach(preset => {
     const engineTag = preset.engine === "elevenlabs" ? "11L" : "kkr"
-    console.log(`  [${engineTag}] ${preset.name.padEnd(18)} — ${preset.description}`)
+    console.log(
+      `  [${engineTag}] ${preset.name.padEnd(18)} — ${preset.description}`,
+    )
   })
   console.log("\nUsage:")
   console.log("  pnpm voice:sample alistair,george,ak")
   console.log('  pnpm voice:sample alistair --text="custom line here"')
+  console.log('  pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."')
   console.log("  pnpm voice:sample --list")
 }
 
@@ -51,7 +57,10 @@ if (wantsList || positional.length === 0) {
   process.exit(wantsList ? 0 : positional.length === 0 ? 0 : 1)
 }
 
-const names = positional[0].split(",").map(n => n.trim()).filter(Boolean)
+const names = positional[0]
+  .split(",")
+  .map(n => n.trim())
+  .filter(Boolean)
 const resolved = names.map(n => {
   const v = resolveVoice(n)
   if (!v) fail(`unknown voice: ${n} (run with --list to see presets)`)
@@ -73,13 +82,21 @@ const generateElevenLabs = async voice => {
         "xi-api-key": apiKey,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ text, model_id: model }),
+      body: JSON.stringify({
+        text,
+        model_id: model,
+        ...(elevenLabsLanguageCode
+          ? { language_code: elevenLabsLanguageCode }
+          : {}),
+      }),
     },
   )
 
   if (!response.ok) {
     const body = await response.text()
-    throw new Error(`ElevenLabs ${voice.name}: ${response.status} ${body.slice(0, 300)}`)
+    throw new Error(
+      `ElevenLabs ${voice.name}: ${response.status} ${body.slice(0, 300)}`,
+    )
   }
 
   await fs.writeFile(outFile, Buffer.from(await response.arrayBuffer()))
@@ -87,7 +104,10 @@ const generateElevenLabs = async voice => {
 }
 
 const generateKokoro = async voice => {
-  const url = (process.env.KOKORO_URL || "http://127.0.0.1:8880").replace(/\/$/, "")
+  const url = (process.env.KOKORO_URL || "http://127.0.0.1:8880").replace(
+    /\/$/,
+    "",
+  )
   const outFile = path.join(outDir, `${voice.name}.mp3`)
   const response = await fetch(`${url}/v1/audio/speech`, {
     method: "POST",
@@ -164,7 +184,11 @@ const main = async () => {
     if (task.error || !task.file) continue
     console.log(`▶ ${task.voice.name} — ${task.voice.label}`)
     if (process.platform === "darwin" && fsSync.existsSync("/usr/bin/say")) {
-      childProcess.spawnSync("say", ["-v", "Alex", task.voice.name.replace(/-/g, " ")], { stdio: "ignore" })
+      childProcess.spawnSync(
+        "say",
+        ["-v", "Alex", task.voice.name.replace(/-/g, " ")],
+        { stdio: "ignore" },
+      )
     }
     await play(task.file)
   }

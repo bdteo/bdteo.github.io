@@ -36,6 +36,8 @@ make article-audio slug=<slug> args="--lang=bg --force"
 ```
 
 `--lang=bg` defaults to the selected Bulgarian voice preset, `carmelo-bg`.
+French audio uses `content/tts/<slug>.fr.md`, updates `index.fr.md`, writes
+under `static/audio/articles/<slug>/fr/`, and defaults to `theodore-fr`.
 
 ## Voice Presets
 
@@ -44,7 +46,9 @@ either a preset name (auto-selects engine) or a raw Kokoro voice name / ElevenLa
 voice ID.
 
 Bulgarian audition notes and the chosen Bulgarian default live in
-`documentation/bulgarian-article-audio-voices.md`.
+`documentation/bulgarian-article-audio-voices.md`. French audition notes and
+the selected Theodore default live in
+`documentation/french-article-audio-voices.md`.
 
 | Preset               | Engine     | Use it for                                        |
 | -------------------- | ---------- | ------------------------------------------------- |
@@ -57,17 +61,29 @@ Bulgarian audition notes and the chosen Bulgarian default live in
 | `brian`              | ElevenLabs | Deep American, trailer-voice                      |
 | `daniel`             | ElevenLabs | Authoritative British anchor                      |
 | `carmelo-bg`         | ElevenLabs | Bulgarian default, mature and clear               |
+| `theodore-fr`        | ElevenLabs | French default, serene and grounded               |
 | `santa`              | Kokoro     | Local `am_santa` fallback, free                   |
 
 Sample a preset (or several) without touching any article:
 
 ```bash
 pnpm voice:sample alistair,george --text="A line to compare."
+pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."
 pnpm voice:sample --list
 make voice-sample voices=alistair,george
+make voice-sample voices=theodore-fr lang=fr text="Bonjour."
 ```
 
 Samples are saved to `$TMPDIR/voice-samples/` and played via `afplay` on macOS.
+
+## Skill Structure
+
+- `bdteo-tts-prepare` prepares `content/tts/<slug>[.<lang>].md` for any profiled language and stops before generation.
+- `bdteo-tts-prepare-all` prepares EN/BG/FR TTS scripts for one article and stops for review.
+- `bdteo-publish-audio` generates, auditions, and optionally ships audio for any profiled language.
+- Language-specific skills such as `bdteo-publish-audio-bg`, `bdteo-tts-prepare-fr`, and `bdteo-publish-audio-fr` are convenience wrappers over the generic skills.
+- `bdteo-audio-all` orchestrates EN/BG/FR script prep plus serial audio generation/wiring. It preserves the review gate unless Boris explicitly asks for the fast path.
+- `bdteo-voice-audition` is the voice-selection workflow; use it before adding a new language default or replacing an existing voice.
 
 ## Common Options
 
@@ -75,6 +91,7 @@ Samples are saved to `$TMPDIR/voice-samples/` and played via `afplay` on macOS.
 make article-audio slug=<slug> args="--force"
 make article-audio slug=<slug> args="--voice=george"
 make article-audio slug=<slug> args="--lang=bg --voice=carmelo-bg"
+make article-audio slug=<slug> args="--lang=fr --voice=theodore-fr"
 make article-audio slug=<slug> args="--voice=santa --speed=0.95"
 make article-audio slug=<slug> args="--model=eleven_multilingual_v2"
 ```
