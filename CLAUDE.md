@@ -42,20 +42,23 @@ Default engine is ElevenLabs (voice `alistair`, model `eleven_v3`); Kokoro `sant
 - `documentation/elevenlabs-prompting.md` — Eleven v3 audio-tag catalog, voice-settings recipe per content type (essay vs poem), punctuation cues, anti-patterns, and v3 quirks (notably: `previous_text`/`next_text` stitching is rejected on v3)
 - `documentation/bulgarian-article-audio-voices.md` — Bulgarian voice shortlist and the selected Carmelo default
 - `documentation/french-article-audio-voices.md` — French voice shortlist and the selected Theodore default
+- `documentation/spanish-article-audio-voices.md` — Spanish voice shortlist and the selected Gerard default
 
 **Audio and routing skills, invocable via slash command where mirrored:**
 
 - **`/bdteo-tts-prepare <slug>`** — generic TTS preparation for `content/tts/<slug>[.<lang>].md`; preserves Boris's prose, applies the language profile, and stops for review. Does NOT generate audio.
-- **`/bdteo-tts-prepare-all <slug>`** — prepares EN/BG/FR TTS scripts for one article and stops for review.
+- **`/bdteo-tts-prepare-all <slug>`** — prepares EN/BG/FR/ES TTS scripts for one article and stops for review.
 - **`/bdteo-publish-audio <slug>`** — generic audio generation/audition/publication for English and profiled localized languages; defaults come from `scripts/voice-presets.js`.
-- **`/bdteo-audio-all <slug>`** — orchestrates EN/BG/FR TTS prep plus serial audio generation/wiring; preserves the review gate unless Boris explicitly asks for fast path/direct generation.
+- **`/bdteo-audio-all <slug>`** — orchestrates EN/BG/FR/ES TTS prep plus serial audio generation/wiring; preserves the review gate unless Boris explicitly asks for fast path/direct generation.
 - **`/bdteo-publish-audio-bg <slug>`** — thin Bulgarian shortcut over the generic publish skill: `lang=bg`, `carmelo-bg`, `static/audio/articles/<slug>/bg/`.
 - **`/bdteo-tts-prepare-fr <slug>`** — thin French TTS shortcut over the generic prepare skill: `lang=fr`, Theodore profile.
 - **`/bdteo-publish-audio-fr <slug>`** — thin French shortcut over the generic publish skill: `lang=fr`, `theodore-fr`, `static/audio/articles/<slug>/fr/`.
+- **`/bdteo-tts-prepare-es <slug>`** — thin Spanish TTS shortcut over the generic prepare skill: `lang=es`, Gerard profile.
+- **`/bdteo-publish-audio-es <slug>`** — thin Spanish shortcut over the generic publish skill: `lang=es`, `gerard-es`, `static/audio/articles/<slug>/es/`.
 - **`/bdteo-voice-audition`** — voice selection workflow: query/sample ElevenLabs voices, play numbered samples, record Boris's verdicts, and wire only the chosen default into docs/presets.
 - **`/bdteo-skill-help`** — read-only router for choosing the right bdteo skill from the current article/session context.
 
-Do not autoplay full generated article audio. Use `afplay` only for short isolated pronunciation probes when Boris explicitly asks. Bulgarian TTS scripts may use phonetic transliteration for spoken software terms while the article prose keeps normal domain terms, for example `production` -> `пръдъкшън` in `content/tts/<slug>.bg.md` only. French audio uses Theodore (`theodore-fr`), chosen on 2026-06-07; avoid whispering tags and echo-heavy cinematic alternatives.
+Do not autoplay full generated article audio. Use `afplay` only for short isolated pronunciation probes when Boris explicitly asks. Bulgarian TTS scripts may use phonetic transliteration for spoken software terms while the article prose keeps normal domain terms, for example `production` -> `пръдъкшън` in `content/tts/<slug>.bg.md` only. French audio uses Theodore (`theodore-fr`), chosen on 2026-06-07; avoid whispering tags and echo-heavy cinematic alternatives. Spanish audio uses Gerard (`gerard-es`), chosen on 2026-06-10: deep, neutral Latin American narrator; same no-whisper, no-echo rules.
 
 The generator (`scripts/generate-article-audio.js`) chunks ElevenLabs requests at 2,500 chars with concurrency 3 (conservative default; the empirical API cap is 5 concurrent requests as of May 2026), auto-sends `voice_settings`, packages `.m4a`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
 
@@ -74,10 +77,10 @@ If you need to estimate cost before a big batch, **ask Boris for the dashboard s
 
 ## Multilingual Blog Workflow
 
-- English URLs stay canonical and unchanged. Translations live beside each source article as `index.bg.md`, `index.fr.md`, `index.de.md`, or `index.zh-Hans.md`, with routes under `/bg/`, `/fr/`, `/de/`, and `/zh/`.
+- English URLs stay canonical and unchanged. Translations live beside each source article as `index.bg.md`, `index.fr.md`, `index.es.md`, `index.de.md`, or `index.zh-Hans.md`, with routes under `/bg/`, `/fr/`, `/es/`, `/de/`, and `/zh/`.
 - `documentation/blog-translations.md` is the source of truth for translation frontmatter, source hashes, tone rules, SEO checks, and localized audio frontmatter.
 - Validate translation work with `pnpm i18n:check`. Use `pnpm i18n:check -- --hash <slug>` when updating a translation's `translationSourceHash`.
-- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-all`, `bdteo-translate-bg`, `bdteo-translate-fr`, `bdteo-translate-de`, and `bdteo-translate-zh-hans`. They stop for review and must not commit, push, deploy, or generate audio. They should preserve existing complete localized audio fields, but must not create new audio frontmatter.
+- Personal translation skills live in `/Users/boris/.agents/skills/`: `bdteo-translate-all`, `bdteo-translate-bg`, `bdteo-translate-fr`, `bdteo-translate-es`, `bdteo-translate-de`, and `bdteo-translate-zh-hans`. They stop for review and must not commit, push, deploy, or generate audio. They should preserve existing complete localized audio fields, but must not create new audio frontmatter.
 - SEO is part of done: verify canonical URLs, `hreflang` alternates, `x-default`, `<html lang>`, Open Graph locale, sitemap links, and `inLanguage` structured data before shipping multilingual changes.
 
 ## Code Style Guidelines

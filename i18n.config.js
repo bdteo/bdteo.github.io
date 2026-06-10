@@ -1,5 +1,5 @@
 const DEFAULT_LANGUAGE = "en"
-const LANGUAGE_ORDER = ["en", "bg", "fr", "de", "zh-Hans"]
+const LANGUAGE_ORDER = ["en", "bg", "fr", "es", "de", "zh-Hans"]
 
 const LANGUAGES = {
   en: {
@@ -36,6 +36,18 @@ const LANGUAGES = {
     schemaLanguage: "fr",
     dateLocale: "fr-FR",
     giscusLang: "fr",
+    showWhenEmpty: false,
+  },
+  es: {
+    code: "es",
+    label: "Español",
+    shortLabel: "ES",
+    pathPrefix: "/es",
+    hreflang: "es",
+    ogLocale: "es_ES",
+    schemaLanguage: "es",
+    dateLocale: "es-ES",
+    giscusLang: "es",
     showWhenEmpty: false,
   },
   de: {
@@ -166,6 +178,40 @@ const CHROME = {
       fallbackTitle: "Écouter en anglais",
       progress: "Progression de la narration",
       error: "L'audio n'a pas pu être chargé depuis cette page.",
+    },
+  },
+  es: {
+    skipToContent: "Saltar al contenido principal",
+    navHome: "Inicio",
+    navAbout: "Sobre mí",
+    recentPosts: "Artículos recientes",
+    morePosts: "Más artículos",
+    siteDescription:
+      "Ensayos serenos sobre ingeniería, lenguaje y lo que asoma al borde de toda indagación honesta. Escritos despacio, desde Sofía.",
+    noPosts: "Aún no hay textos publicados en este idioma.",
+    breadcrumbHome: "Inicio",
+    comments: "Comentarios",
+    footerBuiltWith: "Construido con",
+    rssFeed: "Feed RSS",
+    languageSwitcherLabel: "Cambiar de idioma",
+    languageSwitcherTitle: "Idioma",
+    currentLanguage: "Idioma actual",
+    articleLanguageLabel: "Leer este texto en",
+    languageHomeSuffix: "inicio",
+    bioKicker: "Autor",
+    bioName: "Hola, soy Boris",
+    bioSummary:
+      "No soy escritor. No soy filósofo. Solo soy un ingeniero backend de Bulgaria que se gana la vida entre colas de Laravel e índices de cientos de millones de filas. El resto del tiempo leo medicina que no me corresponde leer, novelas francesas que entiendo a medias y lo que sea que mi pequeña cabeza de goma quiera masticar. Dos callejeros rescatados me mantienen honesto.",
+    articleAudio: {
+      label: "Narración en audio de",
+      fallbackLabel: "Narración en inglés de",
+      speedLegend: "Velocidad de reproducción",
+      play: "Reproducir narración",
+      pause: "Pausar narración",
+      title: "Escuchar el artículo",
+      fallbackTitle: "Escuchar en inglés",
+      progress: "Progreso de la narración",
+      error: "No se pudo cargar el audio desde esta página.",
     },
   },
   de: {

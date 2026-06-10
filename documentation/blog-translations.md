@@ -8,12 +8,14 @@ This is the source of truth for bdteo.com article translations. Translation skil
 - Translations live beside the source:
   - Bulgarian: `content/blog/<slug>/index.bg.md`
   - French: `content/blog/<slug>/index.fr.md`
+  - Spanish: `content/blog/<slug>/index.es.md`
   - German: `content/blog/<slug>/index.de.md`
   - Simplified Chinese: `content/blog/<slug>/index.zh-Hans.md`
 - Routes are generated from the file name:
   - English: `/<slug>/`
   - Bulgarian: `/bg/<slug>/`
   - French: `/fr/<slug>/`
+  - Spanish: `/es/<slug>/`
   - German: `/de/<slug>/`
   - Simplified Chinese: `/zh/<slug>/`
 
@@ -48,6 +50,7 @@ The article UI may fall back to the English source audio when a translated page 
 - Keep internal links valid. If a translated target exists, point to the language-prefixed route; otherwise keep the English URL.
 - Keep images co-located with the English source and reuse the same relative `featuredImage` path.
 - For Simplified Chinese, translate into natural mainland-facing Simplified Chinese. Prefer idiomatic restructuring over English word order when needed, but keep Boris's quiet directness and dry edges intact.
+- For Spanish, write neutral, internationally readable Spanish (no region-specific slang, no voseo). Keep Boris's directness and reflective cadence; do not inflate short English sentences into ornate Spanish.
 
 ## Review and Validation
 

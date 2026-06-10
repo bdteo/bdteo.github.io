@@ -81,6 +81,7 @@ Source of truth: `scripts/voice-presets.js`. Default voice is `alistair`. Availa
 | `bill` / `brian` / `daniel` | ElevenLabs | Stock ElevenLabs narrators.                                     |
 | `carmelo-bg`                | ElevenLabs | Bulgarian default chosen by Boris.                              |
 | `theodore-fr`               | ElevenLabs | French default chosen by Boris; serene grounded male narration. |
+| `gerard-es`                 | ElevenLabs | Spanish default chosen by Boris; deep neutral LatAm narrator.   |
 | `santa`                     | Kokoro     | Local `am_santa` fallback, free.                                |
 
 Sample before committing:
@@ -88,6 +89,7 @@ Sample before committing:
 ```bash
 pnpm voice:sample alistair,george,ak --text="A representative line."
 pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."
+pnpm voice:sample gerard-es --lang=es --text="Buenos días."
 pnpm voice:sample --list
 ```
 

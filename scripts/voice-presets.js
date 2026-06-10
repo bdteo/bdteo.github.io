@@ -69,6 +69,13 @@ const VOICE_PRESETS = {
     description:
       "French article-audio default chosen by Boris on 2026-06-07. Serene, grounded, calm male narration; close to Marishnou's mood without being female or whispery.",
   },
+  "gerard-es": {
+    engine: "elevenlabs",
+    voiceId: "Qh9qDWKx9XUbnKbERblA",
+    label: "Gerard (ElevenLabs LatAm Spanish neutral)",
+    description:
+      "Spanish article-audio default chosen by Boris on 2026-06-10. Deep, neutral Latin American narrator; versatile, professional, and calm.",
+  },
   santa: {
     engine: "kokoro",
     kokoroVoice: "am_santa",
@@ -82,6 +89,7 @@ const DEFAULT_PRESET = "alistair"
 const DEFAULT_PRESET_BY_LANGUAGE = {
   bg: "carmelo-bg",
   fr: "theodore-fr",
+  es: "gerard-es",
 }
 
 const resolveVoice = nameOrId => {
