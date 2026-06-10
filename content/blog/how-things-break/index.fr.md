@@ -13,6 +13,11 @@ tags:
   - incidents
   - ingénierie
   - récit
+audioUrl: "/audio/articles/how-things-break/fr/hqfrgApggtO1785R4Fsn-097a0219c600.m4a"
+audioDuration: "3:17"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-06-10"
+audioTextSource: "content/tts/how-things-break.fr.md"
 ---
 
 Il existe une sorte d'ironie qui donne l'impression d'avoir été écrite.

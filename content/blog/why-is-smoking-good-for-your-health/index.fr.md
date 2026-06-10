@@ -10,6 +10,11 @@ tags: ["production", "smoke tests", "génie logiciel", "fiabilité", "déploieme
 featuredImage: "./images/featured.jpg"
 imageCaption: "Des mains usées par le temps, un verre d’eau, et un mince filet de fumée dans la lumière dorée d’une cuisine."
 imagePosition: "center"
+audioUrl: "/audio/articles/why-is-smoking-good-for-your-health/fr/hqfrgApggtO1785R4Fsn-8ad037af6b5a.m4a"
+audioDuration: "3:57"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-06-10"
+audioTextSource: "content/tts/why-is-smoking-good-for-your-health.fr.md"
 ---
 
 Je fume.

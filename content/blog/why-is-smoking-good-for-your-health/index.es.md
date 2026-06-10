@@ -10,6 +10,11 @@ tags: ["production", "smoke-tests", "ingeniería-de-software", "fiabilidad", "de
 featuredImage: "./images/featured.jpg"
 imageCaption: "Manos curtidas, un vaso de agua y una fina línea de humo bajo la luz dorada de una cocina al atardecer."
 imagePosition: "center"
+audioUrl: "/audio/articles/why-is-smoking-good-for-your-health/es/Qh9qDWKx9XUbnKbERblA-4856c81e352a.m4a"
+audioDuration: "3:29"
+audioVoice: "Gerard (ElevenLabs LatAm Spanish neutral)"
+audioGeneratedAt: "2026-06-10"
+audioTextSource: "content/tts/why-is-smoking-good-for-your-health.es.md"
 ---
 
 Fumo.
@@ -88,7 +93,7 @@ Eso no hace que fumar sea bueno. Hace que la verdad sea molesta.
 
 La verdad útil a menudo llega como un síntoma. Como un olor. Como una contradicción diminuta.
 
-No la adores. No la ignores. Míralo.
+No la adores. No la ignores. Mírala.
 
 Pásale el humo al despliegue.
 

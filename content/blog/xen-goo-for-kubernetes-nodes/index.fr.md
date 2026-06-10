@@ -13,6 +13,11 @@ tags:
   - devops
   - software
   - metaphor
+audioUrl: "/audio/articles/xen-goo-for-kubernetes-nodes/fr/hqfrgApggtO1785R4Fsn-52b61cf8b0cd.m4a"
+audioDuration: "1:42"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-06-10"
+audioTextSource: "content/tts/xen-goo-for-kubernetes-nodes.fr.md"
 ---
 
 Dans Kubernetes, un nœud avec une taint sonne comme quelque chose sorti de Half-Life.
