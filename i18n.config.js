@@ -334,6 +334,7 @@ const formatDisplayDate = (value, code = DEFAULT_LANGUAGE) => {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "UTC",
   }).format(date)
 }
 
