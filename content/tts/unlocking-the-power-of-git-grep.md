@@ -1,171 +1,201 @@
-Unlock the Power of git grep for Efficient Code Searching
+git grep Recipes: Search Tracked Code Without Searching the Whole Filesystem
 
-[conversational tone] In a vast kingdom filled with countless scrolls and manuscripts, there lived a scholar named Alaric.
+[conversational tone] Most code search advice starts with speed. Speed matters, but the real reason I reach for git grep is simpler:
 
-His library was immense, a labyrinth of knowledge where ancient texts mingled with contemporary writings, and secrets hid between the lines.
+It searches the code Git knows about, not the whole filesystem.
 
-Alaric often found himself searching for a single elusive phrase amid this sea of information, a task that grew more daunting with each passing day.
+That means your search does not wander into node underscore modules, dot cache, dist, coverage reports, local dumps, screenshots, or whatever temporary thing you created during a weird debugging afternoon. Default git grep starts from tracked paths in your Git working tree. That one constraint makes the results calmer.
 
-One morning, as the sun cast golden rays on the dusty tomes, Alaric set out to locate a particular concept mentioned in his archives, known only as The Whispering Sigil.
+This is not an argument against rg, or ripgrep. I use rg constantly. But the two tools answer different questions.
 
-He pored over volumes, using his usual methods to sift through pages. But those methods now seemed sluggish and imprecise.
+Git grep asks: where is this in the tracked code, or in another branch, tag, or commit?
 
-The deeper he went, the more entangled he became in irrelevant passages, duplicates, and misleading references. Frustration mounted as hours turned into days with little progress.
+Ripgrep asks: where is this on disk, respecting my ignore rules?
 
-Then an old sage visited Alaric and noticed his plight.
+Once that distinction clicks, git grep stops being an old command you vaguely know exists and becomes a very sharp little habit.
 
-With a knowing smile, the sage said, perhaps you are searching the hard way. There is a hidden path known only to those who organize their knowledge wisely.
+[matter-of-fact] The mental model is small. The useful shape is: git grep, then options, then the pattern, then optional tree-ish values, then a double dash and optional path specs.
 
-Intrigued, Alaric listened as the sage explained a method that focused his search, cutting through the clutter and leading directly to the texts he needed.
+The pattern is what you are searching for.
 
-Armed with this new approach, Alaric tried again. This time, the irrelevant clutter faded away. The path to The Whispering Sigil became clear, and he found what he was looking for with astonishing speed.
+A tree-ish is optional: a branch, tag, commit, or other Git tree to search.
 
-It was as if he had unlocked a secret gateway in his labyrinth, granting him swift access to the exact knowledge he needed.
+A path spec is optional: the files or directories to limit the search to.
 
-[emphasized] Poof. The secret was revealed: the power of git grep.
+The double dash separates revisions from paths when there is any chance of ambiguity.
 
-What git grep actually is.
+Default git grep searches tracked files in your working tree. It is not a magic content index. It is not reading every file under the current directory. It is asking Git which paths belong to the project, then searching those paths.
 
-Plain grep recursive walks the filesystem. It dutifully reads everything in its path: source code, log files, build outputs, that stray dump file your colleague forgot to delete, and the entire node modules tree.
+That is why it feels tidy.
 
-Git grep does something narrower. It searches the files Git already knows about.
+[deliberate] First recipe: search tracked code and show line numbers.
 
-That one design choice is where most of its value comes from.
+Run git grep minus n initializeSettings.
 
-Git grep is good at a few specific things.
+The minus n flag prints line numbers, which makes the output useful in a terminal, a pull request comment, or a quick handoff note. Git can be configured to show line numbers by default, but I still tend to type minus n because it is visible and portable in snippets.
 
-[matter-of-fact] First, it searches tracked files, not the whole filesystem. Git keeps a list of every file you have staged or committed. That list is the index. Git grep reads from that list. Untracked junk is simply not there. No node modules, no dist folder, no coverage reports, no random log file, because Git was never told about any of them.
+Second: search a literal string, not a regular expression.
 
-Second, it is faster than plain recursive grep on large repositories. It already has the file list, so it skips the filesystem walk. It also runs multiple threads in parallel.
+Use minus capital F when the pattern is a fixed string. For example, search for useEffect, open parenthesis, inside JavaScript and TypeScript files by combining git grep minus n, minus capital F, the literal text, then a double dash and the quoted file globs.
 
-The win is real, but it is not magic. Git grep is iterating the same blobs grep would, just with less ceremony. There is no content search index involved. The Git index is a list of file paths and blob hashes, not a Lucene-style inverted index.
+The important habit is this: put file globs after the double dash, and quote them so your shell does not expand them before Git sees them.
 
-Third, git grep can search any ref without a checkout.
+This is the version I want when I know the exact function call, config key, class name, or error message.
 
-This is the killer feature. A tag, a branch, a commit, a tree object: point git grep at it directly. No checkout. No stash dance. No detour from whatever you were doing.
+Third: search case-insensitively, as a whole word, with columns.
 
-Practical examples.
+Run git grep minus n, minus i, minus w, double dash column, customer.
 
-[deliberate] For a basic search, run git grep initializeSettings.
+Minus i ignores case. Minus w asks for whole-word matches. Double dash column prints the column number of the first match on the line. That is nice when the term is common enough that raw output gets noisy.
 
-That scans all tracked files in the current branch for the exact match.
+Fourth: search for a pattern that starts with a dash.
 
-For a case-insensitive search, run git grep dash i initializesettings.
+Run git grep minus n, minus e, double dash force.
 
-That finds matches regardless of capitalization.
+Without minus e, Git may read the pattern as another command-line option. Minus e says: the next thing is a search pattern. It is one of those tiny flags you do not need often, but when you need it, you really need it.
 
-To search in a different branch without switching to it, run git grep validateUser feature slash login.
+You can pass more than one minus e, too. Searching for oldBillingFlow and legacyCheckout that way means either pattern can match.
 
-That is the move that is hard to beat. No checkout, no stash, just the answer.
+[matter-of-fact] Fifth: use a regular expression when structure matters.
 
-[slows down] To search across every branch, including remotes, you can pipe the branch list into git grep. The shape is: git branch dash a, then xargs, then git grep configureDatabase.
+Minus capital E enables extended regular expressions. One practical example is looking for Python function definitions with a pattern that means: def, then whitespace, then a function name, then an opening parenthesis.
 
-To search across every commit Git has ever heard of, not just the tips of branches, run git grep configureDatabase with the output of git rev-list all.
+For bigger structural questions, use the language tooling. Git grep is excellent at finding candidates. It is not an abstract syntax tree engine, and that honesty is part of why I like it.
 
-That finds matches in any blob anywhere in your history. On a busy repository, it can take a moment, because it is literally walking every commit.
+Sixth: limit the search to a path.
 
-To find when a particular string was added or removed, use git log dash capital S optimizePerformance.
+Run git grep minus n FeatureFlag, double dash, src, components.
 
-That shows commits that introduced or removed that term.
+The path specs after the double dash keep the search focused. This is often faster mentally, not just computationally. You are telling the command what kind of answer you care about.
 
-To see actual diffs where a term was added or removed, use git log dash capital G optimizePerformance dash p.
+You can also exclude paths with Git's exclude path spec. The important practical rule is that path filters belong after the double dash, and exclusion path specs are handled by Git, not by the shell.
 
-Git grep also supports regular expressions.
+Seventh: list only matching files.
 
-For example, you can search for Python function definitions with a pattern that means: def, then whitespace, then a function name, then an opening parenthesis.
+Use minus l when the next step is open the files, or count the blast radius, not read every match.
 
-What git grep does and does not read.
+The inverse is minus capital L. It lists tracked files that do not contain the pattern. That can be surprisingly handy during framework migrations.
 
-[deliberate] Git grep walks the index. That is it.
+Eighth: count matches per file.
 
-It does not parse dot gitignore.
+Use minus c for a quick heat map. It is not a code-quality metric; please do not make it one. But it is useful for spotting the files where a term is concentrated before you start editing.
 
-Many people, including a previous version of this post, claim it does. And the claim is almost true, in the way that the Earth is flat is almost true if you only ever look at one parking lot.
+[deliberate] Ninth: search the staged version instead of the working tree.
 
-The two only line up because gitignored files are usually also untracked.
+Run git grep minus n, double dash cached, newConfigKey.
 
-The moment a file is both gitignored and tracked, because someone force-added it or committed it before the ignore rule existed, git grep will happily search it.
+Default git grep searches tracked paths in the working tree. Double dash cached searches the blobs in the index: the staged version.
 
-Ripgrep will not, at least not by default.
+That is useful in pre-commit checks, review scripts, or any moment where you want to ask, what exactly have I staged, rather than what is currently on disk?
 
-[matter-of-fact] You can prove this quickly. Create a demo repository. Add a dot gitignore rule that ignores log files. Create a tracked log file anyway by force-adding it. Commit it. Now search for a secret phrase.
+Tenth: search untracked files, with ignore rules in mind.
 
-Git grep finds it, because the file is tracked. Ripgrep finds nothing, because ripgrep actually reads dot gitignore.
+Run git grep minus n, double dash untracked, draftFlag.
 
-So the precise statement is this: git grep searches tracked files.
+Double dash untracked adds untracked files to the search. In this mode, Git's standard ignore rules are honored, so ignored files still stay out of the result.
 
-That happens to skip most of what dot gitignore would skip, but the mechanism is different and the edge case matters, especially when you are hunting for a string that turns out to live in a generated file someone force-added years ago.
+If you really want ignored files too, add double dash no exclude standard. That is a deliberate move. I use it when I suspect a generated file, local fixture, or ignored artifact contains the thing I am chasing.
 
-The dot gitignore mechanism only enters git grep through two opt-in modes.
+Eleventh: search another branch, tag, or old commit without checking it out.
 
-With dash dash untracked, git grep also searches untracked files. In that mode, it honors dot gitignore by default and skips ignored files, unless you override that behavior.
+Run git grep minus n validateUser main.
 
-With dash dash no index, git grep searches the current directory while ignoring Git entirely. That is useful when you want plain grep semantics inside a repo. In that mode, git grep does not consult dot gitignore by default, unless you opt in.
+Or run it against version two point three point zero.
 
-Default git grep, with no flags, never opens your dot gitignore file.
+Or run it against H E A D tilde twenty, limited to src.
 
-When to reach for ripgrep instead.
+This is the killer feature.
 
-[conversational tone] Git grep and ripgrep are not really competitors. They walk different things, and a serious toolbox has both.
+No checkout. No stash. No worktree detour. You can ask a branch, tag, or old commit a direct question and stay exactly where you are.
 
-Git grep walks the index: tracked files, plus any ref or tree object you point it at.
+When a bug report says, this worked in the last release, I usually start here.
 
-Ripgrep walks the filesystem: every file under the current directory, minus what your dot gitignore, dot ignore, dot rgignore, and global excludes tell it to skip.
+Twelfth: search every commit only when you really mean it.
 
-Each one does something the other cannot.
+The rough shape is: git rev-list double dash all, piped into xargs minus n fifty, then git grep minus n validateUser.
 
-Git grep wins when you want to search across history without a checkout.
+That searches commit trees across all history in batches. It can be loud, repetitive, and expensive on a serious repository, because the same file content may appear in many commits.
 
-For example: git grep deprecated underscore api against a tag, against HEAD from fifty commits ago, or against every commit from git rev-list all.
+Most of the time, if your real question is when did this string appear or disappear, git log is the better companion.
 
-Ripgrep wins when you want filesystem semantics with proper ignore handling. That includes freshly created files you have not added to Git yet, generated files Git has never heard of, or a directory that is not a Git repository at all.
+Use git log minus capital S when you care about changes in the number of occurrences of a string.
 
-Run ripgrep deprecated underscore api for the normal search. Add no-ignore when you want ignored files too. Add hidden when you want dotfiles too.
+Use git log minus capital G, with minus p, when you care about diffs whose added or removed lines match a regular expression.
 
-Ripgrep is also the engine behind VS Code's project search, which is why Find in Files feels like running ripgrep in a terminal.
+Different question, different tool.
 
-It has solid Unicode handling, and on most modern codebases it is at least as fast as git grep and often faster. The ripgrep Linux kernel benchmark shows ripgrep beating git grep with Perl-compatible regular expressions by roughly three times on the same query.
+[calm] Now, the dot gitignore gotcha.
 
-One tip: if you want case-sensitive search only when your pattern has uppercase letters, pass capital S for smart case. It is opt-in, not the default.
+The sentence, git grep respects dot gitignore, is close enough to be tempting and wrong enough to bite you.
 
-If you do not have ripgrep installed yet, fix that. On macOS, install ripgrep with Homebrew. On Debian or Ubuntu, install it with apt. Anywhere with Rust, cargo can install it too.
+Default git grep searches tracked files. A dot gitignore file is about keeping untracked files untracked. Files already tracked by Git are not made invisible just because a later ignore rule matches them.
 
-Put ripgrep next to git grep in your toolbox. They cover different jobs.
+So the precise version is this:
 
-The benefits of git grep.
+Default git grep searches tracked paths in the working tree.
 
-[matter-of-fact] Relevance. It searches only what you are tracking. Build outputs, caches, and node modules are not in your way, because Git never saw them.
+Ignored but untracked files are not searched, because untracked files are not searched.
 
-Speed on large repositories. It is multi-threaded and skips the filesystem walk.
+Ignored but tracked files are searched, because they are tracked.
 
-History reach. Any branch, tag, or commit, without leaving your working tree. This is the part ripgrep cannot do.
+Double dash untracked adds untracked files while still honoring standard ignore rules.
 
-Less binary noise. Like grep, git grep flags binaries instead of dumping bytes. And because it walks tracked files, it usually meets fewer binary files in the first place. Pass capital I to skip binaries entirely.
+Double dash untracked plus double dash no exclude standard includes ignored files too.
 
-A few useful habits.
+Double dash no index turns git grep into a filesystem search from the current directory, even outside a repository.
 
-Pipe git grep results into less when you want paging.
+Double dash no index plus double dash exclude standard makes that filesystem search honor Git's standard ignore rules.
 
-Use git grep dash c when you want counts per file.
+The edge case matters in old repositories. A file can be committed first and ignored later. If you are hunting a string and git grep finds it in a supposedly ignored file, Git is not confused. The file is tracked.
 
-Use git grep dash n when you want line numbers.
+[conversational tone] So when is rg the better tool?
 
-Use git grep dash l and pipe the result into your editor command when you want to open every matching file.
+Use ripgrep when you want filesystem semantics.
 
-Conclusion.
+Run rg validateUser for the normal search. Add capital S for smart case. Add double dash hidden when you want dotfiles too. Add double dash no ignore when you want ignored files too.
 
-[reflective] Just as Alaric found a hidden path in his labyrinthine library, git grep cuts a clean line through a tracked codebase: fast, branch-aware, and uncluttered by anything Git was never told about.
+Ripgrep walks the directory tree. By default it respects dot gitignore, dot ignore, dot rgignore, global ignore files, hidden-file rules, and binary-file skipping. It is very fast, very polished, and usually what I want when I am searching the working directory as it exists on disk.
 
-It is not a universal replacement for grep, and it is not a replacement for ripgrep.
+The trade-off is that rg does not know how to search version two point three point zero or H E A D tilde twenty unless you check that tree out somewhere. Git history is not its world.
 
-It is the tool that knows your repository's index. Once you reach for it, the labyrinth gets a lot smaller.
+So my rule of thumb is simple.
+
+Use git grep for tracked code and Git objects: branches, tags, commits, staged content.
+
+Use rg for the live filesystem: untracked files, non-Git directories, ignored-file experiments, and broad project search.
+
+There is no prize for choosing only one. Put both in your hands.
+
+[matter-of-fact] The compact version:
+
+Use git grep minus n for tracked files with line numbers.
+
+Use minus capital F for literal strings.
+
+Use minus i, minus w, and double dash column when you need case-insensitive whole-word matches with columns.
+
+Use minus e when the search pattern starts with a dash.
+
+Use minus capital E for an extended regular expression.
+
+Use minus l for matching file names, and minus capital L for files that do not contain the term.
+
+Use minus c for counts.
+
+Use double dash cached for the staged version.
+
+Use double dash untracked when untracked files matter.
+
+Name a branch, tag, or commit when you want to search an older Git tree without checking it out.
+
+And use git log minus capital S when the real question is not where is this string, but when did its occurrence count change?
+
+[reflective] The boring power of git grep is that it starts with the project as Git understands it.
+
+That is exactly what you want more often than you think: not every file on disk, not every build artifact, not every local experiment. Just the code that belongs to the repository, plus any older version of that code you can name.
 
 Use git grep when the question is: where in this codebase, including its history?
 
 Use ripgrep when the question is: where on disk, respecting my ignore rules?
 
 Most days, you will want both within arm's reach.
-
-Update note.
-
-This article was updated to correct an earlier claim that git grep respects dot gitignore directly. It does not. The update also softened the internal indexing explanation, fixed a regular expression example, and added the section on when to use ripgrep instead.

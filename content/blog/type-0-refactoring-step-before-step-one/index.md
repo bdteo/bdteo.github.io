@@ -1,322 +1,452 @@
 ---
-title: "Type 0 Refactoring: The Step Before Step One"
+title: "Type 0 Refactoring: Make Code Understandable Before Changing Behavior"
 date: "2025-12-13T12:00:00.000Z"
-description: "Type 0 refactoring is a constrained, behavior-preserving cleanup that makes messy code readable and safe to work in before you attempt a real refactor or ship a hotfix."
+description: "Type 0 refactoring is the behavior-preserving step before a real code change: make messy code understandable, testable, and reviewable without cleanup theater."
 tags: ["refactoring", "software engineering", "debugging", "maintainability"]
 featuredImage: "./images/featured.webp"
 imageCaption: "Mise en place. The work before the work."
-audioUrl: "/audio/articles/type-0-refactoring-step-before-step-one/UzI1NsMEV3ni5JRkRSls-9cf54c91d0d1.m4a"
-audioDuration: "13:44"
+audioUrl: "/audio/articles/type-0-refactoring-step-before-step-one/UzI1NsMEV3ni5JRkRSls-eb6ba9add4a4.m4a"
+audioDuration: "18:36"
 audioVoice: "Alistair (ElevenLabs cultured British)"
-audioGeneratedAt: "2026-05-17"
+audioGeneratedAt: "2026-06-22"
 audioTextSource: "content/tts/type-0-refactoring-step-before-step-one.md"
 ---
 
-There’s a category of refactoring teams do constantly, benefit from immediately, and almost never name.
+There is a kind of refactoring teams do all the time, usually under pressure, usually without naming it.
 
-It’s the work you do right before you touch the scary file. The feature request forces you into the messy module. The incident lands, and the bug is hiding somewhere inside a method that looks like it has its own weather system.
+You open the file where the bug lives. The method is too long. The names are tired. The branches are stacked like old chairs in a basement. You can feel, physically, that making the requested change inside this shape of code is a bad idea.
 
-You’re not redesigning the system. You’re not introducing a new abstraction. You’re not “improving” anything in a clever way.
+But you are not ready to redesign it.
 
-You’re just making the code readable enough that you can work.
+You are not trying to introduce a new abstraction.
 
-I started calling this **Type 0 refactoring**.
+You are not trying to prove you are the clean-code person in the room.
 
-**Type 0 refactoring** is a preparatory, **behavior-preserving cleanup** that makes code easier to reason about **before** you do architectural refactors, performance work, or feature work.
+You are trying to make the current behavior understandable enough that the next change can be made safely.
 
-It’s the “get the floor dry before you remodel the kitchen” step. Most teams already do it informally. Naming it turns it into a shared tool.
+I call that **Type 0 refactoring**.
 
----
+Or, less memorably but more precisely:
 
-## The real reason Type 0 exists: humans have a working-memory budget
+> Type 0 refactoring is the behavior-preserving cleanup you do before changing behavior, so the code becomes readable, testable, and reviewable.
 
-Here’s the blunt truth behind the idea:
+It is the step before step one.
 
-**My brain (and yours) is not built to reliably debug a 2000-line method under time pressure.**
+Not the real remodel. The clearing of the workbench. The labeling of the cables. The act of making the thing legible before you put your hands inside it.
 
-That’s not a personal defect. It’s just how cognition works.
+## Why Type 0 deserves a name
 
-Debugging asks you to hold, at the same time:
+[Martin Fowler defines refactoring](https://refactoring.com/) as changing the internal structure of code without changing its external behavior. That precision matters. If behavior changes, it may still be valuable work, but it is not refactoring in the strict sense.
 
-- the current execution path
-- the relevant state
-- what each variable actually means
-- the set of possible branches
-- the consequences of “if this happens, then…”
+Type 0 is narrower than that.
 
-In small code, this is manageable.
+Normal refactoring might improve design. Type 0 might not.
 
-In big code with high cyclomatic complexity, it turns into probabilistic guessing. You can still get lucky, but it’s expensive and risky—especially during a hotfix.
+Normal refactoring might move responsibilities between classes. Type 0 should not.
 
-Type 0 is a practical response: it’s how you **buy clarity quickly** without taking on the cost and risk of a “real refactor.”
+Normal refactoring might create better domain boundaries. Type 0 stops earlier: it makes the existing code say what it already does.
 
----
+That sounds modest until you are staring at a 900-line method during a hotfix and your brain has started buffering.
 
-## Why it’s called “Type 0”
+The immediate problem in ugly code is often not architecture. It is **understandability**. You cannot safely change what you cannot hold in your head.
 
-The name didn’t come from a grand theory. It came from a high-pressure moment.
+Sonar's [Cognitive Complexity](https://www.sonarsource.com/docs/CognitiveComplexity.pdf) work is useful here because it separates "how many paths exist?" from "how hard is this for a human to follow?" Type 0 is aimed at the second question. It reduces the amount of state, branching, naming ambiguity, and visual noise a reviewer has to simulate mentally.
 
-I was working on a hotfix. The bug was buried inside a method that was effectively its own small universe—**about 2000 lines**.
+That is not cosmetic. That is risk reduction.
 
-The bug wasn’t conceptually hard. The method was.
+## The moment that made the concept click
 
-Every “what happens if…” branched into ten more questions, and the branching wasn’t the useful kind. It was incidental complexity: noise, repetition, unclear naming, and structure that didn’t match the mental model you need for debugging.
+The name came out of a hotfix.
 
-What I needed wasn’t perfection. I needed **debuggability**:
+The bug was not intellectually deep. The surrounding method was. It was the kind of method where every local variable looked innocent until you realized it was carrying meaning from three screens ago. Every conditional was survivable in isolation, but the combination made the execution path feel unstable.
+
+I did not need a beautiful design.
+
+I needed debuggability:
 
 - fewer branches per screen
-- clearer “steps” with names
-- less noise
-- less time re-parsing what I just read
+- names that described business intent instead of temporary mechanics
+- smaller chunks I could step through
+- a way to review the cleanup without also reviewing the bug fix
 
-But the time pressure didn’t allow a bigger refactor or an “idiomatic redesign.” Doing that responsibly would’ve been half a day (or more) including manual testing. In a hotfix window, that’s not discipline; it’s gambling.
+An LLM suggested several reasonable "types" of refactoring. Extract this service. Introduce that pattern. Split responsibilities. All fine ideas. All too much for the moment.
 
-So I asked an LLM to suggest refactoring opportunities for the class and that method—without telling it why.
+It asked if it should start with Type 1.
 
-It came back with a list of four “types” of refactoring. All sensible. All applicable. All too expensive for that moment.
+I said: no, start with Type 0.
 
-Then it asked the polite question:
+Meaning: before we improve the design, make the current code readable without changing what it does.
 
-> “Should I start with Type 1?”
+That distinction saved the work. The method became navigable. The bug became visible. The fix stayed small.
 
-That’s when I replied:
+## A working definition
 
-> “No. Let’s start with Type 0.”
+**Type 0 refactoring is a constrained, behavior-preserving pass that makes code easier to understand before a functional change.**
 
-And I defined Type 0 on the spot: a constrained, mechanical set of changes that reduce complexity and increase readability **without changing behavior or architecture**.
+It has four allowed moves:
 
-The method became navigable. My brain could track execution again. I found the bug, fixed it, and shipped without collateral damage.
+1. Extract meaningful pieces into named methods or local variables.
+2. Rename things so the code uses human language instead of archaeology.
+3. Remove noise that is provably unused.
+4. Add or tighten characterization tests around the behavior you are about to preserve.
 
-That’s why I like the name **Type 0**: it’s the refactor you do **before** the “real refactor” types—especially when you’re under pressure and need a safe way to create clarity fast.
+And it has three hard boundaries:
 
----
+- no new product behavior
+- no architecture moves
+- no "while I am here" improvements that change the review question
 
-## The problem Type 0 solves
+If the PR changes what users, callers, jobs, API responses, database writes, emitted events, or error paths observe, it is no longer Type 0. That may still be the right work, but it needs to be named honestly.
 
-Most refactoring advice assumes you can already _see_ the design.
+## Before and after: the shape of Type 0
 
-In real codebases:
+Here is a small example. It is intentionally ordinary. Most useful refactoring is ordinary.
 
-- methods are long and multi-purpose
-- repeated expressions and incidental complexity hide intent
-- variables are cryptic (`$e`, `$tmp`, `$res`)
-- dead code and unused imports create mental noise
-- the “shape” of the code is so messy that even small changes feel risky
+Before:
 
-When you attempt “real refactoring” on top of that (boundaries, patterns, moving responsibilities), you stack uncertainty on uncertainty:
+```ts
+export function canStartTrial(account: Account | null, plan: Plan) {
+  if (!account || account.deletedAt) {
+    return false;
+  }
 
-- you can’t easily tell what behavior you’re preserving
-- you can’t predict the blast radius
-- reviews devolve into subjective debates
-- people get afraid to touch things, and the mess compounds
+  if (account.flags.includes("trial_blocked")) {
+    return false;
+  }
 
-**Type 0 is how you lower the cognitive load first.** It creates a stable base where deeper work can happen safely.
+  if (account.subscription && account.subscription.status !== "canceled") {
+    return false;
+  }
 
----
+  if (
+    account.invoices.some((invoice) => invoice.status === "paid") ||
+    account.trials.some((trial) => trial.endsAt > new Date())
+  ) {
+    return false;
+  }
 
-## Reach for Type 0 when…
+  if (plan.priceCents === 0 || plan.hidden) {
+    return false;
+  }
 
-Type 0 is most valuable when:
+  return true;
+}
+```
 
-- you must debug fast (hotfixes, incidents) and the code is too large/branchy to reason about safely
-- you feel “lost in the method” and keep re-reading the same section because the structure doesn’t help your working memory
-- the code is correct but unreadable, and you can’t afford to “clean up logic,” only expose it
-- you want to reduce risk before deeper work (you know you’ll refactor later, but first you need a clear map of current behavior)
-- you want to turn tribal knowledge into readable structure so debugging doesn’t depend on one person
+This is not terrible code. That is important. Type 0 is not only for disasters.
 
-Type 0 is not a luxury. In these cases it’s often the fastest way to regain control.
+But imagine you need to change trial eligibility. Which rule are you changing? Which one is manual policy? Which one is billing history? Which one is plan eligibility? A reviewer has to infer all of that from mechanics.
 
----
+After a Type 0 pass:
 
-## A definition you can use in your team
+```ts
+export function canStartTrial(account: Account | null, plan: Plan) {
+  if (isMissingOrDeleted(account)) return false;
+  if (isManuallyBlockedFromTrial(account)) return false;
+  if (hasActiveSubscription(account)) return false;
+  if (hasPaidBeforeOrActiveTrial(account)) return false;
+  if (isIneligibleTrialPlan(plan)) return false;
 
-**Type 0 refactoring is a set of micro-refactorings that improve readability and maintainability without changing behavior or architecture.**
+  return true;
+}
 
-It is intentionally constrained. The constraints are the feature.
+function isMissingOrDeleted(account: Account | null) {
+  return !account || Boolean(account.deletedAt);
+}
 
-Type 0 consists of four mandatory sub-patterns:
+function isManuallyBlockedFromTrial(account: Account) {
+  return account.flags.includes("trial_blocked");
+}
 
-1. **0a. Method extraction**
-2. **0b. Conciseness**
-3. **0c. Empathy (pure readability)**
-4. **0d. Dead code removal**
+function hasActiveSubscription(account: Account) {
+  return Boolean(account.subscription && account.subscription.status !== "canceled");
+}
 
-And it follows three hard rules:
+function hasPaidBeforeOrActiveTrial(account: Account) {
+  return (
+    account.invoices.some((invoice) => invoice.status === "paid") ||
+    account.trials.some((trial) => trial.endsAt > new Date())
+  );
+}
 
-- **No behavior changes**
-- **No architectural changes**
-- **No “clever” improvements beyond the four patterns**
+function isIneligibleTrialPlan(plan: Plan) {
+  return plan.priceCents === 0 || plan.hidden;
+}
+```
 
-If you violate those rules, you’re not doing Type 0 anymore—you’ve moved into a different category of work, and that requires different coordination, different review rigor, and often a different testing strategy.
+This is not a new design. It does not introduce a policy object. It does not decide whether trial eligibility belongs in another module. It does not make the rules more elegant.
 
----
+It does one thing: it gives the existing behavior names.
 
-## Why name it at all?
+Now the next PR can say, "Change `hasPaidBeforeOrActiveTrial` so expired paid subscriptions are treated differently," and the reviewer is no longer spelunking through anonymous conditionals.
 
-Because naming changes how teams coordinate.
+That is Type 0 doing its job.
 
-- “I’m only doing Type 0 in this PR” tells reviewers what to look for: behavior preservation and readability, not architecture debates.
-- “We need Type 0 before we refactor this” is an honest admission that the code isn’t ready for deeper change yet.
-- “Let’s do Type 0 as Step 0” creates a small ritual that prevents you from building on top of chaos.
+## The dangerous part: even "just extraction" can change behavior
 
----
+Type 0 sounds safe because it is small. It is safer, not safe by magic.
 
-## The four sub-patterns
+Extraction can change behavior if you are careless about:
 
-### 0a. Method extraction (the foundation)
+- evaluation order
+- short-circuiting
+- variable scope
+- mutation
+- exception timing
+- repeated calls to time, random, IO, caches, or database queries
+- references that used to point to the same object
 
-**Goal:** break large methods into small, focused ones so a human can read intent linearly.
+This is where Type 0 needs discipline.
 
-Rules of thumb:
+Do not rewrite a condition because the rewritten version is "equivalent." Equivalence is where bugs wear a little mustache and walk past security.
 
-- break down methods that are too long to hold in working memory
-- each extracted method should do one thing and have a descriptive name
-- extract meaningful steps, not arbitrary chunks of N lines
+Prefer this:
 
-Why it works (especially for debugging):
+```ts
+function hasPaidBeforeOrActiveTrial(account: Account) {
+  return (
+    account.invoices.some((invoice) => invoice.status === "paid") ||
+    account.trials.some((trial) => trial.endsAt > new Date())
+  );
+}
+```
 
-- smaller methods create labels for the execution path
-- a 2000-line scroll becomes a short orchestration method you can step through mentally
-- you can put breakpoints at semantic boundaries (“validate input”, “build query”, “apply filters”) instead of hunting
+Over this:
 
-### 0b. Conciseness (reduce incidental complexity)
+```ts
+function hasPaidBeforeOrActiveTrial(account: Account) {
+  const paidBefore = account.invoices.some((invoice) => invoice.status === "paid");
+  const activeTrial = account.trials.some((trial) => trial.endsAt > new Date());
 
-**Goal:** remove visual noise so the intent stands out.
+  return paidBefore || activeTrial;
+}
+```
 
-Examples:
+The second version looks nicer, but it no longer preserves short-circuit behavior. If `account.invoices` already proves the answer, the old code never touched `account.trials` or `new Date()`. Maybe that does not matter. Maybe it does. Type 0 does not ask the reviewer to guess.
 
-- extract repeated expressions into local variables
-- extract repeated log contexts / key strings / URL fragments into variables
-- prefer language features that communicate intent directly
-- simplify overly verbose interpolation
+When in doubt, extract first, beautify later, and keep each step boring enough that a tired human can verify it.
 
-Why it works:
+## The safety net: characterization before confidence
 
-- it reduces cognitive load
-- it makes diffs smaller and changes safer
-- it prevents copy/paste drift
+If the code is already well tested, good. Run the focused tests before and after the Type 0 pass.
 
-### 0c. Empathy (pure readability)
+If it is not, resist the urge to say, "This is only cleanup."
 
-**Goal:** write for the next human, not the compiler.
+That sentence has launched a thousand regressions.
 
-Empathy means:
+Michael Feathers' _Working Effectively with Legacy Code_ is still the book I think of here; the [O'Reilly overview](https://www.oreilly.com/library/view/working-effectively-with/0131177052/) frames it around changing legacy systems without rewriting everything. In practice, the useful move is often a small characterization test: capture what the code currently does for the path you are about to touch.
 
-- use descriptive variable names (avoid `$e`, `$d`, `$tmp` unless truly obvious)
-- maintain consistent terminology across a module
-- rename misleading names
-- make code self-documenting
+Not what it should do.
 
-Litmus test:
+What it does.
 
-> If someone reads this at 2am during an incident, will it help them keep the execution path in their head?
+Example:
 
-### 0d. Dead code removal (remove lies)
+```ts
+it("preserves the current trial eligibility rules for blocked accounts", () => {
+  const account = accountFactory({
+    flags: ["trial_blocked"],
+    subscription: null,
+    invoices: [],
+    trials: [],
+  });
 
-**Goal:** delete everything that pretends to matter but doesn’t.
+  expect(canStartTrial(account, paidPlan)).toBe(false);
+});
+```
 
-Examples:
+That test may be philosophically unsatisfying. It may encode behavior you intend to change five minutes from now.
 
-- unused private methods
-- unused imports
-- commented-out old approaches
-- deprecated helpers nobody calls
+Fine. Delete or update it in the behavior-changing PR.
 
-Why it works:
+For the Type 0 PR, its job is humble: prove that the cleanup did not smuggle in the real change.
 
-- less code means fewer things to misunderstand
-- search results become trustworthy
+## When to reach for Type 0
 
----
+Use Type 0 when the next change is blocked by understandability.
 
-## What Type 0 is not
+Good signals:
 
-Type 0 is not:
+- you keep rereading the same method and losing the thread
+- the file has one "main" method that mixes validation, branching, IO, formatting, and persistence
+- a one-line bug fix requires explaining six unrelated facts
+- reviewers keep arguing about style because the intent is not visible
+- the code is correct enough to run the business, but too muddy to change confidently
+- you need to add tests, but the current shape gives you nowhere clean to observe behavior
 
-- changing service boundaries
-- introducing new abstractions or patterns
-- re-architecting a workflow
-- replacing libraries
-- reordering responsibilities across layers
-- “fixing” logic you suspect is wrong (unless you explicitly declare behavior change and test it)
+Avoid Type 0 when:
 
-If you catch yourself saying:
+- the functional change is already obvious and safe
+- you cannot explain exactly which behavior must remain unchanged
+- the cleanup requires touching many callers across the system
+- the team is trying to sneak a redesign through a "cleanup" label
+- there is no near-term change that benefits from the clarity
 
-- “While I’m here, let’s also…”
-- “This would be nicer if we…”
-- “We should probably redesign…”
+That last one matters. Cleanup without a customer often turns into taste. Type 0 has a customer: the next change.
 
-You might be leaving Type 0. That’s not inherently bad—but it should be intentional.
+## A Type 0 decision rule
 
----
+Here is the rule I use:
 
-## The core promise: behavior preservation (and how to keep it true)
+> If I cannot write the behavior-changing diff in a way that a reviewer can understand quickly, I probably need Type 0 first.
 
-Type 0 only works if teams trust the promise.
+Not always. But often enough.
 
-And yes, you’re right to be suspicious: **method extraction can accidentally change behavior** (early returns, variable scope, evaluation order, exception behavior).
+You can also phrase it as three questions:
 
-So Type 0 needs discipline that keeps it honest:
+1. What behavior am I about to change?
+2. What current behavior must stay exactly the same?
+3. What small readability pass would make both answers obvious in the diff?
 
-**Extract as-is, then rename/cleanup.**
+If question three has a small answer, do Type 0.
 
-- First pass: move code into methods without changing logic
-- Second pass: apply conciseness + empathy
-- Third pass: remove dead code
+If it has a huge answer, you may be looking at real refactoring, not Type 0. Split the work, make a plan, and stop pretending it is harmless.
 
-Practical guardrails:
+## How to structure the PR
 
-- don’t reorder condition checks “for readability”
-- don’t replace logic with “equivalent” logic unless you’re outside Type 0
-- be careful with variables that used to be in shared scope
-- treat “small” control-flow differences as real differences
+Type 0 works best when it is reviewable as its own thing.
 
-And if you have *any* safety net, even a thin one:
+If the cleanup is tiny, put it in the first commit of the functional PR:
 
-- run a focused test
-- replay the failing scenario
-- validate the one path you’re touching
+1. `Type 0: name existing trial eligibility checks`
+2. `Fix expired subscription trial eligibility`
 
-Type 0 is about being fast—**but fast by reducing cognitive complexity**, not fast by skipping safety.
+If the cleanup is large enough to make the behavior diff hard to see, open a separate PR.
 
----
+Use boring PR language:
 
-## Type 0 as a repeatable team ritual
+```md
+This PR is Type 0 only.
 
-### 1) Decide the scope (timebox helps)
+Intent:
+- make the existing trial eligibility path readable before changing the rules
+- preserve current behavior
 
-Examples:
+Changed:
+- extracted the top-level eligibility checks into named predicates
+- renamed temporary variables to match existing domain terms
+- removed one unused private helper
 
-- “Type 0 the hot path before debugging.”
-- “Type 0 only the path touched by this bug fix.”
+Validation:
+- existing eligibility tests pass
+- added characterization coverage for blocked, paid-before, and active-trial accounts
 
-### 2) Identify the “spine” of the code
+Out of scope:
+- changing trial eligibility rules
+- moving this logic into a policy/service object
+```
 
-Find the entry method(s) and the branching points. Turn that spine into a readable narrative via extraction.
+This gives reviewers the right job.
 
-### 3) Apply the four sub-patterns in order
+They are not reviewing whether the product logic is better. They are reviewing whether the code still does the same thing more legibly.
 
-Method extraction → conciseness → empathy → dead code removal.
+Good review comments for Type 0 sound like:
 
-### 4) Keep a “Type 0 checklist” in your PR
+- "This extraction changes when `new Date()` is evaluated. Can we keep the old short-circuit behavior?"
+- "The new name says `active subscription`, but the predicate treats `past_due` as active too. Can the name match the actual behavior?"
+- "This deleted helper looks unused in this package, but is it referenced by reflection/config?"
+- "Can we add one characterization test for the path this cleanup exposes?"
 
-- [ ] No behavior changes (inputs/outputs unchanged)
-- [ ] No architectural moves
-- [ ] Methods extracted and named as meaningful steps
-- [ ] Repeated expressions extracted where it improves clarity
-- [ ] Variables renamed; terminology consistent
-- [ ] Dead code and unused imports removed
+Less useful comments sound like:
 
----
+- "Can we turn this into a strategy?"
+- "This whole module should be event-driven."
+- "While you are here, can you fix the weird billing edge case?"
 
-## Closing thought
+Those may be good ideas. They are not Type 0 review.
 
-Type 0 refactoring is the simplest promise a developer can make:
+## How Type 0 differs from cleanup theater
 
-> “I’m leaving this code easier to work with than I found it—without changing what it does.”
+Cleanup theater is work that looks virtuous in a diff but does not lower risk for the next change.
 
-Sometimes it’s “nice to have.”
+It usually has one of these smells:
 
-And sometimes it’s the only way a human can safely move fast inside a high-complexity mess—especially during a hotfix.
+- broad formatting churn across files nobody is about to touch
+- renames based on personal taste rather than domain clarity
+- moving code into new abstractions before anyone can state the current behavior
+- deleting "unused" code without proving the runtime cannot reach it
+- mixing cleanup with a behavior change so reviewers cannot tell which line did what
+- a PR description that says "misc cleanup"
 
+Type 0 is different because it is accountable.
 
+It says:
+
+- here is the behavior we are preserving
+- here is the path we are making understandable
+- here is the next change this enables
+- here is how we checked that cleanup did not change behavior
+
+That is the difference between tidying and engineering.
+
+## Type 0 and legacy seams
+
+Sometimes Type 0 reveals that the next safe move is a seam.
+
+Fowler's note on [legacy seams](https://martinfowler.com/bliki/LegacySeam.html) is useful because it describes places where we can redirect, observe, or test behavior without editing the source at the point of behavior. In a legacy system, a seam can be the difference between "we can test this" and "we are hoping very professionally."
+
+But creating a seam can cross the Type 0 boundary.
+
+Extracting a method so the current flow is named:
+
+```ts
+const shippingCost = await calculateShipping(order);
+```
+
+to:
+
+```ts
+const shippingCost = await calculateShippingForOrder(order);
+```
+
+That can be Type 0 if behavior stays the same.
+
+Changing the function signature so tests can inject a fake shipping provider:
+
+```ts
+const shippingCost = await calculateShippingForOrder(order, shippingProvider);
+```
+
+That may be the right move, but it is no longer merely making the existing code understandable. It changes the collaboration surface. Treat it as dependency-breaking refactoring and review it with that level of care.
+
+Type 0 can point to the seam. It does not have to create the whole testing architecture in the same PR.
+
+## A practical Type 0 checklist
+
+Before opening the PR:
+
+- [ ] I can name the behavior-changing work this cleanup prepares for.
+- [ ] The PR does not intentionally change user-visible or caller-visible behavior.
+- [ ] Extracted methods preserve evaluation order and short-circuit behavior.
+- [ ] Names describe what the code actually does, not what I wish it did.
+- [ ] Deleted code is proven unused in the relevant runtime, not merely unpopular.
+- [ ] I ran focused tests or replayed the scenario that matters.
+- [ ] If tests were missing, I added characterization coverage for the touched path.
+- [ ] The PR description tells reviewers this is Type 0 and what is out of scope.
+
+During review:
+
+- [ ] Ask "does this preserve behavior?" before "do I prefer this design?"
+- [ ] Push behavior changes into a follow-up commit or PR.
+- [ ] Keep architecture ideas as notes unless they are required for safety.
+- [ ] Be suspicious of clever equivalence.
+
+After merge:
+
+- [ ] Make the real change while the mental model is fresh.
+- [ ] Delete or update characterization tests only when the behavior intentionally changes.
+- [ ] Do not let Type 0 become a parking lot for eternal cleanup.
+
+## The promise
+
+Type 0 refactoring is a small promise:
+
+> I am making this code easier to change without changing what it does.
+
+That promise is useful precisely because it is limited.
+
+It gives the developer permission to improve the work surface without starting an architecture debate. It gives the reviewer a clear standard. It gives the next PR a fighting chance of being about the actual product change.
+
+Sometimes the bravest thing you can do in a messy codebase is not to redesign it.
+
+Sometimes it is to make the current mess tell the truth first.

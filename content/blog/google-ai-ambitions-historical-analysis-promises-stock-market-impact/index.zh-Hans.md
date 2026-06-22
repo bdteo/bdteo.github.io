@@ -1,104 +1,212 @@
 ---
 lang: "zh-Hans"
 translationOf: "google-ai-ambitions-historical-analysis-promises-stock-market-impact"
-translationUpdatedAt: "2026-05-18"
-translationSourceHash: "68b440dbe1d26ab0"
-title: "Google AI 历史：承诺、股价表现与影响"
+translationUpdatedAt: "2026-06-22"
+translationSourceHash: "4fcc46a4e0bdfcc1"
+title: "2026 年的 Google AI：历史、Gemini、Search 与市场影响"
 date: "2024-05-11T12:00:00.000Z"
-description: "回顾 Google 的 AI 历史，分析其承诺（TensorFlow、Gemini）与股价表现和市场影响之间的关系。涵盖里程碑、成功、失败与展望。"
+description: "一份面向 2026 的 Google AI 模式指南：研究突破、Gemini、Search、TPU、Cloud、失败案例，以及谨慎的股市视角。"
 featuredImage: "./images/featured.jpg"
 imageCaption: "橡木桌上的一本打开的笔记本。一条细淡的手绘折线图，一支钢笔，一杯茶——被写下来的耐心。"
 ---
 
-Google 在 Gemini 系列等 AI 技术开发与市场推广上的历程，是一个很有意思的案例：企业承诺、股票市场表现与技术创新如何彼此牵动。本文分析 Google 的 AI 承诺在若干具体历史节点上如何显著影响其股价，并同时回顾其中的成功与失败。
+我以前以为有趣的问题是：Google 对 AI 的承诺有没有推动股价？
 
-这家科技巨头进入 AI 领域的过程，一直伴随着雄心勃勃的项目和大胆宣称。从 2015 年推出 TensorFlow、确立 Google 在 AI 研发中的领导地位，到 2016 年推出 Google Assistant、增强其对 Amazon Alexa 和 Apple Siri 等竞争对手的竞争力，Google 一直试图推动 AI 能力的边界 <small><a href="#ref1">[1]</a></small>。
+这仍然是一个真实的问题，但太小了。到了 2026 年，更好的问题是：Google 真正的 AI 模式是什么，其中哪些部分会复利？
 
-### Google AI 发展的关键历史里程碑
+Google 的 AI 历史不是一条干净的英雄曲线。不是“Google 发明了一切，所以它会赢”。也不是“Google 错过了 ChatGPT，所以它完了”。这两种说法都很懒。更有用的版本更混乱，也更实际：Google 往往很早创造或吸收重要研究，慢慢把它们接入基础设施，把它们藏进巨大的产品里；当界面变得公开、对话化时，它会踉跄；然后当工作从 demo 变成系统时，它又会恢复。
 
-1. **TensorFlow 推出（2015）**：Google 将其机器学习框架 TensorFlow 开源，随后它迅速流行起来。此举帮助 Google 确立了 AI 研发领导者的地位，也正面影响了市场对它的看法 <small><a href="#ref1">[1]</a></small>。TensorFlow 被用于各种应用，从改进搜索结果到驱动自动驾驶汽车。
+这个模式对构建者重要，因为它展示了研究如何变成产品重力。它对投资者重要，因为 Alphabet 的价值不是对某一次模型发布的全民公投。它对任何想理解 AI 的人也重要，因为 Google 是少数能同时看见四层结构的公司之一：前沿研究、消费者分发、自研计算，以及一个既被 AI 威胁又被 AI 强化的广告业务。
 
-2. **Google Assistant 发布（2016）**：Google Assistant 的推出增强了 Google 在 AI 领域对 Amazon Alexa 和 Apple Siri 等竞争对手的竞争力。市场对此反应积极，因为它体现了 AI 驱动用户界面的潜在增长空间 <small><a href="#ref2">[2]</a></small>。Google Assistant 被集成进智能手机、智能家居设备和汽车，成为语音助手市场的重要玩家。
+这是面向 2026 的版本。
 
-3. **量子计算进展（2019）**：Google 宣布在“量子霸权”上取得突破，声称其量子计算机能够完成传统超级计算机无法胜任的计算。这一公告带来了短暂的股价上涨，也展示了投资者对 Google 前沿技术能力的热情 <small><a href="#ref3">[3]</a></small>。
+## 简短版本
 
-### 股票市场表现与 AI 里程碑
+Google 在 AI 上的优势不是一个聊天机器人。它是一个循环：
 
-股票市场对 Google 的 AI 进展反应不一。重大公告，比如量子计算突破和新 AI 产品发布，通常会带来短期股价上涨。不过，长期来看，股价影响更紧密地取决于这些技术是否真正落地，以及能否取得商业成功。
+1. 研究创造技术和模型。
+2. 基础设施让这些模型便宜到足以在荒唐的规模上运行。
+3. 产品把模型暴露给数十亿用户。
+4. 使用数据、enterprise 需求和市场压力，为下一轮基础设施周期提供资金。
 
-- **S&P 500 里程碑**：Google 的重大 AI 公告经常与更广泛的市场趋势重合。例如，2021 年的大牛市中，Google 在 AI 取得显著进展的同时也创下新的股价高点，反映出投资者对技术驱动增长的强烈信心 <small><a href="#ref4">[4]</a></small>。
+这个循环很强。它也很脆弱。如果 Search 回答得太多、给 web 送出的流量太少，出版商会生气。如果 Gemini 在一个敏感的 image prompt 上出错，这个错误会变成公开的信任故事。如果 AI 答案太贵，利润率叙事会变差。如果模型落后，整套 full-stack 叙事就会开始听起来像是在用电子表格解释产品差距。
+
+所以正确的姿态既不是膜拜，也不是轻蔑。Google AI 是一台复利机器，只是它的失败模式非常公开。
+
+## 一份简明时间线
+
+- **2011-2015：公开 AI 品牌之前的内部规模。** Google 的 DistBelief 基础设施帮助内部训练大型神经网络。2015 年 11 月，Google 开源了 [TensorFlow](https://research.google/blog/tensorflow-googles-latest-machine-learning-system-open-sourced-for-everyone/)，把这套内部 machine learning stack 的一部分提供给更广泛的世界。
+- **2016：AlphaGo 和“AI-first”。** DeepMind 的 AlphaGo 让 AI 不再那么像实验室奇观，而更像一种新的解题引擎。Google 也开始把自己称为 AI-first 公司，而不是 mobile-first 公司。
+- **2017：Transformer。** Google 研究人员的论文 [Attention Is All You Need](https://arxiv.org/abs/1706.03762) 提出了 Transformer 架构。今天很多现代 generative AI 都建立在它之上。
+- **2019：BERT 进入 Search。** Google 把 BERT 模型应用到 Search ranking 和 featured snippets 中，用 machine learning 更好地理解语言和查询意图。
+- **2020-2024：科学成为证明点。** AlphaFold 表明，AI 能产生科学实用价值，而不只是漂亮 demo。到 2025 年，Google DeepMind 把 AlphaFold 描述为一个五年的科学影响故事，并且获得了诺贝尔奖层面的认可。
+- **2023：Google DeepMind 成立。** Google 将 DeepMind 和 Brain 团队合并为 [Google DeepMind](https://blog.google/innovation-and-ai/technology/ai/april-ai-update/)，把更多模型工作放进一个聚焦的研究组织。
+- **2023 年 12 月：Gemini 开始。** Google 推出 [Gemini 1.0](https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/)，作为 Google DeepMind 时代的第一个模型家族。
+- **2024：AI 离开实验室，并在公众面前出错。** Gemini 图像生成因为不准确的人物图像被暂停，AI Overviews 则在 Search 中上线后产出了一轮奇怪、醒目的答案。这不只是公关噪音。它暴露了把概率系统放进可信表面里的难度。
+- **2025：inference 成为基础设施战略。** Google 发布 Ironwood，也就是第七代 TPU，一颗为 inference 时代设计的芯片。
+- **2026：agentic Gemini 时代。** 在 I/O 2026 上，Google 把下一章框定在 Gemini、Search agents、AI Mode、developer agents 和 full-stack AI 方法之上。截至 2026 年 6 月，这就是它仍在使用的战略框架。
+
+这条时间线不是从发明到统治的直线。它是从发明到分发的线，中间有几个坑。
+
+## 哪些判断经受住了时间
+
+第一个经受住时间的东西，是那个无聊的判断：Google 的 AI 历史确实很深。
+
+现在很流行把 AI 领导力简化成“这个月谁有最好的消费级聊天机器人”。这会错过当前时代里有多少东西是长期工作提前铺好的：TensorFlow、TPU、BERT、Transformers、AlphaGo、AlphaFold、seq2seq models，以及把 machine learning 放进数十亿用户产品里的习惯。Google 在 2023 年宣布 DeepMind 合并时，明确把其中很多东西列为 DeepMind 和 Brain 的共同遗产。
+
+第二个经受住时间的是基础设施。
+
+2024 年时，人们很容易谈论 AI，仿佛模型本身就是产品。到了 2026 年，计算层已经无法忽视。Google 发布 Ironwood TPU 时，描述的是从以 training 为中心的 AI 转向大规模 inference。Google Cloud 后来也把 Ironwood 放进一条长期 custom silicon 线中，这条线包括 TPU、YouTube video chips 和 Tensor mobile chips。
+
+这很重要，因为 AI 的未来不只是“谁能训练最聪明的模型？”也是“谁付得起下一个十亿个问题的回答成本？”如果 Google 能降低智能的成本和 latency，Search、Gemini、Workspace、Android、YouTube、Cloud 和 agents 都会更有说服力。
+
+第三个经受住时间的是分发。
+
+Google 可以把 AI 放进 Search、Gmail、Docs、Maps、Android、Chrome、Pixel、YouTube、Photos 和 Cloud。这不保证产品品味好。它意味着，一旦一个功能能用，分发就不是难点。在 I/O 2026 上，Google 说 AI Overviews 的月活用户超过 25 亿，AI Mode 在第一年就超过 10 亿月活用户。即使考虑到 keynote 指标本身有自我宣传属性，规模仍然是重点。一个在 Google 规模上运行的平庸功能，可能比一个没有用户的漂亮 demo 教会你更多东西。
+
+第四个经受住时间的是这个想法：Google AI 比 search ads 更大。
+
+Waymo 不是 Gemini。AlphaFold 不是 Search。TPU 客户不是 YouTube 观众。但它们都在同一种 Alphabet 逻辑之下：耐心的技术赌注，可以显得奇怪很多年，直到它们要么变成产品基础设施，要么继续作为昂贵的 optionality 存在。2026 年 Q1，Alphabet 说 Waymo 每周完全自动驾驶出行次数超过 50 万次。这仍然不是核心业务。但它也不再是科学展上的道具。
+
+## 哪些判断没有经受住时间
+
+旧的 stock-first 框架没有经受住时间。
+
+股价反应是真实的，但它们是嘈杂的温度计。2023 年 Bard demo 的错误据称帮助一天内抹去了约 1000 亿美元市值。那很尴尬，也有意义。但它同样没有决定 Google 的 AI 未来。公开 demo 可以比产品现实更快地推动市场情绪。
+
+反过来也一样。一次强劲的 earnings print 并不能证明每个 AI 赌注都是好的。它证明的是，在那个时刻，投资者愿意相信这笔支出有走向回报的路径。这个区别很重要。
+
+第二个没有经受住时间的是这个想法：Google 只要“ship 得更猛”就行。
+
+Google 的问题从来不是缺模型。问题是 AI 的不确定性撞上了 Google 规模的信任。当 Gemini 图像生成产出不准确或冒犯性的人物图像时，Google 暂停了该功能，并解释说它的调优在某些上下文中过度修正了。当 AI Overviews 在 2024 年产出奇怪答案时，Google 解释说 Search AI 与 ranking systems 和 web results 绑定，但也承认，被误解的查询、薄弱的 source material 和论坛讽刺仍然可能破坏体验。
+
+这些事件不是脚注。它们是产品课。Google 的 AI 不只是能力问题。它是在品牌压力、监管压力、出版商压力和用户信任压力下的能力问题。
+
+第三个没有经受住时间的是这个假设：开放研究带来的好感会自动延续。
+
+TensorFlow 是 2015 年一个巨大的 open-source 时刻。现代 Gemini 时代更混合：封闭的 frontier models、开放的 Gemma models、API 访问、Cloud 服务，以及被紧密管理的消费级表面。这在商业上也许合理。但它也意味着 Google 和构建者的关系，比 TensorFlow 时刻更交易化。开发者不只问“模型聪明吗？”他们会问平台是否稳定、便宜、可移植，并且无聊到足以用来构建东西。
+
+## Google AI 的模式
+
+这是我现在觉得最有用的心智模型：
+
+**研究是种子。** Google 很擅长产出后来会变成基础的研究。Transformer 是显而易见的例子。AlphaFold 是更好的提醒：同一种研究文化也能在消费软件之外产生意义。
+
+**基础设施是 moat 尝试。** TPUs、data centers、networking、cooling 和 software stacks 并不华丽，但它们决定 AI 能不能被有利润地提供。2026 年 Q1，Alphabet 在 property and equipment 上的购买额是 357 亿美元。这不只是“AI vibes”；这是硬资本流向 servers、network equipment 和 data centers。
+
+**产品是试验场。** Search 是危险的那个，因为它印钱。Cloud 是最干净的商业故事，因为客户直接为 compute、models 和 enterprise AI tooling 付费。Android 和 Workspace 是分发层。Gemini 既是产品，也是围绕模型家族的品牌外壳。
+
+**市场认知是压力表。** 投资者不会像研究人员那样评估 Google AI。他们问的是更小的一组问题：AI 会增加 Search 使用，还是蚕食 ad clicks？Cloud 会拿到份额吗？capex 会产生 revenue、margin 或 strategic control 吗？Google 会避开监管和声誉错误吗？
+
+当你看到 Google 发布一个新模型，不要只问它是否打赢了 benchmark。要问它进入了循环的哪个位置。
+
+它是否让 Search 更有用，同时不破坏 web 生态？它是否让 Cloud 更容易销售？它是否降低 cost per answer？它是否足够改善 Android 或 Workspace，让用户注意到？它是否让 developers 在 Google 上构建，而不是只是测试 demo 然后离开？
+
+这就是模式。
+
+## Gemini 是战略，不只是模型
+
+Gemini 起初是一个模型家族，但到 2026 年，它更像 Google 的 AI operating label。
+
+app 里有 Gemini。Search 里有 Gemini。Workspace 里有 Gemini。Cloud 里有 Gemini。Android 里有 Gemini。developer tools 里有 Gemini。Gemini 是 consumer subscriptions 的驱动器。Gemini 是 API traffic。Gemini 也是一个 agentic story。
+
+这会让人困惑，因为“Gemini”承担了太多语义工作。它可以指 frontier model、app、API、assistant、branding layer 或 enterprise story。但这种蔓延本身也是战略。Google 想让 Gemini 成为那些过去看起来相互分离的表面之间的连接组织。
+
+所以 I/O 2026 的语言很重要。Google 不是只在说“我们的模型更聪明”。它在说，AI 正从 assistance 走向 agents，从孤立 prompts 走向 workflows，从 chatbot novelty 走向人们已经使用的产品表面。
+
+我对“agentic”这个词很谨慎，因为它正在变成新的“blockchain”：有时有意义，有时只是喷在 slides 上。但在 Google 这里，方向足够清楚。Search agents、AI Mode、Antigravity、Gemini API managed agents、Workspace context 和 Android tooling，都是把模型变成能采取行动的系统的尝试。
+
+测试标准不是 keynote demo 看起来是否像活的。测试标准是用户是否愿意把无聊、重复、后果明确的工作交给 agent。
+
+## 谨慎的股市视角
+
+Alphabet 股票不是纯 AI 股票。它是广告、cloud、订阅、基础设施和 optionality 股票，里面放着一个巨大的 AI 问题。
+
+这让市场角度比“AI 发布等于股价上涨”更微妙。
+
+2023 年 2 月 Bard 的错误显示，当投资者认为 Google 正在把叙事输给 Microsoft 和 OpenAI 时，市场情绪可以多快地惩罚它。但 2026 年的 earnings story 展示了反向压力：如果 Search revenue 增长、Cloud 加速、Gemini subscriptions 上升、基础设施需求看起来真实，投资者就可能对沉重的 AI 支出更有耐心。
+
+Alphabet 的 2026 年 Q1 数据有用，因为它们说明了市场为什么愿意听。该季度 revenue 为 1099 亿美元。Google Cloud revenue 略高于 200 亿美元，同比增长 63%，operating income 为 66 亿美元。Google 说 Cloud backlog 环比几乎翻倍，超过 4600 亿美元。Search and Other advertising 增长 19%。这些数字不能证明 Google 会赢得 AI，但会让 bear case 更难成立。
+
+读懂股市角度最干净的方式是：
+
+- **短期：** demos、错误、lawsuits、product launches 和 earnings 语言会推动情绪。
+- **中期：** Search usage、AI ad formats、Gemini subscriptions、Cloud backlog、TPU demand 和 capex discipline 更重要。
+- **长期：** 问题是 Google 能否把 AI 从 cost shock 转成一个保护 margin 的 product layer。
+
+最后一点就是整场游戏。如果 AI 让每次搜索都更贵，同时减少出版商好感和 ad clicks，市场最终会在意。如果 AI 让 Search 更有用、Cloud 更差异化、Workspace 更粘、compute 更高效，市场会原谅很多东西。
 
 <figure>
-  <img src="google_stock_milestones.png" alt="Google 股价里程碑">
+  <img src="google_stock_milestones.png" alt="Google 股票里程碑">
   <figcaption>
-    图 1 - Google 股价里程碑。
+    Fig1. - 原文中的 Google 股票历史里程碑。有用的上下文，不是实时估值模型。
   </figcaption>
 </figure>
 
-### 成功与失败
-
-- **成功**：Google 的 AI 在语言翻译、图像识别，以及通过 Waymo 推动自动驾驶技术等领域取得了可观成功。这些成功帮助巩固了 Google 作为技术创新者的声誉 <small><a href="#ref5">[5]</a></small>。
-
-- **失败**：并非 Google 的所有 AI 计划都达到了市场预期。例如，备受期待的 Google Glass 项目没能打动消费者，最终停产。该产品面临隐私担忧，也没能为普通消费者提供足够有说服力的使用场景。同样，Gemini 1.5 Pro 周围的延迟和过度承诺，也引发了用户不满和怀疑 <small><a href="#ref6">[6]</a></small>。Google 从这些失败中吸取了教训，开始更专注于务实的 AI 应用，并改善与用户的沟通。
-
 <figure>
-  <img src="tech_companies_ai_milestones.png" alt="科技公司 AI 里程碑">
-  <figcaption>图 2 - 科技公司 AI 里程碑。</figcaption>
+  <img src="tech_companies_ai_milestones.png" alt="科技公司的 AI 里程碑">
+  <figcaption>Fig2. - 主要科技公司的 AI 里程碑。把里程碑图表当作叙事地图，而不是持久优势的证明。</figcaption>
 </figure>
 
-### 市场影响与未来展望
+## 构建者应该从 Google AI 学到什么
 
-Google AI 的市场影响相当显著，不仅影响自身股价，也影响更广泛科技行业的方向。AI 领域仍然是投资者关注的重点，这一点也体现在 S&P 500 的表现中，其中科技股扮演着重要角色 <small><a href="#ref4">[4]</a></small>。
+构建者的教训不是“做 Google”。你的 side project 不会拥有 Search、YouTube、DeepMind、TPU、Cloud、Android 和 data-center budget。听起来很可爱，但不会。
 
-往前看，Google 能否兑现其 AI 承诺，并克服技术部署中的挑战，将至关重要。该公司如果能更有效地提升透明度、管理消费者预期，可能会决定其未来的市场位置和投资者信任。
+有用的教训是顺序。
 
-一个值得关注的关键领域，是 Google 在 Gemini 系列 AI 模型上的进展。Gemini 1.5 Pro 于 2024 年 2 月发布，承诺在 AI 能力上实现显著跃升，但其推出过程已经遇到挑战 <small><a href="#ref6">[6]</a></small>。Google 如何处理这些挑战并兑现承诺，很可能会对其 AI 声誉和市场地位产生明显影响。
+第一，研究不是产品。模型能力只有被放进一个用户已经有 intent 的 workflow 里，才会变得有价值。Search 强大，是因为用户带着 intent 来。Workspace 强大，是因为用户带着工作来。Cloud 强大，是因为客户带着预算和 deployment problem 来。
 
-Google 在人工智能上的雄心勃勃推进，尤其是通过 Gemini 系列，标志着 AI 技术进入一个变革性阶段。作为该系列的一部分，Gemini 1.5 Pro 的推出突显了 Google 持续推动 AI 能力边界的决心。不过，Gemini 1.5 Pro 的推出并非没有挑战。理解这些挑战，对于理解这类先进 AI 模型的潜力与局限同样重要。
+第二，evals 不够。Google 的公开失败通常不是“模型很笨”的失败。它们是 context failures、policy failures、retrieval failures、product-surface failures 和 expectation failures。如果你的 AI 功能触及信任、金钱、健康、身份、current events 或公共声誉，你的 eval suite 就需要包括模型周围的世界。
 
-### 专家对 Gemini 1.5 Pro 的看法
+第三，成本是产品设计。一个答案 1 美元时很神奇、0.01 美元时还算可忍的功能，不是同一个功能。Google 对 TPU、latency 和 cost per response 的执着，不只是财务故事。它塑造了哪些产品体验是可能的。
 
-**性能与能力**：Gemini 1.5 Pro 建立在 Mixture-of-Experts（MoE）架构之上，相比前代模型有显著改进，包括上下文窗口大幅增加到最高 1000 万 tokens。这项增强使它能更好处理涉及大量数据和多种格式的复杂任务，包括文本、代码、视觉和音频 <small><a href="#ref7">[7]</a></small>。Encord 的 Stephen Oladele 表示，"Gemini 1.5 Pro maintains near-perfect recall across the entire context and uses a mixture-of-experts architecture for more efficient training & higher-quality responses" <small><a href="#ref7">[7]</a></small>。
+第四，分发可以暂时隐藏弱点，但不能永远隐藏糟糕的实用性。Google 可以把 Gemini 放到数亿人面前。这给了它时间和 feedback。但用户仍然会注意到某个东西慢、错、烦，或者不值得改变习惯。
 
-**推出过程中的挑战**：尽管能力先进，Gemini 1.5 Pro 的推出仍面临多项挑战。该模型目前处于 private preview，general availability 安排在更晚时间，这说明部署采用了分阶段方式 <small><a href="#ref7">[7]</a></small>。这种谨慎的推出策略，可能源于 Google 需要进一步微调模型，并确保它能满足前代产品和市场共同抬高的期待。
+## 接下来我会看什么
 
-### 行业分析师的观点
+我会看五件事。
 
-**对 AI 行业的影响**：行业分析师认为，Gemini 系列是 Google 的重要一步，有可能为 AI 模型能力树立新的标准。Gemini 系列，尤其是 1.5 Pro，预计将增强 Google 相对于 OpenAI 和 Microsoft 等科技巨头的竞争力；这些公司也一直在积极推进自己的 AI 能力 <small><a href="#ref8">[8]</a></small> <small><a href="#ref7">[7]</a></small>。
+**Search 行为。** AI Overviews 和 AI Mode 是 Google AI 故事的中心，因为 Search 是业务心脏。看人们是否搜索更多，commercial queries 是否仍然可变现，以及出版商是否继续供应 AI Overviews 依赖的 web。
 
-**市场含义**：Gemini 1.5 Pro 的进展很可能影响医疗、金融等多个行业，使更复杂的 AI 应用成为可能。这可能改变市场动态：那些能有效整合此类先进 AI 技术的公司，可能获得显著竞争优势 <small><a href="#ref7">[7]</a></small>。
+**每个有用答案的成本。** 任何 AI earnings story 里安静的那句话都关于成本。如果 Google 在 model quality 改善的同时继续降低 inference cost，它的分发优势会更锋利。
 
-### 来自 Google 高管的洞见
+**Cloud 转化。** Backlog 很有希望。Revenue 和 operating income 更好。Customer retention 和真实 AI workloads 更好。Google Cloud 是 AI 故事最直接可销售的地方。
 
-**未来计划与伦理考量**：包括 Sundar Pichai 在内的 Google 高管一直强调，公司致力于负责任的 AI 发展。Pichai 强调，AI 进步需要与伦理准则对齐，并确保这些技术被用于社会利益 <small><a href="#ref2">[2]</a></small> <small><a href="#ref9">[9]</a></small>。随着 AI 能力增强并融入日常应用，这种做法变得至关重要。
+**Agent reliability。** Agents 很容易 demo，很难让人信任。我不太关心一个 agent 是否在 keynote 里订了一家餐厅；我更关心它是否能处理 messy real-world constraints，而且不制造 cleanup work。
 
-### 应对挑战与把握机会
+**Failure response。** Google 还会犯更多 AI 错误。每家公司都会。真正的信号是公司多快缩小 blast radius，解释问题，改进系统，并且抵抗住把问题说成只是 user misunderstanding 的诱惑。
 
-**处理技术挑战**：为了应对未来挑战，Google 必须继续投入研发，解决模型可靠性和伦理关切等问题。该公司逐步推出 Gemini 1.5 Pro 的方式，显示出一种在问题变得严重之前先降低风险的策略 <small><a href="#ref7">[7]</a></small>。
+## 有用的结论
 
-**扩大市场机会**：Google 可以利用 Gemini 1.5 Pro 的能力创造新的市场机会，尤其是在需要处理大型数据集和复杂问题求解场景的行业。通过提供能简化 AI 融入业务流程的工具，Google 可以帮助各行业转变运营方式，并实现更高效率  <small><a href="#ref10">[10]</a></small>。
+Google 的 AI 故事不是 comeback story。它也不是 fall-from-grace story。它是一条长期复利故事，只是中间有一个非常别扭的公开阶段。
 
-**伦理 AI 发展**：随着 AI 技术变得更强大，伦理影响也变得更重要。Google 通过 AI principles 和治理框架展示出的持续负责任 AI 发展承诺，将是维持公众信任和监管合规的关键  <small><a href="#ref11">[11]</a></small>。
+经受住时间的：研究深度、基础设施赌注、分发优势，以及 AI 最终会触及 Google 每一个主要表面的想法。
 
-总之，Gemini 1.5 Pro 的推出虽然带来挑战，也为 Google 在 AI 领域取得领先提供了实质机会。只要继续聚焦性能提升、伦理 AI 发展和市场扩张，Google 就能更有效地穿过这些挑战，并为 AI 在各行业中的能力设定新的标准。
+没有经受住时间的：把股价波动当作证明，把模型发布当作命运，以及低估把 generative AI 放进人们期望信任的产品里有多难。
 
+实用的心智模型很简单：
 
-### 结论
+当 research、infrastructure、product 和 monetization 相互强化时，Google 会赢。当其中一层跑得比其他层太快时，Google 会踉跄。
 
-Google 的 AI 旅程说明了技术创新、市场预期和企业战略之间复杂的动态关系。虽然公司经历过显著成功，也遭遇过挫折，但它在 AI 领域的持续努力仍然吸引着市场的强烈关注。投资者和市场观察者很可能会继续密切关注 Google 能否把 AI 能力转化为可持续增长和市场领导力。
+这就是为什么股市角度应该是次要的。股票只是墙上的影子。真正的物体是循环。
 
-随着 AI 格局继续快速演进，Google 作为 AI 先行者的位置也将受到检验。公司能否在雄心勃勃的创新、现实可行的执行、透明沟通和有效的预期管理之间取得平衡，将是决定其在 AI 领域长期成功和整体市场表现的关键因素。
+## 来源与延伸阅读
 
-### 参考资料
-
-<a id="ref1"></a>1. [Emeritus - Google AI Strategy](https://emeritus.org/blog/ai-strategy-google/)
-<a id="ref2"></a>2. [Google Blog - Gemini AI](https://blog.google/products/google-one/google-one-gemini-ai-gmail-docs-sheets/)
-<a id="ref3"></a>3. [Yahoo Finance - GOOGL Quote](https://finance.yahoo.com/quote/GOOGL/)
-<a id="ref4"></a>4. [Wikipedia - S&P 500 Milestones](https://en.wikipedia.org/wiki/Closing_milestones_of_the_S%26P_500)
-<a id="ref5"></a>5. [Think with Google - AI Tools](https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/automation/using-google-ai-tools/)
-<a id="ref6"></a>6. [Times of India - Gemini 15 Pro AI Release](https://timesofindia.indiatimes.com/gadgets-news/google-releases-gemini-15-pro-ai-model-heres-what-company-ceo-sundar-pichai-has-to-say/articleshow/107732867.cms)
-<a id="ref7"></a>7. [Encord - Google Gemini 1.5 Generative AI Model with Mixture of Experts](https://encord.com/blog/google-gemini-1-5-generative-ai-model-with-mixture-of-experts/)
-<a id="ref8"></a>8. [Built In - Google Gemini](https://builtin.com/articles/google-gemini)
-<a id="ref9"></a>9. [CBS News - Google's AI Future](https://www.cbsnews.com/news/google-artificial-intelligence-future-60-minutes-transcript-2023-04-16/)
-<a id="ref10"></a>10. [Google Cloud - Generative AI](https://cloud.google.com/ai/generative-ai)
-<a id="ref11"></a>11. [Google Blog - Responsible AI](https://blog.google/technology/ai/responsible-ai-looking-back-at-2022-and-to-the-future/)
+- [TensorFlow open-sourced by Google Research](https://research.google/blog/tensorflow-googles-latest-machine-learning-system-open-sourced-for-everyone/)
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+- [Google Search and BERT](https://blog.google/products-and-platforms/products/search/search-language-understanding-bert/)
+- [Google DeepMind merger announcement](https://blog.google/innovation-and-ai/technology/ai/april-ai-update/)
+- [Introducing Gemini 1.0](https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/)
+- [AI Overviews launch in Search](https://blog.google/products-and-platforms/products/search/generative-ai-google-search-may-2024/)
+- [Google's AI Overviews post-launch explanation](https://blog.google/products-and-platforms/products/search/ai-overviews-update-may-2024/)
+- [Gemini image generation issue explanation](https://blog.google/products-and-platforms/products/gemini/gemini-image-generation-issue/)
+- [I/O 2026: agentic Gemini era](https://blog.google/innovation-and-ai/sundar-pichai-io-2026/)
+- [Google Search I/O 2026 updates](https://blog.google/products-and-platforms/products/search/search-io-2026/)
+- [Google I/O 2026 developer keynote recap](https://developers.googleblog.com/all-the-news-from-the-google-io-2026-developer-keynote/)
+- [Alphabet Q1 2026 CEO remarks](https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q1-2026/)
+- [Alphabet Q1 2026 results filed with the SEC](https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/googexhibit991q12026.htm)
+- [Ironwood TPU announcement](https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/)
+- [Ironwood TPU general availability and AI Hypercomputer notes](https://cloud.google.com/blog/products/compute/ironwood-tpus-and-new-axion-based-vms-for-your-ai-workloads)
+- [AlphaFold five-year impact note](https://deepmind.google/blog/alphafold-five-years-of-impact/)
+- [AlphaGo at 10](https://deepmind.google/blog/10-years-of-alphago/)
+- [Reuters note on the 2023 Bard market reaction](https://reutersbest.com/reuters-reveals-googles-ai-chatbot-flubs-answer-in-promotional-video-sending-alphabet-shares-down-9/)

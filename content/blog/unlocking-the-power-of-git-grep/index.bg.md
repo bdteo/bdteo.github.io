@@ -1,218 +1,274 @@
 ---
 lang: "bg"
 translationOf: "unlocking-the-power-of-git-grep"
-translationUpdatedAt: "2026-05-17"
-translationSourceHash: "133f75c4ec8e9010"
-title: "Отключете силата на 'git grep' за ефективно търсене в код"
+translationUpdatedAt: "2026-06-22"
+translationSourceHash: "203041318333bf65"
+title: "git grep рецепти: търсене в проследения код, без да претърсваш цялата файлова система"
 date: "2024-11-13"
-description: "Кога 'git grep' побеждава обикновения grep, кога 'rg' (ripgrep) побеждава и двата, и какво всъщност прави 'git grep' с .gitignore (спойлер: нищо)."
+description: "Практична git grep шпаргалка за търсене в проследени файлове, branches, tags, staged промени и стари commits, с .gitignore особености и кога вместо това да използваш ripgrep."
+tags: ["git", "git grep", "ripgrep", "търсене в код", "инструменти за разработчици", "софтуерна разработка", "инструменти за команден ред"]
 featuredImage: "./images/featured.jpg"
-imageCaption: "Отворено чекмедже от библиотечен картотечен шкаф. Една карта стърчи леко напред — откъсът, който търсехте."
+imageCaption: "Отворено чекмедже от библиотечен картотечен шкаф. Една карта стърчи леко напред - пасажът, който търсеше."
+audioUrl: "/audio/articles/unlocking-the-power-of-git-grep/bg/5egO01tkUjEzu7xSSE8M-60935e2faceb.m4a"
+audioDuration: "16:21"
+audioVoice: "Carmelo (ElevenLabs Bulgarian)"
+audioGeneratedAt: "2026-06-22"
+audioTextSource: "content/tts/unlocking-the-power-of-git-grep.bg.md"
 ---
 
-В обширно кралство, пълно с безброй свитъци и ръкописи, живеел учен на име Аларик. Библиотеката му била огромна — лабиринт от знание, в който древни текстове се смесвали със съвременни писания, а тайни се криели между редовете. Аларик често се оказвал в търсене на една-единствена изплъзваща се фраза сред това море от информация — задача, която с всеки изминал ден ставала все по-плашеща.
+Повечето съвети за търсене в код започват със скоростта. Скоростта има значение, но истинската причина да посягам към `git grep` е по-проста:
 
-Една сутрин, докато слънцето хвърляло златни лъчи върху прашните томове, Аларик тръгнал да открие конкретна идея, спомената в архивите му, известна само като „Шепнещия сигил“. Той преглеждал том след том, използвайки обичайните си методи за пресяване на страниците — методи, които вече му се стрували мудни и неточни. Колкото по-дълбоко навлизал, толкова повече се оплитал в нерелевантни пасажи, дубликати и подвеждащи препратки. Раздразнението растяло, докато часовете се превръщали в дни, а напредъкът оставал нищожен.
+**Той търси в кода, за който Git знае, не в цялата файлова система.**
 
-Тогава при Аларик дошъл стар мъдрец и забелязал мъката му. С усмивка на човек, който знае, мъдрецът казал: „Може би търсиш по трудния начин. Има скрит път, познат само на онези, които подреждат знанието си разумно.“ Заинтригуван, Аларик слушал как мъдрецът обяснява метод, който стеснявал търсенето му, прорязвал шума и го водел направо към текстовете, които търсел.
+Това означава, че търсенето ти не се разхожда из `node_modules`, `.cache`, `dist`, coverage reports, локални dumps, screenshots или каквото и да е временно нещо, което си създал в странен следобед на debugging. По подразбиране `git grep` започва от проследените пътища в твоя Git working tree. Само това ограничение прави резултатите по-спокойни.
 
-Въоръжен с този нов подход, Аларик опитал пак. Този път нерелевантният шум избледнял. Пътят към „Шепнещия сигил“ станал ясен и той намерил търсеното с удивителна скорост. Сякаш беше отключил тайна порта в лабиринта си, която му дала бърз достъп до точното знание, от което се нуждаел.
+Това не е аргумент против `rg` / ripgrep. Използвам `rg` постоянно. Но двата инструмента отговарят на различни въпроси:
 
-**Пуф!** Тайната била разкрита: силата на `git grep`.
+- `git grep`: "Къде е това в проследения код, или в друг branch, tag, или commit?"
+- `rg`: "Къде е това на диска, според моите ignore rules?"
 
-## Какво всъщност е `git grep`
+Когато тази разлика щракне, `git grep` спира да бъде стара команда, за която смътно знаеш, че съществува, и става много остър малък навик.
 
-Обикновеният `grep -r` обхожда файловата система. Той прилежно чете всичко по пътя си: source code, log files, build outputs, онзи случаен dump файл от 4 MB, който колегата ти е забравил да изтрие, цялото дърво `node_modules`. `git grep` прави нещо по-тясно: търси във файловете, за които Git вече знае. Точно този избор в дизайна е мястото, откъдето идва по-голямата част от стойността му.
+## Менталният модел
 
-### В какво е добър `git grep`
-
-- **Търси tracked файлове, не файловата система.** Git пази списък на всеки файл, който някога си staged или committed — index-а. `git grep` чете от този списък. Untracked боклукът просто го няма там. Няма `node_modules/`, няма `dist/`, няма coverage reports, няма случаен log файл — защото Git никога не е бил уведомен за тях.
-
-- **По-бърз е от `grep -r` в големи repos.** Той вече има списъка с файлове, така че пропуска обхождането на файловата система. Пуска няколко threads паралелно. Печалбата е реална, но не е магия. `git grep` обхожда същите blobs, които би обходил `grep`, просто с по-малко церемония. Няма content search index — "Git index" е списък от файлови пътища и blob hashes, не Lucene-стил inverted index.
-
-- **Може да търси във всеки ref без checkout.** Това е killer feature-ът. Tag, branch, commit, tree object — насочи `git grep` директно към него. Без `git checkout`, без stash танц, без отбивка от това, което правиш в момента.
-
-### Практически примери
-
-#### Основно търсене
-
-За да търсиш конкретен термин, например `"initializeSettings"`, в repository-то си:
+Полезната форма на командата е:
 
 ```bash
-git grep "initializeSettings"
+git grep [options] <pattern> [<tree-ish>...] [-- <pathspec>...]
 ```
 
-Това сканира всички tracked файлове в текущия branch за точно съвпадение.
+На прост език:
 
-#### Търсене без значение на главни и малки букви
+- `<pattern>` е това, което търсиш.
+- `<tree-ish>` е по избор: branch, tag, commit или друго Git tree, в което да търсиш.
+- `<pathspec>` е по избор: файловете или директориите, до които да ограничиш търсенето.
+- `--` отделя revisions от paths, когато има шанс за двусмислие.
 
-За case-insensitive търсене, което е полезно, когато не си сигурен в capitalization-а:
+По подразбиране `git grep` търси в проследените файлове в working tree-то ти. Не е магически content index. Не чете всеки файл под текущата директория. Пита Git кои пътища принадлежат на проекта и после търси в тях.
+
+Затова се усеща подредено.
+
+## Рецепти
+
+### 1. Търси в проследения код и показвай номера на редове
 
 ```bash
-git grep -i "initializesettings"
+git grep -n "initializeSettings"
 ```
 
-Това ще намери съвпадения независимо от разликите в главни и малки букви.
+Това е ежедневната версия. `-n` отпечатва номера на редове, което прави output-а полезен в terminal, PR comment или бърза handoff бележка.
 
-#### Търсене в конкретен branch
-
-За да търсиш в друг branch, без да превключваш към него, например във `feature/login`:
+Ако винаги искаш номера на редове, Git поддържа config за това:
 
 ```bash
-git grep "validateUser" feature/login
+git config --global grep.lineNumber true
 ```
 
-Това е ходът, който трудно се бие. Няма checkout, няма stash, само отговорът.
+Аз пак обикновено пиша `-n`, защото е видимо и преносимо в snippets.
 
-#### Търсене във всички branches
-
-За да търсиш термин във всеки branch, включително remotes:
+### 2. Търси буквален string, не regex
 
 ```bash
-git branch -a | xargs -n 1 git grep "configureDatabase"
+git grep -n -F "useEffect(" -- "*.js" "*.jsx" "*.ts" "*.tsx"
 ```
 
-За да търсиш във всеки commit, за който Git някога е чувал, не само в tip-of-branch:
+Използвай `-F`, когато pattern-ът е фиксиран string. Скоби, точки, квадратни скоби и други regex-подобни символи се третират като обикновен текст.
+
+Тук две малки навици имат значение:
+
+- Слагай file globs след `--`.
+- Quote-вай globs, за да не ги expand-не shell-ът, преди Git да ги види.
+
+Това е версията, която искам, когато знам точния function call, config key, class name или error message.
+
+### 3. Търси case-insensitively, като whole word, с columns
 
 ```bash
-git grep "configureDatabase" $(git rev-list --all)
+git grep -n -i -w --column "customer"
 ```
 
-Това намира съвпадения във всеки blob навсякъде в историята ти. В натоварено repo може да отнеме момент — буквално обхожда всеки commit.
+`-i` игнорира главни и малки букви. `-w` търси whole-word matches. `--column` отпечатва номера на колоната на първото съвпадение в реда.
 
-#### Търсене в commit историята
+Това е приятно, когато терминът е достатъчно често срещан, че суровият output става шумен. Полезно е и когато подаваш резултатите към editor integrations или quickfix lists.
 
-За да намериш кога конкретен string е бил добавен или премахнат, използвай:
+### 4. Търси pattern, който започва с dash
 
 ```bash
-git log -S "optimizePerformance"
+git grep -n -e "--force"
 ```
 
-Това показва commits, които са въвели или премахнали термина `"optimizePerformance"`.
+Без `-e`, Git може да прочете pattern-а като още една command-line option. `-e` казва "следващото нещо е search pattern." Това е един от онези дребни flags, които не ти трябват често, но когато ти потрябват, наистина ти трябват.
 
-За да видиш реалните diffs, където терминът е бил добавен или премахнат:
+Можеш да подадеш и повече от един `-e`:
 
 ```bash
-git log -G "optimizePerformance" -p
+git grep -n -e "oldBillingFlow" -e "legacyCheckout"
 ```
 
-#### Използване на regular expressions
+Това търси който и да е от двата pattern-а.
 
-`git grep` поддържа regular expressions за по-напреднали търсения:
+### 5. Използвай regex, когато структурата има значение
 
 ```bash
-git grep -E "def\s+\w+\("
+git grep -n -E "def[[:space:]]+[[:alnum:]_]+\\(" -- "*.py"
 ```
 
-Това съвпада с Python function definitions: `def`, whitespace, име на function, после буквална отваряща скоба. (В extended regex `\(` е буквална скоба, а `(` би означавала group, затова backslash-ът е там.)
+`-E` включва extended regular expressions. Този пример търси Python function definitions, без да се преструва на parser.
 
-### Какво `git grep` чете и какво не чете
+За по-големи структурни въпроси използвай езиковите инструменти. `git grep` е отличен за намиране на кандидати; не е AST engine, и тази честност е част от причината да го харесвам.
 
-`git grep` обхожда index-а. Това е. Той не parse-ва `.gitignore`. Много хора, включително предишна версия на тази статия, твърдят, че го прави — и твърдението е почти вярно по начина, по който „Земята е плоска“ е почти вярно, ако цял живот гледаш само един паркинг.
-
-Двете неща съвпадат само защото gitignored файловете обикновено са и untracked. В момента, в който един файл е *едновременно* gitignored *и* tracked — някой е пуснал `git add -f`, или файлът е бил committed преди правилото да съществува — `git grep` с радост ще го претърси. `rg` няма.
-
-Можеш да го докажеш за двайсет секунди:
+### 6. Ограничи търсенето до path
 
 ```bash
-mkdir demo && cd demo
-git init -q
-echo "*.log" > .gitignore
-echo "the secret phrase" > tracked.log
-git add -f tracked.log .gitignore
-git commit -qm init
-
-git grep "secret phrase"   # finds it - the file is tracked, ignore rule notwithstanding
-rg "secret phrase"         # finds nothing - rg actually reads .gitignore
+git grep -n "FeatureFlag" -- src components
 ```
 
-Така че точният израз е: `git grep` търси tracked файлове. Това случайно пропуска *повечето* от онова, което `.gitignore` би пропуснал, но механизмът е различен и edge case-ът има значение — особено когато ловиш string, който накрая се оказва в generated файл, force-added от някого преди години.
+Pathspec-овете след `--` държат търсенето фокусирано. Това често е по-бързо умствено, не само computationally. Казваш на командата какъв вид отговор те интересува.
 
-Механизмът на `.gitignore` влиза в `git grep` само през два opt-in режима:
-
-- `--untracked` — търси и untracked файлове. *В този режим* `git grep` зачита `.gitignore` по подразбиране и пропуска ignored файлове (override с `--no-exclude-standard`, за да търсиш и в тях).
-- `--no-index` — търси в текущата директория, като игнорира Git изцяло. Полезно вътре в repo, когато искаш plain-grep семантика. В този режим `git grep` *не* се консултира с `.gitignore` по подразбиране — opt in с `--exclude-standard`, ако го искаш.
-
-Default `git grep`, без flags, никога не отваря твоя `.gitignore` файл.
-
-## Кога да посегнеш към `rg` вместо това
-
-`git grep` и `rg` (ripgrep) не са истински конкуренти. Те обхождат различни неща, а сериозният toolbox има и двете.
-
-- `git grep` обхожда **index-а**: tracked файлове, плюс всеки ref или tree object, към който го насочиш.
-- `rg` обхожда **файловата система**: всеки файл под текущата директория, минус онова, което твоите `.gitignore`, `.ignore`, `.rgignore` и global excludes му казват да пропусне.
-
-Всяко от тях прави нещо, което другото не може.
-
-`git grep` печели, когато искаш да търсиш из историята без checkout:
+Можеш също да изключваш paths:
 
 ```bash
-git grep "deprecated_api" v2.3.0          # search a tag
-git grep "deprecated_api" HEAD~50         # 50 commits ago
-git grep "deprecated_api" $(git rev-list --all)   # every commit, ever
+git grep -n "logger" -- src ":(exclude)src/generated" ":(exclude)*.snap"
 ```
 
-`rg` печели, когато всъщност искаш семантиката на файловата система с правилно gitignore поведение — включително току-що клонирана subfolder, която още не си `git add`-нал, generated файлове, за които Git никога не е чувал, или директория, която изобщо не е Git repo:
+Git pathspecs са мощни и малко странни. Важното практическо правило е, че path filters стоят след `--`, а exclusion pathspecs като `:(exclude)...` се обработват от Git, не от shell-а.
+
+### 7. Покажи само файловете със съвпадения
 
 ```bash
-rg "deprecated_api"                # respects .gitignore by default
-rg --no-ignore "deprecated_api"    # opt back into ignored files
-rg --hidden "deprecated_api"       # include dotfiles
+git grep -l "useOldCheckout"
 ```
 
-`rg` е и engine-ът зад project search-а на VS Code, затова "Find in Files" се усеща точно като да пуснеш `rg` в terminal. Има солидна Unicode поддръжка, а върху повечето modern corpora е поне толкова бърз, колкото `git grep`, и често по-бърз — [Linux kernel benchmark-ът в README-то на ripgrep](https://github.com/BurntSushi/ripgrep/blob/master/README.md) показва, че ripgrep бие `git grep -P` с около 3x на същия query. (Съвет: ако искаш поведението "case-sensitive само когато pattern-ът ти има uppercase", подай `-S` за smart-case — това е opt-in, не default.)
+`-l` отпечатва file names вместо matching lines. Използвай го, когато следващата стъпка е "отвори файловете" или "прецени blast radius", не "прочети всяко съвпадение."
 
-Ако още нямаш `rg` инсталиран, поправи това:
+Има и обратната версия:
 
 ```bash
-brew install ripgrep   # macOS
-apt install ripgrep    # Debian/Ubuntu
-cargo install ripgrep  # anywhere with Rust
+git grep -L "use client" -- "src/**/*.tsx"
 ```
 
-Сложи `rg` до `git grep` в toolbox-а си. Покриват различни задачи.
+`-L` изброява проследените файлове, които **не** съдържат pattern-а. Това може да е изненадващо удобно по време на framework migrations.
 
-### Ползи от `git grep`
+### 8. Преброй съвпаденията по файл
 
-- **Релевантност.** Той търси само това, което tracked-ваш. Build outputs, caches и `node_modules` не ти се пречкат — защото Git никога не ги е видял.
-- **Скорост в големи repos.** Multi-threaded, без обхождане на файловата система.
-- **Обхват в историята.** Всеки branch, tag или commit, без да напускаш working tree-то си. Това е частта, която `rg` не може да направи.
-- **По-малко binary шум.** Като `grep`, `git grep` маркира binaries с "Binary file X matches", вместо да излива bytes — но понеже обхожда tracked файлове, обикновено среща по-малко от тях още в началото. Подай `-I`, за да пропуснеш binaries изцяло.
+```bash
+git grep -c "TODO"
+```
 
-### Допълнителни съвети
+`-c` ти дава бърза heat map. Не е code-quality metric; моля те, не го превръщай в такава. Но е полезно, за да видиш в кои файлове един термин е концентриран, преди да започнеш да редактираш.
 
-- **Paging на резултатите:**
+### 9. Търси staged версията вместо working tree-то
 
-  ```bash
-  git grep "searchTerm" | less
-  ```
+```bash
+git grep -n --cached "newConfigKey"
+```
 
-- **Броене на съвпаденията по файл:**
+По подразбиране `git grep` търси проследените paths в working tree-то. `--cached` търси blobs в index-а - staged версията.
 
-  ```bash
-  git grep -c "searchTerm"
-  ```
+Това е полезно в pre-commit checks, review scripts или всеки момент, в който искаш да попиташ "Какво точно съм staged-нал?", вместо "Какво е на диска в момента?"
 
-- **Показване на номера на редове:**
+### 10. Търси untracked files, като имаш предвид ignore rules
 
-  ```bash
-  git grep -n "searchTerm"
-  ```
+```bash
+git grep -n --untracked "draftFlag"
+```
 
-- **Отвори всяко съвпадение в editor-а си:**
+`--untracked` добавя untracked files към търсенето. В този режим стандартните ignore rules на Git се зачитат, така че ignored files пак остават извън резултата.
 
-  ```bash
-  git grep -l "searchTerm" | xargs code
-  ```
+Ако наистина искаш и ignored files:
 
-  Смени `code` с `nvim`, `subl` или каквото използваш.
+```bash
+git grep -n --untracked --no-exclude-standard "draftFlag"
+```
 
-## Заключение
+Това е съзнателен ход. Използвам го, когато подозирам, че generated file, local fixture или ignored artifact съдържа нещото, което гоня.
 
-Точно както Аларик намери скрит път в лабиринтната си библиотека, `git grep` прорязва чиста линия през tracked codebase: бърз, branch-aware и незадръстен от нещо, за което Git никога не е бил уведомен. Не е универсален заместител на `grep` и не е заместител на `rg`. Това е инструментът, който познава *index-а* на твоето repo, и щом започнеш да посягаш към него, лабиринтът става много по-малък.
+### 11. Търси в друг branch, tag или стар commit, без checkout
 
-Използвай `git grep`, когато въпросът е „къде в тази codebase, включително в историята ѝ“. Използвай `rg`, когато въпросът е „къде на диска, при спазване на ignore правилата ми“. В повечето дни ще искаш и двете на една ръка разстояние.
+```bash
+git grep -n "validateUser" main
+git grep -n "validateUser" v2.3.0
+git grep -n "validateUser" HEAD~20 -- src
+```
 
----
+Това е killer feature-ът.
 
-*Обновено на 2026-04-27: поправено е по-ранно твърдение, че `git grep` зачита `.gitignore` (не го прави директно), смекчено е обяснението за "internal indexing", поправен е regex пример и е добавен раздел за това кога да се използва `rg` вместо него.*
+Без checkout. Без stash. Без worktree отбивка. Можеш да зададеш директен въпрос на branch, tag или стар commit и да останеш точно там, където си.
+
+Когато bug report казва "това работеше в последния release", обикновено започвам оттук.
+
+### 12. Търси във всеки commit само когато наистина го имаш предвид
+
+```bash
+git rev-list --all | xargs -n 50 git grep -n "validateUser"
+```
+
+Това търси commit trees в цялата история на batches. Може да бъде шумно, повтарящо се и скъпо за сериозно repository, защото едно и също file content може да присъства в много commits.
+
+През повечето време, ако истинският ти въпрос е "кога този string се появи или изчезна?", `git log` е по-добрият companion:
+
+```bash
+git log -S "validateUser" --oneline -- src
+git log -G "validate(User|Account)" -p -- src
+```
+
+`-S` е за промени в броя occurrences на даден string. `-G` е за diffs, чиито added или removed lines match-ват regex. Различен въпрос, различен инструмент.
+
+## `.gitignore` особеността
+
+Изречението "`git grep` respects `.gitignore`" е достатъчно близо до истината, за да е изкушаващо, и достатъчно грешно, за да те ухапе.
+
+По подразбиране `git grep` търси проследени файлове. `.gitignore` файлът е за това untracked файловете да останат untracked. Файлове, които вече са tracked от Git, не стават невидими само защото по-късно ignore rule ги match-ва.
+
+Затова точната версия е:
+
+- По подразбиране `git grep` търси tracked paths в working tree-то.
+- Ignored-but-untracked files не се търсят, защото untracked files не се търсят.
+- Ignored-but-tracked files **се** търсят, защото са tracked.
+- `--untracked` добавя untracked files, като пак зачита standard ignore rules.
+- `--untracked --no-exclude-standard` включва и ignored files.
+- `--no-index` превръща `git grep` във filesystem search от текущата директория, дори извън repo.
+- `--no-index --exclude-standard` кара това filesystem search да зачита standard ignore rules на Git.
+
+Edge case-ът има значение в стари repositories. Един файл може първо да е committed и чак по-късно ignored. Ако ловиш string и `git grep` го намери в уж ignored file, Git не е объркан. Файлът е tracked.
+
+## Кога `rg` е по-добрият инструмент
+
+Използвай ripgrep, когато искаш filesystem semantics.
+
+```bash
+rg "validateUser"
+rg -S "validateUser"
+rg --hidden "validateUser"
+rg --no-ignore "validateUser"
+```
+
+`rg` обхожда directory tree-то. По подразбиране зачита `.gitignore`, `.ignore`, `.rgignore`, global ignore files, hidden-file rules и binary-file skipping. Много е бърз, много полиран и обикновено е това, което искам, когато търся working directory-то такова, каквото е на диска.
+
+Trade-off-ът е, че `rg` не знае как да търси във `v2.3.0` или `HEAD~20`, освен ако не checkout-неш това tree някъде. Git history не е неговият свят.
+
+Така че моето правило е:
+
+- Използвай `git grep` за tracked code и Git objects: branches, tags, commits, staged content.
+- Използвай `rg` за live filesystem: untracked files, non-Git directories, ignored-file experiments и широк project search.
+
+Няма награда за това да избереш само едното. Дръж и двете в ръцете си.
+
+## Компактна шпаргалка
+
+```bash
+git grep -n "term"                         # tracked files, with line numbers
+git grep -n -F "literal(" -- "*.ts"        # fixed string in TypeScript files
+git grep -n -i -w --column "term"          # case-insensitive whole-word search
+git grep -n -e "--flag"                    # pattern begins with a dash
+git grep -n -E "regex" -- src              # extended regex, limited to src
+git grep -l "term"                         # matching file names only
+git grep -L "term" -- "*.tsx"              # files that do not contain term
+git grep -c "term"                         # match count per file
+git grep -n --cached "term"                # staged/index version
+git grep -n --untracked "term"             # tracked plus untracked, honoring ignores
+git grep -n "term" v1.2.3 -- src           # search a tag without checkout
+git log -S "term" --oneline -- src         # find commits that changed occurrence count
+```
+
+Скучната сила на `git grep` е, че започва от проекта така, както Git го разбира. Точно това искаш по-често, отколкото си мислиш: не всеки файл на диска, не всеки build artifact, не всеки локален експеримент - само кодът, който принадлежи на repository-то, плюс всяка по-стара версия на този код, която можеш да назовеш.

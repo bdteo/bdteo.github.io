@@ -1,99 +1,346 @@
 ---
 lang: "zh-Hans"
 translationOf: "what-is-good-code-coverage-real-world-guide"
-translationUpdatedAt: "2026-05-18"
-translationSourceHash: "0490cb5e588445c4"
-title: "什么才是“好的”代码覆盖率？一份现实世界指南"
+translationUpdatedAt: "2026-06-22"
+translationSourceHash: "6cc0abbf0fbddc3b"
+title: "什么是好的代码覆盖率？一份基于风险的指南"
 date: "2025-07-15"
-description: "拆掉 100 % 神话：我会梳理 TypeScript 和 PHP 中经过验证的覆盖率目标，解释测试的 ROI，并分享我日常使用的 tooling 技巧。"
-tags: ["代码覆盖率", "测试", "TypeScript", "PHP", "最佳实践", "质量保证"]
+description: "一份实用的、基于风险的代码覆盖率指南：先测什么，忽略什么，什么时候使用 branch coverage 和 mutation testing，以及为什么百分比会骗人。"
+tags: ["code-coverage", "testing", "typescript", "php", "best-practices", "quality-assurance"]
 featuredImage: "./images/featured.jpg"
-imageCaption: "80 % 覆盖率 ≠ 80 % 质量——原因在这里"
+imageCaption: "好的覆盖率是一张风险地图，不是一个奖杯数字。"
 ---
 
-# 什么才是“好的”代码覆盖率？我在现实世界里用来挡住 bug、又不浪费工程时间的指南
+# 什么是好的代码覆盖率？一份基于风险的指南
 
-每次我运行 `npm run coverage` 或 `phpunit --coverage`，同一个问题都会冒出来：
+好的代码覆盖率不是 80%。不是 90%。也不是 dashboard 上显示 100% 时那种神圣光环。
 
-> _“好吧……74 %。够了吗？”_
+好的代码覆盖率意味着：
 
-软件开发博客圈喊着 "100 % or nothing!" 与此同时，<a href="https://launchdarkly.com/blog/code-coverage-what-it-is-and-why-it-matters/" target="_blank">launchdarkly.com</a> 很礼貌地提醒我：100 % executed ≠ 100 % tested。
-我花过几个星期追逐这个闪亮指标，也花过更多星期调试_别的_问题。下面是我最后落脚的、经过现场验证的中间地带。
+> 系统里一旦坏掉就最疼的部分，被那些在这些部分出错时真的会失败的测试覆盖住了。
 
----
+诀窍就这么多。百分比有用，但前提是你先知道自己在看什么类型的代码，它多久变一次，bug 会伤到谁，以及你的测试是在做真正的断言，还是只是提着灯笼在代码里散步。
 
-## 为什么 100 % 覆盖率是一场海市蜃楼
+我还是会看数字。我喜欢数字。它们擅长把模糊的焦虑变得可见。但我不再孤立地问“82% 算好吗？”我会问一个更好的问题：
 
-理论上，100 % 行执行意味着"没有隐藏 bug"。实践中：
+> 还有什么风险没有覆盖，而我们是否愿意带着这个风险发布？
 
-* 收益递减：从 90 %→95 % 常常会让测试套件翻倍，却只带来个位数的风险降低。
-* 虚假的信心：一个没有 assertion、只是调用函数的测试，**仍然算**覆盖。
-* 商业现实：每多写一个测试，就是一段**没有**用在客户要求功能上的时间。
+这个问题对写测试的工程师、设定质量门槛的 leads、以及判断一个 PR 能不能安全 merge 的 reviewers 都有用。
 
-航空航天那帮人可以瞄准 100 %，那是生死问题。对我们其他人来说，**~80 % 是 80/20 线**。大多数项目在算过 ROI 后都会聚在这里。<a href="https://www.testdevlab.com/blog/why-is-high-test-coverage-important" target="_blank">testdevlab.com</a> 出于同样的原因，把范围称为 70–90 %。
+## 简短答案
 
----
+如果你需要一个起步规则，用这个：
 
-## 我使用的实用表格
+| 代码区域 | 好的覆盖率目标 | 为什么 |
+| --- | ---: | --- |
+| Core domain rules、钱、permissions、security、数据丢失路径 | 90-100% 有意义的 line 和 branch coverage | 一个小 bug 可能变得昂贵、难堪，或者不可逆。 |
+| Public libraries、SDKs、reusable packages | 90%+，再加 edge cases 和 compatibility tests | 你的用户无法检查你的意图。API 就是产品。 |
+| 普通 SaaS application code | 70-85% overall，风险高的 modules 更高 | 大多数团队在这里能得到很强的价值，又不至于把测试变成表演。 |
+| 低于 50% 的 legacy systems | 不要先追 global number | 先覆盖改动代码和危险 flows，再去“修”dashboard。 |
+| Generated code、framework glue、debug logging、trivial wrappers | 通常排除，或者只做轻量 smoke-tested | 这里的覆盖率可能噪音很大、成本很高，却没减少多少风险。 |
 
-| Coverage | 我的翻译 | Action |
-|---------|------------------|--------|
-| 100 % | “我们是一个会飞火箭的 library” | 接受折磨。 |
-| 90 % + | “很多钱都依赖它的 library” | 只用于高优先级模块。 |
-| 80 % | 发出去，监控，然后迭代。 |
-| 60–70 % | Merge gate——如果新代码把你拉到线下，就让 PR 失败。 |
-| < 50 % | 一个周末的技术债——先转向关键路径。 |
+这些不是宗教数字。它们是我预期一个团队会拿来争论的 defaults。
 
-这些数字我从 <a href="https://www.atlassian.com/continuous-delivery/software-testing/code-coverage" target="_blank">Atlassian 的内部指南</a> 偷来的：60 % 是 "acceptable"，75 % 是 "commendable"，90 % 是 "exemplary"。每次 retro 都好用。
+[Google 的测试指导](https://testing.googleblog.com/2020/08/code-coverage-best-practices.html)说不存在一个通用的理想数字，并把覆盖率放在 business impact、change frequency、expected lifetime、complexity 和 domain risk 的上下文里。[Martin Fowler](https://martinfowler.com/bliki/TestCoverage.html)从另一个角度说了同一个更深的点：覆盖率能帮你找到未测试的代码，但它本身不是测试质量的好说明。
 
----
+这和我的经验一致。低覆盖率是烟雾报警器。高覆盖率不是保证。
 
-## 我如何不哭着打到 80 %（TypeScript playbook）
+## 覆盖率能告诉你什么
 
-1. Jest + Istanbul 开箱即用
-2. **CI 中的 coverage gate**
-   在 `jest.config.js` 里我会加：
-   ```js
-   coverageThreshold: {
-     global: 80,
-     '**/src/core/**': 90
-   }
-   ```
-3. 盯住用户热路径，不要盯 Redux boilerplate logger。
+覆盖率最擅长显示缺席。
 
----
+它可以告诉你：
 
-## 我如何在 Laravel 中打到 80 %（PHP playbook）
+- 这个文件从未被自动化测试执行过。
+- 这个 error branch 从未在 CI 里跑过。
+- 这条新的 payment rule merge 时没有任何测试碰到它。
+- 这个 refactor 删除了某个 behavior，而没有测试注意到。
+- 这个 repository 里有整片街区可以让 bugs 免费居住。
 
-1. 开发环境安装 PCOV 提速度，CI 中用 Xdebug 拿 branch data。
-2. PHPUnit + `phpunit.xml` 中这些默认项：
-   ```xml
-   <filter>
-     <whitelist processUncoveredFiles="true">
-       <directory suffix=".php">./src</directory>
-     </whitelist>
-   </filter>
-   ```
-3. Mutation score > line count，使用 <a href="https://infection.github.io/" target="_blank">Infection</a>。这就是我发现"覆盖了但其实没测到"的行的方法。
+这已经很有价值。[Google 关于 code coverage at Google 的论文](https://research.google/pubs/code-coverage-at-google/)发现，当覆盖率展示在 changesets 和 code review 层级时最 actionable。我喜欢这个 framing：覆盖率应该贴近 diff，让人可以问：“这行没覆盖重要吗？”
 
----
+覆盖率不太适合当 executive health score。一个 manager 看到“88%”，无法判断缺失的 12% 是没人用的 debug output，还是决定客户能不能拿回钱的 refund path。
 
-## 我团队奉行的 4 条规则
+## 覆盖率不能证明什么
 
-1. **新代码 = 测试。** 合并前 diff coverage ≥ 90 %。
-2. **先重构，再测试。** 不可测试的代码已经是债。
-3. **让 build 失败，不要让人失败。** 每年把 gate 降低 5 %，也比用一片红色 dashboard 压垮团队好。
-4. **衡量生产环境里的 bug**——如果覆盖率是 85 %，但 incident 激增，罪魁祸首不是**覆盖率**，而是**断言**。
+被覆盖的一行，不一定是被测试过的 behavior。
 
----
+覆盖率不能证明：
 
-## TL;DR（给 execs 和 recruiters 也一样）
+- assertions 有意义；
+- test data 像生产环境；
+- unhappy path 被检查了，而不只是执行了；
+- UI 可用；
+- query 足够快；
+- feature flag 配置正确；
+- concurrent case 能工作；
+- mocks 诚实；
+- 代码足够简单，能够维护。
 
-别问我要一个"神奇数字"。问这个：
-> 产品的哪些部分不能坏？
+你可以用一堆只调用函数、几乎不做断言的测试拿到 100% line coverage。你也可以靠 end-to-end tests 得到很高的覆盖率，因为它们偶然走过了很多代码，却几乎没有检查重要决策。
 
-把**那些**覆盖到 90 %。其他部分给健康的 smoke tests。把代码覆盖率当作一束**聚光灯**，不是终点线；相信你**抓到**的 bug，不要相信你**炫耀**的数字。
+所以 coverage gate 绝不应该是唯一的 quality gate。把它和 review、production incidents、适合场景里的 property 或 fuzz tests、围绕 integrations 的 contract tests，以及在 correctness 真正重要的代码上的 mutation testing 放在一起。
 
-让 coverage dashboard 变绿吧。你的客户永远不会看见它，但他们的 error bar 会保持空白。
+## 我在 reviews 里使用的决策规则
 
-*—— 吐槽结束，回编辑器。*
+我 review PR 时，不会因为“我们需要 coverage”而要求测试。我要求测试，是因为某个 behavior 变了，我想看到这个 behavior 受到保护的证据。
+
+我的 checklist 很短：
+
+1. **什么可能出错？** 写测试前先说出 failure mode。
+2. **谁为它买单？** User、support team、finance、security、data integrity、future developer？
+3. **这段代码会多久改一次？** 经常被碰的代码值得更多测试，因为它会更常被弄坏。
+4. **测试能便宜地抓住这个 failure 吗？** 如果能，就写。如果不能，考虑 monitoring、manual QA、static analysis，或者简化设计。
+5. **这个测试会因为我们害怕的 bug 而失败吗？** 如果不会，那大概是 coverage cosplay。
+
+最后一点最重要。代码错了却不会失败的测试，不是 safety net。它是舞台布景。
+
+## 先测什么
+
+如果一个项目覆盖率很弱，所有人都在争论目标值，先停战一个下午，按这个顺序写测试。
+
+### 1. 钱、permissions 和不可逆操作
+
+Payments、refunds、billing periods、subscription state、authorization、destructive deletion、email sends、data imports、migrations，以及任何会修改客户拥有数据的东西。
+
+对 SaaS app 来说，我宁愿 subscription transitions 有 95% coverage、overall 只有 55%，也不想看到 overall 80%，但 billing state machine 基本裸奔。
+
+### 2. 人们会用“except when”解释的 business rules
+
+这些很适合写测试，因为奇怪之处已经在语言里了。
+
+"A trial can be extended once, except when the account has already paid, unless it was migrated from the legacy plan."
+
+这句话想要测试。好几个。
+
+### 3. Parsers、serializers、mappers 和 importers
+
+凡是数据形状重要的地方，覆盖率都很划算。CSV imports、webhook payloads、date parsing、currency conversion、address normalization、search indexing、Open Graph extraction，全都算。
+
+这些测试通常便宜、稳定，而且充满 edge cases。你可以得到不错的保护，不需要 browser、queue worker 和半个月亮。
+
+### 4. 有 branching logic 的代码
+
+Line coverage 会隐藏漏掉的决策。Branch coverage 更适合 conditionals，因为它会问一个决策的两边是否都跑过。[coverage.py 的 branch coverage 文档](https://coverage.readthedocs.io/en/latest/branch.html)展示了经典陷阱：statement coverage 可以把一个函数标成 covered，即使某个 `if` 从来没有双向评估过。
+
+在 PHP 里，[PHPUnit 分别记录 line、branch 和 path coverage](https://docs.phpunit.de/en/12.5/code-coverage.html)，其中 branch coverage 会检查 control structures 是否分别评估过 `true` 和 `false`。代价在 tooling：PCOV 做 line coverage 很快，而 branch 和 path coverage 需要 Xdebug。把更重的信号用在逻辑值得它的地方。
+
+### 5. 已经发生过的 bugs
+
+每个 production bug 都是免费的测试想法。不一定是 unit test，但至少应该在某处有 regression test。
+
+当一个 bug 漏出去时，我喜欢问这个小小的 postmortem 问题：
+
+> 如果我们昨天写了哪个测试，它今天会失败？
+
+如果答案很简单，先写那个测试，再继续。
+
+## 什么可以忽略、排除或降低优先级
+
+只要团队对原因有共识，忽略代码就不是作弊。
+
+好的候选：
+
+- generated code；
+- framework bootstrap files；
+- one-line configuration wrappers；
+- debug-only logging；
+- 当前 runtime 中不可能发生的 defensive branches；
+- 更应该删除而不是测试的代码；
+- 已经被 higher-level smoke test 覆盖的 integration glue。
+
+不好的候选：
+
+- “too hard to test”的 business logic；
+- 所有人都害怕碰的旧代码；
+- payment、auth、import 或 permission paths；
+- 看起来 impossible，但只是因为没人查过 production data 的 branches；
+- 藏在 feature flag 后面，但已经 reachable by customers 的代码。
+
+我的规则：如果我们把某些东西排除在 coverage 外，理由应该无聊，而且在 review 里站得住。“Generated by OpenAPI”很无聊。“我们不想测试 checkout”不是。
+
+## 按应用类型看例子
+
+### CRUD SaaS
+
+大多数 CRUD apps 不需要在每个 controller branch 上追求英雄式覆盖率。它们确实需要在 permissions、validation、state transitions、background jobs、billing、imports、exports，以及任何可能 corrupt customer data 的地方有强覆盖。
+
+一个健康的形状可能是：
+
+- domain services 和 policies 上高 unit coverage；
+- 重要 API endpoints 的 integration tests；
+- signup、checkout、core workflow 和 cancellation 的少量 end-to-end smoke tests；
+- 对 changed code 设置 coverage gates，而不是突然要求整个 legacy app 跳到 90%。
+
+### Frontend Product
+
+做 frontend work 时，如果追每个 rendering detail，line coverage 很快会变得荒唐。我更在意 user-visible states：
+
+- loading、empty、error、success；
+- disabled 和 permission-gated actions；
+- optimistic updates 和 rollback；
+- 带 validation 和 server errors 的 forms；
+- focus、labels、keyboard paths 这类 accessibility-critical behavior。
+
+装饰性 border 的精确色值不需要 unit test。“delete account” confirmation flow 需要。
+
+### Public Library Or SDK
+
+把标准抬高。你的 edge cases 是别人的 production outage。
+
+测试 documented API，而不只是 internals。包括 compatibility cases、invalid input、error messages、serialization、version boundaries，以及从 README 复制的 examples。如果 user 能粘贴它，它大概率应该被测试。
+
+### Data Pipeline Or Import System
+
+Coverage 应该偏向 fixtures 和 invariants：
+
+- malformed rows；
+- missing fields；
+- duplicate IDs；
+- timezone edges；
+- retry 和 idempotency behavior；
+- partial failure handling；
+- “this must never decrease” totals。
+
+在这里，有优秀 fixtures 的 75% line coverage 可以胜过只测试 happy path 的 95% coverage。
+
+### Infrastructure And DevOps Code
+
+对 Terraform、deployment scripts、queue workers 和 one-off operational tools 来说，最好的覆盖率未必是 unit percentage。它可能是 dry-run mode、shellcheck/static checks、staged rollout、idempotency tests，以及非常清楚的 logging。
+
+不过，如果一个 script 会计算要删除哪些 database rows，就像它欠你钱一样测试那个计算。
+
+## 先用 Diff Coverage，再看 Global Coverage
+
+Global coverage 提升慢，也容易被 game。Diff coverage 才是团队真正变好的地方。
+
+对新增和改动的代码，我喜欢更严格的规则：
+
+- Changed risky code 应该大约 90%+ covered。
+- Changed trivial code 可以更低，只要 reviewer 能解释原因。
+- Overall project coverage 不应该在没有 explicit reason 的情况下下降。
+- Legacy files 每次被碰到时都应该变得稍微干净一点。
+
+这是 boy-scout rule 的实用版本：不要要求团队在 merge 一个小改进前先补完五年缺失的测试，但也不要让这个小改进把洞挖得更深。
+
+[Jest 支持 thresholds](https://jestjs.io/docs/configuration#coveragethreshold-object)，可以 globally、by glob、directory 或 file 设置，也可以分别给 branches、functions、lines 和 statements 设置 thresholds。一个 TypeScript project 可以从类似这样开始：
+
+```js
+const { defineConfig } = require("jest");
+
+module.exports = defineConfig({
+  collectCoverage: true,
+  coverageThreshold: {
+    global: {
+      branches: 70,
+      functions: 75,
+      lines: 80,
+      statements: 80,
+    },
+    "src/billing/**/*.ts": {
+      branches: 90,
+      functions: 90,
+      lines: 90,
+      statements: 90,
+    },
+  },
+});
+```
+
+具体数字不如形状重要：风险目录的门槛比 app 其他部分更高。
+
+对 PHP project，我通常希望本地有快速的 line coverage，而更深的 branch/path coverage 只用在值得的地方。PHPUnit 当前的 coverage docs 明确说 branch 和 path coverage 需要 Xdebug，而 PCOV 支持 line coverage。这是 trade-off，不是道德失败。正常开发时 fast feedback 胜出；更深的 coverage 属于 CI，或者在逻辑很 gnarly 时做 targeted checks。
+
+## Branch Coverage 是更好的问题，不是完美的问题
+
+Line coverage 问：
+
+> 这一行跑过了吗？
+
+Branch coverage 问：
+
+> 每个决策都双向跑过了吗？
+
+第二个问题通常更接近我们说“测试过”时的意思。但 branch coverage 仍然会变得吵。有些 branches 是 defensive。有些是 artifacts of transpilation。有些 technically possible，但 irrelevant。有些强行用测试跑到，成本很高，价值很低。
+
+所以，是的，在 decision-heavy code 上使用 branch coverage。只是不要把一个钝器偶像换成另一个。
+
+## Mutation Testing：现实检查
+
+Mutation testing 会用很小的方式改动你的代码，然后检查测试是否失败。比如，它可能把 `>` 变成 `>=`，把 `true` 变成 `false`，或者把 `+` 变成 `-`。
+
+如果测试仍然通过，mutant 就活下来了。这是机器给的一句有用的羞辱。
+
+它能抓住 coverage 的经典谎言：“这一行跑过了，但没人断言这个 behavior。”[Infection 的 PHP 文档](https://infection.github.io/guide/)用单独的 mutation score 和 covered-code mutation score metrics 展示了这种 gap。在 JavaScript 里，[Stryker](https://stryker-mutator.io/docs/)扮演类似角色。在 JVM land，[PIT](https://pitest.org/)是熟悉的名字。
+
+我不会第一天就在所有地方跑 mutation testing。它可能慢，也可能吵。我会把它用在：
+
+- billing rules；
+- permission checks；
+- validators；
+- calculators；
+- parsers；
+- 覆盖率很高却持续产出 bugs 的代码；
+- API behavior 就是产品的 libraries。
+
+Mutation testing 不是 coverage 的替代品。它是 coverage 说“是的，测试碰到了这里”之后你要问的问题。Mutation tool 会问：“cool, but did they care?”
+
+## 一份可以偷走的实用 Coverage Policy
+
+如果我今天要给一个团队搭这套东西，我会这样写 policy：
+
+1. **Coverage 在 diff 上 review。** Uncovered changed lines 要么被测试，要么被解释。
+2. **Risky modules 有 explicit thresholds。** Billing、permissions、data integrity 和 core domain logic 有更高的门槛。
+3. **Global coverage 不能悄悄下降。** 小下降需要理由；大下降阻塞 merge。
+4. **Generated 和 framework code 可以 excluded。** Exclusion 必须明显且有文档。
+5. **Decision-heavy code 需要 branch coverage。** 尤其是 state machines 和重要 conditionals。
+6. **Mutation testing 是 targeted。** 在高 coverage 仍然不能带来信任的地方使用它。
+7. **Escaped bugs 变成 regression tests。** 不一定立刻，不一定在同一个 layer，但要有意为之。
+
+这个 policy 比“80% or else”更严格，也比“100% or shame”更温柔。更重要的是，它给 reviewers 一个决策规则。
+
+## Reviewer 版本
+
+Review PR 时，我宁愿留下这样的 comment：
+
+> This changes the refund eligibility rule, but the uncovered branch is the `trial_was_extended` case. Can we add a regression test for that state?
+
+而不是这个：
+
+> Coverage is 78.3%. Please improve.
+
+第一个 comment 讲的是风险。第二个讲的是天气。
+
+## Lead 版本
+
+如果你 lead 一个团队，不要 weaponize coverage。人们会优化你放在 scoreboard 上的东西。如果 scoreboard 写着“hit 85%”，你可能会得到浅薄但能打到 85% 的 tests。
+
+用 coverage 开启更好的对话：
+
+- 为什么这个 hot file 是 uncovered？
+- 为什么 production bugs 聚集在有“good” coverage 的 modules 里？
+- 我们的 tests 在 assert outcomes，还是只是在 assert snapshots？
+- Integration tests 是否藏住了 missing unit coverage？
+- Slow tests 是否让人避免运行 test suite？
+- 这段代码 hard to test，是不是因为 design 很 muddy？
+
+Coverage 隐藏的礼物不是百分比。它是 uncovered code 指向 design、ownership 和 risk 的方式。
+
+## 所以，什么是好的代码覆盖率？
+
+好的代码覆盖率，是让重要错误更可能先在 CI 里疼，而不是先疼到 user 的足够覆盖。
+
+对典型 product team 来说，这通常意味着：
+
+- 70-85% overall coverage；
+- critical business logic 上 90%+；
+- important decisions 上 branch coverage；
+- changed code 的 diff coverage；
+- correctness 重要处的 mutation testing；
+- 对不值得仪式感的代码做 intentional exclusions。
+
+但真正的答案仍然是基于风险的：
+
+> 覆盖会伤到你的代码。覆盖你经常改的代码。覆盖你承诺过的 behavior。只有在理解数字试图警告你什么之后，才忽略它。
+
+Dashboard 可以是 green 的，同时仍然在说谎。真正有用的工作，是让产品更难对你的用户说谎。

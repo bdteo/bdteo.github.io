@@ -2,194 +2,164 @@
 
 You need to delete millions of rows from a MySQL table.
 
-You reach for the obvious move: delete from the big table where some condition is true.
+The honest first instinct is simple: delete from the big table where the row is older than your cutoff.
 
-[resigned tone] And then you watch the progress bar age in real time.
+Then the query runs long enough for you to become a different person.
 
-You try to be responsible and chunk it. Delete ten thousand rows at a time. Repeat until done.
+So you do the responsible thing. You delete ten thousand rows at a time. You order by id. You repeat until done. You add a sleep. You watch replicas. You hope the lock story stays boring.
 
-[flatly] Better. Still slow. Still noisy. Still expensive.
+That is often the right answer.
 
-If you are deleting most of the table, and by most I mean roughly eighty percent or more, there is a different move that is brutally effective.
+[flatly] But if you are deleting most of the table, a row-by-row delete is not noble. It is just expensive.
 
-Do not delete what you do not want.
+There is a different move: do not delete what you do not want. Preserve what you do want, rebuild the table, and move on.
 
-[emphasized] Keep what you want, and nuke the rest.
+That is the nuclear option: copy the rows to keep, truncate the table, then reinsert those rows.
 
-I call it the nuclear option: truncate and reinsert.
+It is fast because it changes the unit of work. You stop paying for every deleted row and start paying for every preserved row.
 
-[deliberate] Why DELETE stays slow, even when chunked.
+[deliberate] It is also dangerous because truncate is not a polite delete. In MySQL it is D D L-flavoured. It commits implicitly. It resets auto increment. It skips on-delete triggers. It has real foreign-key and replication consequences.
 
-InnoDB does not simply remove rows. It does work.
+That is exactly why it deserves a proper runbook, not a clever snippet pasted into production at two in the morning.
 
-Lots of work.
+Here is the decision shape.
 
-It has to locate rows, lock them, and mark them as deleted.
+Plain delete is best when you are deleting a small, indexed slice. It is usually online, and it can be transactional if you keep the transaction sane, but huge sets are slow because every affected index, undo log, redo log, and binlog entry has to be paid for.
 
-It has to maintain indexes. Every deletion touches every secondary index.
+Batched delete is best when you need live-system pacing and can tolerate a longer job. Each batch can commit independently. You can pause and resume. But it is still row by row, and it can still create replica lag.
 
-It has to write undo and redo logs, because the engine must preserve the ability to roll back and recover.
+Partition drop or partition truncate is best when the rows line up cleanly with whole partitions. That is the adult version of retention cleanup. The catch is that the partition boundary has to match the rule. Boundaries do not forgive optimism.
 
-It churns the buffer pool. You keep dirtying pages and evicting useful ones.
+Table swap is useful when you can build a replacement table and atomically rename it into place. The swap window is short, but the copy phase still needs a plan for writes, triggers, grants, foreign keys, and application assumptions.
 
-And if you have replication, large delete streams are a great way to generate replica lag.
+And truncate plus reinsert is best when you are deleting almost everything and can pause writes. The table is empty between truncate and restore, and the rollback story is not friendly.
 
-[matter-of-fact] Back-of-the-napkin reality check: twenty seven million rows at around six thousand rows per second is about seventy five minutes.
+[reflective] My rule of thumb is this: deleting less than fifty percent, start with indexed delete or batched delete. Deleting between fifty and eighty percent, measure batched delete against rebuild approaches. Deleting more than eighty percent, strongly consider preserve-and-rebuild.
 
-That is not a bug.
+The percentage is not magic. A thirty percent delete from a table with horrible indexes can still hurt. A ninety percent delete from a small table may not deserve ceremony.
 
-[deadpan] That is the cost model you chose.
+The real question is: which side of the data is smaller and safer to operate on?
 
-[deliberate] The nuclear option: truncate and reinsert.
+Why does a massive delete hurt InnoDB?
 
-This technique flips the cost model.
+Because InnoDB does not look at your where clause, sigh wistfully, and remove a range of bytes from disk.
 
-Instead of paying per deleted row, you pay per kept row.
+It has to find rows through an index, or scan too much. It has to lock records, and sometimes gaps, along the scanned index ranges. It has to maintain every affected secondary index. It writes undo so the delete can roll back. It writes redo so crash recovery works. It writes binary logs so replication and recovery have a history. And it leaves purge work behind for InnoDB to clean up after old row versions are no longer visible.
 
-The algorithm is simple.
+[matter-of-fact] The uncomfortable detail is that delete locks the index records it scans, not merely the rows your mental model thinks it matched.
 
-First, copy the rows you want to keep into a temporary table.
+Batched deletes reduce the blast radius by making each transaction smaller. Delete a limited number of rows older than the cutoff, ordered by id, then repeat. That gives replicas time to breathe. It lets you stop. It keeps undo from becoming one enormous transaction.
 
-Second, truncate the original table. This is fast.
+But it does not change the basic cost model. You are still deleting row by row.
 
-Third, insert the preserved rows back into the original table.
+Truncate changes that model because MySQL treats truncate table more like dropping and recreating the table than like deleting every row. It bypasses the normal D M L delete path, causes an implicit commit, cannot be rolled back like a normal D M L statement, and does not fire on-delete triggers.
 
-Fourth, drop the temporary table.
+So instead of deleting eighty million rows and keeping twenty million, you copy twenty million rows, empty the table quickly, and insert twenty million rows back.
 
-[matter-of-fact] And yes, it is called nuclear for a reason. It is intentionally blunt.
+[deadpan] That is the whole trick. The implementation details are where the bodies are buried.
 
-[reflective] Why it is fast.
+The safest version starts with the keep set.
 
-The wins are mechanical.
+Not: delete everything older than X.
 
-Truncate is roughly constant time because MySQL drops and recreates the table at the metadata level.
+But: after this operation, the table contains exactly the rows matching Y.
 
-Creating a table as a select is proportional to the number of rows you keep. It is a sequential scan plus a bulk write.
+That framing matters because the preserved rows become your recovery anchor.
 
-Inserting back from the temporary table is also proportional to the rows you keep. It is a bulk insert, without the delete tax.
+Freeze volatile values before you measure anything. If the cutoff is January first, set it once and reuse that exact value. Then count total rows, rows to keep, and rows to delete in the same preflight query.
 
-[emphasized] There is no per-row delete overhead. No index updates for the rows you removed, because they are gone in one shot.
+After that, check the access path. Explain the query that finds the rows to keep. If MySQL needs a full table scan over a table that is still taking writes, stop and design the maintenance window properly. The nuclear option is not a substitute for knowing how the table is accessed.
 
-[deliberate] When to use it, and when not to.
+[deliberate] Before touching production, I want five checks.
 
-Use it when you are deleting most of the table. Again, eighty percent or more is the line where this starts to shine.
+First, confirm foreign-key relationships. Find child tables that reference the table you want to empty. If other tables reference it, do not casually disable foreign key checks and hope. MySQL does not validate existing rows when checks are turned back on. That is useful for controlled reloads. It is terrifying as a hand-wave.
 
-Use it when you can define the rows to keep cleanly.
+Second, check triggers. If delete triggers write audit rows, clear caches, update rollups, or notify other systems, truncate bypasses them. That is either exactly what you want or exactly how you create a very quiet incident.
 
-Use it when you can afford brief unavailability or a maintenance window.
+Third, check disk space. You need room for the preserved rows somewhere. If you are keeping twenty percent of a five-hundred-gigabyte table, the temporary copy is a real object competing for real disk and I O.
 
-Use it when the table is not actively referenced by foreign keys from other tables, or when you can manage those constraints safely.
+Fourth, check binary logs and replicas. Truncate is logged for replication as a statement, and the reinsert is still a large write. That may be much better than logging millions of row deletes, but it is not free.
 
-Use it when you have enough disk for the temporary table.
+Fifth, have a restore path you have actually tested. "We have backups" is not a restore plan. Know which backup you would restore, where you would restore it, and how you would extract just this table if the result is wrong.
 
-[stress on next word] Do not use it when you need zero downtime.
+Here is the practical runbook.
 
-Do not use it when the table is heavily referenced by foreign keys you cannot touch.
+Assume the table is safe to empty briefly: no child tables depend on those rows while the operation runs, writes are paused or the application is in maintenance mode, the keep condition is frozen, backups are real, and replicas have been considered.
 
-Do not use it when you must fire delete triggers.
+Use explicit columns. I know select star looks clean. It is also how generated columns, invisible columns, column-order drift, and future migrations make your night more interesting.
 
-And do not use it when you are only deleting a minority of rows. A chunked delete can be the simpler win.
+Create a keep table with the same structure as the source table. Use create table like, not create table as select. Insert the rows you want to preserve into that keep table, naming every column explicitly, and using the frozen cutoff.
 
-[reflective] A practical decision rule.
+Then count the preserved copy before you do anything irreversible.
 
-If you want one sentence you can say in a review: if the delete would remove most of the table, stop deleting. Preserve and rebuild.
+After that comes the point of no casual return: truncate the original table.
 
-Or, in slightly more mechanical terms:
+Restore the preserved rows back into the original table with an explicit column list. Refresh optimizer statistics. Then verify the final row count, the oldest remaining row, and the table status before cleanup.
 
-If you are deleting less than fifty percent, use a chunked delete with index-aware filters.
+[reflective] Drop the preserved copy only after the application is back, the counts match, and you have looked at the actual product behaviour that depends on this table.
 
-If you are deleting between fifty and eighty percent, measure both approaches.
+That preserved table is not clutter during the operation. It is the rope.
 
-If you are deleting more than eighty percent, use truncate and reinsert, if the constraints allow it.
+There is also a table-swap variant when the empty-table window is unacceptable.
 
-[matter-of-fact] Implementation in SQL.
+The shape is similar: create a new table like the old one, insert the rows you want into the new table, then atomically rename the old table out of the way and the new table into place.
 
-The minimal shape is this.
+The rename itself is atomic. Other sessions do not see a half-renamed pair. But do not confuse that with zero downtime.
 
-Create a temporary preserved table from the original table, selecting only the rows where your preserve condition is true.
+If the old table receives writes while the new table is being populated, those writes are not magically copied. You need a write pause, a delta-capture plan, or a deliberately more complex online migration.
 
-Then truncate the original table.
+Also, create table like copies column attributes and indexes, but it does not make every surrounding object safe. Verify triggers, foreign keys, grants, partitioning, generated columns, and application assumptions. The table name may survive the swap. The operational context may not.
 
-Then insert the preserved rows back into the original table.
+If the rows line up with partitions, partitioning is often the cleanest answer. Drop the old partition, or truncate the old partition, and move on.
 
-Then drop the temporary table.
+[matter-of-fact] That is the grown-up version of bulk deletion: design the table so old data can leave through a door instead of through a shredder.
 
-In SQL terms, that means: create table temp_preserved as select everything from big_table where preserve_condition. Truncate table big_table. Insert into big_table by selecting everything from temp_preserved. Drop table temp_preserved.
+The catch is obvious and still painful. The partition boundary must match the retention rule. If the cleanup condition is "delete every completed task for customers on the old billing plan except the ones with unresolved exports," partitioning will not rescue you.
 
-[deliberate] Two production notes matter.
+Now the gotchas, plainly.
 
-First, truncate is DDL in MySQL. It implicitly commits, and you cannot roll it back like a normal transaction.
+Truncate commits implicitly. Create table, alter table, drop table, and rename table live in the same implicit-commit world. Wrapping the runbook in start transaction does not make it safely reversible. If your plan depends on "we will roll back if it looks wrong," you do not have a plan.
 
-Second, you want a maintenance window and a backup. This is not a try it live and see situation.
+Foreign keys are not a checkbox. If the table is a parent, child rows elsewhere may depend on it. If the table is a child, reinsert order matters. If you disable foreign key checks, MySQL will not validate old rows when you turn checks back on.
 
-[matter-of-fact] Implementation in Laravel and PHP.
+On-delete triggers do not fire. That can be a performance benefit. It can also bypass audit trails and denormalized counters.
 
-The version I actually use is a helper that accepts three things: the database connection, the table name, and the preserve condition.
+Auto increment resets. If you reinsert explicit ids, MySQL often advances the next value as it sees those ids, but I still verify it. Read the maximum id. Check the table status. If the next auto increment value is wrong, fix it deliberately. Do not guess the number.
 
-It builds a temporary table name using the original table name and the current timestamp.
+Create table as select is not the same as create table like. The first is convenient, but it does not automatically create indexes for the new table, and some attributes are not preserved the way people assume. For an operational runbook, I prefer create table like, then insert with explicit columns.
 
-[deliberate] Then it does the dangerous part very explicitly.
+Constraints still matter after the truncate. If the preserved set is produced by joins, deduping, transformations, or code, validate it before the truncate. "Should be fine" is not a verification strategy.
 
-It turns foreign key checks off.
+Replicas can still lag. This method can reduce work compared with an enormous row-by-row delete, but replicas still need to apply the truncate and the bulk insert. Watch them.
 
-It creates the temporary table by selecting the rows to preserve.
+[emphasized] And the application must not write through the copy window.
 
-It counts how many rows were preserved.
+If you copy keep rows at two o'clock and the application inserts new valid rows five seconds later, those rows are not in the keep table. A later truncate removes them.
 
-It truncates the original table.
+Maintenance mode is not just about user experience. It is data correctness.
 
-It inserts the preserved rows back.
+A Laravel-shaped caution: the important thing is not the facade. It is the boundary.
 
-It drops the temporary table.
+Do not hide this inside a generic helper that accepts arbitrary table names and raw where strings. Identifiers should be code constants. The keep condition should come from reviewed code, not user input. And database transactions do not make D D L rollback-safe in MySQL.
 
-And in a finally block, it turns foreign key checks back on.
+The skeleton I trust looks more like a command than a reusable library function. Create the keep table. Insert the preserved rows with a bound cutoff. Count the keep rows. Log that number. Compare it to the preflight count. Require an explicit operator confirmation. Then truncate and restore.
 
-[emphasized] That last part matters. If the script fails halfway through, you still want the connection to put the guardrails back.
+[deadpan] That confirmation step is not theatre. It is the pause where you catch: wait, keep rows is eleven, not eleven million.
 
-[reflective] Pinch of rubber-duck energy: read the helper again and ask your future self, am I sure this table can be emptied for a moment?
+Here is the small two-in-the-morning checklist.
 
-[deliberate] If the answer is not an unambiguous yes, this is not the tool.
+Before: know the exact keep condition. Freeze any time-based cutoff. Count total, keep, and delete rows. Check foreign keys and triggers. Check disk space. Know the backup and restore path. Check replica lag and binlog implications. Pause writes, or have a real delta-capture plan.
 
-[matter-of-fact] Gotchas you must account for.
+During: create the keep table. Count it. Compare the count to the preflight number. Run the irreversible step only after the numbers make sense. Reinsert with explicit columns. Analyze and verify.
 
-First, auto-increment resets.
+After: final row count matches keep count. Boundary rows look right. Application behaviour is checked, not merely SQL output. Replicas are caught up, or intentionally catching up. The keep table stays until you no longer need the rope.
 
-Truncate resets the auto-increment value. If you need to preserve it, find the maximum ID and set auto-increment to max ID plus one.
+I would not use truncate plus reinsert if the table has important delete triggers, if foreign-key cascades are the correct business behaviour, if writes cannot be paused, if the keep condition is fuzzy, if the delete is small enough for batched delete, if the table is already partitioned on the retention boundary, or if the organization cannot restore the table when the runbook is wrong.
 
-Second, foreign keys.
+That last one is the test. If restoring the table would be chaos, do not choose an operation whose failure mode is: restore the table.
 
-[stress on next word] If other tables reference this one, truncate may be forbidden or unsafe. Do not just disable checks and hope.
+[reflective] The nuclear option is not clever because truncate is fast. Everyone knows truncate is fast.
 
-Third, triggers.
+The useful idea is deciding which work you want the database to do.
 
-Truncate does not fire delete triggers. If you need trigger side effects, you are back to delete.
-
-Fourth, disk space.
-
-You need room for the preserved dataset, because the temporary table has to live somewhere. Check the table size first. Information schema can tell you the data size and index size for the table.
-
-Fifth, replication and the binary log.
-
-[deliberate] This is DDL plus a bulk insert. It can still cause replica lag. Do it intentionally, monitor lag, and do not pretend it is free.
-
-[reflective] If you need near zero downtime.
-
-This post is about the fast hammer.
-
-If you need a scalpel, use the tools built for it.
-
-Use Percona Toolkit's pt-archiver for batched deletes with replica-friendly pacing.
-
-Use partitioning strategies, where you drop partitions instead of rows.
-
-Or use shadow-table approaches with a controlled swap. More complex, more moving parts, but better suited for near-zero downtime work.
-
-[reflective] Closing thought.
-
-This is not a clever trick.
-
-It is choosing which work you pay for.
-
-[emphasized] When you are deleting almost everything, paying per deleted row is just self-inflicted pain.
-
-[deliberate] Preserve what matters. Rebuild. Move on.
+If you are deleting almost everything, making InnoDB carefully delete almost everything can be the wrong kindness. Preserve what matters. Rebuild around it. Verify like a tired future version of you will be reading the output with one eye open.

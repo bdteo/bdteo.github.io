@@ -1,219 +1,269 @@
 ---
 lang: "zh-Hans"
 translationOf: "unlocking-the-power-of-git-grep"
-translationUpdatedAt: "2026-05-18"
-translationSourceHash: "133f75c4ec8e9010"
-title: "释放 'git grep' 的力量，高效搜索代码"
+translationUpdatedAt: "2026-06-22"
+translationSourceHash: "203041318333bf65"
+title: "git grep 食谱：搜索已跟踪代码，而不是整个文件系统"
 date: "2024-11-13"
-description: "什么时候 'git grep' 胜过普通 grep，什么时候 'rg' (ripgrep) 又胜过它们，以及 'git grep' 到底会不会理会 .gitignore（剧透：不会）。"
-featuredImage: "./images/featured.jpg"
-imageCaption: "一个图书馆卡片目录抽屉被拉开。其中一张卡片微微探出——你正在找的那段文字。"
+description: "一份实用的 git grep 速查表，涵盖已跟踪文件、branches、tags、staged changes 和旧 commits 的搜索，以及 .gitignore 的坑和什么时候改用 ripgrep。"
 tags: ["git", "git grep", "ripgrep", "代码搜索", "开发者工具", "软件开发", "命令行工具"]
+featuredImage: "./images/featured.jpg"
+imageCaption: "一个图书馆卡片目录抽屉被拉开。其中一张卡片微微探出 - 你正在找的那段文字。"
 ---
 
-在一个辽阔的王国里，卷轴和手稿数不胜数。有一位名叫 Alaric 的学者住在那里。他的图书馆庞大得像一座知识迷宫：古老文本与当代著作并置，秘密藏在行与行之间。Alaric 常常需要在这片信息海中寻找一句难以捉摸的短语；日子久了，这件事越来越让人发怵。
+大多数代码搜索建议都从速度讲起。速度当然重要，但我会伸手用 `git grep`，真正的原因更简单：
 
-某天清晨，阳光把金色洒在蒙尘的巨册上，Alaric 开始寻找档案里提到的一个概念。它只以 "The Whispering Sigil" 这个名字出现。他一卷卷翻阅，用惯常的方法筛过页面；可这些方法如今显得迟缓而不精确。他越往深处找，就越被无关段落、重复内容和误导性引用缠住。几小时变成几天，进展寥寥，挫败感也慢慢堆起来。
+**它搜索的是 Git 知道的代码，而不是整个文件系统。**
 
-后来，一位老智者来访，看出了他的困境。智者会意一笑，说："也许你是在用困难的方法找。还有一条隐秘路径，只有那些懂得整理知识的人知道。" Alaric 被勾起了兴趣，听智者解释一种能聚焦搜索的方法。它能切开杂物，直接通向他要找的文本。
+这意味着你的搜索不会跑进 `node_modules`、`.cache`、`dist`、coverage reports、本地 dumps、screenshots，或者某个奇怪 debugging 下午里顺手创建的临时东西。默认情况下，`git grep` 从 Git working tree 中已跟踪的 paths 开始。单是这个约束，就会让结果安静很多。
 
-带着这个新办法，Alaric 又试了一次。这回，无关的杂音退去了。通往 "The Whispering Sigil" 的路径变得清晰，他以惊人的速度找到了想要的东西。仿佛他在自己的迷宫里打开了一扇秘密之门，快速抵达了所需的确切知识。
+这不是反对 `rg` / ripgrep。我一直在用 `rg`。但这两个工具回答的是不同问题：
 
-**噗。** 秘密揭晓：这就是 `git grep` 的力量。
+- `git grep`："这个东西在已跟踪代码里哪里出现，或者在另一个 branch、tag、commit 里哪里出现？"
+- `rg`："这个东西在磁盘上哪里出现，并且要遵守我的 ignore rules？"
 
-## `git grep` 到底是什么
+一旦这个区别想通了，`git grep` 就不再是那个你隐约知道存在的老命令，而会变成一个非常锋利的小习惯。
 
-普通的 `grep -r` 会遍历文件系统。它尽职尽责地读取路径上的一切：源代码、日志文件、构建产物、同事忘了删掉的那个 4 MB 零散 dump 文件、整个 `node_modules` 树。`git grep` 做的事情更窄：它搜索 Git 已经知道的文件。它的大部分价值，就来自这一个设计选择。
+## 心智模型
 
-### `git grep` 擅长什么
-
-- **它搜索 tracked files，而不是文件系统。** Git 会维护一份列表，记录你曾经 staged 或 committed 的每个文件，也就是 index。`git grep` 从这份列表读取。未跟踪的杂物根本不在那里。没有 `node_modules/`，没有 `dist/`，没有 coverage reports，没有随机日志文件，因为 Git 从没被告知它们存在。
-
-- **在大型 repo 中，它比 `grep -r` 更快。** 它已经有文件列表，所以跳过了文件系统遍历。它还会用多线程并行执行。收益是真的，但不是魔法。`git grep` 迭代的是 `grep` 也会读到的同一批 blobs，只是仪式少一点。这里没有内容搜索索引。"Git index" 是文件路径和 blob hash 的列表，不是 Lucene 风格的倒排索引。
-
-- **它可以在不 checkout 的情况下搜索任意 ref。** 这是杀手特性。tag、branch、commit、tree object，都可以直接交给 `git grep`。不用 `git checkout`，不用 stash 舞步，也不用偏离你手头正在做的事。
-
-### 实用示例
-
-#### 基本搜索
-
-要在仓库中搜索某个具体词，比如 `"initializeSettings"`：
+这个命令有用的形状是：
 
 ```bash
-git grep "initializeSettings"
+git grep [options] <pattern> [<tree-ish>...] [-- <pathspec>...]
 ```
 
-这会扫描当前 branch 中所有 tracked files，寻找精确匹配。
+用白话说：
 
-#### 不区分大小写搜索
+- `<pattern>` 是你要搜索的内容。
+- `<tree-ish>` 是可选的：要搜索的 branch、tag、commit 或其他 Git tree。
+- `<pathspec>` 是可选的：把搜索限制到哪些文件或目录。
+- 当 revision 和 path 可能产生歧义时，`--` 用来把两者分开。
 
-如果你不确定大小写，可以做不区分大小写的搜索：
+默认的 `git grep` 搜索 working tree 中已跟踪的文件。它不是神奇的内容索引。它不会读取当前目录下面的每个文件。它会问 Git 哪些 paths 属于这个项目，然后搜索这些 paths。
+
+所以它才显得干净。
+
+## 食谱
+
+### 1. 搜索已跟踪代码并显示行号
 
 ```bash
-git grep -i "initializesettings"
+git grep -n "initializeSettings"
 ```
 
-它会找到大小写不同的所有匹配。
+这是日常版本。`-n` 会打印行号，让输出在 terminal、PR comment 或快速 handoff note 里都有用。
 
-#### 在指定 branch 中搜索
-
-要在另一个 branch 里搜索，而不切过去，例如 `feature/login`：
+如果你总是想要行号，Git 有一个对应的 config：
 
 ```bash
-git grep "validateUser" feature/login
+git config --global grep.lineNumber true
 ```
 
-这招很难被打败。不 checkout，不 stash，直接得到答案。
+我仍然倾向于手动输入 `-n`，因为它在 snippets 里可见，也更容易移植。
 
-#### 跨所有 branches 搜索
-
-要在每个 branch 中搜索某个词，包括 remotes：
+### 2. 搜索字面字符串，而不是 regex
 
 ```bash
-git branch -a | xargs -n 1 git grep "configureDatabase"
+git grep -n -F "useEffect(" -- "*.js" "*.jsx" "*.ts" "*.tsx"
 ```
 
-要搜索 Git 知道的每个 commit，而不只是每个 branch tip：
+当 pattern 是固定字符串时，用 `-F`。括号、点、方括号和其他看起来像 regex 的字符都会被当作普通文本。
+
+这里有两个小习惯很重要：
+
+- 把 file globs 放在 `--` 后面。
+- 给 globs 加引号，避免 shell 在 Git 看到它们之前先展开。
+
+当我知道确切的 function call、config key、class name 或 error message 时，我要的就是这个版本。
+
+### 3. 不区分大小写、按完整单词、带列号搜索
 
 ```bash
-git grep "configureDatabase" $(git rev-list --all)
+git grep -n -i -w --column "customer"
 ```
 
-这会在历史中任何地方的任何 blob 里寻找匹配。在繁忙的 repo 上可能需要一点时间，因为它真的在走过每个 commit。
+`-i` 忽略大小写。`-w` 要求 whole-word matches。`--column` 打印这一行中第一个匹配项的列号。
 
-#### 在 commit 历史中搜索
+当某个词太常见，原始输出开始吵起来时，这很好用。把结果送进 editor integrations 或 quickfix lists 时也有用。
 
-要找出某个字符串是在什么时候被加入或移除的，可以用：
+### 4. 搜索以 dash 开头的 pattern
 
 ```bash
-git log -S "optimizePerformance"
+git grep -n -e "--force"
 ```
 
-这会显示引入或移除 `"optimizePerformance"` 这个词的 commits。
+没有 `-e` 的话，Git 可能会把 pattern 当作另一个 command-line option。`-e` 的意思是："下一个东西是 search pattern。" 这是那种你不常需要的小 flag，但一旦需要，就是真的需要。
 
-要查看这个词被加入或移除时的实际 diffs：
+你也可以传多个 `-e`：
 
 ```bash
-git log -G "optimizePerformance" -p
+git grep -n -e "oldBillingFlow" -e "legacyCheckout"
 ```
 
-#### 使用正则表达式
+这会搜索任意一个 pattern。
 
-`git grep` 支持正则表达式，可以做更高级的搜索：
+### 5. 当结构重要时使用 regex
 
 ```bash
-git grep -E "def\s+\w+\("
+git grep -n -E "def[[:space:]]+[[:alnum:]_]+\\(" -- "*.py"
 ```
 
-这会匹配 Python 函数定义：`def`、空白、函数名，然后是一个字面意义上的左括号。（在 extended regex 中，`\(` 是字面括号，而 `(` 表示分组；这就是为什么这里需要反斜杠。）
+`-E` 启用 extended regular expressions。这个例子寻找 Python 函数定义，但没有假装自己是 parser。
 
-### `git grep` 会读什么，不会读什么
+面对更大的结构性问题，请使用语言工具。`git grep` 非常擅长找候选项；它不是 AST engine，而这种诚实正是我喜欢它的原因之一。
 
-`git grep` 遍历 index。就这样。它不会解析 `.gitignore`。很多人，包括本文之前的一个版本，都说它会；这个说法几乎正确，正如"地球是平的"在你一辈子只看一个停车场时也几乎正确。
-
-两者看起来一致，只是因为 gitignored 文件通常也 untracked。一旦某个文件既被 gitignored 又被 tracked，比如有人跑过 `git add -f`，或者这个文件在规则出现之前就已经 committed，`git grep` 会照样搜索它。`rg` 不会。
-
-你可以在二十秒内证明：
+### 6. 把搜索限制到某个 path
 
 ```bash
-mkdir demo && cd demo
-git init -q
-echo "*.log" > .gitignore
-echo "the secret phrase" > tracked.log
-git add -f tracked.log .gitignore
-git commit -qm init
-
-git grep "secret phrase"   # finds it - the file is tracked, ignore rule notwithstanding
-rg "secret phrase"         # finds nothing - rg actually reads .gitignore
+git grep -n "FeatureFlag" -- src components
 ```
 
-所以精确的说法是：`git grep` 搜索 tracked files。这碰巧会跳过 `.gitignore` 会跳过的*大多数*东西，但机制不同，边界情况也重要。尤其是当你追查一个字符串，最后发现它住在某个多年前被人强行加入的 generated file 里时。
+`--` 后面的 pathspecs 会让搜索保持聚焦。这常常不只是计算上更快，也是脑子里更快。你在告诉命令：你关心哪一种答案。
 
-`.gitignore` 机制只会通过两个 opt-in 模式进入 `git grep`：
-
-- `--untracked`：同时搜索 untracked files。*在这个模式下*，`git grep` 默认遵守 `.gitignore`，并跳过 ignored files（可以用 `--no-exclude-standard` 覆盖，也把它们搜进去）。
-- `--no-index`：搜索当前目录，同时完全忽略 Git。在 repo 内想要 plain-grep 语义时很有用。在这个模式下，`git grep` 默认*不会*查询 `.gitignore`；如果你想要它这么做，可以用 `--exclude-standard` 显式打开。
-
-默认的 `git grep`，不带任何 flags，永远不会打开你的 `.gitignore` 文件。
-
-## 什么时候该用 `rg`
-
-`git grep` 和 `rg`（ripgrep）其实不是竞争对手。它们遍历的东西不同。认真的工具箱里两个都该有。
-
-- `git grep` 遍历 **index**：tracked files，以及你指向它的任何 ref 或 tree object。
-- `rg` 遍历 **文件系统**：当前目录下的所有文件，减去 `.gitignore`、`.ignore`、`.rgignore` 和全局 excludes 让它跳过的部分。
-
-它们各自能做对方做不了的事情。
-
-当你想在不 checkout 的情况下跨历史搜索时，`git grep` 胜出：
+你也可以排除 paths：
 
 ```bash
-git grep "deprecated_api" v2.3.0          # search a tag
-git grep "deprecated_api" HEAD~50         # 50 commits ago
-git grep "deprecated_api" $(git rev-list --all)   # every commit, ever
+git grep -n "logger" -- src ":(exclude)src/generated" ":(exclude)*.snap"
 ```
 
-当你真正需要文件系统语义，并且希望正确处理 gitignore 时，`rg` 胜出：包括刚 clone 下来但还没 `git add` 的子目录、Git 从未听说过的 generated files，或者根本不是 Git repo 的目录。
+Git pathspecs 很强，也有点怪。重要的实践规则是：path filters 放在 `--` 后面，而像 `:(exclude)...` 这样的 exclusion pathspecs 由 Git 处理，不由 shell 处理。
+
+### 7. 只列出匹配的文件
 
 ```bash
-rg "deprecated_api"                # respects .gitignore by default
-rg --no-ignore "deprecated_api"    # opt back into ignored files
-rg --hidden "deprecated_api"       # include dotfiles
+git grep -l "useOldCheckout"
 ```
 
-`rg` 也是 VS Code 项目搜索背后的引擎，所以 "Find in Files" 感觉就像在终端里跑 `rg`。它的 Unicode 处理扎实；在大多数现代语料上，它至少和 `git grep` 一样快，常常更快。[ripgrep README 的 Linux kernel benchmark](https://github.com/BurntSushi/ripgrep/blob/master/README.md) 显示，在同一个查询上，ripgrep 大约比 `git grep -P` 快 3 倍。（提示：如果你想要"只有 pattern 里有大写时才区分大小写"的行为，传 `-S` 开启 smart-case。它是 opt-in，不是默认行为。）
+`-l` 打印文件名，而不是匹配行。当下一步是"打开这些文件"或"数一下 blast radius"，而不是"阅读每个 match"时，用它。
 
-如果你还没装 `rg`，修一下：
+反向版本也存在：
 
 ```bash
-brew install ripgrep   # macOS
-apt install ripgrep    # Debian/Ubuntu
-cargo install ripgrep  # anywhere with Rust
+git grep -L "use client" -- "src/**/*.tsx"
 ```
 
-把 `rg` 放在 `git grep` 旁边。它们负责不同的工作。
+`-L` 会列出**不**包含该 pattern 的已跟踪文件。在 framework migrations 中，这可能出奇地顺手。
 
-### `git grep` 的好处
+### 8. 按文件统计匹配数
 
-- **相关性。** 它只搜索你正在 track 的东西。构建产物、缓存、`node_modules` 不会挡路，因为 Git 从没见过它们。
-- **大型 repo 上的速度。** 多线程，不走文件系统遍历。
-- **历史触达。** 任意 branch、tag 或 commit，且不离开你的 working tree。这是 `rg` 做不到的部分。
-- **更少二进制噪音。** 和 `grep` 一样，`git grep` 会用 "Binary file X matches" 标记二进制文件，而不是倾倒字节；但因为它遍历 tracked files，通常一开始就会少遇到这类文件。传 `-I` 可以完全跳过二进制文件。
+```bash
+git grep -c "TODO"
+```
 
-### 额外技巧
+`-c` 给你一张快速 heat map。它不是代码质量指标；拜托别把它变成一个。但在你开始编辑之前，它很适合用来发现某个词集中在哪些文件里。
 
-- **分页查看结果：**
+### 9. 搜索 staged 版本，而不是 working tree
 
-  ```bash
-  git grep "searchTerm" | less
-  ```
+```bash
+git grep -n --cached "newConfigKey"
+```
 
-- **按文件统计匹配次数：**
+默认情况下，`git grep` 搜索 working tree 中已跟踪的 paths。`--cached` 搜索 index 里的 blobs，也就是 staged 版本。
 
-  ```bash
-  git grep -c "searchTerm"
-  ```
+这在 pre-commit checks、review scripts，或者任何你想问"我到底 staged 了什么？"而不是"磁盘上现在有什么？"的时候都很有用。
 
-- **显示行号：**
+### 10. 搜索 untracked files，同时记住 ignore rules
 
-  ```bash
-  git grep -n "searchTerm"
-  ```
+```bash
+git grep -n --untracked "draftFlag"
+```
 
-- **在编辑器中打开每个匹配文件：**
+`--untracked` 会把 untracked files 加进搜索。在这个模式下，Git 的标准 ignore rules 会被遵守，所以 ignored files 仍然不会出现在结果里。
 
-  ```bash
-  git grep -l "searchTerm" | xargs code
-  ```
+如果你真的也想要 ignored files：
 
-  把 `code` 换成 `nvim`、`subl`，或者你自己用的任何编辑器。
+```bash
+git grep -n --untracked --no-exclude-standard "draftFlag"
+```
 
-## 结论
+这是一个有意为之的动作。我会在怀疑某个 generated file、本地 fixture 或 ignored artifact 里藏着我要找的东西时用它。
 
-就像 Alaric 在迷宫般的图书馆里找到了一条隐秘路径，`git grep` 会在 tracked codebase 中切出一条干净的线：快速、懂 branch，并且不被 Git 从未听说过的东西弄乱。它不是 `grep` 的万能替代品，也不是 `rg` 的替代品。它知道的是你的 repo 的 *index*；一旦你开始伸手去用它，迷宫就会小很多。
+### 11. 不 checkout，直接搜索另一个 branch、tag 或旧 commit
 
-当问题是"这个代码库里，包括它的历史里，哪里有它"时，用 `git grep`。当问题是"磁盘上哪里有它，并且要遵守我的 ignore rules"时，用 `rg`。多数日子里，你会希望两者都在手边。
+```bash
+git grep -n "validateUser" main
+git grep -n "validateUser" v2.3.0
+git grep -n "validateUser" HEAD~20 -- src
+```
 
----
+这是 killer feature。
 
-*2026-04-27 更新：修正了早先关于 `git grep` 会遵守 `.gitignore` 的说法（它不会，至少不是直接遵守）；放缓了"内部索引"的解释；修正了一个正则示例；并新增了什么时候该用 `rg` 的章节。*
+不用 checkout。不用 stash。不用绕去 worktree。你可以直接向某个 branch、tag 或旧 commit 提问，同时留在原地。
+
+当 bug report 说"这个在上一个 release 里还能用"时，我通常从这里开始。
+
+### 12. 只有在你真的这么想时，才搜索每个 commit
+
+```bash
+git rev-list --all | xargs -n 50 git grep -n "validateUser"
+```
+
+这会分批搜索整段历史中的 commit trees。对一个严肃的 repository 来说，它可能很吵、重复，也很贵，因为同一份 file content 可能出现在许多 commits 里。
+
+大多数时候，如果你真正的问题是"这个 string 是什么时候出现或消失的？"，`git log` 是更好的 companion：
+
+```bash
+git log -S "validateUser" --oneline -- src
+git log -G "validate(User|Account)" -p -- src
+```
+
+`-S` 用来寻找某个 string 的 occurrence count 变化。`-G` 用来寻找 added 或 removed lines match 某个 regex 的 diffs。问题不同，工具也不同。
+
+## `.gitignore` 的坑
+
+"`git grep` respects `.gitignore`" 这句话接近到很诱人，也错到会咬人。
+
+默认情况下，`git grep` 搜索已跟踪文件。`.gitignore` 文件的作用，是让 untracked files 保持 untracked。已经被 Git 跟踪的文件，不会因为后来有一条 ignore rule match 到它，就突然隐形。
+
+所以精确版本是：
+
+- 默认情况下，`git grep` 搜索 working tree 中的 tracked paths。
+- Ignored-but-untracked files 不会被搜索，因为 untracked files 本来就不会被搜索。
+- Ignored-but-tracked files **会**被搜索，因为它们是 tracked。
+- `--untracked` 会加入 untracked files，同时仍然遵守 standard ignore rules。
+- `--untracked --no-exclude-standard` 也会包含 ignored files。
+- `--no-index` 会把 `git grep` 变成从当前目录开始的 filesystem search，即使不在 repo 里也一样。
+- `--no-index --exclude-standard` 会让这个 filesystem search 遵守 Git 的 standard ignore rules。
+
+这个边界情况在老 repositories 里很重要。一个文件可能先被 committed，后来才被 ignored。如果你在追一个 string，而 `git grep` 在一个 supposedly ignored file 里找到了它，Git 没有糊涂。这个文件是 tracked。
+
+## 什么时候 `rg` 是更好的工具
+
+当你想要 filesystem semantics 时，用 ripgrep。
+
+```bash
+rg "validateUser"
+rg -S "validateUser"
+rg --hidden "validateUser"
+rg --no-ignore "validateUser"
+```
+
+`rg` 遍历 directory tree。默认情况下，它遵守 `.gitignore`、`.ignore`、`.rgignore`、global ignore files、hidden-file rules 和 binary-file skipping。它很快，很成熟；当我要搜索磁盘上真实存在的 working directory 时，它通常就是我想要的工具。
+
+代价是，`rg` 不知道怎么搜索 `v2.3.0` 或 `HEAD~20`，除非你把那个 tree checkout 到某个地方。Git history 不是它的世界。
+
+所以我的经验法则是：
+
+- 对 tracked code 和 Git objects 使用 `git grep`：branches、tags、commits、staged content。
+- 对 live filesystem 使用 `rg`：untracked files、non-Git directories、ignored-file experiments，以及广泛的 project search。
+
+只选一个没有奖。把两个都放在手里。
+
+## 紧凑速查表
+
+```bash
+git grep -n "term"                         # tracked files, with line numbers
+git grep -n -F "literal(" -- "*.ts"        # fixed string in TypeScript files
+git grep -n -i -w --column "term"          # case-insensitive whole-word search
+git grep -n -e "--flag"                    # pattern begins with a dash
+git grep -n -E "regex" -- src              # extended regex, limited to src
+git grep -l "term"                         # matching file names only
+git grep -L "term" -- "*.tsx"              # files that do not contain term
+git grep -c "term"                         # match count per file
+git grep -n --cached "term"                # staged/index version
+git grep -n --untracked "term"             # tracked plus untracked, honoring ignores
+git grep -n "term" v1.2.3 -- src           # search a tag without checkout
+git log -S "term" --oneline -- src         # find commits that changed occurrence count
+```
+
+`git grep` 那种无聊的力量在于，它从 Git 理解的项目开始。这正是你比自己想象中更常需要的东西：不是磁盘上的每个文件，不是每个 build artifact，不是每个本地实验，而只是属于这个 repository 的代码，再加上你能点名的任何旧版本代码。

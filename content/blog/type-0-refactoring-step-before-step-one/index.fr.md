@@ -1,319 +1,456 @@
 ---
 lang: "fr"
 translationOf: "type-0-refactoring-step-before-step-one"
-translationUpdatedAt: "2026-05-17"
-translationSourceHash: "701d1621c1262282"
-title: "Refactoring de type 0 : l'étape avant la première étape"
+translationUpdatedAt: "2026-06-22"
+translationSourceHash: "16a0b76cc24c4b04"
+title: "Refactoring de type 0 : rendre le code compréhensible avant de changer le comportement"
 date: "2025-12-13T12:00:00.000Z"
-description: "Le refactoring de type 0 est un nettoyage contraint, qui préserve le comportement, pour rendre du code désordonné lisible et assez sûr pour y travailler avant de tenter un vrai refactoring ou de livrer un hotfix."
+description: "Le refactoring de type 0 est l'étape qui préserve le comportement avant un vrai changement de code : rendre du code brouillon compréhensible, testable et reviewable sans théâtre du nettoyage."
 tags: ["refactoring", "ingénierie logicielle", "debugging", "maintenabilité"]
 featuredImage: "./images/featured.webp"
 imageCaption: "Mise en place. Le travail avant le travail."
+audioUrl: "/audio/articles/type-0-refactoring-step-before-step-one/fr/hqfrgApggtO1785R4Fsn-c0834a3561f8.m4a"
+audioDuration: "18:00"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-06-22"
+audioTextSource: "content/tts/type-0-refactoring-step-before-step-one.fr.md"
 ---
 
-Il existe une catégorie de refactoring que les équipes font constamment, dont elles profitent immédiatement, et qu'elles ne nomment presque jamais.
+Il existe une forme de refactoring que les équipes font tout le temps, généralement sous pression, généralement sans lui donner de nom.
 
-C'est le travail que l'on fait juste avant de toucher au fichier qui fait peur. La demande de fonctionnalité vous force à entrer dans le module en bazar. L'incident arrive, et le bug se cache quelque part dans une méthode qui semble avoir son propre système météorologique.
+Vous ouvrez le fichier où vit le bug. La méthode est trop longue. Les noms sont fatigués. Les branches s'empilent comme de vieilles chaises dans une cave. Vous sentez physiquement que faire le changement demandé dans cette forme de code est une mauvaise idée.
 
-Vous ne redessinez pas le système. Vous n'introduisez pas une nouvelle abstraction. Vous n'"améliorez" rien de façon maligne.
+Mais vous n'êtes pas prêt à le redessiner.
 
-Vous rendez simplement le code assez lisible pour pouvoir travailler.
+Vous n'essayez pas d'introduire une nouvelle abstraction.
 
-J'ai commencé à appeler cela le **refactoring de type 0**.
+Vous n'essayez pas de prouver que vous êtes la personne clean-code dans la pièce.
 
-Le **refactoring de type 0** est un nettoyage préparatoire, qui **préserve le comportement**, et qui rend le code plus facile à raisonner **avant** de faire des refactorings architecturaux, du travail de performance, ou du travail fonctionnel.
+Vous essayez de rendre le comportement actuel assez compréhensible pour que le prochain changement puisse être fait en sécurité.
 
-C'est l'étape "sécher le sol avant de refaire la cuisine". La plupart des équipes le font déjà informellement. Lui donner un nom en fait un outil partagé.
+J'appelle cela le **refactoring de type 0**.
 
----
+Ou, moins mémorablement mais plus précisément :
 
-## La vraie raison d'être du type 0 : les humains ont un budget de mémoire de travail
+> Le refactoring de type 0 est le nettoyage qui préserve le comportement avant de changer le comportement, afin que le code devienne lisible, testable et reviewable.
 
-Voici la vérité brutale derrière l'idée :
+C'est l'étape avant l'étape un.
 
-**Mon cerveau (et le vôtre) n'est pas construit pour debugger de façon fiable une méthode de 2000 lignes sous pression.**
+Pas la vraie rénovation. Le dégagement de l'établi. L'étiquetage des câbles. Le geste qui rend la chose lisible avant d'y mettre les mains.
 
-Ce n'est pas un défaut personnel. C'est simplement ainsi que fonctionne la cognition.
+## Pourquoi le type 0 mérite un nom
 
-Debugger vous demande de garder en tête, en même temps :
+[Martin Fowler définit le refactoring](https://refactoring.com/) comme une modification de la structure interne du code sans changement de son comportement externe. Cette précision compte. Si le comportement change, le travail peut toujours être utile, mais ce n'est pas du refactoring au sens strict.
 
-- le chemin d'exécution courant
-- l'état pertinent
-- ce que chaque variable veut vraiment dire
-- l'ensemble des branches possibles
-- les consequences de "si ceci arrive, alors..."
+Le type 0 est plus étroit que cela.
 
-Dans du petit code, c'est gérable.
+Un refactoring normal peut améliorer le design. Le type 0 peut ne pas le faire.
 
-Dans du gros code avec une forte complexité cyclomatique, cela devient de la supposition probabiliste. Vous pouvez encore avoir de la chance, mais c'est coûteux et risqué, surtout pendant un hotfix.
+Un refactoring normal peut déplacer des responsabilités entre classes. Le type 0 ne devrait pas.
 
-Le type 0 est une réponse pratique : c'est la façon dont vous **achetez rapidement de la clarté** sans prendre le coût et le risque d'un "vrai refactoring".
+Un refactoring normal peut créer de meilleures frontières de domaine. Le type 0 s'arrête plus tôt : il fait dire au code existant ce qu'il fait déjà.
 
----
+Cela paraît modeste jusqu'au moment où vous fixez une méthode de 900 lignes pendant un hotfix et que votre cerveau commence à mettre en mémoire tampon.
 
-## Pourquoi l'appeler "type 0"
+Le problème immédiat dans du code laid n'est souvent pas l'architecture. C'est la **compréhensibilité**. Vous ne pouvez pas changer en sécurité ce que vous ne pouvez pas tenir dans votre tête.
 
-Le nom ne vient pas d'une grande théorie. Il vient d'un moment de forte pression.
+Le travail de Sonar sur la [complexité cognitive](https://www.sonarsource.com/docs/CognitiveComplexity.pdf) est utile ici parce qu'il sépare « combien de chemins existent ? » de « à quel point est-ce difficile à suivre pour un humain ? ». Le type 0 vise la seconde question. Il réduit la quantité d'état, de branchements, d'ambiguïté de noms et de bruit visuel qu'un reviewer doit simuler mentalement.
 
-Je travaillais sur un hotfix. Le bug était enfoui dans une méthode qui était, en pratique, son propre petit univers : **environ 2000 lignes**.
+Ce n'est pas cosmétique. C'est de la réduction de risque.
 
-Le bug n'était pas conceptuellement difficile. La méthode, oui.
+## Le moment où le concept a pris
 
-Chaque "que se passe-t-il si..." se ramifiait en dix questions de plus, et ces ramifications n'étaient pas du genre utile. C'était de la complexité incidente : bruit, répétition, noms peu clairs, et une structure qui ne correspondait pas au modèle mental nécessaire pour debugger.
+Le nom est né d'un hotfix.
 
-Ce dont j'avais besoin n'était pas la perfection. J'avais besoin de **debuggabilité** :
+Le bug n'était pas intellectuellement profond. La méthode autour de lui l'était. C'était le genre de méthode où chaque variable locale avait l'air innocente jusqu'à ce que vous réalisiez qu'elle portait un sens venu de trois écrans plus haut. Chaque condition était supportable isolément, mais leur combinaison rendait le chemin d'exécution instable.
+
+Je n'avais pas besoin d'un beau design.
+
+J'avais besoin de debuggabilité :
 
 - moins de branches par écran
-- des "étapes" plus claires, avec des noms
-- moins de bruit
-- moins de temps passé à reparser ce que je venais de lire
+- des noms qui décrivent l'intention métier plutôt que la mécanique temporaire
+- des morceaux plus petits que je pouvais parcourir au debugger
+- une manière de reviewer le nettoyage sans reviewer en même temps le bug fix
 
-Mais la pression du temps ne permettait pas un refactoring plus large ni une "refonte idiomatique". Le faire correctement aurait pris une demi-journée (ou plus), tests manuels inclus. Dans une fenêtre de hotfix, ce n'est pas de la discipline ; c'est un pari.
+Un LLM a suggéré plusieurs « types » raisonnables de refactoring. Extraire ce service. Introduire ce pattern. Séparer les responsabilités. Toutes de bonnes idées. Toutes trop lourdes pour ce moment-là.
 
-J'ai donc demandé à un LLM de suggérer des opportunités de refactoring pour la classe et cette méthode, sans lui dire pourquoi.
+Il a demandé s'il devait commencer par le type 1.
 
-Il est revenu avec une liste de quatre "types" de refactoring. Tous raisonnables. Tous applicables. Tous trop coûteux pour ce moment-là.
+J'ai dit : non, commence par le type 0.
 
-Puis il a posé la question polie :
+Autrement dit : avant d'améliorer le design, rends le code actuel lisible sans changer ce qu'il fait.
 
-> "Should I start with Type 1?"
+Cette distinction a sauvé le travail. La méthode est devenue navigable. Le bug est devenu visible. Le correctif est resté petit.
 
-C'est là que j'ai répondu :
+## Une définition de travail
 
-> "No. Let's start with Type 0."
+**Le refactoring de type 0 est une passe contrainte, qui préserve le comportement, et qui rend le code plus facile à comprendre avant un changement fonctionnel.**
 
-Et j'ai défini le type 0 sur-le-champ : un ensemble contraint et mécanique de changements qui réduisent la complexité et augmentent la lisibilité **sans changer le comportement ni l'architecture**.
+Il a quatre mouvements autorisés :
 
-La méthode est devenue navigable. Mon cerveau pouvait de nouveau suivre l'exécution. J'ai trouvé le bug, je l'ai corrigé, et j'ai livré sans dégâts collatéraux.
+1. Extraire des parties significatives dans des méthodes ou des variables locales nommées.
+2. Renommer les choses pour que le code utilise un langage humain au lieu de l'archéologie.
+3. Retirer le bruit dont l'inutilité est prouvée.
+4. Ajouter ou resserrer des tests de caractérisation autour du comportement que vous allez préserver.
 
-C'est pourquoi j'aime le nom **type 0** : c'est le refactoring que vous faites **avant** les "vrais" types de refactoring, surtout quand vous êtes sous pression et que vous avez besoin d'une façon sûre de créer vite de la clarté.
+Et il a trois frontières strictes :
 
----
+- pas de nouveau comportement produit
+- pas de mouvement architectural
+- pas d'améliorations « tant qu'on y est » qui changent la question de review
 
-## Le probleme que le type 0 resout
+Si la PR change ce qu'observent les utilisateurs, les callers, les jobs, les réponses API, les écritures en base, les événements émis ou les chemins d'erreur, ce n'est plus du type 0. Cela peut toujours être le bon travail, mais il faut le nommer honnêtement.
 
-La plupart des conseils sur le refactoring supposent que vous pouvez déjà _voir_ le design.
+## Avant et après : la forme du type 0
 
-Dans les bases de code réelles :
+Voici un petit exemple. Il est volontairement ordinaire. Le refactoring le plus utile est souvent ordinaire.
 
-- les méthodes sont longues et multi-usages
-- les expressions répétées et la complexité incidente cachent l'intention
-- les variables sont cryptiques (`$e`, `$tmp`, `$res`)
-- le code mort et les imports inutilisés créent du bruit mental
-- la "forme" du code est si brouillonne que même de petits changements semblent risqués
+Avant :
 
-Quand vous tentez un "vrai refactoring" par-dessus cela (frontières, patterns, déplacement de responsabilités), vous empilez l'incertitude sur l'incertitude :
+```ts
+export function canStartTrial(account: Account | null, plan: Plan) {
+  if (!account || account.deletedAt) {
+    return false;
+  }
 
-- vous ne pouvez pas facilement dire quel comportement vous préservez
-- vous ne pouvez pas prédire le rayon d'impact
-- les revues dégénèrent en débats subjectifs
-- les gens ont peur de toucher aux choses, et le désordre s'accumule
+  if (account.flags.includes("trial_blocked")) {
+    return false;
+  }
 
-**Le type 0 est la façon de réduire d'abord la charge cognitive.** Il crée une base stable où un travail plus profond peut se faire en sécurité.
+  if (account.subscription && account.subscription.status !== "canceled") {
+    return false;
+  }
 
----
+  if (
+    account.invoices.some((invoice) => invoice.status === "paid") ||
+    account.trials.some((trial) => trial.endsAt > new Date())
+  ) {
+    return false;
+  }
 
-## Utilisez le type 0 quand...
+  if (plan.priceCents === 0 || plan.hidden) {
+    return false;
+  }
 
-Le type 0 est le plus précieux quand :
+  return true;
+}
+```
 
-- vous devez debugger vite (hotfixes, incidents) et le code est trop grand ou trop ramifié pour raisonner dessus en sécurité
-- vous vous sentez "perdu dans la méthode" et relisez sans cesse la même section parce que la structure n'aide pas votre mémoire de travail
-- le code est correct mais illisible, et vous ne pouvez pas vous permettre de "nettoyer la logique", seulement de l'exposer
-- vous voulez réduire le risque avant un travail plus profond (vous savez que vous refactorerez plus tard, mais il vous faut d'abord une carte claire du comportement actuel)
-- vous voulez transformer du savoir tribal en structure lisible, pour que le debugging ne dépende pas d'une seule personne
+Ce code n'est pas terrible. C'est important. Le type 0 n'est pas réservé aux catastrophes.
 
-Le type 0 n'est pas un luxe. Dans ces cas-là, c'est souvent le moyen le plus rapide de reprendre le contrôle.
+Mais imaginez devoir changer l'éligibilité à l'essai. Quelle règle changez-vous ? Laquelle relève d'une politique manuelle ? Laquelle correspond à l'historique de facturation ? Laquelle relève de l'éligibilité du plan ? Un reviewer doit déduire tout cela de la mécanique.
 
----
+Après une passe de type 0 :
 
-## Une définition que vous pouvez utiliser dans votre équipe
+```ts
+export function canStartTrial(account: Account | null, plan: Plan) {
+  if (isMissingOrDeleted(account)) return false;
+  if (isManuallyBlockedFromTrial(account)) return false;
+  if (hasActiveSubscription(account)) return false;
+  if (hasPaidBeforeOrActiveTrial(account)) return false;
+  if (isIneligibleTrialPlan(plan)) return false;
 
-**Le refactoring de type 0 est un ensemble de micro-refactorings qui améliorent la lisibilité et la maintenabilité sans changer le comportement ni l'architecture.**
+  return true;
+}
 
-Il est volontairement contraint. Les contraintes sont la fonctionnalité.
+function isMissingOrDeleted(account: Account | null) {
+  return !account || Boolean(account.deletedAt);
+}
 
-Le type 0 se compose de quatre sous-patterns obligatoires :
+function isManuallyBlockedFromTrial(account: Account) {
+  return account.flags.includes("trial_blocked");
+}
 
-1. **0a. Extraction de méthodes**
-2. **0b. Concision**
-3. **0c. Empathie (lisibilité pure)**
-4. **0d. Suppression du code mort**
+function hasActiveSubscription(account: Account) {
+  return Boolean(account.subscription && account.subscription.status !== "canceled");
+}
 
-Et il suit trois règles strictes :
+function hasPaidBeforeOrActiveTrial(account: Account) {
+  return (
+    account.invoices.some((invoice) => invoice.status === "paid") ||
+    account.trials.some((trial) => trial.endsAt > new Date())
+  );
+}
 
-- **Aucun changement de comportement**
-- **Aucun changement architectural**
-- **Aucune amélioration "maligne" au-delà des quatre patterns**
+function isIneligibleTrialPlan(plan: Plan) {
+  return plan.priceCents === 0 || plan.hidden;
+}
+```
 
-Si vous enfreignez ces règles, vous ne faites plus du type 0 : vous êtes passé dans une autre catégorie de travail, qui exige une coordination différente, une rigueur de revue différente, et souvent une stratégie de test différente.
+Ce n'est pas un nouveau design. Cela n'introduit pas un objet policy. Cela ne décide pas si l'éligibilité à l'essai appartient à un autre module. Cela ne rend pas les règles plus élégantes.
 
----
+Cela fait une seule chose : donner des noms au comportement existant.
 
-## Pourquoi le nommer ?
+Maintenant, la prochaine PR peut dire : « Change `hasPaidBeforeOrActiveTrial` pour traiter différemment les abonnements payants expirés », et le reviewer n'est plus en train de fouiller dans des conditions anonymes.
 
-Parce que nommer change la façon dont les équipes se coordonnent.
+C'est le type 0 en train de faire son travail.
 
-- "Je ne fais que du type 0 dans cette PR" indique aux reviewers ce qu'ils doivent regarder : préservation du comportement et lisibilité, pas débats d'architecture.
-- "Il nous faut du type 0 avant de refactorer ceci" est une admission honnête que le code n'est pas encore prêt pour un changement plus profond.
-- "Faisons le type 0 comme étape 0" crée un petit rituel qui vous évite de construire par-dessus le chaos.
+## La partie dangereuse : même « juste une extraction » peut changer le comportement
 
----
+Le type 0 paraît sûr parce qu'il est petit. Il est plus sûr, pas magiquement sûr.
 
-## Les quatre sous-patterns
+L'extraction peut changer le comportement si vous êtes négligent avec :
 
-### 0a. Extraction de méthodes (la fondation)
+- l'ordre d'évaluation
+- le short-circuiting
+- la portée des variables
+- la mutation
+- le moment où les exceptions sont déclenchées
+- les appels répétés au temps, à l'aléatoire, aux IO, aux caches ou aux requêtes de base de données
+- les références qui pointaient auparavant vers le même objet
 
-**Objectif :** découper les grandes méthodes en petites méthodes focalisées, pour qu'un humain puisse lire l'intention linéairement.
+C'est là que le type 0 demande de la discipline.
 
-Règles pratiques :
+Ne réécrivez pas une condition parce que la version réécrite est « équivalente ». L'équivalence est l'endroit où les bugs mettent une petite moustache et passent devant la sécurité.
 
-- décomposer les méthodes trop longues pour tenir dans la mémoire de travail
-- chaque méthode extraite doit faire une chose et porter un nom descriptif
-- extraire des étapes significatives, pas des morceaux arbitraires de N lignes
+Préférez ceci :
 
-Pourquoi cela fonctionne (surtout pour le debugging) :
+```ts
+function hasPaidBeforeOrActiveTrial(account: Account) {
+  return (
+    account.invoices.some((invoice) => invoice.status === "paid") ||
+    account.trials.some((trial) => trial.endsAt > new Date())
+  );
+}
+```
 
-- les méthodes plus petites créent des étiquettes pour le chemin d'exécution
-- un défilement de 2000 lignes devient une courte méthode d'orchestration que l'on peut parcourir mentalement
-- vous pouvez poser des breakpoints aux frontières sémantiques ("valider l'entrée", "construire la requête", "appliquer les filtres") au lieu de chasser à l'aveugle
+À ceci :
 
-### 0b. Concision (réduire la complexité incidente)
+```ts
+function hasPaidBeforeOrActiveTrial(account: Account) {
+  const paidBefore = account.invoices.some((invoice) => invoice.status === "paid");
+  const activeTrial = account.trials.some((trial) => trial.endsAt > new Date());
 
-**Objectif :** retirer le bruit visuel pour que l'intention ressorte.
+  return paidBefore || activeTrial;
+}
+```
 
-Exemples :
+La seconde version paraît plus jolie, mais elle ne préserve plus le comportement de short-circuit. Si `account.invoices` prouvait déjà la réponse, l'ancien code ne touchait jamais `account.trials` ni `new Date()`. Peut-être que cela n'a pas d'importance. Peut-être que si. Le type 0 ne demande pas au reviewer de deviner.
 
-- extraire les expressions répétées dans des variables locales
-- extraire les contextes de log / chaînes clés / fragments d'URL répétés dans des variables
-- préférer les fonctionnalités du langage qui communiquent directement l'intention
-- simplifier les interpolations trop verbeuses
+En cas de doute, extrayez d'abord, embellissez plus tard, et gardez chaque étape assez ennuyeuse pour qu'un humain fatigué puisse la vérifier.
 
-Pourquoi cela fonctionne :
+## Le filet de sécurité : caractériser avant d'être confiant
 
-- cela réduit la charge cognitive
-- cela rend les diffs plus petits et les changements plus sûrs
-- cela évite la dérive par copier-coller
+Si le code est déjà bien testé, très bien. Lancez les tests ciblés avant et après la passe de type 0.
 
-### 0c. Empathie (lisibilité pure)
+S'il ne l'est pas, résistez à l'envie de dire : « Ce n'est que du cleanup. »
 
-**Objectif :** ecrire pour le prochain humain, pas pour le compilateur.
+Cette phrase a lancé mille régressions.
 
-L'empathie signifie :
+_Working Effectively with Legacy Code_ de Michael Feathers reste le livre auquel je pense ici ; [l'aperçu d'O'Reilly](https://www.oreilly.com/library/view/working-effectively-with/0131177052/) le cadre autour de la modification de systèmes legacy sans tout réécrire. En pratique, le mouvement utile est souvent un petit test de caractérisation : capturer ce que le code fait actuellement pour le chemin que vous allez toucher.
 
-- utiliser des noms de variables descriptifs (éviter `$e`, `$d`, `$tmp` sauf si c'est vraiment évident)
-- maintenir une terminologie cohérente dans un module
-- renommer les noms trompeurs
-- rendre le code auto-documente
+Pas ce qu'il devrait faire.
 
-Test decisif :
+Ce qu'il fait.
 
-> Si quelqu'un lit ceci à 2 h du matin pendant un incident, est-ce que cela l'aidera à garder le chemin d'exécution en tête ?
+Exemple :
 
-### 0d. Suppression du code mort (retirer les mensonges)
+```ts
+it("preserves the current trial eligibility rules for blocked accounts", () => {
+  const account = accountFactory({
+    flags: ["trial_blocked"],
+    subscription: null,
+    invoices: [],
+    trials: [],
+  });
 
-**Objectif :** supprimer tout ce qui pretend compter mais ne compte pas.
+  expect(canStartTrial(account, paidPlan)).toBe(false);
+});
+```
 
-Exemples :
+Ce test peut être philosophiquement insatisfaisant. Il peut encoder un comportement que vous avez l'intention de changer dans cinq minutes.
 
-- méthodes privées inutilisées
-- imports inutilisés
-- anciennes approches commentées
-- helpers dépréciés que personne n'appelle
+Très bien. Supprimez-le ou mettez-le à jour dans la PR qui change le comportement.
 
-Pourquoi cela fonctionne :
+Pour la PR de type 0, son travail est humble : prouver que le cleanup n'a pas fait entrer en douce le vrai changement.
 
-- moins de code signifie moins de choses a mal comprendre
-- les résultats de recherche deviennent fiables
+## Quand recourir au type 0
 
----
+Utilisez le type 0 quand le prochain changement est bloqué par la compréhensibilité.
 
-## Ce que le type 0 n'est pas
+Bons signaux :
 
-Le type 0 n'est pas :
+- vous relisez sans cesse la même méthode et perdez le fil
+- le fichier a une méthode « principale » qui mélange validation, branching, IO, formatting et persistence
+- un bug fix d'une ligne demande d'expliquer six faits sans rapport
+- les reviewers se disputent sur le style parce que l'intention n'est pas visible
+- le code est assez correct pour faire tourner le business, mais trop boueux pour être changé avec confiance
+- vous devez ajouter des tests, mais la forme actuelle ne vous donne aucun endroit propre pour observer le comportement
 
-- changer les frontieres de services
-- introduire de nouvelles abstractions ou de nouveaux patterns
-- réarchitecturer un workflow
-- remplacer des bibliothèques
-- réordonner les responsabilités entre couches
-- "corriger" une logique que vous soupçonnez fausse (sauf si vous déclarez explicitement un changement de comportement et que vous le testez)
+Évitez le type 0 quand :
 
-Si vous vous entendez dire :
+- le changement fonctionnel est déjà évident et sûr
+- vous ne pouvez pas expliquer exactement quel comportement doit rester inchangé
+- le cleanup exige de toucher beaucoup de callers dans le système
+- l'équipe essaie de faire passer un redesign sous une étiquette de « cleanup »
+- aucun changement proche ne bénéficie de cette clarté
 
-- "Tant que j'y suis, faisons aussi..."
-- "Ce serait plus joli si..."
-- "On devrait probablement refondre..."
+Ce dernier point compte. Le cleanup sans client se transforme souvent en affaire de goût. Le type 0 a un client : le prochain changement.
 
-Vous êtes peut-être en train de quitter le type 0. Ce n'est pas mauvais en soi, mais cela doit être intentionnel.
+## Une règle de décision pour le type 0
 
----
+Voici la règle que j'utilise :
 
-## La promesse centrale : préservation du comportement (et comment la garder vraie)
+> Si je ne peux pas écrire le diff qui change le comportement d'une manière qu'un reviewer comprenne vite, j'ai probablement besoin d'un type 0 d'abord.
 
-Le type 0 ne fonctionne que si les équipes font confiance à la promesse.
+Pas toujours. Mais assez souvent.
 
-Et oui, vous avez raison de vous méfier : **l'extraction de méthodes peut accidentellement changer le comportement** (retours anticipés, portée des variables, ordre d'évaluation, comportement des exceptions).
+Vous pouvez aussi le formuler en trois questions :
 
-Le type 0 a donc besoin d'une discipline qui le garde honnête :
+1. Quel comportement suis-je sur le point de changer ?
+2. Quel comportement actuel doit rester exactement identique ?
+3. Quelle petite passe de lisibilité rendrait les deux réponses évidentes dans le diff ?
 
-**Extraire tel quel, puis renommer/nettoyer.**
+Si la troisième question a une petite réponse, faites le type 0.
 
-- Premier passage : déplacer le code dans des méthodes sans changer la logique
-- Deuxième passage : appliquer concision + empathie
-- Troisième passage : retirer le code mort
+Si elle a une énorme réponse, vous regardez peut-être un vrai refactoring, pas du type 0. Découpez le travail, faites un plan, et arrêtez de prétendre que c'est inoffensif.
 
-Garde-fous pratiques :
+## Comment structurer la PR
 
-- ne réordonnez pas les conditions "pour la lisibilité"
-- ne remplacez pas la logique par une logique "équivalente" sauf si vous êtes hors du type 0
-- faites attention aux variables qui étaient auparavant dans une portée partagée
-- traitez les "petites" différences de flux de contrôle comme de vraies différences
+Le type 0 fonctionne mieux quand il peut être reviewé comme sa propre chose.
 
-Et si vous avez *le moindre* filet de sécurité, même mince :
+Si le cleanup est minuscule, mettez-le dans le premier commit de la PR fonctionnelle :
 
-- lancez un test ciblé
-- rejouez le scénario qui échouait
-- validez le seul chemin que vous touchez
+1. `Type 0: name existing trial eligibility checks`
+2. `Fix expired subscription trial eligibility`
 
-Le type 0 consiste à aller vite, **mais vite en réduisant la complexité cognitive**, pas vite en sautant la sécurité.
+Si le cleanup est assez large pour rendre le diff de comportement difficile à voir, ouvrez une PR séparée.
 
----
+Utilisez un langage de PR ennuyeux :
 
-## Le type 0 comme rituel d'équipe répétable
+```md
+This PR is Type 0 only.
 
-### 1) Décider le périmètre (un timebox aide)
+Intent:
+- make the existing trial eligibility path readable before changing the rules
+- preserve current behavior
 
-Exemples :
+Changed:
+- extracted the top-level eligibility checks into named predicates
+- renamed temporary variables to match existing domain terms
+- removed one unused private helper
 
-- "Faire le type 0 du hot path avant de debugger."
-- "Type 0 seulement sur le chemin touché par ce correctif."
+Validation:
+- existing eligibility tests pass
+- added characterization coverage for blocked, paid-before, and active-trial accounts
 
-### 2) Identifier la "colonne vertébrale" du code
+Out of scope:
+- changing trial eligibility rules
+- moving this logic into a policy/service object
+```
 
-Trouvez la ou les méthodes d'entrée et les points de branchement. Transformez cette colonne vertébrale en récit lisible par extraction.
+Cela donne aux reviewers le bon travail.
 
-### 3) Appliquer les quatre sous-patterns dans l'ordre
+Ils ne reviewent pas si la logique produit est meilleure. Ils reviewent si le code fait toujours la même chose plus lisiblement.
 
-Extraction de méthodes → concision → empathie → suppression du code mort.
+Les bons commentaires de review pour le type 0 ressemblent à ceci :
 
-### 4) Garder une "checklist type 0" dans votre PR
+- « Cette extraction change le moment où `new Date()` est évalué. Peut-on garder l'ancien comportement de short-circuit ? »
+- « Le nouveau nom dit `active subscription`, mais le prédicat traite aussi `past_due` comme actif. Peut-on faire correspondre le nom au comportement réel ? »
+- « Ce helper supprimé semble inutilisé dans ce package, mais est-il référencé par reflection/config ? »
+- « Peut-on ajouter un test de caractérisation pour le chemin que ce cleanup expose ? »
 
-- [ ] Aucun changement de comportement (entrées/sorties inchangées)
-- [ ] Aucun mouvement architectural
-- [ ] Méthodes extraites et nommées comme des étapes significatives
-- [ ] Expressions répétées extraites quand cela améliore la clarté
-- [ ] Variables renommées ; terminologie cohérente
-- [ ] Code mort et imports inutilisés supprimés
+Les commentaires moins utiles ressemblent à ceci :
 
----
+- « Peut-on transformer cela en strategy ? »
+- « Tout ce module devrait être event-driven. »
+- « Tant que vous y êtes, pouvez-vous corriger ce cas limite bizarre de billing ? »
 
-## Pensée de clôture
+Ce sont peut-être de bonnes idées. Ce ne sont pas des reviews de type 0.
 
-Le refactoring de type 0 est la promesse la plus simple qu'un développeur puisse faire :
+## En quoi le type 0 diffère du théâtre du cleanup
 
-> "Je laisse ce code plus facile à travailler que je ne l'ai trouvé, sans changer ce qu'il fait."
+Le théâtre du cleanup est un travail qui a l'air vertueux dans un diff mais qui ne réduit pas le risque pour le prochain changement.
 
-Parfois, c'est "bon à avoir".
+Il a généralement l'une de ces odeurs :
 
-Et parfois, c'est la seule façon pour un humain d'avancer vite en sécurité dans un désordre très complexe, surtout pendant un hotfix.
+- du churn de formatting large dans des fichiers que personne ne va toucher
+- des renommages fondés sur le goût personnel plutôt que sur la clarté domaine
+- déplacer du code dans de nouvelles abstractions avant que quelqu'un puisse énoncer le comportement actuel
+- supprimer du code « unused » sans prouver que le runtime ne peut pas l'atteindre
+- mélanger cleanup et changement de comportement, si bien que les reviewers ne savent plus quelle ligne a fait quoi
+- une description de PR qui dit « misc cleanup »
+
+Le type 0 est différent parce qu'il rend des comptes.
+
+Il dit :
+
+- voici le comportement que nous préservons
+- voici le chemin que nous rendons compréhensible
+- voici le prochain changement que cela rend possible
+- voici comment nous avons vérifié que le cleanup n'a pas changé le comportement
+
+C'est la différence entre ranger et faire de l'ingénierie.
+
+## Type 0 et legacy seams
+
+Parfois, le type 0 révèle que le prochain mouvement sûr est une seam.
+
+La note de Fowler sur les [legacy seams](https://martinfowler.com/bliki/LegacySeam.html) est utile parce qu'elle décrit des endroits où l'on peut rediriger, observer ou tester le comportement sans modifier la source au point du comportement. Dans un système legacy, une seam peut faire la différence entre « nous pouvons tester ceci » et « nous espérons très professionnellement ».
+
+Mais créer une seam peut franchir la frontière du type 0.
+
+Extraire une méthode pour donner un nom au flux actuel :
+
+```ts
+const shippingCost = await calculateShipping(order);
+```
+
+vers :
+
+```ts
+const shippingCost = await calculateShippingForOrder(order);
+```
+
+Cela peut être du type 0 si le comportement reste le même.
+
+Changer la signature de la fonction pour que les tests puissent injecter un faux shipping provider :
+
+```ts
+const shippingCost = await calculateShippingForOrder(order, shippingProvider);
+```
+
+C'est peut-être le bon mouvement, mais ce n'est plus seulement rendre le code existant compréhensible. Cela change la surface de collaboration. Traitez-le comme un refactoring qui casse une dépendance, et reviewez-le avec ce niveau d'attention.
+
+Le type 0 peut pointer vers la seam. Il n'a pas à créer toute l'architecture de test dans la même PR.
+
+## Une checklist pratique de type 0
+
+Avant d'ouvrir la PR :
+
+- [ ] Je peux nommer le travail qui change le comportement et que ce cleanup prépare.
+- [ ] La PR ne change pas intentionnellement le comportement visible par l'utilisateur ou par le caller.
+- [ ] Les méthodes extraites préservent l'ordre d'évaluation et le comportement de short-circuit.
+- [ ] Les noms décrivent ce que le code fait réellement, pas ce que j'aimerais qu'il fasse.
+- [ ] Le code supprimé est prouvé inutilisé dans le runtime pertinent, pas seulement impopulaire.
+- [ ] J'ai lancé les tests ciblés ou rejoué le scénario qui compte.
+- [ ] Si les tests manquaient, j'ai ajouté une couverture de caractérisation pour le chemin touché.
+- [ ] La description de PR dit aux reviewers que c'est du type 0 et ce qui est hors scope.
+
+Pendant la review :
+
+- [ ] Demander « est-ce que cela préserve le comportement ? » avant « est-ce que je préfère ce design ? »
+- [ ] Pousser les changements de comportement dans un commit ou une PR de suivi.
+- [ ] Garder les idées d'architecture comme notes, sauf si elles sont nécessaires à la sécurité.
+- [ ] Se méfier de l'équivalence trop clever.
+
+Après le merge :
+
+- [ ] Faire le vrai changement pendant que le modèle mental est frais.
+- [ ] Supprimer ou mettre à jour les tests de caractérisation seulement quand le comportement change intentionnellement.
+- [ ] Ne pas laisser le type 0 devenir un parking pour cleanup éternel.
+
+## La promesse
+
+Le refactoring de type 0 est une petite promesse :
+
+> Je rends ce code plus facile à changer sans changer ce qu'il fait.
+
+Cette promesse est utile précisément parce qu'elle est limitée.
+
+Elle donne au développeur la permission d'améliorer la surface de travail sans lancer un débat d'architecture. Elle donne au reviewer un standard clair. Elle donne à la prochaine PR une chance réelle de parler du changement produit lui-même.
+
+Parfois, la chose la plus courageuse à faire dans une codebase désordonnée n'est pas de la redessiner.
+
+Parfois, c'est d'abord de faire dire la vérité au désordre actuel.
