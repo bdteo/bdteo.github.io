@@ -4,6 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build & Development Commands
 
+- Package manager: use `pnpm` exclusively in this repo. Do not use `npm` or `yarn` for installs, scripts, or lockfile changes.
 - Development: `pnpm dev`
 - Pretty local URL: `http://bdteo.localhost/` via the shared host Caddy (`/opt/homebrew/etc/Caddyfile`) to Gatsby dev on `:8000`; keep `pnpm dev` running first.
 - Build: `pnpm build` (safe isolated build; does not touch the active dev server's `.cache`/`public`)
