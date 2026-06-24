@@ -9,6 +9,11 @@ description: "Eleva la calidad del código de tu equipo con esta guía esencial 
 tags: ["Revisión de código", "Pull Requests", "Ingeniería de software", "Buenas prácticas", "Flujo de trabajo del desarrollador", "Git", "Colaboración", "Calidad del código"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Una hoja de pruebas anotada a lápiz, una lupa de bronce, dos lápices, una taza de té que se enfría — el oficio silencioso de leer el trabajo de otra persona."
+audioUrl: "/audio/articles/essential-guide-effective-pull-request-reviews/es/Qh9qDWKx9XUbnKbERblA-915de62f3689.m4a"
+audioDuration: "7:23"
+audioVoice: "Gerard (ElevenLabs LatAm Spanish neutral)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/essential-guide-effective-pull-request-reviews.es.md"
 ---
 
 Como alguien que escribe y revisa mucho código, he aprendido que las revisiones de pull requests (PR) son más que cazar errores: tienen que ver con la propiedad compartida, la transferencia de conocimiento y construir mejor código en conjunto. Aquí va una guía concisa y práctica para que las PR resulten valiosas y menos penosas.

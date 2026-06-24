@@ -9,6 +9,11 @@ description: "Améliorez la qualité du code de votre équipe avec ce guide esse
 tags: ["Code Review", "Pull Requests", "Software Engineering", "Best Practices", "Developer Workflow", "Git", "Collaboration", "Code Quality"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Une planche-contact annotée au crayon, une loupe en laiton, deux crayons, une tasse de thé qui refroidit — le métier discret qui consiste à lire le travail de quelqu'un d'autre."
+audioUrl: "/audio/articles/essential-guide-effective-pull-request-reviews/fr/hqfrgApggtO1785R4Fsn-031943051977.m4a"
+audioDuration: "7:58"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/essential-guide-effective-pull-request-reviews.fr.md"
 ---
 
 Comme quelqu'un qui écrit et relit beaucoup de code, j'ai appris que les revues de pull request (PR) sont plus que des vérifications de bugs : elles parlent de propriété partagée, de transfert de connaissances, et de meilleure construction du code ensemble. Voici un guide concis et pratique pour rendre les PR utiles et moins douloureuses.

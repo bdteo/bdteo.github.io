@@ -9,6 +9,11 @@ description: "Análisis a fondo del protocolo propietario de emparejamiento BLE 
 featuredImage: "./images/featured.jpg"
 tags: ["Huawei", "WatchD2", "BluetoothLE", "BLE", "Emparejamiento", "Autenticacion", "IngenieriaInversa", "BloqueoDeProveedor", "ProtocoloPropietario", "D2Explorer", "SimpleBLE", "Crypto", "Gadgetbridge", "EU-DMA"]
 imageCaption: "Un canario tranquilo posado en una jaula de latón ornamentada, a contraluz de una ventana."
+audioUrl: "/audio/articles/huawei-watch-d2-proprietary-protocol-vendor-lockin/es/Qh9qDWKx9XUbnKbERblA-5013668a56f1.m4a"
+audioDuration: "13:30"
+audioVoice: "Gerard (ElevenLabs LatAm Spanish neutral)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/huawei-watch-d2-proprietary-protocol-vendor-lockin.es.md"
 ---
 
 > **Resumen:** El Huawei Watch D2 no usa el emparejamiento BLE estándar. En su lugar, exige un handshake propietario de 11 pasos que implica características GATT a medida, derivación de clave HMAC-SHA256 a partir de un código QR y cifrado a nivel de aplicación. Esto es bloqueo de proveedor por diseño: te obliga a usar la app Health de Huawei. La buena noticia: la comunidad lo ha sometido a ingeniería inversa. Gadgetbridge ya da soporte al Watch D2, y existen implementaciones de código abierto como `huawei-lpv2`. La DMA de la UE también empieza a presionar en sentido contrario.

@@ -10,6 +10,11 @@ description: "Docker Compose се промени драстично -- v1 е м�
 featuredImage: "./images/featured.jpg"
 tags: ["Docker", "Docker Compose", "DevOps", "Containers", "Development Environment"]
 imageCaption: "Ред малки дървени транспортни каси върху пристанищен док в първата светлина на деня."
+audioUrl: "/audio/articles/docker-compose-major-changes-since-october-2023/bg/5egO01tkUjEzu7xSSE8M-8d138f4f6abd.m4a"
+audioDuration: "10:10"
+audioVoice: "Carmelo (ElevenLabs Bulgarian)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/docker-compose-major-changes-since-october-2023.bg.md"
 ---
 
 > **TL;DR:** Docker Compose v1 (`docker-compose`) беше напълно премахнат през април 2025. Полето `version` в твоя YAML е мъртво. Ключът `x-develop` вече е просто `develop`. Watch mode е готов за продукционна употреба с `initial_sync`. Има критичен path traversal CVE (CVE-2025-62725), ако използваш `include` с OCI artifacts -- обнови до v2.40.2+. И да, Compose скочи от v2 на v5. Подробностите са по-долу.

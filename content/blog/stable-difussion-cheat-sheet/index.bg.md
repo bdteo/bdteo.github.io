@@ -9,6 +9,11 @@ description: "Практичен Stable Diffusion cheat sheet за SDXL, SD 3.5 
 featuredImage: "./images/featured.jpg"
 tags: ["Stable Diffusion", "AI", "Image Generation", "SDXL", "Flux", "ComfyUI", "Machine Learning"]
 imageCaption: "Купчина протрити картончета в цвят слонова кост върху лен, пристегнати с кехлибарен ластик."
+audioUrl: "/audio/articles/stable-difussion-cheat-sheet/bg/5egO01tkUjEzu7xSSE8M-bb03435a26ac.m4a"
+audioDuration: "13:31"
+audioVoice: "Carmelo (ElevenLabs Bulgarian)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/stable-difussion-cheat-sheet.bg.md"
 ---
 
 > **Обновено март 2026.** Оригиналната версия на този cheat sheet беше написана за SD 1.5 през май 2023. Оттогава почти всичко се промени -- нови архитектури (SDXL, SD 3.5, Flux), нови UI-та (ComfyUI), нов хардуер (RTX 5090) и пълен обрат във философията за negative prompts. Това е актуалната версия.

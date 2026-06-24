@@ -8,6 +8,11 @@ date: "2025-07-24"
 description: "Une philosophie pratique du développement logiciel inspirée de la Boy Scout Rule : laissez toujours le code plus propre que vous ne l'avez trouvé - lavez une assiette de plus. Pourquoi le micro-refactoring compte, et comment l'appliquer sans faire dérailler la livraison."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Des assiettes propres posées sur une table de cuisine, avec une assiette encore perlée d'eau au premier plan."
+audioUrl: "/audio/articles/wash-one-more-plate-refactoring-philosophy/fr/hqfrgApggtO1785R4Fsn-fdd0a6aec020.m4a"
+audioDuration: "9:02"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/wash-one-more-plate-refactoring-philosophy.fr.md"
 ---
 
 > **TL;DR** : Traitez chaque changement dans votre base de code comme la préparation d'un repas. Vous allez salir quelques assiettes. Quand vous avez terminé, ne lavez pas seulement celles que vous avez utilisées : lavez-en *une de plus*. Avec le temps, ce petit surplus d'attention s'accumule en une cuisine (base de code) qui reste propre au lieu de glisser vers le chaos.

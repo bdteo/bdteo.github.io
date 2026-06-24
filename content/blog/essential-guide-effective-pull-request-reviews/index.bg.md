@@ -8,6 +8,11 @@ date: "2025-07-06"
 description: "Повиши качеството на кода в екипа си с този основен наръчник за ефективни Pull Request ревюта. Научи добри практики за конструктивна обратна връзка, малки PR-и и споделена собственост върху кода."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Пробна страница, отбелязана с молив, месингова лупа, два молива, чаша изстиващ чай — тихият занаят да четеш чужда работа."
+audioUrl: "/audio/articles/essential-guide-effective-pull-request-reviews/bg/5egO01tkUjEzu7xSSE8M-00c6b1a19861.m4a"
+audioDuration: "10:35"
+audioVoice: "Carmelo (ElevenLabs Bulgarian)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/essential-guide-effective-pull-request-reviews.bg.md"
 ---
 
 Като човек, който пише и ревюира много код, научих, че Pull Request (PR) ревютата са повече от проверки за бъгове - те са за споделена собственост, прехвърляне на знание и изграждане на по-добър код заедно. Ето кратък, практичен наръчник, който прави PR-ите по-ценни и по-малко болезнени.

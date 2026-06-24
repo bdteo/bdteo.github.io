@@ -10,6 +10,11 @@ lang: "es"
 translationOf: "stable-difussion-cheat-sheet"
 translationUpdatedAt: "2026-06-10"
 translationSourceHash: "0893ec72dec7f4ad"
+audioUrl: "/audio/articles/stable-difussion-cheat-sheet/es/Qh9qDWKx9XUbnKbERblA-8c5dec7a5435.m4a"
+audioDuration: "9:55"
+audioVoice: "Gerard (ElevenLabs LatAm Spanish neutral)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/stable-difussion-cheat-sheet.es.md"
 ---
 
 > **Actualizada en marzo de 2026.** La versión original de esta chuleta se escribió para SD 1.5 en mayo de 2023. Casi todo ha cambiado desde entonces: arquitecturas nuevas (SDXL, SD 3.5, Flux), interfaces nuevas (ComfyUI), hardware nuevo (RTX 5090) y un giro completo en la filosofía de los prompts negativos. Esta es la versión actual.

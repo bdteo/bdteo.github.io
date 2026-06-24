@@ -11,6 +11,11 @@ lang: "es"
 translationOf: "understanding-class-namespace-changes-shopware-6-5-developers-guide"
 translationUpdatedAt: "2026-06-10"
 translationSourceHash: "597ff88f362dc003"
+audioUrl: "/audio/articles/understanding-class-namespace-changes-shopware-6-5-developers-guide/es/Qh9qDWKx9XUbnKbERblA-b3e318c976cc.m4a"
+audioDuration: "15:18"
+audioVoice: "Gerard (ElevenLabs LatAm Spanish neutral)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/understanding-class-namespace-changes-shopware-6-5-developers-guide.es.md"
 ---
 
 Shopware 6.5 y 6.6 introdujeron varios cambios significativos en clases, namespaces, atributos de datos y mecanismos de seguridad que los desarrolladores deben tener en cuenta al actualizar o mantener sus proyectos Shopware. Este artículo ofrece una visión general concisa pero completa de estos cambios, junto con observaciones sobre su impacto y sobre cómo adaptar tu código en consecuencia.

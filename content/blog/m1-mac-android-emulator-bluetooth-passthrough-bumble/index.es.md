@@ -11,6 +11,11 @@ description: "Arregla el passthrough de Bluetooth para el emulador de Android en
 tags: ["Emulador de Android", "Bluetooth", "BLE", "HCI", "Bumble", "macOS", "M1", "Apple Silicon", "Docker", "QEMU", "Netsim", "Passthrough", "Resolución de problemas", "API 32"]
 featuredImage: "./images/featured.jpg" # Replace with a relevant image path
 imageCaption: "Dos teléfonos modernos boca abajo sobre mármol. Un tenue halo cian cruza el hueco entre ambos."
+audioUrl: "/audio/articles/m1-mac-android-emulator-bluetooth-passthrough-bumble/es/Qh9qDWKx9XUbnKbERblA-5ff9002893c2.m4a"
+audioDuration: "9:37"
+audioVoice: "Gerard (ElevenLabs LatAm Spanish neutral)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/m1-mac-android-emulator-bluetooth-passthrough-bumble.es.md"
 ---
 
 Si eres desarrollador y trabajas con Bluetooth en un Mac M1/M2/M3 e intentas que la radio Bluetooth de tu máquina anfitriona funcione dentro del emulador de Android, probablemente hayas sentido algo de dolor. Lo que parece que *debería* ser sencillo a menudo se convierte en una frustrante madriguera de conexiones fallidas, errores crípticos y callejones sin salida en la documentación. Hace poco pasé exactamente por esta batalla y, tras chocar contra varios muros, por fin encontré una combinación usando el stack de Bluetooth en Python **Bumble** que *realmente funciona*.

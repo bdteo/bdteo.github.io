@@ -8,6 +8,11 @@ date: "2025-07-24"
 description: "Практична философия за софтуерна разработка, вдъхновена от Boy Scout Rule: винаги оставяй кода по-чист, отколкото си го намерил - измий още една чиния. Защо micro-refactoring има значение и как да го прилагаш, без да проваляш delivery-то."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Купчина чисти чинии до още една мокра чиния на дървена кухненска повърхност."
+audioUrl: "/audio/articles/wash-one-more-plate-refactoring-philosophy/bg/5egO01tkUjEzu7xSSE8M-223dc2be36fb.m4a"
+audioDuration: "13:13"
+audioVoice: "Carmelo (ElevenLabs Bulgarian)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/wash-one-more-plate-refactoring-philosophy.bg.md"
 ---
 
 > **TL;DR**: Отнасяй се към всяка промяна в codebase-а си като към готвене. Ще изцапаш няколко чинии. Когато приключиш, измий не само чиниите, които си използвал - измий *още една*. С времето този малък излишък от грижа се натрупва в кухня (codebase), която остава чиста, вместо да се разпада в хаос.

@@ -10,6 +10,11 @@ description: "Adaptez-vous à Shopware 6.5/6.6 : changements de classes et names
 tags: ["Shopware 6.5", "Shopware 6.6", "Changements de classes", "Changements de namespaces", "Guide développeur", "Mises à jour Shopware", "Migration de code", "Développement PHP", "Symfony 6", "Gestion des chemins média", "Migration Elasticsearch", "Bootstrap 5", "Stock API", "Attributs data", "Offcanvas Cart", "Protection CSRF", "Cookies SameSite", "Plateforme e-commerce", "Mise à niveau logicielle", "Bonnes pratiques de programmation", "Plugins personnalisés", "Refactoring de code", "Compatibilité logicielle", "Tutoriels Shopware"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Une main attache une étiquette de tissu vierge et propre à un bocal de garde-manger. L’ancienne étiquette repose à côté."
+audioUrl: "/audio/articles/understanding-class-namespace-changes-shopware-6-5-developers-guide/fr/hqfrgApggtO1785R4Fsn-71555302e87d.m4a"
+audioDuration: "14:46"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/understanding-class-namespace-changes-shopware-6-5-developers-guide.fr.md"
 ---
 
 Shopware 6.5 et 6.6 ont introduit plusieurs changements importants dans les classes, les namespaces, les attributs data et les mécanismes de sécurité dont les développeurs doivent tenir compte lorsqu’ils mettent à jour ou maintiennent leurs projets Shopware. Cet article propose un aperçu concis mais complet de ces changements, avec quelques observations sur leur impact et sur la manière d’adapter votre code.

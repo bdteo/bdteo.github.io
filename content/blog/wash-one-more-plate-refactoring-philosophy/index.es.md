@@ -37,6 +37,11 @@ jsonld: |
   }
 featuredImage: "./images/featured.jpg"
 imageCaption: "Platos limpios sobre una mesa de cocina, con un plato aún perlado de agua en primer plano."
+audioUrl: "/audio/articles/wash-one-more-plate-refactoring-philosophy/es/Qh9qDWKx9XUbnKbERblA-58ac930cac3a.m4a"
+audioDuration: "9:45"
+audioVoice: "Gerard (ElevenLabs LatAm Spanish neutral)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/wash-one-more-plate-refactoring-philosophy.es.md"
 ---
 
 > **TL;DR**: Trata cada cambio en tu base de código como si cocinaras una comida. Ensuciarás algunos platos. Cuando termines, no laves solo los platos que usaste: lava *uno más*. Con el tiempo, ese pequeño excedente de cuidado se acumula hasta formar una cocina (base de código) que se mantiene limpia en lugar de degradarse hacia el caos.

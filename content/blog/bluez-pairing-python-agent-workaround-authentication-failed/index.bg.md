@@ -8,6 +8,11 @@ date: "2025-04-08"
 description: "Решение за BlueZ грешки 'AuthenticationFailed' при сдвояване на 5.66+. Защо вътрешните C++ sd-bus agents се провалят, как външен Python agent го поправя и защо ти трябва D-Bus polling."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Навигиране в сложните взаимодействия между BlueZ D-Bus pairing agents под Linux."
+audioUrl: "/audio/articles/bluez-pairing-python-agent-workaround-authentication-failed/bg/5egO01tkUjEzu7xSSE8M-d6ea202afa1d.m4a"
+audioDuration: "16:47"
+audioVoice: "Carmelo (ElevenLabs Bulgarian)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/bluez-pairing-python-agent-workaround-authentication-failed.bg.md"
 ---
 
 > **TL;DR:** Ако получаваш `org.bluez.Error.AuthenticationFailed` със собствен C++/sd-bus pairing agent на BlueZ 5.66+, проблемът най-вероятно е във вътрешната регистрация на agent-а. Пусни външен Python agent (`simple-agent.py`) като отделен процес и имплементирай D-Bus property polling, вместо да разчиташ на `PropertiesChanged` сигнали. Подробностите и кодът са по-долу.

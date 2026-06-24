@@ -11,6 +11,11 @@ description: "Дълбоко гмуркане в proprietary BLE pairing про�
 featuredImage: "./images/featured.jpg"
 tags: ["Huawei", "WatchD2", "BluetoothLE", "BLE", "Pairing", "Authentication", "ReverseEngineering", "VendorLockIn", "ProprietaryProtocol", "D2Explorer", "SimpleBLE", "Crypto", "Gadgetbridge", "EU-DMA"]
 imageCaption: "Спокойно канарче, кацнало в орнаментирана месингова клетка, осветено отзад от прозорец."
+audioUrl: "/audio/articles/huawei-watch-d2-proprietary-protocol-vendor-lockin/bg/5egO01tkUjEzu7xSSE8M-6cba8e4e8ea5.m4a"
+audioDuration: "17:50"
+audioVoice: "Carmelo (ElevenLabs Bulgarian)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/huawei-watch-d2-proprietary-protocol-vendor-lockin.bg.md"
 ---
 
 > **TL;DR:** Huawei Watch D2 не използва стандартно BLE pairing. Вместо това изисква 11-стъпков proprietary handshake с custom GATT characteristics, HMAC-SHA256 key derivation от QR code и application-level encryption. Това е vendor lock-in по дизайн -- принуждава те да влезеш в Huawei Health app-а. Добрата новина: community-то вече го reverse-engineer-на. Gadgetbridge вече поддържа Watch D2, а open-source имплементации като `huawei-lpv2` съществуват. EU DMA също започва да натиска в обратната посока.

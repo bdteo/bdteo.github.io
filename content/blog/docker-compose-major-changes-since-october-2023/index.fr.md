@@ -9,6 +9,11 @@ description: "Docker Compose a changé en profondeur : v1 est mort, le champ ver
 featuredImage: "./images/featured.jpg"
 tags: ["Docker", "Docker Compose", "DevOps", "Conteneurs", "Environnement de développement"]
 imageCaption: "Une rangée de petites caisses d’expédition en bois sur un quai de port aux premières lueurs du jour."
+audioUrl: "/audio/articles/docker-compose-major-changes-since-october-2023/fr/hqfrgApggtO1785R4Fsn-6eec7182485b.m4a"
+audioDuration: "8:41"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/docker-compose-major-changes-since-october-2023.fr.md"
 ---
 
 > **TL;DR :** Docker Compose v1 (`docker-compose`) a été entièrement supprimé en avril 2025. Le champ `version` dans votre YAML est mort. La clé `x-develop` est maintenant simplement `develop`. Le mode watch est prêt pour la production avec `initial_sync`. Il existe une CVE critique de traversée de chemins (CVE-2025-62725) si vous utilisez `include` avec des artefacts OCI : mettez à jour vers v2.40.2 ou plus récent. Et oui, Compose est passé de v2 à v5. Les détails ci-dessous.

@@ -9,6 +9,11 @@ description: "Resuelve los errores de emparejamiento 'AuthenticationFailed' de B
 tags: ["BlueZ", "DBus", "PairingAgent", "Python", "C++", "sd-bus", "AuthenticationFailed", "LinuxBluetooth", "Workaround", "BluetoothPairing", "EmbeddedLinux"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Navegando por las complejidades de las interacciones del agente de emparejamiento D-Bus de BlueZ en Linux."
+audioUrl: "/audio/articles/bluez-pairing-python-agent-workaround-authentication-failed/es/Qh9qDWKx9XUbnKbERblA-f9e6333a5195.m4a"
+audioDuration: "11:17"
+audioVoice: "Gerard (ElevenLabs LatAm Spanish neutral)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/bluez-pairing-python-agent-workaround-authentication-failed.es.md"
 ---
 
 > **TL;DR:** Si recibes `org.bluez.Error.AuthenticationFailed` con un agente de emparejamiento personalizado en C++/sd-bus sobre BlueZ 5.66+, lo más probable es que el problema sea el registro de tu agente interno. Ejecuta un agente Python externo (`simple-agent.py`) como un proceso aparte, e implementa el sondeo de propiedades de D-Bus en lugar de depender de las señales `PropertiesChanged`. Los detalles y el código están más abajo.

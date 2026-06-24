@@ -10,6 +10,11 @@ description: "Aide-mémoire pratique pour Stable Diffusion avec SDXL, SD 3.5 et 
 featuredImage: "./images/featured.jpg"
 tags: ["Stable Diffusion", "IA", "Génération d'images", "SDXL", "Flux", "ComfyUI", "Machine Learning"]
 imageCaption: "Une pile ivoire de fiches cornées sur du lin, tenue par un élastique ambré."
+audioUrl: "/audio/articles/stable-difussion-cheat-sheet/fr/hqfrgApggtO1785R4Fsn-742171e8a535.m4a"
+audioDuration: "10:03"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-06-24"
+audioTextSource: "content/tts/stable-difussion-cheat-sheet.fr.md"
 ---
 
 > **Mis à jour en mars 2026.** La version originale de cet aide-mémoire a été écrite pour SD 1.5 en mai 2023. Presque tout a changé depuis -- nouvelles architectures (SDXL, SD 3.5, Flux), nouvelles interfaces (ComfyUI), nouveau matériel (RTX 5090) et renversement complet de la philosophie des prompts négatifs. Voici la version actuelle.
