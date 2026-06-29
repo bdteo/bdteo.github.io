@@ -9,6 +9,7 @@ const fs = require(`fs`)
 const {
   DEFAULT_LANGUAGE,
   LANGUAGES,
+  buildArchivePath,
   buildIndexPath,
   buildLocalizedPath,
   getLanguageCodes,
@@ -17,6 +18,7 @@ const {
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
 const blogIndex = path.resolve(`./src/templates/blog-index.js`)
+const HOME_POST_LIMIT = 12
 
 const articlePathPattern =
   /^(.+)\/index(?:\.([a-z]{2}(?:-[A-Za-z0-9]+)?))?\.md$/
@@ -99,6 +101,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     alternates[lang] = buildIndexPath(lang)
     return alternates
   }, {})
+  const archiveAlternatePaths = activeLanguages.reduce((alternates, lang) => {
+    alternates[lang] = buildArchivePath(lang)
+    return alternates
+  }, {})
 
   // Create blog posts pages
   if (posts.length > 0) {
@@ -143,6 +149,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         alternatePaths: indexAlternatePaths,
         xDefaultPath: buildIndexPath(DEFAULT_LANGUAGE),
         activeLanguages,
+        archivePath: buildArchivePath(lang),
+        isArchive: false,
+        postLimit: HOME_POST_LIMIT,
+      },
+    })
+
+    createPage({
+      path: buildArchivePath(lang),
+      component: blogIndex,
+      context: {
+        lang,
+        alternatePaths: archiveAlternatePaths,
+        xDefaultPath: buildArchivePath(DEFAULT_LANGUAGE),
+        activeLanguages,
+        isArchive: true,
+        postLimit: 1000,
       },
     })
   })

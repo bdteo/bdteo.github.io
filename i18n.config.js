@@ -83,6 +83,8 @@ const CHROME = {
     navAbout: "About",
     recentPosts: "Recent Posts",
     morePosts: "More Posts",
+    allPosts: "All Posts",
+    viewAllPosts: "View all posts",
     siteDescription:
       "Quiet essays on engineering, language, and what shows up at the edge of every honest inquiry. Written slowly, from Sofia.",
     noPosts:
@@ -118,6 +120,8 @@ const CHROME = {
     navAbout: "За мен",
     recentPosts: "Нови текстове",
     morePosts: "Още текстове",
+    allPosts: "Всички текстове",
+    viewAllPosts: "Виж всички текстове",
     siteDescription:
       "Тихи есета за инженерство, език и онова, което се появява на ръба на всяко честно питане. Писани бавно, от София.",
     noPosts: "Все още няма публикувани текстове на този език.",
@@ -152,6 +156,8 @@ const CHROME = {
     navAbout: "À propos",
     recentPosts: "Articles récents",
     morePosts: "Autres articles",
+    allPosts: "Tous les articles",
+    viewAllPosts: "Voir tous les articles",
     siteDescription:
       "Essais calmes sur l'ingénierie, la langue et ce qui apparaît au bord de toute recherche honnête. Écrits lentement, depuis Sofia.",
     noPosts: "Aucun article n'est encore publié dans cette langue.",
@@ -186,6 +192,8 @@ const CHROME = {
     navAbout: "Sobre mí",
     recentPosts: "Artículos recientes",
     morePosts: "Más artículos",
+    allPosts: "Todos los artículos",
+    viewAllPosts: "Ver todos los artículos",
     siteDescription:
       "Ensayos serenos sobre ingeniería, lenguaje y lo que asoma al borde de toda indagación honesta. Escritos despacio, desde Sofía.",
     noPosts: "Aún no hay textos publicados en este idioma.",
@@ -220,6 +228,8 @@ const CHROME = {
     navAbout: "Über mich",
     recentPosts: "Neue Texte",
     morePosts: "Weitere Texte",
+    allPosts: "Alle Texte",
+    viewAllPosts: "Alle Texte ansehen",
     siteDescription:
       "Leise Essays über Engineering, Sprache und das, was am Rand jeder ehrlichen Frage auftaucht. Langsam geschrieben, aus Sofia.",
     noPosts: "In dieser Sprache sind noch keine Texte veröffentlicht.",
@@ -254,6 +264,8 @@ const CHROME = {
     navAbout: "关于",
     recentPosts: "最新文章",
     morePosts: "更多文章",
+    allPosts: "所有文章",
+    viewAllPosts: "查看所有文章",
     siteDescription:
       "关于工程、语言，以及每一次诚实追问边缘浮现之物的安静随笔。写得很慢，来自索菲亚。",
     noPosts: "这个语言还没有发布文章。",
@@ -303,6 +315,13 @@ const buildIndexPath = code => {
   return withTrailingSlash(language.pathPrefix || "/")
 }
 
+const buildArchivePath = code => {
+  const language = getLanguage(code)
+  const prefix = trimSlashes(language.pathPrefix)
+  const segments = [prefix, "archive"].filter(Boolean)
+  return withTrailingSlash(`/${segments.join("/")}`)
+}
+
 const buildLocalizedPath = (sourceSlug, code = DEFAULT_LANGUAGE) => {
   const slug = trimSlashes(sourceSlug)
   const language = getLanguage(code)
@@ -344,6 +363,7 @@ module.exports = {
   LANGUAGES,
   CHROME,
   buildIndexPath,
+  buildArchivePath,
   buildLocalizedPath,
   getChrome,
   getLanguage,

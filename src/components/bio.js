@@ -3,18 +3,9 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faGithub,
-  faLinkedin,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope"
-import { library } from "@fortawesome/fontawesome-svg-core"
 
+import Icon from "./Icon"
 import { DEFAULT_LANGUAGE, getChrome } from "../../i18n.config"
-
-library.add(faGithub, faLinkedin, faTwitter, faEnvelope)
 
 const Bio = ({ lang = DEFAULT_LANGUAGE }) => {
   const data = useStaticQuery(graphql`
@@ -76,7 +67,7 @@ const Bio = ({ lang = DEFAULT_LANGUAGE }) => {
             aria-label="GitHub"
             itemProp="sameAs"
           >
-            <FontAwesomeIcon icon={faGithub} />
+            <Icon name="github" />
           </a>
         )}
         {social?.email && (
@@ -85,7 +76,7 @@ const Bio = ({ lang = DEFAULT_LANGUAGE }) => {
             aria-label="Email"
             itemProp="email"
           >
-            <FontAwesomeIcon icon={faEnvelope} />
+            <Icon name="email" />
           </a>
         )}
       </div>

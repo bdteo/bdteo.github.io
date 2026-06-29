@@ -1,8 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGlobe } from "@fortawesome/free-solid-svg-icons"
 
+import Icon from "./Icon"
 import {
   DEFAULT_LANGUAGE,
   buildIndexPath,
@@ -87,7 +86,7 @@ const LanguageSwitcher = ({
         title={chrome.languageSwitcherLabel}
         onClick={() => setIsOpen(value => !value)}
       >
-        <FontAwesomeIcon icon={faGlobe} />
+        <Icon name="globe" />
         <span>{currentLanguage.shortLabel}</span>
       </button>
 

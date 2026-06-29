@@ -1,7 +1,6 @@
 import * as React from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons"
 
+import Icon from "./Icon"
 import { getChrome } from "../../i18n.config"
 
 const DEFAULT_PLAYBACK_RATE = 1
@@ -284,7 +283,7 @@ const ArticleAudioPlayer = ({
             aria-label={isPlaying ? labels.pause : labels.play}
             title={isPlaying ? labels.pause : labels.play}
           >
-            <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
+            <Icon name={isPlaying ? "pause" : "play"} />
           </button>
         </div>
       </div>

@@ -313,6 +313,12 @@ const Seo = ({
       <meta name="description" content={metaDescription} />
       {metaKeywords && <meta name="keywords" content={metaKeywords} />}
       <meta name="author" content={author.name} />
+      <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+      <link
+        rel="alternate icon"
+        type="image/png"
+        href="/images/favicon-dark.png"
+      />
       <link rel="canonical" href={url} />
       {alternateEntries.map(entry => (
         <link

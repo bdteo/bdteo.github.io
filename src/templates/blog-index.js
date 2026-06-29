@@ -13,7 +13,14 @@ const RECENT_POSTS_COUNT = 3
 const BlogIndex = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  const { lang, alternatePaths = {}, activeLanguages = [] } = pageContext || {}
+  const totalPosts = data.totalPosts.totalCount
+  const {
+    lang,
+    alternatePaths = {},
+    activeLanguages = [],
+    archivePath,
+    isArchive = false,
+  } = pageContext || {}
   const chrome = getChrome(lang)
 
   if (posts.length === 0) {
@@ -36,15 +43,17 @@ const BlogIndex = ({ data, location, pageContext }) => {
 
   const recentPosts = posts.slice(0, RECENT_POSTS_COUNT)
   const morePosts = posts.slice(RECENT_POSTS_COUNT)
+  const hiddenPostCount = Math.max(totalPosts - posts.length, 0)
 
   const renderCard = (post, index) => {
     const title = post.frontmatter.title || post.fields.slug
     const featuredImage = getImage(post.frontmatter.featuredImage)
     const slug = post.fields.localizedPath
     const displayDate = formatDisplayDate(post.frontmatter.dateRaw, lang)
+    const isPriorityImage = index === 0
 
     return (
-      <ScrollReveal key={slug} index={index}>
+      <ScrollReveal key={slug}>
         <Link to={slug} className="blog-card-link">
           <article
             className="blog-card"
@@ -54,7 +63,12 @@ const BlogIndex = ({ data, location, pageContext }) => {
             <div className="blog-card-header">
               {featuredImage && (
                 <div className="blog-card-image">
-                  <GatsbyImage image={featuredImage} alt={title} />
+                  <GatsbyImage
+                    image={featuredImage}
+                    alt={title}
+                    loading={isPriorityImage ? "eager" : "lazy"}
+                    fetchPriority={isPriorityImage ? "high" : "auto"}
+                  />
                 </div>
               )}
               <span className="blog-card-date">{displayDate}</span>
@@ -87,7 +101,9 @@ const BlogIndex = ({ data, location, pageContext }) => {
     >
       {/* Recent Posts */}
       <div className="section">
-        <h2 className="section-title">{chrome.recentPosts}</h2>
+        <h2 className="section-title">
+          {isArchive ? chrome.allPosts : chrome.recentPosts}
+        </h2>
         <div className="grid-container auto-grid">
           {recentPosts.map((post, i) => renderCard(post, i))}
         </div>
@@ -98,8 +114,18 @@ const BlogIndex = ({ data, location, pageContext }) => {
         <div className="section">
           <h2 className="section-title">{chrome.morePosts}</h2>
           <div className="grid-container auto-grid">
-            {morePosts.map((post, i) => renderCard(post, i))}
+            {morePosts.map((post, i) =>
+              renderCard(post, i + RECENT_POSTS_COUNT),
+            )}
           </div>
+        </div>
+      )}
+
+      {!isArchive && hiddenPostCount > 0 && archivePath && (
+        <div className="archive-link">
+          <Link to={archivePath} className="custom-button secondary">
+            {chrome.viewAllPosts}
+          </Link>
         </div>
       )}
 
@@ -138,7 +164,7 @@ export const Head = ({ pageContext }) => {
 }
 
 export const pageQuery = graphql`
-  query BlogIndexQuery($lang: String!) {
+  query BlogIndexQuery($lang: String!, $postLimit: Int!) {
     site {
       siteMetadata {
         title
@@ -147,6 +173,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
       filter: { fields: { lang: { eq: $lang } } }
+      limit: $postLimit
     ) {
       nodes {
         fields {
@@ -160,11 +187,22 @@ export const pageQuery = graphql`
           imagePosition
           featuredImage {
             childImageSharp {
-              gatsbyImageData(width: 600, height: 400, layout: CONSTRAINED)
+              gatsbyImageData(
+                width: 420
+                height: 280
+                layout: CONSTRAINED
+                placeholder: DOMINANT_COLOR
+                formats: [AUTO, WEBP, AVIF]
+                quality: 58
+                outputPixelDensities: [0.5, 1]
+              )
             }
           }
         }
       }
+    }
+    totalPosts: allMarkdownRemark(filter: { fields: { lang: { eq: $lang } } }) {
+      totalCount
     }
   }
 `

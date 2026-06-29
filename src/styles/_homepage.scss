@@ -1,1 +1,7 @@
 // Homepage specific styles
+.archive-link {
+  display: flex;
+  justify-content: center;
+  margin-top: calc(var(--spacing-8) * -0.25);
+  margin-bottom: var(--spacing-8);
+}

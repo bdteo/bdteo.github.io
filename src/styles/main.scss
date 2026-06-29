@@ -1,22 +1,12 @@
 // src/styles/main.scss
 
-// Reset and normalization first
-@import 'normalize.css';
-
 // Design system
-@import 'variables';
-@import 'light-mode';
-@import 'dark-mode';
-
-// Bootstrap framework (only include what's needed)
-@import "bootstrap/scss/bootstrap-grid";
-@import "bootstrap/scss/bootstrap-utilities";
-
-// Typography (JetBrains Mono loaded via gatsby-browser.js)
+@import "variables";
+@import "light-mode";
+@import "dark-mode";
 
 // Core styles
 @import "base";
-@import "variables";
 @import "typography";
 @import "layout";
 
@@ -45,8 +35,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
@@ -61,8 +55,12 @@
 }
 
 @keyframes slideIn {
-  from { transform: translateX(-10px); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-10px);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 // Print styles

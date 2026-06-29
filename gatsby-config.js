@@ -11,6 +11,8 @@ const {
   getLanguageCodes,
 } = require("./i18n.config")
 
+const assetPrefix = process.env.BLOG_ASSET_PREFIX ?? "https://bdteo.com"
+
 const getPublishedLanguageCodes = () => {
   const blogDir = path.join(__dirname, "content", "blog")
   const published = new Set([DEFAULT_LANGUAGE])
@@ -93,7 +95,7 @@ const createFeedConfig = lang => {
 
 module.exports = {
   pathPrefix: "",
-  assetPrefix: "https://bdteo.com",
+  assetPrefix,
   siteMetadata: {
     title: `Boris D. Teoharov`,
     author: {
@@ -171,40 +173,6 @@ module.exports = {
           }
         `,
         feeds: getPublishedLanguageCodes().map(createFeedConfig),
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Boris D. Teoharov's Blog`,
-        short_name: `BDTBlog`,
-        start_url: `/`,
-        background_color: `#1a1a1a`,
-        theme_color: `#1a1a1a`,
-        display: `minimal-ui`,
-        icon: "src/images/bd-icon@4x.png",
-      },
-    },
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {
-        displayName: process.env.NODE_ENV !== "production",
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: ["G-7MSGWE21G5"],
-        gtagConfig: {
-          optimize_id: "OPT_CONTAINER_ID",
-          anonymize_ip: true,
-          cookie_expires: 0,
-        },
-        pluginConfig: {
-          head: true,
-          respectDNT: true,
-          delayOnRouteUpdate: 0,
-        },
       },
     },
     // Remove service worker to prevent caching issues with new content
