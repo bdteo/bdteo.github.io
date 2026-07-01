@@ -2,13 +2,18 @@
 lang: "bg"
 translationOf: "what-if-human-connection-were-public-infrastructure"
 translationUpdatedAt: "2026-07-01"
-translationSourceHash: "e5693291dc8f307e"
+translationSourceHash: "b07a55cde713573d"
 title: "Ами ако близостта беше обществена инфраструктура?"
 date: "2026-07-01T09:55:59.000Z"
 description: "Кратка семка за любовта, самотата, дигиталните общи блага и една безплатна обществена платформа за човешка близост."
 featuredImage: "./images/featured.jpg"
-imageCaption: "Отворен бележник, преди първото изречение да стане проект."
+imageCaption: "Две чаши, сгънат шал и бисквити чакат на обществена пейка."
 imagePosition: "center"
+audioUrl: "/audio/articles/what-if-human-connection-were-public-infrastructure/bg/5egO01tkUjEzu7xSSE8M-4d6d9a37bdc7.m4a"
+audioDuration: "3:16"
+audioVoice: "Carmelo (ElevenLabs Bulgarian)"
+audioGeneratedAt: "2026-07-01"
+audioTextSource: "content/tts/what-if-human-connection-were-public-infrastructure.bg.md"
 ---
 
 Не искам да правя Tinder.
