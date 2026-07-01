@@ -1,7 +1,7 @@
 ---
 title: "What If Human Connection Were Public Infrastructure?"
 date: "2026-07-01T09:55:59.000Z"
-description: "A small seed about love, loneliness, digital commons, and a free public platform for human connection."
+description: "Brief reflections on love, loneliness, digital commons, and a free public platform for human connection."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Two cups, a folded scarf, and biscuits waiting on a public bench."
 imagePosition: "center"
