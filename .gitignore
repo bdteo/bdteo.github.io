@@ -78,3 +78,6 @@ test-results/
 # Claude Code
 .claude/
 .mcp.json
+
+# Playwright MCP artifacts
+.playwright-mcp/
