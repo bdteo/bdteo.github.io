@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, withPrefix } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
@@ -23,6 +23,61 @@ const BlogIndex = ({ data, location, pageContext }) => {
   } = pageContext || {}
   const chrome = getChrome(lang)
 
+  // Infinite scroll as progressive enhancement: the server renders only the
+  // capped post list (small DOM, fast audit), then the remaining posts are
+  // appended from the archive page's prebuilt page-data.json once the reader
+  // scrolls near the bottom. No JS / fetch failure falls back to the archive
+  // link below.
+  const [extraPosts, setExtraPosts] = React.useState([])
+  const [autoLoadFailed, setAutoLoadFailed] = React.useState(false)
+  const sentinelRef = React.useRef(null)
+  const hiddenPostCount = Math.max(totalPosts - posts.length, 0)
+  const shouldAutoLoad =
+    !isArchive && hiddenPostCount > 0 && Boolean(archivePath)
+
+  React.useEffect(() => {
+    if (!shouldAutoLoad) return
+    const sentinel = sentinelRef.current
+    if (!sentinel || typeof IntersectionObserver === "undefined") return
+
+    let cancelled = false
+    const observer = new IntersectionObserver(
+      entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return
+        observer.disconnect()
+        const dataPath = withPrefix(
+          `/page-data${archivePath.replace(/\/+$/, "")}/page-data.json`,
+        )
+        fetch(dataPath)
+          .then(res =>
+            res.ok ? res.json() : Promise.reject(new Error(`${res.status}`)),
+          )
+          .then(json => {
+            if (cancelled) return
+            const nodes = json?.result?.data?.allMarkdownRemark?.nodes || []
+            const seen = new Set(posts.map(post => post.fields.localizedPath))
+            const fresh = nodes.filter(
+              node => !seen.has(node.fields.localizedPath),
+            )
+            if (fresh.length === 0) {
+              setAutoLoadFailed(true)
+              return
+            }
+            setExtraPosts(fresh)
+          })
+          .catch(() => {
+            if (!cancelled) setAutoLoadFailed(true)
+          })
+      },
+      { rootMargin: "800px 0px" },
+    )
+    observer.observe(sentinel)
+    return () => {
+      cancelled = true
+      observer.disconnect()
+    }
+  }, [shouldAutoLoad, archivePath, posts])
+
   if (posts.length === 0) {
     return (
       <Layout
@@ -43,9 +98,8 @@ const BlogIndex = ({ data, location, pageContext }) => {
 
   const recentPosts = posts.slice(0, RECENT_POSTS_COUNT)
   const morePosts = posts.slice(RECENT_POSTS_COUNT)
-  const hiddenPostCount = Math.max(totalPosts - posts.length, 0)
 
-  const renderCard = (post, index) => {
+  const renderCard = (post, index, animate = false, batchIndex = 0) => {
     const title = post.frontmatter.title || post.fields.slug
     const featuredImage = getImage(post.frontmatter.featuredImage)
     const slug = post.fields.localizedPath
@@ -53,7 +107,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
     const isPriorityImage = index === 0
 
     return (
-      <ScrollReveal key={slug}>
+      <ScrollReveal key={slug} animate={animate} index={batchIndex}>
         <Link to={slug} className="blog-card-link">
           <article
             className="blog-card"
@@ -110,23 +164,40 @@ const BlogIndex = ({ data, location, pageContext }) => {
       </div>
 
       {/* More Posts */}
-      {morePosts.length > 0 && (
+      {(morePosts.length > 0 || extraPosts.length > 0) && (
         <div className="section">
           <h2 className="section-title">{chrome.morePosts}</h2>
           <div className="grid-container auto-grid">
             {morePosts.map((post, i) =>
               renderCard(post, i + RECENT_POSTS_COUNT),
             )}
+            {extraPosts.map((post, i) =>
+              renderCard(
+                post,
+                i + RECENT_POSTS_COUNT + morePosts.length,
+                true,
+                i,
+              ),
+            )}
           </div>
         </div>
       )}
 
-      {!isArchive && hiddenPostCount > 0 && archivePath && (
-        <div className="archive-link">
-          <Link to={archivePath} className="custom-button secondary">
-            {chrome.viewAllPosts}
-          </Link>
-        </div>
+      {shouldAutoLoad && (
+        <>
+          <div
+            ref={sentinelRef}
+            className="infinite-scroll-sentinel"
+            aria-hidden="true"
+          />
+          {(extraPosts.length === 0 || autoLoadFailed) && (
+            <div className="archive-link">
+              <Link to={archivePath} className="custom-button secondary">
+                {chrome.viewAllPosts}
+              </Link>
+            </div>
+          )}
+        </>
       )}
 
       <hr className="section-divider" />
