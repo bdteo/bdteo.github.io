@@ -9,6 +9,11 @@ description: "Практична бележка за избора между See
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ръка пренасочва текстилен кабел през ненадписан аналогов patch board върху тихо монтажно бюро."
 tags: ["AI", "AI Video", "Seedance", "Kling", "Grok", "Creative Tools"]
+audioUrl: "/audio/articles/ai-video-is-a-routing-problem-now/bg/5egO01tkUjEzu7xSSE8M-25b83eb68581.m4a"
+audioDuration: "4:24"
+audioVoice: "Carmelo (ElevenLabs Bulgarian)"
+audioGeneratedAt: "2026-07-08"
+audioTextSource: "content/tts/ai-video-is-a-routing-problem-now.bg.md"
 ---
 
 Гледах сляпо сравнение между Seedance, Kling, Grok и видео модела на Google.

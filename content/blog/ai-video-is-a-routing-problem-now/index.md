@@ -5,6 +5,11 @@ description: "A practical note on choosing between Seedance, Kling, Grok, and th
 featuredImage: "./images/featured.jpg"
 imageCaption: "A hand reroutes a cloth cable across an unlabeled analog patch board on a quiet editing desk."
 tags: ["AI", "AI Video", "Seedance", "Kling", "Grok", "Creative Tools"]
+audioUrl: "/audio/articles/ai-video-is-a-routing-problem-now/UzI1NsMEV3ni5JRkRSls-41193dfc7121.m4a"
+audioDuration: "3:07"
+audioVoice: "Alistair (ElevenLabs cultured British)"
+audioGeneratedAt: "2026-07-08"
+audioTextSource: "content/tts/ai-video-is-a-routing-problem-now.md"
 ---
 
 I watched a blind comparison of Seedance, Kling, Grok, and Google's video model.

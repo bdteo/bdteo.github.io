@@ -9,6 +9,11 @@ lang: "fr"
 translationOf: "ai-video-is-a-routing-problem-now"
 translationUpdatedAt: "2026-07-08"
 translationSourceHash: "d01fc4689fc7b602"
+audioUrl: "/audio/articles/ai-video-is-a-routing-problem-now/fr/hqfrgApggtO1785R4Fsn-be1bcde5232c.m4a"
+audioDuration: "3:04"
+audioVoice: "Theodore (ElevenLabs French serene)"
+audioGeneratedAt: "2026-07-08"
+audioTextSource: "content/tts/ai-video-is-a-routing-problem-now.fr.md"
 ---
 
 J'ai regardé une comparaison à l'aveugle entre Seedance, Kling, Grok et le modèle vidéo de Google.
