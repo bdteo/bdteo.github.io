@@ -10,6 +10,11 @@ description: "在 2026 年用 Stable Diffusion、SDXL 和 Flux 生成照片级 A
 featuredImage: "./images/featured.jpg"
 tags: ["Stable Diffusion", "AI", "Image Generation", "Photorealism", "SDXL", "Flux", "GPU", "ControlNet", "Machine Learning"]
 imageCaption: "一块用旧了的画家木调色板，上面挤满试过的混色，一把调色刀正停在混合中。"
+audioUrl: "/audio/articles/pushing-the-stable-diffussion-limits/zh-Hans/EttSxNTvxX50EUdRPQQl-b83a51092150.m4a"
+audioDuration: "10:28"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/pushing-the-stable-diffussion-limits.zh-Hans.md"
 ---
 
 > **2026 年 3 月更新。** 这篇文章最初写于 2023 年 5 月，当时 SD 1.5 的 512x512 是标准，RTX 3090 是顶级硬件。现在一切都变了。Flux 2、SDXL fine-tunes、SD 3.5、ControlNet 和 RTX 5090 已经完全重新定义了可能性。这就是当前状态。

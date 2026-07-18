@@ -9,6 +9,11 @@ description: "一份实用的 git grep 速查表，涵盖已跟踪文件、branc
 tags: ["git", "git grep", "ripgrep", "代码搜索", "开发者工具", "软件开发", "命令行工具"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "一个图书馆卡片目录抽屉被拉开。其中一张卡片微微探出 - 你正在找的那段文字。"
+audioUrl: "/audio/articles/unlocking-the-power-of-git-grep/zh-Hans/EttSxNTvxX50EUdRPQQl-454fb0679459.m4a"
+audioDuration: "12:06"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/unlocking-the-power-of-git-grep.zh-Hans.md"
 ---
 
 大多数代码搜索建议都从速度讲起。速度当然重要，但我会伸手用 `git grep`，真正的原因更简单：

@@ -9,6 +9,11 @@ description: "适配 Shopware 6.5/6.6：关键类与命名空间变更、Symfony
 featuredImage: "./images/featured.jpg"
 imageCaption: "一只手把新的空白布标签系在储物罐上。旧标签放在旁边。"
 tags: ["Shopware 6.5", "Shopware 6.6", "类变更", "命名空间变更", "开发者指南", "Shopware 更新", "代码迁移", "PHP 开发", "Symfony 6", "媒体路径处理", "Elasticsearch 迁移", "Bootstrap 5", "Stock API", "Data Attributes", "Offcanvas Cart", "CSRF Protection", "SameSite Cookies", "电商平台", "软件升级", "编程最佳实践", "自定义插件", "代码重构", "软件兼容性", "Shopware 教程"]
+audioUrl: "/audio/articles/understanding-class-namespace-changes-shopware-6-5-developers-guide/zh-Hans/EttSxNTvxX50EUdRPQQl-c20740f10d78.m4a"
+audioDuration: "14:46"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/understanding-class-namespace-changes-shopware-6-5-developers-guide.zh-Hans.md"
 ---
 
 Shopware 6.5 和 6.6 对类、命名空间、data attribute 以及安全机制引入了几项重要变更。开发者在升级或维护 Shopware 项目时需要了解这些变化。本文会用简洁但完整的方式梳理这些变更，并说明它们的影响，以及你的代码该如何相应调整。

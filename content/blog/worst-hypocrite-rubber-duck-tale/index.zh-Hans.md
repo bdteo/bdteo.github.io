@@ -9,6 +9,11 @@ description: "一则短故事，讲两只橡皮鸭如何穿过自我怀疑、想
 featuredImage: "./images/featured.jpg"
 imageCaption: "两只黄色橡皮鸭放在温暖的木质浴室架上，微微朝向彼此。"
 imagePosition: "center"
+audioUrl: "/audio/articles/worst-hypocrite-rubber-duck-tale/zh-Hans/EttSxNTvxX50EUdRPQQl-2a4a22d2071a.m4a"
+audioDuration: "8:44"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/worst-hypocrite-rubber-duck-tale.zh-Hans.md"
 ---
 
 Boris 写给一位珍贵的朋友：

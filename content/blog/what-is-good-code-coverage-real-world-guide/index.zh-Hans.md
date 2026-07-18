@@ -9,6 +9,11 @@ description: "一份实用的、基于风险的代码覆盖率指南：先测什
 tags: ["code-coverage", "testing", "typescript", "php", "best-practices", "quality-assurance"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "好的覆盖率是一张风险地图，不是一个奖杯数字。"
+audioUrl: "/audio/articles/what-is-good-code-coverage-real-world-guide/zh-Hans/EttSxNTvxX50EUdRPQQl-2f08746ea3e6.m4a"
+audioDuration: "24:06"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/what-is-good-code-coverage-real-world-guide.zh-Hans.md"
 ---
 
 # 什么是好的代码覆盖率？一份基于风险的指南

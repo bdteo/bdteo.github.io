@@ -37,6 +37,11 @@ jsonld: |
   }
 featuredImage: "./images/featured.jpg"
 imageCaption: "红绒绳后面亮着灯的展台：承诺被陈列出来，却不是给人触碰的。"
+audioUrl: "/audio/articles/the-model-that-wasnt-there/zh-Hans/EttSxNTvxX50EUdRPQQl-7064ec2e2699.m4a"
+audioDuration: "7:47"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/the-model-that-wasnt-there.zh-Hans.md"
 ---
 
 我们当时用 Gemini 3 Pro 生成广告图片。它在 Artificial Analysis 排行榜上排第 #4。质量确实令人印象深刻：提示词遵循度更好，排版更好，创意输出比我们试过的任何东西都好。Google 到处都在讲它。YouTube 视频。会议。研讨会。博客文章。“世界上最好的图像生成模型。”

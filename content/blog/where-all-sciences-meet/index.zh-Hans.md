@@ -9,6 +9,11 @@ description: "一篇小随笔，写语言、不完备性、一个并不懒惰的
 featuredImage: "./images/featured.jpg"
 imageCaption: "黎明时分的一本打开的笔记本。右页是空白的。有意如此。"
 imagePosition: "center"
+audioUrl: "/audio/articles/where-all-sciences-meet/zh-Hans/EttSxNTvxX50EUdRPQQl-d0c92bafb8a8.m4a"
+audioDuration: "10:10"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/where-all-sciences-meet.zh-Hans.md"
 ---
 
 我不是数学家。我不是哲学家。我不是神经科学家。我只是一个喜欢思考的人……而我总是撞见各门科学在以为没人看的时候互相眨眼。

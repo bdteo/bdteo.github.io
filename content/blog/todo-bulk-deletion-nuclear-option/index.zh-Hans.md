@@ -9,6 +9,11 @@ description: "一份面向 MySQL/InnoDB 大规模删除的实用决策指南：D
 tags: ["mysql", "innodb", "数据库", "性能", "运维", "laravel"]
 featuredImage: "./images/featured.webp"
 imageCaption: "两只手把一小束保留下来的香草枝举在一篮修剪过的茎秆上方——在清扫之前，先留住重要的东西。"
+audioUrl: "/audio/articles/todo-bulk-deletion-nuclear-option/zh-Hans/EttSxNTvxX50EUdRPQQl-eff4e3d2d037.m4a"
+audioDuration: "21:57"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/todo-bulk-deletion-nuclear-option.zh-Hans.md"
 ---
 
 你需要从一张 MySQL 表里删除数百万行。

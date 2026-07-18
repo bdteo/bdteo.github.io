@@ -13,6 +13,11 @@ tags:
   - devops
   - software
   - metaphor
+audioUrl: "/audio/articles/xen-goo-for-kubernetes-nodes/zh-Hans/EttSxNTvxX50EUdRPQQl-e258bf33eec9.m4a"
+audioDuration: "2:08"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/xen-goo-for-kubernetes-nodes.zh-Hans.md"
 ---
 
 在 Kubernetes 里，一个被 taint 的节点听起来像是 Half-Life 里的东西。

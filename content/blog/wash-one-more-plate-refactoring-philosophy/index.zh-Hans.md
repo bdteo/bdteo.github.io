@@ -36,6 +36,11 @@ jsonld: |
   }
 featuredImage: "./images/featured.jpg"
 imageCaption: "厨房桌上一叠干净的盘子，前景里还有一个刚洗完、仍带水珠的盘子。"
+audioUrl: "/audio/articles/wash-one-more-plate-refactoring-philosophy/zh-Hans/EttSxNTvxX50EUdRPQQl-a40ef71c20ca.m4a"
+audioDuration: "9:28"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/wash-one-more-plate-refactoring-philosophy.zh-Hans.md"
 ---
 
 > **TL;DR**：把你对代码库做的每一次修改，都当成做一顿饭。你会弄脏几个盘子。结束时，不要只洗掉你用过的那些——再多洗*一个*。时间久了，这一点点多出来的照料，会复利成一个保持干净、而不是滑向混乱的厨房（代码库）。

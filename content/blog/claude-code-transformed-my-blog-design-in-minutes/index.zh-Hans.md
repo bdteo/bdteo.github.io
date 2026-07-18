@@ -9,6 +9,11 @@ description: "看看 Claude Code AI 如何重新设计一个 Gatsby 博客：几
 tags: ["Claude Code", "AI", "Web 开发", "Gatsby", "CSS", "设计"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "AI 驱动网页设计的抽象可视化：流动的数字丝线从基础 HTML 元素中织出一个漂亮的博客界面。"
+audioUrl: "/audio/articles/claude-code-transformed-my-blog-design-in-minutes/zh-Hans/EttSxNTvxX50EUdRPQQl-e5a845b0f91c.m4a"
+audioDuration: "8:44"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/claude-code-transformed-my-blog-design-in-minutes.zh-Hans.md"
 ---
 
 作为一个大部分时间都在后端工作的开发者，我一直不太会设计。我的个人博客功能上没问题，但看起来像卡在了 2010 年——基础样式、不一致的间距，还有一个如果足够慷慨才能称作“极简”的配色方案。我几个月来一直想彻底翻新它，但一想到要钻进 CSS 和设计系统里，就有点做噩梦。

@@ -37,6 +37,11 @@ jsonld: |
   }
 featuredImage: "./images/featured.jpg"
 imageCaption: "一个旧木档案柜，中间有一张空白卡片，被尘埃里的光照着。"
+audioUrl: "/audio/articles/the-city-that-wasnt-there/zh-Hans/EttSxNTvxX50EUdRPQQl-7f0601d45105.m4a"
+audioDuration: "8:04"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/the-city-that-wasnt-there.zh-Hans.md"
 ---
 
 我做了个东西，从一个来源拉数据，清理它，然后把它展示得比原站更好。标准工作。

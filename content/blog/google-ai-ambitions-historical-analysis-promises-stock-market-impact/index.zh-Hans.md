@@ -8,6 +8,11 @@ date: "2024-05-11T12:00:00.000Z"
 description: "一份面向 2026 的 Google AI 模式指南：研究突破、Gemini、Search、TPU、Cloud、失败案例，以及谨慎的股市视角。"
 featuredImage: "./images/featured.jpg"
 imageCaption: "橡木桌上的一本打开的笔记本。一条细淡的手绘折线图，一支钢笔，一杯茶——被写下来的耐心。"
+audioUrl: "/audio/articles/google-ai-ambitions-historical-analysis-promises-stock-market-impact/zh-Hans/EttSxNTvxX50EUdRPQQl-f0f80effab24.m4a"
+audioDuration: "25:56"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/google-ai-ambitions-historical-analysis-promises-stock-market-impact.zh-Hans.md"
 ---
 
 我以前以为有趣的问题是：Google 对 AI 的承诺有没有推动股价？

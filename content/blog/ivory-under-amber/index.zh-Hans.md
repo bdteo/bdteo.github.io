@@ -9,6 +9,11 @@ description: "一首留在窄窄光线下的小诗。"
 featuredImage: "./images/featured.jpg"
 imageCaption: "琥珀色暗房灯下的象牙色纸条，沿着一根安静的红线排列。"
 imagePosition: "center"
+audioUrl: "/audio/articles/ivory-under-amber/zh-Hans/EttSxNTvxX50EUdRPQQl-5f04654f252b.m4a"
+audioDuration: "1:20"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/ivory-under-amber.zh-Hans.md"
 ---
 
 有些东西并不请求被解开。它们安静地等待，而第一次阅读已经可以足够。

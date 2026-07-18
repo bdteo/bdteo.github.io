@@ -39,6 +39,11 @@ tags: [
 ]
 featuredImage: "./images/featured.jpg"
 imageCaption: "一只铜制导管弯头在粉刷墙面上把两段管线接成一段。"
+audioUrl: "/audio/articles/php-8-5-new-features-pipe-operator-guide/zh-Hans/EttSxNTvxX50EUdRPQQl-fb133d3d763b.m4a"
+audioDuration: "15:30"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/php-8-5-new-features-pipe-operator-guide.zh-Hans.md"
 ---
 
 ## TL;DR 热度阶梯（我的玩心排名）

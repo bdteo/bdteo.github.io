@@ -9,6 +9,11 @@ description: "面向 SDXL、SD 3.5 和 Flux 的实用 Stable Diffusion 速查表
 featuredImage: "./images/featured.jpg"
 tags: ["Stable Diffusion", "AI", "Image Generation", "SDXL", "Flux", "ComfyUI", "Machine Learning"]
 imageCaption: "一叠卷角的象牙色索引卡放在亚麻布上，用琥珀色橡皮筋束着。"
+audioUrl: "/audio/articles/stable-difussion-cheat-sheet/zh-Hans/EttSxNTvxX50EUdRPQQl-03e906fc81dc.m4a"
+audioDuration: "10:33"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/stable-difussion-cheat-sheet.zh-Hans.md"
 ---
 
 > **2026 年 3 月更新。** 这份速查表的最初版本写于 2023 年 5 月，当时面向的是 SD 1.5。此后几乎一切都变了：新的架构（SDXL、SD 3.5、Flux）、新的 UI（ComfyUI）、新的硬件（RTX 5090），以及关于负面提示词哲学的一次彻底反转。这是当前版本。

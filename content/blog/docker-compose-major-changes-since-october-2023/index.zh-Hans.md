@@ -10,6 +10,11 @@ description: "Docker Compose 已经发生了巨大变化 -- v1 已死，version 
 featuredImage: "./images/featured.jpg"
 tags: ["Docker", "Docker Compose", "DevOps", "容器", "开发环境"]
 imageCaption: "破晓时分，港口码头上一排小木质货箱。"
+audioUrl: "/audio/articles/docker-compose-major-changes-since-october-2023/zh-Hans/EttSxNTvxX50EUdRPQQl-323f64760666.m4a"
+audioDuration: "8:31"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/docker-compose-major-changes-since-october-2023.zh-Hans.md"
 ---
 
 > **TL;DR:** Docker Compose v1（`docker-compose`）已在 2025 年 4 月被完全移除。你的 YAML 里的 `version` 字段已经死了。`x-develop` 键现在就是 `develop`。watch 模式已经带着 `initial_sync` 达到生产可用。有一个关键的路径遍历 CVE（CVE-2025-62725），如果你把 `include` 和 OCI artifact 一起用，就该升级到 v2.40.2+。是的，Compose 从 v2 跳到了 v5。细节在下面。

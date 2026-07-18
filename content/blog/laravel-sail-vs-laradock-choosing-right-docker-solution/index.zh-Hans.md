@@ -9,6 +9,11 @@ description: "面向 2026 年 PHP 开发的 Laravel Sail、Laradock、Herd 和 F
 featuredImage: "./images/featured.jpg"
 tags: ["Laravel", "Docker", "PHP", "Laravel Sail", "Laradock", "Laravel Herd", "FrankenPHP", "Development Environment", "Docker Compose"]
 imageCaption: "两只现代无线电脑鼠标并排放在白色大理石上。选一个。"
+audioUrl: "/audio/articles/laravel-sail-vs-laradock-choosing-right-docker-solution/zh-Hans/EttSxNTvxX50EUdRPQQl-71f7436ada15.m4a"
+audioDuration: "11:18"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/laravel-sail-vs-laradock-choosing-right-docker-solution.zh-Hans.md"
 ---
 
 > **TL;DR：** 对 2026 年的大多数 Laravel 开发者来说：如果你想要零摩擦（原生、无 Docker、几秒配置好），用 **Laravel Herd**。如果你的团队需要完全一致的环境，或者依赖 Redis/Meilisearch 这类服务，用 **Sail**。如果你跨多个 PHP 框架工作，用 **Laradock**。如果你已经长出了这些抽象的边界，用一套 **自定义 Docker Compose**。如果性能就是一切，看看 **FrankenPHP + Octane**。

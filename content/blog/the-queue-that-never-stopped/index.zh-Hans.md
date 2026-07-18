@@ -8,6 +8,11 @@ date: "2026-02-07"
 description: "Redis 内存一直往上涨。Horizon 一片绿色。二十九个邮件类在永远重试，而没人注意到。"
 featuredImage: "./images/featured.jpg"
 imageCaption: "一滴水正从水龙头落进水槽。"
+audioUrl: "/audio/articles/the-queue-that-never-stopped/zh-Hans/EttSxNTvxX50EUdRPQQl-96c79b85de90.m4a"
+audioDuration: "3:42"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/the-queue-that-never-stopped.zh-Hans.md"
 ---
 
 邮件在失败。这部分是预料之中的：迁移过程中 SMTP 凭据坏了。没预料到的是：它们从未停止失败。

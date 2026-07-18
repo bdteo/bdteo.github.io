@@ -10,6 +10,11 @@ tags: ["生产环境", "冒烟测试", "软件工程", "可靠性", "部署"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "被岁月磨过的双手、一杯水，以及金色傍晚厨房光线里一缕细细的烟。"
 imagePosition: "center"
+audioUrl: "/audio/articles/why-is-smoking-good-for-your-health/zh-Hans/EttSxNTvxX50EUdRPQQl-ca1c1c75887c.m4a"
+audioDuration: "4:30"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/why-is-smoking-good-for-your-health.zh-Hans.md"
 ---
 
 我抽烟。

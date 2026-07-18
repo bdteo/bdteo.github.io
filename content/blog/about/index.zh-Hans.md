@@ -8,6 +8,11 @@ date: "2023-05-04T22:12:03.284Z"
 featuredImage: "./images/boris-teoharov.jpg"
 imageCaption: "Boris D. Teoharov。"
 description: "Boris D. Teoharov——来自保加利亚的后端工程师，偶尔写散文，两只救助来的流浪狗让他保持诚实。"
+audioUrl: "/audio/articles/about/zh-Hans/EttSxNTvxX50EUdRPQQl-ea31eddd345c.m4a"
+audioDuration: "2:59"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/about.zh-Hans.md"
 ---
 
 写“关于”页面是一件奇怪的事。你最后会像描述一个陌生人那样描述自己，而我对这件事有点怀疑。

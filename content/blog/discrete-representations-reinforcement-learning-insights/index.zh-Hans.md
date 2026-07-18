@@ -11,6 +11,11 @@ description: "一份关于强化学习中离散表示的实用指南：tokens、
 tags: ["人工智能", "强化学习", "离散表示", "World Models", "AI 智能体"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "深色布面上一组普通卡片呈扇形展开。一只手从这个有限集合中抽起一张。"
+audioUrl: "/audio/articles/discrete-representations-reinforcement-learning-insights/zh-Hans/EttSxNTvxX50EUdRPQQl-4bb0ea1fa4e1.m4a"
+audioDuration: "21:24"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/discrete-representations-reinforcement-learning-insights.zh-Hans.md"
 ---
 
 AI 系统从来不会看见“世界”。它看见的是我们给它的表示。

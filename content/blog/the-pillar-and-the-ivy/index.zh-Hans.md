@@ -9,6 +9,11 @@ description: "给计算机科学里那个不被看好的人的一幅小画。教
 featuredImage: "./images/featured.jpg"
 imageCaption: "晨雾中一根风化的田石门柱。常春藤往上爬。柱子并不在意。"
 imagePosition: "center"
+audioUrl: "/audio/articles/the-pillar-and-the-ivy/zh-Hans/EttSxNTvxX50EUdRPQQl-0a2ede697df8.m4a"
+audioDuration: "6:08"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/the-pillar-and-the-ivy.zh-Hans.md"
 ---
 
 离散数学里到处都是看起来显而易见的小东西。陷阱就在这里。

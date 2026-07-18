@@ -9,6 +9,11 @@ description: "一篇关于愧疚、继承来的羞耻、道歉，以及学会善
 featuredImage: "./images/featured.jpg"
 imageCaption: "月光房间里的一架旧木织机。在经线之间，一根银线正在被织进去。"
 imagePosition: "center"
+audioUrl: "/audio/articles/kind-without-disappearing/zh-Hans/EttSxNTvxX50EUdRPQQl-3ecf59310a46.m4a"
+audioDuration: "10:10"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/kind-without-disappearing.zh-Hans.md"
 ---
 
 问题下面还有一个问题。

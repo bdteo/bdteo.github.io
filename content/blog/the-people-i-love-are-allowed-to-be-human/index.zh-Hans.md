@@ -9,6 +9,11 @@ description: "一篇关于温柔、崇拜、失望，以及学会爱一个人而
 featuredImage: "./images/featured.jpg"
 imageCaption: "一位年轻女术士盘腿漂浮在玫粉色光环之上。"
 imagePosition: "top"
+audioUrl: "/audio/articles/the-people-i-love-are-allowed-to-be-human/zh-Hans/EttSxNTvxX50EUdRPQQl-f63e69ffd3ec.m4a"
+audioDuration: "8:14"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/the-people-i-love-are-allowed-to-be-human.zh-Hans.md"
 ---
 
 我以前爱人的方式，是把他们放到天上。

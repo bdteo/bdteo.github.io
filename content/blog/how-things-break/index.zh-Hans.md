@@ -13,6 +13,11 @@ tags:
   - 事故
   - 工程
   - 故事
+audioUrl: "/audio/articles/how-things-break/zh-Hans/EttSxNTvxX50EUdRPQQl-8b3c36dd5de8.m4a"
+audioDuration: "3:42"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/how-things-break.zh-Hans.md"
 ---
 
 有一种讽刺，像是被写出来的。

@@ -9,6 +9,11 @@ description: "关于爱、孤独、数字公地，以及为人与人的连接提
 featuredImage: "./images/featured.jpg"
 imageCaption: "两只杯子、一条叠好的围巾和几块饼干，在一张公共长椅上静静等候。"
 imagePosition: "center"
+audioUrl: "/audio/articles/what-if-human-connection-were-public-infrastructure/zh-Hans/EttSxNTvxX50EUdRPQQl-d3c140784f28.m4a"
+audioDuration: "3:00"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/what-if-human-connection-were-public-infrastructure.zh-Hans.md"
 ---
 
 我不想做一个 Tinder。

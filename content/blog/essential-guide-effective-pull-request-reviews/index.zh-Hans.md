@@ -9,6 +9,11 @@ description: "用这份有效 Pull Request Review 指南提升团队代码质量
 tags: ["代码审查", "Pull Requests", "软件工程", "最佳实践", "开发者工作流", "Git", "协作", "代码质量"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "一张用铅笔批注过的校样、一只黄铜放大镜、两支铅笔、一杯渐凉的茶——阅读别人作品时安静的手艺。"
+audioUrl: "/audio/articles/essential-guide-effective-pull-request-reviews/zh-Hans/EttSxNTvxX50EUdRPQQl-ffdbfc3f61e8.m4a"
+audioDuration: "6:58"
+audioVoice: "Jordan Li (ElevenLabs Mandarin grounded)"
+audioGeneratedAt: "2026-07-18"
+audioTextSource: "content/tts/essential-guide-effective-pull-request-reviews.zh-Hans.md"
 ---
 
 作为一个经常写代码、也经常 review 代码的人，我逐渐明白，pull request（PR）review 不只是查 bug。它关乎共同所有权、知识传递，以及一起写出更好的代码。下面是一份简洁、实用的指南，让 PR 更有价值，也少一点痛苦。
