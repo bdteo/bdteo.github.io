@@ -76,6 +76,13 @@ const VOICE_PRESETS = {
     description:
       "Spanish article-audio default chosen by Boris on 2026-06-10. Deep, neutral Latin American narrator; versatile, professional, and calm.",
   },
+  "jordan-li-zh": {
+    engine: "elevenlabs",
+    voiceId: "EttSxNTvxX50EUdRPQQl",
+    label: "Jordan Li (ElevenLabs Mandarin grounded)",
+    description:
+      "Simplified Chinese article-audio default chosen by Boris on 2026-07-18. Calm, natural, grounded, warm, and easy to trust.",
+  },
   santa: {
     engine: "kokoro",
     kokoroVoice: "am_santa",
@@ -90,6 +97,7 @@ const DEFAULT_PRESET_BY_LANGUAGE = {
   bg: "carmelo-bg",
   fr: "theodore-fr",
   es: "gerard-es",
+  "zh-Hans": "jordan-li-zh",
 }
 
 const resolveVoice = nameOrId => {

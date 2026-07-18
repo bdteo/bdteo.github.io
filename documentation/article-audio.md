@@ -40,6 +40,9 @@ French audio uses `content/tts/<slug>.fr.md`, updates `index.fr.md`, writes
 under `static/audio/articles/<slug>/fr/`, and defaults to `theodore-fr`.
 Spanish audio uses `content/tts/<slug>.es.md`, updates `index.es.md`, writes
 under `static/audio/articles/<slug>/es/`, and defaults to `gerard-es`.
+Simplified Chinese audio uses `content/tts/<slug>.zh-Hans.md`, updates
+`index.zh-Hans.md`, writes under `static/audio/articles/<slug>/zh-Hans/`, and
+defaults to `jordan-li-zh`.
 
 ## Voice Presets
 
@@ -53,6 +56,8 @@ the selected Theodore default live in
 `documentation/french-article-audio-voices.md`. Spanish audition notes and
 the selected Gerard default live in
 `documentation/spanish-article-audio-voices.md`.
+Simplified Chinese audition notes, runner-ups, and the selected Jordan Li
+default live in `documentation/chinese-article-audio-voices.md`.
 
 | Preset               | Engine     | Use it for                                        |
 | -------------------- | ---------- | ------------------------------------------------- |
@@ -67,6 +72,7 @@ the selected Gerard default live in
 | `carmelo-bg`         | ElevenLabs | Bulgarian default, mature and clear               |
 | `theodore-fr`        | ElevenLabs | French default, serene and grounded               |
 | `gerard-es`          | ElevenLabs | Spanish default, deep neutral LatAm narrator      |
+| `jordan-li-zh`       | ElevenLabs | Chinese default, natural and grounded Mandarin    |
 | `santa`              | Kokoro     | Local `am_santa` fallback, free                   |
 
 Sample a preset (or several) without touching any article:
@@ -75,6 +81,7 @@ Sample a preset (or several) without touching any article:
 pnpm voice:sample alistair,george --text="A line to compare."
 pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."
 pnpm voice:sample gerard-es --lang=es --text="Buenos días."
+pnpm voice:sample jordan-li-zh --lang=zh-Hans --text="有些技术看起来像魔法。"
 pnpm voice:sample --list
 make voice-sample voices=alistair,george
 make voice-sample voices=theodore-fr lang=fr text="Bonjour."
@@ -85,10 +92,10 @@ Samples are saved to `$TMPDIR/voice-samples/` and played via `afplay` on macOS.
 ## Skill Structure
 
 - `bdteo-tts-prepare` prepares `content/tts/<slug>[.<lang>].md` for any profiled language and stops before generation.
-- `bdteo-tts-prepare-all` prepares EN/BG/FR/ES TTS scripts for one article and stops for review.
+- `bdteo-tts-prepare-all` prepares EN/BG/FR/ES/ZH TTS scripts for one article and stops for review.
 - `bdteo-publish-audio` generates, auditions, and optionally ships audio for any profiled language.
-- Language-specific skills such as `bdteo-publish-audio-bg`, `bdteo-tts-prepare-fr`, `bdteo-publish-audio-fr`, `bdteo-tts-prepare-es`, and `bdteo-publish-audio-es` are convenience wrappers over the generic skills.
-- `bdteo-audio-all` orchestrates EN/BG/FR/ES script prep plus serial audio generation/wiring. It preserves the review gate unless Boris explicitly asks for the fast path.
+- Language-specific skills such as `bdteo-publish-audio-bg`, `bdteo-tts-prepare-fr`, `bdteo-publish-audio-fr`, `bdteo-tts-prepare-es`, `bdteo-publish-audio-es`, `bdteo-tts-prepare-zh-hans`, and `bdteo-publish-audio-zh-hans` are convenience wrappers over the generic skills.
+- `bdteo-audio-all` orchestrates EN/BG/FR/ES/ZH script prep plus serial audio generation/wiring. It preserves the review gate unless Boris explicitly asks for the fast path.
 - `bdteo-voice-audition` is the voice-selection workflow; use it before adding a new language default or replacing an existing voice.
 
 ## Common Options
@@ -99,6 +106,7 @@ make article-audio slug=<slug> args="--voice=george"
 make article-audio slug=<slug> args="--lang=bg --voice=carmelo-bg"
 make article-audio slug=<slug> args="--lang=fr --voice=theodore-fr"
 make article-audio slug=<slug> args="--lang=es --voice=gerard-es"
+make article-audio slug=<slug> args="--lang=zh-Hans --voice=jordan-li-zh"
 make article-audio slug=<slug> args="--voice=santa --speed=0.95"
 make article-audio slug=<slug> args="--model=eleven_multilingual_v2"
 ```
