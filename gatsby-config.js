@@ -135,7 +135,12 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
+              // Match --max-width-6xl (72rem = 1152px), the article column width,
+              // so inline article images can span the full content width.
+              maxWidth: 1152,
+              // Render ![alt](src "Title") as <figure> with a <figcaption>
+              // from the title only — alt stays accessibility-only.
+              showCaptions: [`title`],
             },
           },
           {
