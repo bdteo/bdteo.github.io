@@ -9,6 +9,11 @@ description: "Ein persönlicher Essay über Zärtlichkeit, Verehrung, Enttäusch
 featuredImage: "./images/featured.jpg"
 imageCaption: "Eine junge Zauberin, die im Schneidersitz über einem rosenrosa Lichtkreis schwebt."
 imagePosition: "top"
+audioUrl: "/audio/articles/the-people-i-love-are-allowed-to-be-human/de/LTo9oDjTW1FdEgMfiXWQ-3ac22127dc8d.m4a"
+audioDuration: "7:23"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/the-people-i-love-are-allowed-to-be-human.de.md"
 ---
 
 Früher habe ich Menschen geliebt, indem ich sie in den Himmel gehoben habe.

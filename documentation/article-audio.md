@@ -40,6 +40,8 @@ French audio uses `content/tts/<slug>.fr.md`, updates `index.fr.md`, writes
 under `static/audio/articles/<slug>/fr/`, and defaults to `theodore-fr`.
 Spanish audio uses `content/tts/<slug>.es.md`, updates `index.es.md`, writes
 under `static/audio/articles/<slug>/es/`, and defaults to `gerard-es`.
+German audio uses `content/tts/<slug>.de.md`, updates `index.de.md`, writes
+under `static/audio/articles/<slug>/de/`, and defaults to `david-de`.
 Simplified Chinese audio uses `content/tts/<slug>.zh-Hans.md`, updates
 `index.zh-Hans.md`, writes under `static/audio/articles/<slug>/zh-Hans/`, and
 defaults to `jordan-li-zh`.
@@ -56,6 +58,8 @@ the selected Theodore default live in
 `documentation/french-article-audio-voices.md`. Spanish audition notes and
 the selected Gerard default live in
 `documentation/spanish-article-audio-voices.md`.
+German audition notes, runner-ups, and the selected David default live in
+`documentation/german-article-audio-voices.md`.
 Simplified Chinese audition notes, runner-ups, and the selected Jordan Li
 default live in `documentation/chinese-article-audio-voices.md`.
 
@@ -72,6 +76,7 @@ default live in `documentation/chinese-article-audio-voices.md`.
 | `carmelo-bg`         | ElevenLabs | Bulgarian default, mature and clear               |
 | `theodore-fr`        | ElevenLabs | French default, serene and grounded               |
 | `gerard-es`          | ElevenLabs | Spanish default, deep neutral LatAm narrator      |
+| `david-de`           | ElevenLabs | German default, wise, slow, and charming          |
 | `jordan-li-zh`       | ElevenLabs | Chinese default, natural and grounded Mandarin    |
 | `santa`              | Kokoro     | Local `am_santa` fallback, free                   |
 
@@ -81,6 +86,7 @@ Sample a preset (or several) without touching any article:
 pnpm voice:sample alistair,george --text="A line to compare."
 pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."
 pnpm voice:sample gerard-es --lang=es --text="Buenos días."
+pnpm voice:sample david-de --lang=de --text="Manche Technologien sehen aus wie Magie."
 pnpm voice:sample jordan-li-zh --lang=zh-Hans --text="有些技术看起来像魔法。"
 pnpm voice:sample --list
 make voice-sample voices=alistair,george
@@ -92,10 +98,10 @@ Samples are saved to `$TMPDIR/voice-samples/` and played via `afplay` on macOS.
 ## Skill Structure
 
 - `bdteo-tts-prepare` prepares `content/tts/<slug>[.<lang>].md` for any profiled language and stops before generation.
-- `bdteo-tts-prepare-all` prepares EN/BG/FR/ES/ZH TTS scripts for one article and stops for review.
+- `bdteo-tts-prepare-all` prepares EN/BG/FR/ES/DE/ZH TTS scripts for one article and stops for review.
 - `bdteo-publish-audio` generates, auditions, and optionally ships audio for any profiled language.
-- Language-specific skills such as `bdteo-publish-audio-bg`, `bdteo-tts-prepare-fr`, `bdteo-publish-audio-fr`, `bdteo-tts-prepare-es`, `bdteo-publish-audio-es`, `bdteo-tts-prepare-zh-hans`, and `bdteo-publish-audio-zh-hans` are convenience wrappers over the generic skills.
-- `bdteo-audio-all` orchestrates EN/BG/FR/ES/ZH script prep plus serial audio generation/wiring. It preserves the review gate unless Boris explicitly asks for the fast path.
+- Language-specific skills such as `bdteo-publish-audio-bg`, `bdteo-tts-prepare-fr`, `bdteo-publish-audio-fr`, `bdteo-tts-prepare-es`, `bdteo-publish-audio-es`, `bdteo-tts-prepare-de`, `bdteo-publish-audio-de`, `bdteo-tts-prepare-zh-hans`, and `bdteo-publish-audio-zh-hans` are convenience wrappers over the generic skills.
+- `bdteo-audio-all` orchestrates EN/BG/FR/ES/DE/ZH script prep plus serial audio generation/wiring. It preserves the review gate unless Boris explicitly asks for the fast path.
 - `bdteo-voice-audition` is the voice-selection workflow; use it before adding a new language default or replacing an existing voice.
 
 ## Common Options
@@ -106,6 +112,7 @@ make article-audio slug=<slug> args="--voice=george"
 make article-audio slug=<slug> args="--lang=bg --voice=carmelo-bg"
 make article-audio slug=<slug> args="--lang=fr --voice=theodore-fr"
 make article-audio slug=<slug> args="--lang=es --voice=gerard-es"
+make article-audio slug=<slug> args="--lang=de --voice=david-de"
 make article-audio slug=<slug> args="--lang=zh-Hans --voice=jordan-li-zh"
 make article-audio slug=<slug> args="--voice=santa --speed=0.95"
 make article-audio slug=<slug> args="--model=eleven_multilingual_v2"

@@ -9,6 +9,11 @@ description: "Ein kleines Gedicht, zurückgelassen unter einem schmalen Licht."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Elfenbeinfarbene Papierstreifen unter bernsteinfarbenem Dunkelkammerlicht, entlang eines stillen roten Fadens ausgerichtet."
 imagePosition: "center"
+audioUrl: "/audio/articles/ivory-under-amber/de/LTo9oDjTW1FdEgMfiXWQ-b12f21b25a9d.m4a"
+audioDuration: "1:21"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/ivory-under-amber.de.md"
 ---
 
 Manche Dinge bitten nicht darum, gelöst zu werden. Sie warten still, und die erste Lektüre darf genügen.

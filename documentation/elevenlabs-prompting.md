@@ -71,19 +71,20 @@ Always preserve Boris's authorial voice. Tags layer onto his prose; do not rewor
 
 Source of truth: `scripts/voice-presets.js`. Default voice is `alistair`. Available:
 
-| Preset                      | Engine     | Use for                                                         |
-| --------------------------- | ---------- | --------------------------------------------------------------- |
-| `alistair` (default)        | ElevenLabs | Cultured older British. Poetry and reflective essays.           |
-| `george`                    | ElevenLabs | Stock mature British, weighty.                                  |
-| `ak`                        | ElevenLabs | Posh older British, smoking-jacket gravitas.                    |
-| `bartholomew`               | ElevenLabs | Warm wise audiobook narrator.                                   |
-| `gravel-midnight`           | ElevenLabs | Raspy character voice for edged poems.                          |
-| `bill` / `brian` / `daniel` | ElevenLabs | Stock ElevenLabs narrators.                                     |
-| `carmelo-bg`                | ElevenLabs | Bulgarian default chosen by Boris.                              |
-| `theodore-fr`               | ElevenLabs | French default chosen by Boris; serene grounded male narration. |
-| `gerard-es`                 | ElevenLabs | Spanish default chosen by Boris; deep neutral LatAm narrator.   |
-| `jordan-li-zh`              | ElevenLabs | Chinese default chosen by Boris; natural grounded Mandarin.     |
-| `santa`                     | Kokoro     | Local `am_santa` fallback, free.                                |
+| Preset                      | Engine     | Use for                                                          |
+| --------------------------- | ---------- | ---------------------------------------------------------------- |
+| `alistair` (default)        | ElevenLabs | Cultured older British. Poetry and reflective essays.            |
+| `george`                    | ElevenLabs | Stock mature British, weighty.                                   |
+| `ak`                        | ElevenLabs | Posh older British, smoking-jacket gravitas.                     |
+| `bartholomew`               | ElevenLabs | Warm wise audiobook narrator.                                    |
+| `gravel-midnight`           | ElevenLabs | Raspy character voice for edged poems.                           |
+| `bill` / `brian` / `daniel` | ElevenLabs | Stock ElevenLabs narrators.                                      |
+| `carmelo-bg`                | ElevenLabs | Bulgarian default chosen by Boris.                               |
+| `theodore-fr`               | ElevenLabs | French default chosen by Boris; serene grounded male narration.  |
+| `gerard-es`                 | ElevenLabs | Spanish default chosen by Boris; deep neutral LatAm narrator.    |
+| `david-de`                  | ElevenLabs | German default chosen by Boris; wise, slow, charming male voice. |
+| `jordan-li-zh`              | ElevenLabs | Chinese default chosen by Boris; natural grounded Mandarin.      |
+| `santa`                     | Kokoro     | Local `am_santa` fallback, free.                                 |
 
 Sample before committing:
 
@@ -91,6 +92,7 @@ Sample before committing:
 pnpm voice:sample alistair,george,ak --text="A representative line."
 pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."
 pnpm voice:sample gerard-es --lang=es --text="Buenos días."
+pnpm voice:sample david-de --lang=de --text="Manche Technologien sehen aus wie Magie."
 pnpm voice:sample jordan-li-zh --lang=zh-Hans --text="有些技术看起来像魔法。"
 pnpm voice:sample --list
 ```

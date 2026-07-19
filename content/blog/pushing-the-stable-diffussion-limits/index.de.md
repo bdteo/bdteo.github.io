@@ -10,6 +10,11 @@ description: "Erzeuge fotorealistische KI-Bilder mit Stable Diffusion, SDXL und 
 featuredImage: "./images/featured.jpg"
 tags: ["Stable Diffusion", "KI", "Bildgenerierung", "Fotorealismus", "SDXL", "Flux", "GPU", "ControlNet", "Machine Learning"]
 imageCaption: "Eine gut benutzte Holzpalette eines Malers, dicht bedeckt mit getesteten Farbmischungen, ein Palettenmesser mitten im Verblenden."
+audioUrl: "/audio/articles/pushing-the-stable-diffussion-limits/de/LTo9oDjTW1FdEgMfiXWQ-0b746a75744b.m4a"
+audioDuration: "12:07"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/pushing-the-stable-diffussion-limits.de.md"
 ---
 
 > **Aktualisiert im März 2026.** Dieser Artikel wurde ursprünglich im Mai 2023 geschrieben, als SD 1.5 mit 512x512 der Standard war und die RTX 3090 die Spitzenhardware. Alles hat sich verändert. Flux 2, SDXL-Fine-Tunes, SD 3.5, ControlNet und die RTX 5090 haben völlig neu definiert, was möglich ist. Das hier ist der aktuelle Stand.

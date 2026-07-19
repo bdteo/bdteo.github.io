@@ -13,6 +13,11 @@ tags:
   - vorfälle
   - engineering
   - geschichte
+audioUrl: "/audio/articles/how-things-break/de/LTo9oDjTW1FdEgMfiXWQ-ad4800f43609.m4a"
+audioDuration: "3:43"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/how-things-break.de.md"
 ---
 
 Es gibt eine Art Ironie, die sich geschrieben anfühlt.

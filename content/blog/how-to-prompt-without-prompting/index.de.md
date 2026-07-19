@@ -9,6 +9,11 @@ description: "Modernes Prompting für KI funktioniert am besten, wenn du aufhör
 featuredImage: "./images/featured.jpg"
 imageCaption: "Transparente Kontextschichten richten sich über einer leeren Seite aus."
 tags: ["ai", "prompting", "llms", "software-engineering"]
+audioUrl: "/audio/articles/how-to-prompt-without-prompting/de/LTo9oDjTW1FdEgMfiXWQ-414a5dd2e891.m4a"
+audioDuration: "7:29"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/how-to-prompt-without-prompting.de.md"
 ---
 
 In meinen Notizen lag ein winziges TODO:

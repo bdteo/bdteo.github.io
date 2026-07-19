@@ -9,6 +9,11 @@ description: "Type-0-Refactoring ist der verhaltenserhaltende Schritt vor einer 
 tags: ["Refactoring", "Software Engineering", "Debugging", "Wartbarkeit"]
 featuredImage: "./images/featured.webp"
 imageCaption: "Mise en place. Die Arbeit vor der Arbeit."
+audioUrl: "/audio/articles/type-0-refactoring-step-before-step-one/de/LTo9oDjTW1FdEgMfiXWQ-65cd75474694.m4a"
+audioDuration: "20:41"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/type-0-refactoring-step-before-step-one.de.md"
 ---
 
 Es gibt eine Art von Refactoring, die Teams ständig machen, meist unter Druck, meist ohne sie zu benennen.

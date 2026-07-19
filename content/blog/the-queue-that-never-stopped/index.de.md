@@ -8,6 +8,11 @@ date: "2026-02-07"
 description: "Der Redis-Speicher kletterte weiter. Horizon zeigte grün. Neunundzwanzig E-Mail-Klassen liefen in Endlos-Retries, und niemand bemerkte es."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein Wassertropfen fällt aus einem Wasserhahn über einem Waschbecken."
+audioUrl: "/audio/articles/the-queue-that-never-stopped/de/LTo9oDjTW1FdEgMfiXWQ-914bf757f02e.m4a"
+audioDuration: "3:54"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/the-queue-that-never-stopped.de.md"
 ---
 
 E-Mails schlugen fehl. Dieser Teil war erwartet — kaputte SMTP-Zugangsdaten während einer Migration. Unerwartet war etwas anderes: Sie hörten nie auf fehlzuschlagen.

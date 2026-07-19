@@ -11,6 +11,11 @@ description: "Ein praktischer Leitfaden zu diskreten Repräsentationen im Reinfo
 tags: ["Künstliche Intelligenz", "Reinforcement Learning", "Diskrete Repräsentationen", "World Models", "KI-Agenten"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein aufgefächerter Bogen schlichter Karten auf dunklem Stoff. Eine Hand hebt eine aus der endlichen Menge."
+audioUrl: "/audio/articles/discrete-representations-reinforcement-learning-insights/de/LTo9oDjTW1FdEgMfiXWQ-465390089744.m4a"
+audioDuration: "22:04"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/discrete-representations-reinforcement-learning-insights.de.md"
 ---
 
 Ein KI-System sieht nie "die Welt". Es sieht die Repräsentation, die wir ihm geben.

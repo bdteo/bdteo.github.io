@@ -9,6 +9,11 @@ description: "Ein persoenlicher Essay ueber KI-Begleiter, Guthabenangst, Token-M
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein morgendlicher Schreibtisch, auf dem eine Kaffeetasse, eine leuchtende Nutzungsanzeige und ein kleiner mechanischer Begleiter denselben Lichtkreis teilen."
 imagePosition: "center"
+audioUrl: "/audio/articles/when-the-meter-appears/de/LTo9oDjTW1FdEgMfiXWQ-a6e66379bcc6.m4a"
+audioDuration: "10:01"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/when-the-meter-appears.de.md"
 ---
 
 Heute Morgen trank ich meinen Kaffee und schaute auf die Codex-Desktop-App.

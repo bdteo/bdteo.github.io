@@ -8,6 +8,11 @@ date: "2025-07-20"
 description: "PHP 8.5 neue Features: Pipe-Operator, #[NoDiscard], statische Closure-Konstanten, array_first/last, Intl- und Debug-Gewinne. Was du zuerst einsetzen solltest."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein kupferner Leitungsbogen verbindet zwei Rohrstrecken auf einer verputzten Wand zu einer."
+audioUrl: "/audio/articles/php-8-5-new-features-pipe-operator-guide/de/LTo9oDjTW1FdEgMfiXWQ-a0baec5c07fb.m4a"
+audioDuration: "17:24"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/php-8-5-new-features-pipe-operator-guide.de.md"
 ---
 
 ## TL;DR-Hype-Leiter (mein spielerisches Ranking)

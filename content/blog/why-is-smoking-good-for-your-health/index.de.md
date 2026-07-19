@@ -10,6 +10,11 @@ tags: ["production", "smoke-tests", "software-engineering", "reliability", "depl
 featuredImage: "./images/featured.jpg"
 imageCaption: "Verwitterte Hände, ein Glas Wasser und eine dünne Rauchlinie im goldenen Küchenlicht der späten Stunde."
 imagePosition: "center"
+audioUrl: "/audio/articles/why-is-smoking-good-for-your-health/de/LTo9oDjTW1FdEgMfiXWQ-8800beb1823c.m4a"
+audioDuration: "4:21"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/why-is-smoking-good-for-your-health.de.md"
 ---
 
 Ich rauche.

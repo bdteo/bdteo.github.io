@@ -59,6 +59,7 @@ Default engine is **ElevenLabs** (voice `alistair`, model `eleven_v3`); Kokoro `
 - `documentation/bulgarian-article-audio-voices.md` — Bulgarian voice shortlist and the selected Carmelo default
 - `documentation/french-article-audio-voices.md` — French voice shortlist and the selected Theodore default
 - `documentation/spanish-article-audio-voices.md` — Spanish voice shortlist and the selected Gerard default
+- `documentation/german-article-audio-voices.md` — German shortlist, runner-ups, and the selected David default
 - `documentation/chinese-article-audio-voices.md` — Simplified Chinese shortlist, runner-ups, and the selected Jordan Li default
 
 **Core skills.** Claude has these as slash commands where mirrored; Codex uses the same shared skills from `/Users/boris/.agents/skills/`.
@@ -67,7 +68,7 @@ Default engine is **ElevenLabs** (voice `alistair`, model `eleven_v3`); Kokoro `
 
 Generic script preparation for English and localized narration. Given a slug and optional language:
 
-1. Read `content/blog/<slug>/index[.<lang>].md` and `content/tts/<slug>[.<lang>].md` if it exists. Default `lang=en`; profiled localized languages are `bg`, `fr`, `es`, and `zh-Hans`.
+1. Read `content/blog/<slug>/index[.<lang>].md` and `content/tts/<slug>[.<lang>].md` if it exists. Default `lang=en`; profiled localized languages are `bg`, `fr`, `es`, `de`, and `zh-Hans`.
 2. Pick the rewrite scope:
    - **No TTS file** → draft from the article: strip markdown (headings, code blocks, links), spell out symbols (`$20` → "twenty dollars"), convert lists to flowing sentences, then layer tags.
    - **Kokoro-era TTS** → preserve the prose; layer v3 tags; strip the `<!-- tts:paragraph-pauses=... -->` comment and Kokoro pacing hacks (compound `…, `, stranded `-` → `—`).
@@ -75,20 +76,20 @@ Generic script preparation for English and localized narration. Given a slug and
 3. Apply tags per `documentation/elevenlabs-prompting.md`. Essays ≈ 1 tag per 2 paragraphs; poems get one opening tag per stanza. Preserve Boris's authorial voice and load the language voice/profile doc when `lang != en`.
 4. Stop for Boris's review. Do **not** generate audio. Do **not** commit. Do **not** push.
 
-Use `bdteo-tts-prepare-all` when Boris wants all profiled TTS scripts prepared together for one article. It writes only `content/tts/<slug>.md`, `.bg.md`, `.fr.md`, `.es.md`, and `.zh-Hans.md` for languages whose article files exist, then stops for review.
+Use `bdteo-tts-prepare-all` when Boris wants all profiled TTS scripts prepared together for one article. It writes only `content/tts/<slug>.md`, `.bg.md`, `.fr.md`, `.es.md`, `.de.md`, and `.zh-Hans.md` for languages whose article files exist, then stops for review.
 
 ### Publish audio (`bdteo-publish-audio`, `bdteo-audio-all`)
 
 Generic publication for English and localized narration. Once the TTS script is approved:
 
 1. `source ~/.ButtercupZsh/.Rc/env.zsh` to load `ELEVENLABS_API_KEY`.
-2. Run `pnpm article:audio <slug> --force` for English or add `--lang=bg`, `--lang=fr`, `--lang=es`, or `--lang=zh-Hans` for a localized article. The default voice comes from `scripts/voice-presets.js`; override only when Boris chose a different voice.
+2. Run `pnpm article:audio <slug> --force` for English or add `--lang=bg`, `--lang=fr`, `--lang=es`, `--lang=de`, or `--lang=zh-Hans` for a localized article. The default voice comes from `scripts/voice-presets.js`; override only when Boris chose a different voice.
 3. Do not autoplay full generated article audio. Surface the generated file and blog URL so Boris can audition it in the site UI. Use `afplay` only for short isolated pronunciation probes when he explicitly asks.
 4. Iterate with Boris if needed (each run produces a new hashed `.m4a`; keep takes around until he picks one).
 5. Once Boris approves, commit the coherent audio publication: TTS script, localized article frontmatter, chosen `.m4a`, and generator/docs changes only if this run changed tooling.
 6. Trigger deploy: `gh workflow run deploy.yml -R bdteo/bdteo.github.io`. Follow the **Deploy & Publish Ordering** rules above (commit + push BEFORE triggering; one deploy per coherent state; cancel duplicates quickly).
 
-Use `bdteo-audio-all` when Boris wants all profiled English, Bulgarian, French, Spanish, and Simplified Chinese article audio generated and wired together. It serializes the per-language `pnpm article:audio` runs because each generator run already has internal ElevenLabs concurrency; it only skips the TTS review pause when Boris explicitly asks for the fast path/direct generation.
+Use `bdteo-audio-all` when Boris wants all profiled English, Bulgarian, French, Spanish, German, and Simplified Chinese article audio generated and wired together. It serializes the per-language `pnpm article:audio` runs because each generator run already has internal ElevenLabs concurrency; it only skips the TTS review pause when Boris explicitly asks for the fast path/direct generation.
 
 ### Publish Bulgarian audio (`bdteo-publish-audio-bg`)
 
@@ -109,6 +110,16 @@ pnpm article:audio <slug> --lang=fr --voice=theodore-fr --force
 ```
 
 Theodore was selected on 2026-06-07 as the French default: serene, grounded male narration. Avoid whispering tags and echo-heavy cinematic voice alternatives; Boris rejected whispery French samples as irritating.
+
+### Publish German audio (`bdteo-tts-prepare-de`, `bdteo-publish-audio-de`)
+
+German localized audio uses `content/tts/<slug>.de.md`, updates `content/blog/<slug>/index.de.md`, writes under `static/audio/articles/<slug>/de/`, and defaults to the `david-de` voice preset. Prepare the script first and stop for Boris's review before generation. The direct generator form is:
+
+```bash
+pnpm article:audio <slug> --lang=de --voice=david-de --force
+```
+
+David was selected on 2026-07-19 as the German default: wise, slow, charming, warm, and grounded male narration. Hannes and Christian are the recorded runner-ups in `documentation/german-article-audio-voices.md`. Boris prefers a male German default; keep the delivery natural and direct rather than dry, over-loud, or theatrical.
 
 ### Publish Simplified Chinese audio (`bdteo-tts-prepare-zh-hans`, `bdteo-publish-audio-zh-hans`)
 
@@ -132,11 +143,11 @@ If you need to estimate cost before a big batch, **ask Boris for the dashboard s
 ### Generator notes
 
 - `scripts/generate-article-audio.js` chunks ElevenLabs requests at 2,500 chars with concurrency 3 (conservative default; the empirical API cap is 5 concurrent requests as of May 2026), auto-sends `voice_settings`, packages `.m4a` via `ffmpeg`, and updates frontmatter (`audioUrl`, `audioDuration`, `audioVoice`, `audioGeneratedAt`, `audioTextSource`).
-- **Skill structure.** `bdteo-tts-prepare` and `bdteo-publish-audio` are the source-of-truth generic one-language workflows. `bdteo-tts-prepare-all` and `bdteo-audio-all` orchestrate EN/BG/FR/ES/ZH batches. The `bdteo-tts-prepare-<lang>` and `bdteo-publish-audio-<lang>` skills are thin language shortcuts. `bdteo-voice-audition` handles future voice selection and updates voice docs/presets only after Boris chooses a winner.
+- **Skill structure.** `bdteo-tts-prepare` and `bdteo-publish-audio` are the source-of-truth generic one-language workflows. `bdteo-tts-prepare-all` and `bdteo-audio-all` orchestrate EN/BG/FR/ES/DE/ZH batches. The `bdteo-tts-prepare-<lang>` and `bdteo-publish-audio-<lang>` skills are thin language shortcuts. `bdteo-voice-audition` handles future voice selection and updates voice docs/presets only after Boris chooses a winner.
 - **Parallel-agent cap.** When spawning background agents that each run their own audio generation, total in-flight ElevenLabs requests across all agents must not exceed the API cap (5). With per-agent `--concurrency=1`, that means **at most 5 parallel agents**. Spawning more causes the slowest chunks to exhaust the generator's 4 retries and fail with `concurrent_limit_exceeded`, leaving the TTS file modernized but no audio produced — requiring a serial retry afterward.
 - For Kokoro, do not mirror visual poem/prose line breaks in `content/tts/*.md` — group sentences into stanzas and use blank lines only for real movement breaks; newlines/short chunks cause cadence resets.
 - If object storage is configured, use `BLOG_AUDIO_RCLONE_TARGET` and `BLOG_AUDIO_PUBLIC_BASE_URL`; otherwise `audioUrl` stays local under `/audio/articles/...`.
-- Sample voices before committing: `pnpm voice:sample alistair,george,ak --text="..."`, `pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."`, `pnpm voice:sample jordan-li-zh --lang=zh-Hans --text="有些技术看起来像魔法。"`, or `pnpm voice:sample --list`.
+- Sample voices before committing: `pnpm voice:sample alistair,george,ak --text="..."`, `pnpm voice:sample theodore-fr --lang=fr --text="Bonjour."`, `pnpm voice:sample david-de --lang=de --text="Manche Technologien sehen aus wie Magie."`, `pnpm voice:sample jordan-li-zh --lang=zh-Hans --text="有些技术看起来像魔法。"`, or `pnpm voice:sample --list`.
 
 ## Multilingual Blog Workflow
 

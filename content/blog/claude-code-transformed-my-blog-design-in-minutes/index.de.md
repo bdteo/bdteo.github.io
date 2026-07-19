@@ -9,6 +9,11 @@ description: "Wie Claude Code AI ein Gatsby-Blog neu gestaltete: aus einfachem S
 tags: ["Claude Code", "KI", "Webentwicklung", "Gatsby", "CSS", "Design"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Abstrakte Visualisierung von KI-gestuetztem Webdesign: fliessende digitale Straenge verweben aus einfachen HTML-Elementen eine schoene Blog-Oberflaeche."
+audioUrl: "/audio/articles/claude-code-transformed-my-blog-design-in-minutes/de/LTo9oDjTW1FdEgMfiXWQ-1c34c64b238f.m4a"
+audioDuration: "9:15"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/claude-code-transformed-my-blog-design-in-minutes.de.md"
 ---
 
 Als Entwickler, der die meiste Zeit im Backend verbringt, habe ich mit Design schon immer gerungen. Mein persoenliches Blog war funktional, sah aber aus, als sei es 2010 steckengeblieben: einfaches Styling, inkonsistente Abstaende und ein Farbschema, das man grosszuegig als "minimal" haette beschreiben koennen. Ich wollte es seit Monaten ueberarbeiten, aber der Gedanke, in CSS und Designsysteme einzutauchen, machte mir Albtraeume.

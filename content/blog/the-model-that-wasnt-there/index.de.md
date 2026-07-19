@@ -8,6 +8,11 @@ date: "2026-03-14"
 description: "Google stand an der Spitze jedes Benchmarks. YouTube-Videos, Konferenzen, Seminare. Das beste Modell zur Bildgenerierung der Welt. Dann habe ich versucht, es zu benutzen."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein beleuchtetes Podest hinter einem roten Absperrseil: Das Versprechen ist ausgestellt, aber nicht zum Anfassen gedacht."
+audioUrl: "/audio/articles/the-model-that-wasnt-there/de/LTo9oDjTW1FdEgMfiXWQ-a6a5c8664a7d.m4a"
+audioDuration: "7:35"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/the-model-that-wasnt-there.de.md"
 ---
 
 Wir generierten Anzeigenbilder mit Gemini 3 Pro. Platz #4 im Artificial-Analysis-Leaderboard. Die Qualität war wirklich beeindruckend - bessere Prompt-Treue, bessere Typografie, besserer kreativer Output als alles andere, was wir ausprobiert hatten. Google war damit überall. YouTube-Videos. Konferenzen. Seminare. Blogposts. "Das beste Modell zur Bildgenerierung der Welt."

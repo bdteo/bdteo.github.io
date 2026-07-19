@@ -8,6 +8,11 @@ date: "2024-11-30"
 description: "Anpassung an Shopware 6.5/6.6: wichtige Klassen-/Namespace-Änderungen, Symfony 6, Stock API, Bootstrap 5, CSRF-Fixes und das Offcanvas-Cart-Update auf data-off-canvas-cart."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Eine Hand bindet ein frisches, leeres Stoffetikett an ein Vorratsglas. Das alte Etikett liegt daneben."
+audioUrl: "/audio/articles/understanding-class-namespace-changes-shopware-6-5-developers-guide/de/LTo9oDjTW1FdEgMfiXWQ-f7e65109dbad.m4a"
+audioDuration: "19:10"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/understanding-class-namespace-changes-shopware-6-5-developers-guide.de.md"
 ---
 
 Shopware 6.5 und 6.6 haben mehrere wichtige Änderungen an Klassen, Namespaces, Data-Attributen und Sicherheitsmechanismen eingeführt, die Entwickler kennen müssen, wenn sie ihre Shopware-Projekte aktualisieren oder warten. Dieser Artikel gibt einen knappen, aber umfassenden Überblick über diese Änderungen, zusammen mit Beobachtungen zu ihren Auswirkungen und dazu, wie du deinen Code entsprechend anpasst.

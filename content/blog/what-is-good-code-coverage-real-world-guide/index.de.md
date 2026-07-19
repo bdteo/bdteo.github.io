@@ -9,6 +9,11 @@ description: "Ein praktischer, risikobasierter Leitfaden zu Code Coverage: was m
 tags: ["code-coverage", "testing", "typescript", "php", "best-practices", "quality-assurance"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Gute Coverage ist eine Risikokarte, keine Trophäenzahl."
+audioUrl: "/audio/articles/what-is-good-code-coverage-real-world-guide/de/LTo9oDjTW1FdEgMfiXWQ-ecba963379bd.m4a"
+audioDuration: "25:28"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/what-is-good-code-coverage-real-world-guide.de.md"
 ---
 
 # Was ist gute Code Coverage? Ein risikobasierter Leitfaden

@@ -8,6 +8,11 @@ date: "2024-05-11T12:00:00.000Z"
 description: "Ein 2026-bewusster Leitfaden zu Googles KI-Muster: Forschungsdurchbrüche, Gemini, Search, TPUs, Cloud, Fehlschläge und der vorsichtige Aktienmarkt-Blick."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein offenes Notizbuch auf Eiche. Eine feine handgezeichnete Linie, ein Füllfederhalter, eine Tasse Tee — Geduld, aufgeschrieben."
+audioUrl: "/audio/articles/google-ai-ambitions-historical-analysis-promises-stock-market-impact/de/LTo9oDjTW1FdEgMfiXWQ-84fca342aae2.m4a"
+audioDuration: "27:56"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/google-ai-ambitions-historical-analysis-promises-stock-market-impact.de.md"
 ---
 
 Früher dachte ich, die interessante Frage sei: Haben Googles KI-Versprechen die Aktie bewegt?

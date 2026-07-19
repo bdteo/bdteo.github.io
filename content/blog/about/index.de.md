@@ -8,6 +8,11 @@ date: "2023-05-04T22:12:03.284Z"
 featuredImage: "./images/boris-teoharov.jpg"
 imageCaption: "Boris D. Teoharov."
 description: "Boris D. Teoharov - Backend-Engineer aus Bulgarien, gelegentlicher Essayist, ehrlich gehalten von zwei geretteten Straßenhunden."
+audioUrl: "/audio/articles/about/de/LTo9oDjTW1FdEgMfiXWQ-becaa878ea7d.m4a"
+audioDuration: "2:51"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/about.de.md"
 ---
 
 About-Seiten sind eine seltsame Sache, die man schreiben muss. Am Ende beschreibt man sich selbst wie einen Fremden, und dem misstraue ich.

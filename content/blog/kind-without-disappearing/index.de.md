@@ -9,6 +9,11 @@ description: "Ein persönlicher Essay über Schuld, geerbte Scham, Entschuldigun
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein alter Holzwebstuhl in einer mondbeschienenen Kammer. Zwischen seinen Kettfäden wird gerade ein einzelner silberner Faden eingewoben."
 imagePosition: "center"
+audioUrl: "/audio/articles/kind-without-disappearing/de/LTo9oDjTW1FdEgMfiXWQ-f86a584bfe15.m4a"
+audioDuration: "8:55"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/kind-without-disappearing.de.md"
 ---
 
 Unter der Frage liegt noch eine Frage.

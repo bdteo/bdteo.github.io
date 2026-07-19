@@ -93,7 +93,7 @@ SAMPLE_LANG ?= $(lang)
 article-audio:
 	@if [ -z "$(AUDIO_SLUG)" ]; then \
 	  echo 'usage: make article-audio slug=<article-slug> [args="--force --lang=fr --voice=theodore-fr"]'; \
-	  echo 'default voices: alistair (EN), carmelo-bg (BG), theodore-fr (FR), gerard-es (ES), jordan-li-zh (ZH). See `pnpm voice:sample --list` for presets.'; \
+	  echo 'default voices: alistair (EN), carmelo-bg (BG), theodore-fr (FR), gerard-es (ES), david-de (DE), jordan-li-zh (ZH). See `pnpm voice:sample --list` for presets.'; \
 	  exit 2; \
 	fi
 	pnpm article:audio "$(AUDIO_SLUG)" $(AUDIO_ARGS)

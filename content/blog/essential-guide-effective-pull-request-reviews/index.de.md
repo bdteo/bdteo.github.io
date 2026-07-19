@@ -8,6 +8,11 @@ date: "2025-07-06"
 description: "Heb die Codequalität deines Teams mit diesem essenziellen Leitfaden für wirksame Pull-Request-Reviews. Lerne bewährte Praktiken für konstruktives Feedback, kleine PRs und gemeinsame Codeverantwortung."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein mit Bleistift markierter Korrekturabzug, eine Messinglupe, zwei Bleistifte, eine Tasse abkühlender Tee - das stille Handwerk, die Arbeit eines anderen Menschen zu lesen."
+audioUrl: "/audio/articles/essential-guide-effective-pull-request-reviews/de/LTo9oDjTW1FdEgMfiXWQ-3e7c2a52aff3.m4a"
+audioDuration: "8:57"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/essential-guide-effective-pull-request-reviews.de.md"
 ---
 
 Als jemand, der viel Code schreibt und reviewt, habe ich gelernt, dass Pull-Request-Reviews (PRs) mehr sind als Bugkontrollen. Es geht um gemeinsame Verantwortung, Wissenstransfer und darum, zusammen besseren Code zu bauen. Hier ist ein knapper, praktischer Leitfaden, der PRs wertvoller und weniger schmerzhaft macht.

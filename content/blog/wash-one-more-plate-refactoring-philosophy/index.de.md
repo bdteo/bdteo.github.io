@@ -8,6 +8,11 @@ date: "2025-07-24"
 description: "Eine praktische Philosophie fuer Softwareentwicklung, inspiriert von der Boy Scout Rule: Hinterlasse den Code immer sauberer, als du ihn vorgefunden hast - wasch einen Teller mehr. Warum Micro-Refactoring zaehlt und wie du es anwendest, ohne die Lieferung zu entgleisen."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Saubere Teller auf einem Kuechentisch, mit einem noch nassen Teller im Vordergrund."
+audioUrl: "/audio/articles/wash-one-more-plate-refactoring-philosophy/de/LTo9oDjTW1FdEgMfiXWQ-3f46918ddccb.m4a"
+audioDuration: "10:38"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/wash-one-more-plate-refactoring-philosophy.de.md"
 ---
 
 > **TL;DR**: Behandle jede Aenderung an deiner Codebase wie das Kochen einer Mahlzeit. Du wirst ein paar Teller schmutzig machen. Wenn du fertig bist, wasch nicht nur die Teller, die du benutzt hast - wasch *einen mehr*. Mit der Zeit summiert sich dieser winzige Ueberschuss an Sorgfalt zu einer Kueche (Codebase), die sauber bleibt, statt ins Chaos abzugleiten.

@@ -9,6 +9,11 @@ description: "Ein praktischer MySQL/InnoDB-Entscheidungsleitfaden für massive L
 tags: ["mysql", "innodb", "datenbanken", "performance", "betrieb", "laravel"]
 featuredImage: "./images/featured.webp"
 imageCaption: "Zwei Hände heben ein kleines Bündel bewahrter Kräuterzweige über einen Korb mit abgeschnittenen Stielen — behalten, worauf es ankommt, bevor der große Schwung kommt."
+audioUrl: "/audio/articles/todo-bulk-deletion-nuclear-option/de/LTo9oDjTW1FdEgMfiXWQ-b641357f46ad.m4a"
+audioDuration: "24:01"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/todo-bulk-deletion-nuclear-option.de.md"
 ---
 
 Du musst Millionen von Zeilen aus einer MySQL-Tabelle löschen.

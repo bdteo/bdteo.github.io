@@ -1,0 +1,47 @@
+[conversational tone] Ich habe mir einen Blindvergleich von Seedance, Kling, Grok und Googles Videomodell angesehen.
+
+Seedance hat auch für mich gewonnen.
+
+Nicht im abstrakten Leaderboard-Sinn. Es fühlte sich einfach wie das Modell an, das die Szene besser verstanden hat. Schauspiel, Bewegung, Referenzen, Action, filmisches Gewicht. Das Ergebnis hatte mehr Geschmack in sich.
+
+Aber das war nicht der interessante Teil.
+
+Der interessante Teil war, dass ich Seedance trotzdem nicht für alles verwenden würde.
+
+[reflective] Genau da fühlt sich KI-Video jetzt anders an. Wir verlassen die Phase, in der jedes Tool eine austauschbare Prompt-Box ist. Die nützliche Frage ist nicht mehr:
+
+Welches Modell ist das beste?
+
+Sondern:
+
+Welche Art von Shot versuche ich zu machen?
+
+Meine aktuelle Karte ist einfach.
+
+[matter-of-fact] Nutze Seedance, wenn der Shot gut sein muss. Komplexe Szene, viele Referenzen, ausdrucksstarkes Schauspiel, Action, Motion Transfer oder alles, bei dem sich das Modell eher wie ein kleiner Regisseur verhalten muss als wie eine Texturmaschine.
+
+Nutze Kling, wenn der Shot einfacher ist und Iteration zählt. Statische Shots, Kameratreue, 4K/60fps-Output, günstigere Wiederholungen. Es hat vielleicht nicht die höchste Obergrenze, aber manchmal ist die Obergrenze nicht das Problem. Manchmal brauchst du einfach vier ordentliche Versuche statt eines teuren.
+
+Nutze Grok, wenn Geschwindigkeit, Dialog, Emotion oder weichere Guardrails wichtig sind. Es ist chaotisch. Kontinuität bricht. Die Auflösung ist begrenzt. Aber wenn du eine Szene schnell erspüren musst oder einen Prompt durchbringen willst, den andere Modelle aus langweiligen Sicherheitsgründen ablehnen, hat es seinen Platz.
+
+[deadpan] Und im Moment würde ich Googles Videotools meistens überspringen.
+
+Vielleicht versteckt sich dort ein enger Video-zu-Video-Use-Case. Vielleicht wird das Modell nächsten Monat besser. Aber nach den Ergebnissen, die ich gesehen habe, war es zu inkonsistent, um echte Arbeit dorthin zu routen. Schlechter Output ist ein Problem. Unvorhersehbarer Output ist schlimmer, weil man darum keinen Workflow bauen kann.
+
+Auch das gehört zum Routing.
+
+Nicht jedes Tool braucht einen Job.
+
+[reflective] Das ist derselbe Wechsel, den wir bei Bildgenerierung schon gesehen haben. Am Anfang fragten wir nach dem besten Modell. Dann wurde die eigentliche Arbeit zur Wahl zwischen Flux, SDXL, ControlNet, ComfyUI, Upscalern, LoRAs und Workflows.
+
+Video erreicht diesen Punkt.
+
+Die Fähigkeit besteht nicht darin, härter zu prompten.
+
+Die Fähigkeit besteht darin, auf den Shot zu schauen und zu wissen, welche Art von Brüchigkeit man sich leisten kann.
+
+Ein perfektes Modell, das zu viel kostet, um damit zu iterieren, kann falsch sein. Ein günstigeres Modell, das den einfachen Shot richtig trifft, kann richtig sein. Ein chaotisches Modell, das dir in zwanzig Sekunden die emotionale Lesart gibt, kann nützlich sein.
+
+[deliberate] Die Zukunft von KI-Video gehört wahrscheinlich nicht der Person, die jedes Leaderboard auswendig kennt.
+
+Sie gehört der Person, die die Arbeit routen kann.

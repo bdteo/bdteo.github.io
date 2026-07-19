@@ -76,6 +76,13 @@ const VOICE_PRESETS = {
     description:
       "Spanish article-audio default chosen by Boris on 2026-06-10. Deep, neutral Latin American narrator; versatile, professional, and calm.",
   },
+  "david-de": {
+    engine: "elevenlabs",
+    voiceId: "LTo9oDjTW1FdEgMfiXWQ",
+    label: "David (ElevenLabs German slow and charming)",
+    description:
+      "German article-audio default chosen by Boris on 2026-07-19. Wise, slow, charming, warm, and grounded male narration.",
+  },
   "jordan-li-zh": {
     engine: "elevenlabs",
     voiceId: "EttSxNTvxX50EUdRPQQl",
@@ -97,6 +104,7 @@ const DEFAULT_PRESET_BY_LANGUAGE = {
   bg: "carmelo-bg",
   fr: "theodore-fr",
   es: "gerard-es",
+  de: "david-de",
   "zh-Hans": "jordan-li-zh",
 }
 

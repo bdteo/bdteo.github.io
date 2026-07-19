@@ -9,6 +9,11 @@ description: "Ein kleiner Essay über Sprache, Unvollständigkeit, ein Gehirn, d
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein offenes Notizbuch im Morgengrauen. Die rechte Seite ist leer. Absichtlich."
 imagePosition: "center"
+audioUrl: "/audio/articles/where-all-sciences-meet/de/LTo9oDjTW1FdEgMfiXWQ-a53686015893.m4a"
+audioDuration: "11:21"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/where-all-sciences-meet.de.md"
 ---
 
 Ich bin kein Mathematiker. Ich bin kein Philosoph. Ich bin kein Neurowissenschaftler. Ich bin einfach ein Mensch, der gern denkt... Und ich erwische die Wissenschaften immer wieder dabei, wie sie einander zuzwinkern, wenn sie glauben, niemand schaut hin.

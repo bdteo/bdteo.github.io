@@ -9,6 +9,11 @@ description: "Ein kleines Bild für den Underdog in der Informatik. Das Lehrbuch
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein verwitterter Feldstein-Torpfosten im Morgennebel. Der Efeu klettert. Dem Pfosten ist es egal."
 imagePosition: "center"
+audioUrl: "/audio/articles/the-pillar-and-the-ivy/de/LTo9oDjTW1FdEgMfiXWQ-14e91f876835.m4a"
+audioDuration: "5:38"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/the-pillar-and-the-ivy.de.md"
 ---
 
 Diskrete Mathematik ist voller kleiner Dinge, die offensichtlich wirken. Genau das ist die Falle.

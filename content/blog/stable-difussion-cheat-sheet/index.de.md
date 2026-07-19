@@ -8,6 +8,11 @@ date: "2023-05-04T23:30:00.000Z"
 description: "Praktischer Stable-Diffusion-Spickzettel für SDXL, SD 3.5 und Flux. Behandelt Sampler, CFG, Auflösung, Negative Prompts, Modellauswahl und UI-Wahl. Aktualisiert im März 2026."
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein abgegriffener elfenbeinfarbener Stapel Karteikarten auf Leinen, zusammengehalten von einem bernsteinfarbenen Gummiband."
+audioUrl: "/audio/articles/stable-difussion-cheat-sheet/de/LTo9oDjTW1FdEgMfiXWQ-4a6c59b1a587.m4a"
+audioDuration: "12:12"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/stable-difussion-cheat-sheet.de.md"
 ---
 
 > **Aktualisiert im März 2026.** Die ursprüngliche Version dieses Spickzettels wurde im Mai 2023 für SD 1.5 geschrieben. Seitdem hat sich fast alles verändert -- neue Architekturen (SDXL, SD 3.5, Flux), neue UIs (ComfyUI), neue Hardware (RTX 5090) und eine komplette Kehrtwende bei der Philosophie zu Negative Prompts. Das hier ist die aktuelle Version.

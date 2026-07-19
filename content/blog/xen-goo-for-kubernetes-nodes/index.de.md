@@ -13,6 +13,11 @@ tags:
   - devops
   - software
   - metapher
+audioUrl: "/audio/articles/xen-goo-for-kubernetes-nodes/de/LTo9oDjTW1FdEgMfiXWQ-00cc492283d0.m4a"
+audioDuration: "2:11"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/xen-goo-for-kubernetes-nodes.de.md"
 ---
 
 In Kubernetes klingt ein tainted node wie etwas aus Half-Life.

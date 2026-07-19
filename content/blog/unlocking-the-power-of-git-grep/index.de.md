@@ -9,6 +9,11 @@ description: "Ein praktischer git grep Spickzettel für die Suche in getrackten 
 tags: ["git", "git grep", "ripgrep", "Codesuche", "Entwicklerwerkzeuge", "Softwareentwicklung", "Kommandozeilenwerkzeuge"]
 featuredImage: "./images/featured.jpg"
 imageCaption: "Eine geöffnete Schublade eines Bibliothekskatalogs. Eine Karte steht ein wenig hervor - die Passage, nach der du gesucht hast."
+audioUrl: "/audio/articles/unlocking-the-power-of-git-grep/de/LTo9oDjTW1FdEgMfiXWQ-426cf457fb33.m4a"
+audioDuration: "13:37"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/unlocking-the-power-of-git-grep.de.md"
 ---
 
 Die meisten Ratschläge zur Codesuche beginnen mit Geschwindigkeit. Geschwindigkeit zählt, aber der eigentliche Grund, warum ich zu `git grep` greife, ist einfacher:

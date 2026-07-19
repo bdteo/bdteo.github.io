@@ -9,6 +9,11 @@ description: "Kurze Überlegungen zu Liebe, Einsamkeit, digitaler Allmende und e
 featuredImage: "./images/featured.jpg"
 imageCaption: "Zwei Tassen, ein gefalteter Schal und Kekse warten auf einer öffentlichen Bank."
 imagePosition: "center"
+audioUrl: "/audio/articles/what-if-human-connection-were-public-infrastructure/de/LTo9oDjTW1FdEgMfiXWQ-cbb234e50e3d.m4a"
+audioDuration: "3:00"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/what-if-human-connection-were-public-infrastructure.de.md"
 ---
 
 Ich will kein Tinder bauen.

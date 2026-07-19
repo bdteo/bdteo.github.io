@@ -37,6 +37,11 @@ jsonld: |
   }
 featuredImage: "./images/featured.jpg"
 imageCaption: "Ein alter Archivschrank aus Holz mit einer leeren Karte in der Mitte, eingefangen in staubigem Licht."
+audioUrl: "/audio/articles/the-city-that-wasnt-there/de/LTo9oDjTW1FdEgMfiXWQ-24a8e1ceee99.m4a"
+audioDuration: "7:13"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/the-city-that-wasnt-there.de.md"
 ---
 
 Ich baute ein Ding, das Daten aus einer Quelle zieht, sie säubert und besser darstellt als das Original. Standardarbeit.

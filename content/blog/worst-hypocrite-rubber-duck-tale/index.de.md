@@ -9,6 +9,11 @@ description: "Eine Kurzgeschichte über zwei Gummienten, die mit Selbstzweifeln,
 featuredImage: "./images/featured.jpg"
 imageCaption: "Zwei gelbe Gummienten auf einem warmen hölzernen Badezimmerregal, leicht zueinander geneigt."
 imagePosition: "center"
+audioUrl: "/audio/articles/worst-hypocrite-rubber-duck-tale/de/LTo9oDjTW1FdEgMfiXWQ-0dac194af358.m4a"
+audioDuration: "8:09"
+audioVoice: "David (ElevenLabs German slow and charming)"
+audioGeneratedAt: "2026-07-19"
+audioTextSource: "content/tts/worst-hypocrite-rubber-duck-tale.de.md"
 ---
 
 Von Boris an eine geschätzte Freundin:
