@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Пътеката, която се рисува сама</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #151514;
+        color: #eeeae0;
+        font:
+          17px/1.6 system-ui,
+          sans-serif;
+      }
+      main {
+        width: min(1280px, calc(100% - 40px));
+        margin: 42px auto;
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: #cfa85e;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(26px, 4vw, 40px);
+        font-weight: 500;
+        line-height: 1.2;
+      }
+      .description {
+        margin: 0 0 24px;
+        max-width: 820px;
+        color: #b7b4ad;
+      }
+      video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #000;
+        border-radius: 4px;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        margin-top: 22px;
+      }
+      a {
+        color: #d4b779;
+        text-underline-offset: 4px;
+      }
+      .details {
+        margin: 20px 0 0;
+        color: #8d8b84;
+        font-size: 14px;
+      }
+      @media (max-width: 600px) {
+        main {
+          width: calc(100% - 24px);
+          margin: 24px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">The path that draws itself</p>
+      <h1>Пътеката, която се рисува сама</h1>
+      <p class="description">
+        Човече чертае път през гората. После пътят продължава сам. Кратък
+        анимационен филм за работата, празните ръце и собствената посока.
+      </p>
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster="01-drawing.png"
+        aria-label="Пътеката, която се рисува сама — кратък анимационен филм с английски разказ, атмосферна музика и субтитри"
+      >
+        <source src="the-path-draws-itself-en-ambient.mp4" type="video/mp4" />
+        <a href="the-path-draws-itself-en-ambient.mp4">Изтегли видеото</a>
+      </video>
+      <nav aria-label="Видеото и статията">
+        <a href="the-path-draws-itself-en-ambient.mp4" download>Изтегли MP4</a>
+        <a href="the-path-draws-itself-ambient.m4a" download
+          >Музиката отделно</a
+        >
+        <a href="the-path-draws-itself-en.mp4">Версията без музика</a>
+        <a href="the-path-draws-itself-en.srt" download>Субтитри SRT</a>
+        <a href="/i-have-a-job/">Статията на английски</a>
+        <a href="/bg/i-have-a-job/">Статията на български</a>
+      </nav>
+      <p class="details">
+        1:04 · Английски разказ, атмосферна музика и вградени субтитри
+      </p>
+    </main>
+    <script>
+      if (
+        window.location.hostname === "127.0.0.1" &&
+        window.location.port === "18742"
+      ) {
+        const video = document.querySelector("video")
+        video.querySelector("source").src =
+          "http://bdteo.localhost/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-en-ambient.mp4"
+        document.querySelectorAll('nav a[href^="/"]').forEach(link => {
+          link.href = "http://bdteo.localhost" + link.getAttribute("href")
+        })
+        video.load()
+      }
+    </script>
+  </body>
+</html>

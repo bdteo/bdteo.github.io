@@ -1,0 +1,62 @@
+{
+  "file": "static/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-en-ambient.mp4",
+  "sha256": "3511602635d1cf2db977a70df66b908378e55dc2e4d14c50ef9905f44c4331e5",
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "duration": "64.000000",
+        "nb_frames": "1536"
+      },
+      {
+        "codec_name": "aac",
+        "channels": 2,
+        "duration": "64.000000",
+        "nb_frames": "3001"
+      }
+    ],
+    "format": {
+      "duration": "64.000000",
+      "size": "47578952"
+    }
+  },
+  "musicModel": "music_v2_5",
+  "originalFilmUnchanged": true,
+  "videoStreamUnchanged": true,
+  "fullDecode": "passed",
+  "musicBedRmsDbfsDuringNarration": [
+    -35.3, -31.3, -30.7, -34.7, -36.6, -40.9, -36.4, -38.5
+  ],
+  "finalMixLoudness": {
+    "integratedLUFS": -14.99,
+    "truePeakDbTP": -3.53,
+    "loudnessRangeLU": 9.7
+  },
+  "browser": {
+    "initial": {
+      "paused": true,
+      "autoplay": false,
+      "duration": 64,
+      "width": 1920,
+      "height": 1080
+    },
+    "playback": {
+      "ended": true,
+      "currentTime": 64,
+      "duration": 64,
+      "error": null,
+      "src": "http://bdteo.localhost/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-en-ambient.mp4",
+      "frames": 389,
+      "dropped": 0
+    },
+    "mobileFits": true,
+    "errors": []
+  },
+  "cleanup": {
+    "ownedTemporaryBrowserProcessesRemaining": 0
+  }
+}

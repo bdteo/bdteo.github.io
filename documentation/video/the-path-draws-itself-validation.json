@@ -1,0 +1,63 @@
+{
+  "file": "static/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-en.mp4",
+  "sha256": "b0a2b23ae1d8aa3a25bbd36b65b62443baa44737ff272d245c9225de58e566f6",
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "24/1",
+        "duration": "64.000000",
+        "nb_frames": "1536"
+      },
+      {
+        "codec_name": "aac",
+        "r_frame_rate": "0/0",
+        "duration": "64.000000",
+        "nb_frames": "3001"
+      }
+    ],
+    "format": {
+      "duration": "64.000000",
+      "size": "47038479"
+    }
+  },
+  "browser": {
+    "initial": {
+      "paused": true,
+      "autoplay": false,
+      "duration": 64,
+      "width": 1920,
+      "height": 1080
+    },
+    "playback": {
+      "ended": true,
+      "currentTime": 64,
+      "duration": 64,
+      "error": null,
+      "src": "http://bdteo.localhost/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-en.mp4",
+      "frames": 389,
+      "dropped": 0
+    },
+    "mobileFits": true,
+    "errors": []
+  },
+  "fullDecode": "passed: no FFmpeg errors",
+  "audioChecks": {
+    "allEightExcerptsHaveAudio": true,
+    "peakDbFS": -0.6,
+    "meanDbFS": -15.9
+  },
+  "visualChecks": [
+    "Seven selected scenes inspected",
+    "Corrected ending contains no amber tree",
+    "Final burned subtitles inspected",
+    "Desktop preview inspected"
+  ],
+  "cleanup": {
+    "ownedTemporaryBrowserProcessesRemaining": 0
+  }
+}

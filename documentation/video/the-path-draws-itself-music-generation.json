@@ -1,0 +1,16 @@
+{
+  "endpoint": "https://api.elevenlabs.io/v1/music?output_format=mp3_48000_192",
+  "model": "music_v2_5",
+  "requestFile": "documentation/video/the-path-draws-itself-music-request.json",
+  "status": "completed",
+  "submittedAt": "2026-10-01T16:53:40.512204+00:00",
+  "httpStatus": 200,
+  "songId": "ETSObgjiET0ukIn2iple",
+  "requestId": null,
+  "contentType": "audio/mpeg",
+  "completedAt": "2026-10-01T16:53:50.443693+00:00",
+  "elapsedSeconds": 9.93,
+  "path": "static/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-ambient-raw.mp3",
+  "bytes": 1536813,
+  "sha256": "e634b5fd075e6e352a204a420ce0c29c5d67e7fad0f718018bfbfbd283eaeb58"
+}

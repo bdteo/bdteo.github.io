@@ -1,0 +1,27 @@
+{
+  "musicSource": "static/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-ambient-raw.mp3",
+  "originalFilm": "static/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-en.mp4",
+  "score": "static/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-ambient.m4a",
+  "film": "static/video/articles/i-have-a-job/the-path-draws-itself/the-path-draws-itself-en-ambient.mp4",
+  "duration": 64,
+  "musicPreparation": {
+    "gainDb": 2,
+    "highpassHz": 35,
+    "lowpassHz": 9000,
+    "fadeInSeconds": 0.6,
+    "fadeOutStart": 61.6,
+    "fadeOutSeconds": 2.4
+  },
+  "mix": {
+    "musicGain": 0.45,
+    "duckingThreshold": 0.08,
+    "duckingRatio": 2.5,
+    "attackMs": 25,
+    "releaseMs": 500,
+    "limiterCeilingDb": -1
+  },
+  "narration": "Original approved recording, prepared again from the same excerpt timestamps; no new TTS.",
+  "video": "Copied without re-encoding.",
+  "filmSha256": "3511602635d1cf2db977a70df66b908378e55dc2e4d14c50ef9905f44c4331e5",
+  "scoreSha256": "c8a5f7962b4ccb5d638cc3db859dc823ffe106262ecc9f8afa84f6c764646b57"
+}

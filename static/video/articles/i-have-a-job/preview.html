@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Празните ръце — видео към статията</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #111211;
+        color: #ece9e2;
+        font:
+          17px/1.6 system-ui,
+          sans-serif;
+      }
+      main {
+        width: min(1280px, calc(100% - 40px));
+        margin: 44px auto;
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-size: clamp(25px, 4vw, 38px);
+        font-weight: 500;
+      }
+      p {
+        margin: 0 0 22px;
+        color: #b6b5ae;
+      }
+      video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #000;
+        border-radius: 5px;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        margin-top: 22px;
+      }
+      a {
+        color: #d7c6ae;
+        text-underline-offset: 4px;
+      }
+      @media (max-width: 600px) {
+        main {
+          width: calc(100% - 24px);
+          margin: 24px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Празните ръце</h1>
+      <p>Тих следобед, докато компютърът работи. Вратата остава отворена.</p>
+      <video
+        controls
+        loop
+        muted
+        playsinline
+        preload="metadata"
+        poster="empty-hands-still.png"
+        aria-label="Неподвижно работно бюро, отворена врата и леко движеща се завеса"
+      >
+        <source src="empty-hands-loop.mp4" type="video/mp4" />
+        <a href="empty-hands-loop.mp4">Изтегли видеото</a>
+      </video>
+      <nav aria-label="Свързани файлове">
+        <a href="empty-hands-loop.mp4" download>Изтегли видеото</a>
+        <a href="empty-hands-still.png">Началната снимка</a>
+        <a href="/bg/i-have-a-job/">Статията на български</a>
+        <a href="/i-have-a-job/">Статията на английски</a>
+      </nav>
+    </main>
+    <script>
+      const video = document.querySelector("video")
+      if (
+        window.location.hostname === "127.0.0.1" &&
+        window.location.port === "18742"
+      ) {
+        document.querySelectorAll('nav a[href^="/"]').forEach(link => {
+          link.href = "http://bdteo.localhost" + link.getAttribute("href")
+        })
+      }
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        video.autoplay = true
+        video.play().catch(() => {})
+      }
+    </script>
+  </body>
+</html>

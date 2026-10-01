@@ -1,0 +1,218 @@
+{
+  "title": "The path that draws itself",
+  "duration": 64,
+  "outputSize": [1920, 1080],
+  "fps": 24,
+  "narrationSource": "static/audio/articles/i-have-a-job/UzI1NsMEV3ni5JRkRSls-ac2f6d88d3c9.m4a",
+  "narration": [
+    {
+      "text": "The work is moving. My hands are empty.",
+      "start": 5.94,
+      "end": 8.88,
+      "duration": 2.9400000000000004,
+      "timelineStart": 2.9
+    },
+    {
+      "text": "For years, programming gave me a quiet confidence: whatever happens, the craft will feed me. I know something that people need.",
+      "start": 45.26,
+      "end": 54.08,
+      "duration": 8.82,
+      "timelineStart": 8.6
+    },
+    {
+      "text": "I use AI every day, and I see how much it helps me. That is exactly why the dependence unsettles me.",
+      "start": 58.8,
+      "end": 66.4,
+      "duration": 7.6000000000000085,
+      "timelineStart": 18.2
+    },
+    {
+      "text": "More and more, I am a filter for what AI produces. I get more done without feeling more capable.",
+      "start": 107.04,
+      "end": 114.02,
+      "duration": 6.97999999999999,
+      "timelineStart": 27.0
+    },
+    {
+      "text": "The direction is still mine.",
+      "start": 115.54,
+      "end": 117.12,
+      "duration": 1.5799999999999983,
+      "timelineStart": 36.0
+    },
+    {
+      "text": "Writing is something I return to on my own, without anyone assigning it to me. I begin with a thought that is not yet clear, and it becomes clearer as I write it down.",
+      "start": 273.9,
+      "end": 284.78,
+      "duration": 10.879999999999995,
+      "timelineStart": 39.0
+    },
+    {
+      "text": "While I write, my hands are not empty.",
+      "start": 286.0,
+      "end": 288.18,
+      "duration": 2.180000000000007,
+      "timelineStart": 51.0
+    },
+    {
+      "text": "I do not know what my work will look like in two years. Until then, I want to keep living, writing, and trying.",
+      "start": 300.54,
+      "end": 308.3,
+      "duration": 7.759999999999991,
+      "timelineStart": 54.0
+    }
+  ],
+  "shots": [
+    {
+      "id": "01-opening",
+      "sourceStart": 0,
+      "sourceEnd": 8,
+      "duration": 8
+    },
+    {
+      "id": "02-following",
+      "sourceStart": 2.8,
+      "sourceEnd": 8,
+      "duration": 10,
+      "crop": "1088:612:192:54"
+    },
+    {
+      "id": "03-empty-hands",
+      "sourceStart": 0,
+      "sourceEnd": 8,
+      "duration": 9
+    },
+    {
+      "id": "04-uncertainty",
+      "sourceStart": 0,
+      "sourceEnd": 8,
+      "duration": 8
+    },
+    {
+      "id": "05-pick-up-pencil",
+      "sourceStart": 0,
+      "sourceEnd": 8,
+      "duration": 8
+    },
+    {
+      "id": "06-own-direction-v2",
+      "sourceStart": 0,
+      "sourceEnd": 8,
+      "duration": 10
+    },
+    {
+      "id": "07-continuing-v2",
+      "sourceStart": 0,
+      "sourceEnd": 8,
+      "duration": 11
+    }
+  ],
+  "subtitleCues": [
+    {
+      "start": 2.8999999999999995,
+      "end": 4.04,
+      "text": "The work is moving."
+    },
+    {
+      "start": 4.72,
+      "end": 5.920000000000001,
+      "text": "My hands are empty."
+    },
+    {
+      "start": 8.600000000000001,
+      "end": 11.480000000000006,
+      "text": "For years, programming gave me a quiet confidence:"
+    },
+    {
+      "start": 12.100000000000001,
+      "end": 14.600000000000003,
+      "text": "whatever happens, the craft will feed me."
+    },
+    {
+      "start": 15.64,
+      "end": 17.5,
+      "text": "I know something that people need."
+    },
+    {
+      "start": 18.200000000000003,
+      "end": 19.900000000000006,
+      "text": "I use AI every day,"
+    },
+    {
+      "start": 20.22,
+      "end": 21.879999999999995,
+      "text": "and I see how much it helps me."
+    },
+    {
+      "start": 22.939999999999998,
+      "end": 25.88000000000001,
+      "text": "That is exactly why the dependence unsettles me."
+    },
+    {
+      "start": 27.000000000000014,
+      "end": 28.799999999999997,
+      "text": "More and more, I am a filter"
+    },
+    {
+      "start": 28.799999999999997,
+      "end": 30.400000000000006,
+      "text": "for what AI produces."
+    },
+    {
+      "start": 31.38000000000001,
+      "end": 34.059999999999974,
+      "text": "I get more done without feeling more capable."
+    },
+    {
+      "start": 36.000000000000014,
+      "end": 37.66,
+      "text": "The direction is still mine."
+    },
+    {
+      "start": 39.0,
+      "end": 41.500000000000014,
+      "text": "Writing is something I return to on my own,"
+    },
+    {
+      "start": 41.76000000000005,
+      "end": 43.64,
+      "text": "without anyone assigning it to me."
+    },
+    {
+      "start": 44.700000000000045,
+      "end": 46.959999999999994,
+      "text": "I begin with a thought that is not yet clear,"
+    },
+    {
+      "start": 47.460000000000036,
+      "end": 49.959999999999994,
+      "text": "and it becomes clearer as I write it down."
+    },
+    {
+      "start": 51.0,
+      "end": 53.260000000000005,
+      "text": "While I write, my hands are not empty."
+    },
+    {
+      "start": 54.0,
+      "end": 55.39999999999998,
+      "text": "I do not know what my work"
+    },
+    {
+      "start": 55.39999999999998,
+      "end": 56.959999999999994,
+      "text": "will look like in two years."
+    },
+    {
+      "start": 57.91999999999996,
+      "end": 60.09999999999998,
+      "text": "Until then, I want to keep living,"
+    },
+    {
+      "start": 60.35999999999996,
+      "end": 61.83999999999999,
+      "text": "writing, and trying."
+    }
+  ],
+  "scope": "Self-contained short film, excerpts from the English article; not the full five-minute narration."
+}

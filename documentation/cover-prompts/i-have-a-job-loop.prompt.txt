@@ -1,0 +1,18 @@
+STILL IMAGE — built-in image_gen
+
+Use case: photorealistic-natural.
+Asset type: 16:9 landscape opening still for a quiet, seamless looping cinematic video accompanying a personal essay called "I have a job. I have lost the certainty."
+Primary request: an intimate, believable home office seen from the seated programmer's point of view, waiting while the computer works. No person or hands visible. A real dark wooden desk and an unused keyboard occupy the lower foreground; a modest monitor on the left is on, with extremely subtle, indistinct neutral grey code-like shapes, no readable text. At the far side of the room, a half-open wooden door reveals a modest warm sunlit hallway, the emotional suggestion of a possibility still open. A tall side window on the right has one light linen curtain whose bottom edge is loose enough to sway gently. The room looks lived-in but uncluttered.
+Style: natural photographic still, restrained cinematic realism, analogue film texture, believable ordinary European apartment, 35 mm lens, eye-level seated viewpoint, no theatrical sci-fi design.
+Composition: wide 16:9, precisely locked camera, the empty keyboard clearly visible, doorway in the middle distance, curtain along the right edge. Everything has clear stable geometry. Allow the still to work as a self-contained image.
+Lighting/mood: subdued cool blue-grey interior contrasted with soft warm afternoon light through the doorway, thoughtful and slightly heavy, with a small sense of possibility. Exposure steady, dark areas retain texture.
+Constraints: no people, no hands, no faces, no lettering, no legible screen text, no brands, no watermark, no particles, no exaggerated bloom, no robot, no neon, no visual interface floating in the room. The door is open and stationary. All furniture and screen content are still. The later video will animate only a tiny slow curtain sway and the corresponding soft shadow, returning to the starting pose.
+Generate one finished photograph in a landscape 16:9 aspect ratio.
+
+VIDEO — Google Vertex AI, Veo 3.1, first and last frames use the generated still
+
+A quiet seamless cyclic cinemagraph of this exact home office photograph. The camera is completely locked off on a tripod: no pan, tilt, dolly, zoom or reframing. Preserve the entire composition, all geometry, furniture, keyboard, monitor, blurred screen content and the position and angle of the open door. Over eight seconds the linen curtain at the right window makes one extremely small, slow, natural sway outward and back to the identical starting pose, and its faint soft shadow follows it. Smooth periodic motion, a complete gentle cycle, matching pose and matching motion speed at the beginning and end for a seamless repeat. All other objects remain still. Keep exposure, white balance and the light in the warm doorway constant. Subtle and photorealistic, a reflective ordinary afternoon, no action and no dramatic lighting changes. The final frame returns to the supplied initial photograph. Silent video, no dialogue, no music.
+
+Negative prompt: people, hands, faces, walking, typing, camera movement, camera shake, zoom, pan, dolly, door movement, screen animation, flicker, sudden lighting changes, text overlays, object morphing, added objects, particles, cuts, speech, music
+
+Delivery: silent 16:9 ambient loop; retain the unmodified Veo take and prepare a separate final loop if a local transition repair is needed.
